@@ -1773,7 +1773,13 @@ items ship or decisions change.
      Changes of Organic Compounds) has seven, `xq-c30-3-1` to `xq-c30-3-7`: naming pentane, 1-pentene
      and 1-pentyne, naming a branched alkane, the four isomers of C4H9Cl, ethanol and its ether
      isomer, 2-bromopropane from propene (OpenStax 20.1), the percent yield of ethyl acetate (20.3),
-     and burning octane. Chem 10 is rendered and on Drive, and Chem 20 is rendering.
+     and burning octane. Unit 4 (Chemical Equilibrium Focusing on Acid–Base Systems) has eight,
+     `xq-c30-4-1` to `xq-c30-4-8`: whether equal concentrations mean equilibrium (OpenStax 13.1), K
+     for PCl5 from an ICE table (13.4), sulfur trioxide and temperature (13.3), labelling acids,
+     bases and conjugates (14.1), hydrofluoric acid meeting cyanide, Ka of the methylammonium ion
+     and the pH of propionic acid (14.3), and hydronium in a nitrite buffer (14.6). Chem 30 is
+     complete: 30 exam videos, one per lesson. Chem 10 is rendered and on Drive, and Chem 20 is
+     rendering.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
