@@ -1764,7 +1764,10 @@ items ship or decisions change.
      OpenStax Contemporary Mathematics 8.7 and 8.8 (percents under a normal curve with mean 500, and
      the percentile of 211 on a test with mean 250) and two we wrote, since the free books divide by
      n − 1 and compute intervals rather than read them (which of two players is more consistent,
-     with the population standard deviation, and reading a poll that is accurate 19 times out of 20).
+     with the population standard deviation, and reading a poll that is accurate 19 times out of 20),
+     and Unit 6 (Quadratic Functions) with three from OpenStax College Algebra 2e 5.1 and
+     Intermediate Algebra 2e 9.6 (the graph of x² − 2x, the highest point of a ball thrown at
+     109 ft/s, and the intercepts of x² + 8x + 12 from factored form).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
