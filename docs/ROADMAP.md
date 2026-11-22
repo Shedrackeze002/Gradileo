@@ -1698,14 +1698,47 @@ items ship or decisions change.
      wavelength (17.1), an electron's de Broglie wavelength (College Physics 2e 29.6), a magnet
      bending a TV's cathode ray (22.5), an alpha particle's closest approach to gold (19.3), and,
      with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
-     distance (16.3). Next: lessons 3.6 and 3.7 once the photon animation is on main, and 4.3 to
-     4.7 once their animations are built. English has an exam video for every lesson of all nine
+     distance (16.3), and, with the photon animation, violet light on calcium (21.2) and the
+     momentum of a 500 nm photon beside an electron's (21.3). Next: 4.3 to 4.7 once their
+     animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
+     Unit 1 (Measurement) with eight, `xq-m10c-1-1` to `xq-m10c-1-8`, of which the hand-span
+     referent and the vernier caliper are questions Gradileo wrote (the free banks have none) and
+     the rest come from OpenStax Prealgebra 2e (feet and inches, 100 km in miles, the soda can, the
+     globe, the cone of fries, the street light post); Unit 2 (Trigonometry) with four,
+     `xq-m10c-2-1` to `xq-m10c-2-4`, from OpenStax Algebra and Trigonometry 2e 7.2 (the tree, the
+     ladder, the unknown sides of a 30° triangle and the radio tower); Unit 3 (Factors, Roots and
+     Powers) with six, `xq-m10c-3-1` to `xq-m10c-3-6`, from OpenStax Prealgebra 2e and Elementary
+     Algebra 2e (hot dogs and buns, the 2704 cm² mosaic, Reed's garden, Elliott's garden of
+     √288, (m⁴n⁻³)(m⁻⁵n⁻²) and the falling flare); Unit 4 (Polynomials) with six, `xq-m10c-4-1` to
+     `xq-m10c-4-6`, from OpenStax Elementary Algebra 2e (18 × 17 by FOIL, (b + 3)(2b² − 5b + 8), the
+     area w² − 6w, Deirdre's x² + x − 56, 6x² + 7x + 2 by the "ac" method and the pool deck
+     (2w + 15)²); Unit 5 (Relations and Functions) with four, `xq-m10c-5-1` to `xq-m10c-5-4`, of
+     which Jordan's bike-ride graph is a question Gradileo wrote (the free banks only ask about story
+     graphs through pictures they do not describe) and the rest come from OpenStax Intermediate
+     Algebra 2e 3.5 (the BMI mapping, two sets of ordered pairs and Sylvia's DVR); Unit 6 (Linear
+     Relations) with five, `xq-m10c-6-1` to `xq-m10c-6-5`, from OpenStax College Algebra 2e and
+     Elementary Algebra 2e (the shrinking city's −400 people a year, Damien's road-trip intercepts,
+     the wheelchair ramp, whether 7x + 2y = 3 and 2x + 7y = 5 are perpendicular, and the straight
+     road to work); Unit 7 (Equations of Linear Relations) with five, `xq-m10c-7-1` to
+     `xq-m10c-7-5`, from OpenStax Elementary Algebra 2e and College Algebra 2e (Celsius to
+     Fahrenheit, Ilya's weekly pay, the slope and intercept of x + 2y = 6, the line perpendicular
+     to y = 3x + 1 through (4, 2), and cricket chirps by interpolation and extrapolation); Unit 8
+     (Systems of Linear Equations) with four, `xq-m10c-8-1` to `xq-m10c-8-4`, from OpenStax
+     Elementary Algebra 2e 5.1 to 5.3 (Manny's orange juice by graphing, Geraldine's two job offers
+     by substitution, Andrea's shirts and sweaters by elimination, and how many solutions
+     y = −2x − 4 and 4x + 2y = 9 have). Math 10 is complete: 42 exam videos, one per lesson. Math 20-1 (`xq-m201-*`) is under way:
+     Unit 1 (Sequences and Series) with five, from OpenStax College Algebra 2e 9.2 to 9.4 (the
+     daily run that grows by 4 minutes a week, twelve weeks of pay rising by \$12.50, website hits
+     growing 2.6% a week, eight years of salary with a 2% raise, and the pendulum's total distance), and
+     Unit 2 (Trigonometry) with five, from OpenStax Algebra and Trigonometry 2e 7.1, 7.3, 10.1 and 10.2
+     (the angle coterminal with 870°, sin t from cos t = 24/25 in quadrant IV, a building's height
+     from two angles of elevation, the two triangles from α = 80°, a = 120, b = 121, and two airplanes
+     25° apart). English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
      Topics) on public-domain texts, plus a few key stage 2 grammar questions under the Open
      Government Licence; texts still in copyright are described, never quoted. Grade 5 is rendered
-     and on Drive, and the other grades are rendering in turn. The owner approved the
-     exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
+     and on Drive, and the other grades are rendering in turn. The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
 
