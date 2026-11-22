@@ -1744,7 +1744,12 @@ items ship or decisions change.
      a quotient of four factored polynomials that comes to 1, 3/(x + 5) − 1/(x − 3), and
      2/(x − 2) + 1/(x + 1) = 1/(x² − x − 2)), and Unit 7 (Absolute Value and Reciprocal Functions) with
      four, from 3.6 and 5.6 (the numbers 4 away from 8, the graph of y = |x − 1|, |2x − 1| − 3 = 0, and
-     the domain and asymptotes of 2/(5x + 2) as the reciprocal of a line).
+     the domain and asymptotes of 2/(5x + 2) as the reciprocal of a line), Unit 8 (Systems of Equations)
+     with two, from 7.3 (the laptop company's break-even points, 2 to 20 laptops a day, and
+     3x − y = −2 with 2x² − y = 0 by substitution), and Unit 9 (Linear and Quadratic Inequalities) with
+     three, from Intermediate Algebra 2e 3.4 and 9.8 and College Algebra 2e 7.3 (Hugh's two jobs,
+     10x + 13y ≥ 260, x² − 2x − 15 ≤ 0, and the graph of x² + y < 9). Math 20-1 is complete: 34 exam
+     videos, one per lesson.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
