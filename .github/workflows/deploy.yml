@@ -29,6 +29,10 @@ on:
     types: [closed]
     branches: [main]
   workflow_dispatch:
+  # Once a day, so the public lesson pages show the explainer videos uploaded to YouTube since the
+  # last merge (scripts/prerender.mjs reads them from the video_links table when the site is built).
+  schedule:
+    - cron: '23 5 * * *'
 
 permissions:
   contents: read

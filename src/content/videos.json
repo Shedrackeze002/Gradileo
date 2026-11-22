@@ -129085,5 +129085,115 @@
         "working": "The lens is diverging, so $f = -20$ cm. $\\tfrac{1}{d_i} = \\tfrac{1}{-20} - \\tfrac{1}{20} = -\\tfrac{2}{20}$, so $d_i = -10$ cm: a virtual image. Then $m = -\\tfrac{-10}{20} = +0.50$."
       }
     ]
+  },
+  "p30-3-5": {
+    "lessonId": "p30-3-5",
+    "title": "Young's Double-Slit Experiment",
+    "duration": 434,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Diffraction",
+        "t": 25.721
+      },
+      {
+        "title": "Two slits",
+        "t": 81.921
+      },
+      {
+        "title": "Bright or dark?",
+        "t": 137.221
+      },
+      {
+        "title": "The fringe spacing",
+        "t": 234.721
+      },
+      {
+        "title": "Measuring a wavelength",
+        "t": 291.322
+      },
+      {
+        "title": "Your turn",
+        "t": 344.034
+      },
+      {
+        "title": "Summary",
+        "t": 391.967
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-5:q",
+        "t": 361.935,
+        "prompt": "Light of wavelength 480 nm passes through two slits that are 0.40 mm apart. The screen is 3.0 m away. How far apart are the bright fringes?",
+        "choices": [
+          "1.8 mm",
+          "3.6 mm",
+          "6.4 mm",
+          "36 mm"
+        ],
+        "answer": 1,
+        "working": "$\\Delta x = \\dfrac{\\lambda L}{d} = \\dfrac{480 \\times 10^{-9} \\times 3.0}{0.40 \\times 10^{-3}} = 3.6 \\times 10^{-3}$ m, which is 3.6 mm."
+      }
+    ]
+  },
+  "p30-3-5-b": {
+    "lessonId": "p30-3-5",
+    "title": "Diffraction Gratings",
+    "duration": 374,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From two slits to many",
+        "t": 20.569
+      },
+      {
+        "title": "The grating equation",
+        "t": 66.569
+      },
+      {
+        "title": "Finding the angles",
+        "t": 117.769
+      },
+      {
+        "title": "How many lines?",
+        "t": 189.272
+      },
+      {
+        "title": "Gratings and colour",
+        "t": 216.272
+      },
+      {
+        "title": "Your turn",
+        "t": 287.472
+      },
+      {
+        "title": "Summary",
+        "t": 331.632
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-5-b:q",
+        "t": 302.638,
+        "prompt": "A grating has 400 lines in each millimetre. Light of wavelength 500 nm passes through it. At what angle is the first-order bright line?",
+        "choices": [
+          "5.7°",
+          "8.0°",
+          "11.5°",
+          "23.6°"
+        ],
+        "answer": 2,
+        "working": "$d = \\dfrac{1}{4.00 \\times 10^{5}} = 2.50 \\times 10^{-6}$ m, so $\\sin\\theta = \\dfrac{\\lambda}{d} = \\dfrac{500 \\times 10^{-9}}{2.50 \\times 10^{-6}} = 0.200$ and $\\theta = 11.5°$."
+      }
+    ]
   }
 }
