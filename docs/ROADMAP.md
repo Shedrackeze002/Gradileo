@@ -1760,7 +1760,11 @@ items ship or decisions change.
      and 8.2 (solving a triangle with the sine law, a guy-wire on a hill with the cosine law, and the
      height of a blimp over a stadium), and Unit 4 (Radicals) with four from OpenStax Intermediate
      Algebra 2e 8.2 to 8.6 (√800, (7 + √3)(9 − √3), three denominators to rationalize, and
-     √(x + 1) − x + 1 = 0 with an extraneous root).
+     √(x + 1) − x + 1 = 0 with an extraneous root), and Unit 5 (Statistical Reasoning) with two from
+     OpenStax Contemporary Mathematics 8.7 and 8.8 (percents under a normal curve with mean 500, and
+     the percentile of 211 on a test with mean 250) and two we wrote, since the free books divide by
+     n − 1 and compute intervals rather than read them (which of two players is more consistent,
+     with the population standard deviation, and reading a poll that is accurate 19 times out of 20).
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
