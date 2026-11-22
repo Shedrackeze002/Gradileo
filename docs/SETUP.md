@@ -334,6 +334,12 @@ days and opens an issue labelled `search-console`. It lists the queries where a 
 pages that bring the most visitors. A page's search title and description can then be changed in
 `src/seo/overrides.json` (keyed by lesson id), or the lesson improved so it answers the query sooner.
 
+The site has to be a Search Console property first. In
+[Search Console](https://search.google.com/search-console/welcome) choose **Domain**, enter
+`gradileo.com`, and add the TXT record it shows in Cloudflare's DNS settings. Then, under
+**Sitemaps**, submit the full address `https://gradileo.com/sitemap.xml` (a Domain property rejects
+a bare `sitemap.xml` as an invalid address). This was done on 22 November 2026.
+
 It signs in as a Google Cloud service account, so it needs no password and can only read. Do these
 in order, once:
 
