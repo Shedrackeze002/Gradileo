@@ -1710,7 +1710,11 @@ items ship or decisions change.
      Relations) with five, `xq-m10c-6-1` to `xq-m10c-6-5`, from OpenStax College Algebra 2e and
      Elementary Algebra 2e (the shrinking city's −400 people a year, Damien's road-trip intercepts,
      the wheelchair ramp, whether 7x + 2y = 3 and 2x + 7y = 5 are perpendicular, and the straight
-     road to work). The owner approved the
+     road to work); Unit 7 (Equations of Linear Relations) with five, `xq-m10c-7-1` to
+     `xq-m10c-7-5`, from OpenStax Elementary Algebra 2e and College Algebra 2e (Celsius to
+     Fahrenheit, Ilya's weekly pay, the slope and intercept of x + 2y = 6, the line perpendicular
+     to y = 3x + 1 through (4, 2), and cricket chirps by interpolation and extrapolation). The
+     owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.

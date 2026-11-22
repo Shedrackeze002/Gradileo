@@ -13,7 +13,8 @@ describe('video scripts', () => {
     if (file.startsWith('/src/content/exams/')) {
       expect(mod.default.exam?.source).toBeTruthy();
       expect(mod.default.exam?.question.trim()).toBeTruthy();
-      expect(mod.default.exam?.question).not.toMatch(/[$\\]/);
+      // Plain text, no TeX: a dollar sign is allowed only as money, before a digit.
+      expect(mod.default.exam?.question).not.toMatch(/\\|\$(?!\d)/);
     }
   });
 });
