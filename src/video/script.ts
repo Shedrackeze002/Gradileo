@@ -2854,7 +2854,89 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+/** One step of a matter clip. */
+export interface MatterPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** In a `wave` picture with a speed: slide the speed to this many metres per second. */
+  speed?: number;
+  /** Slide the accelerating voltage (or, for a crystal, the kinetic energy in electronvolts) to this. */
+  volts?: number;
+  /** Slide the particles sent in each second to this many. */
+  rate?: number;
+  /** In a `crystal` picture: swing the detector to this angle, in degrees from the beam. */
+  detector?: number;
+}
+
+export interface MatterClip {
+  phases: MatterPhase[];
+}
+
+/** What a matter element can show; each is a part ("wave.wavelength"). */
+export const MATTER_PARTS = ['names', 'values', 'momentum', 'wavelength', 'scale', 'atom', 'plot', 'peak', 'rings', 'count', 'bars', 'curve'] as const;
+
+/**
+ * Matter as a wave (src/video/matter.ts): de Broglie's wavelength, λ = h ÷ mv, with the lessons'
+ * constants. There are four pictures.
+ *
+ * `wave`: a particle (`body`: an electron, a proton, or `{ name, mass }` for a ball) crosses the
+ * picture with its wave drawn to scale around it (`scale` pixels for each nanometre, 220
+ * otherwise). Give its `speed` in metres per second, or leave the speed out and give `volts`:
+ * the particle then starts from rest between two plates and is accelerated through that
+ * voltage. Parts: `names`, `values` (m and v), `momentum` (p = mv), `wavelength` (one
+ * wavelength marked, and λ = h ÷ mv), `scale` (a ruler) and `atom` (an atom to the same scale).
+ *
+ * `crystal`: a gun fires electrons with `volts` electronvolts of kinetic energy at a nickel
+ * crystal, and they come off most strongly where d sin θ = nλ. A detector at `detector` degrees
+ * from the beam swings as a phase asks, and draws the graph of what it counts. Parts: `names`,
+ * `values` (the kinetic energy and λ), `plot` (the graph) and `peak` (the strong angle marked).
+ *
+ * `rings`: electrons accelerated through `volts` pass through a thin foil and land in rings on
+ * a screen, drawn from the side and from the front; a higher voltage makes smaller rings.
+ * `spread` sets the size of the rings (24 otherwise: the share of the screen's radius for each
+ * nanometre). Parts: `names`, `values` (the voltage and λ) and `rings` (where the rings should
+ * be).
+ *
+ * `slits`: one `particle` at a time (a photon, or an electron) goes through two slits and lands
+ * as one dot on a screen; the dots build up the fringes. Parts: `names`, `count` (how many have
+ * landed), `bars` (the count in each strip of the screen) and `curve` (the brightness that the
+ * wave predicts).
+ *
+ * `rate` is the particles sent in each second of video (up to 200), and a phase can slide it.
+ */
+export interface MatterEl {
+  kind: 'matter';
+  id: string;
+  picture: 'wave' | 'crystal' | 'rings' | 'slits';
+  /** In a `wave` picture: what moves (an electron otherwise). */
+  body?: 'electron' | 'proton' | { name: string; mass: number };
+  /** In a `wave` picture: the speed at the start, in metres per second. */
+  speed?: number;
+  /** The accelerating voltage at the start (for a crystal, the kinetic energy in electronvolts). */
+  volts?: number;
+  /** The particles sent in each second of video at the start. */
+  rate?: number;
+  /** In a `crystal` picture: the angle of the detector at the start, in degrees from the beam (20 to 80). */
+  detector?: number;
+  /** In a `wave` picture: the pixels drawn for each nanometre (220 otherwise). */
+  scale?: number;
+  /** In a `rings` picture: the size of the rings (24 otherwise). */
+  spread?: number;
+  /** In a `slits` picture: what goes through the slits (photons otherwise). */
+  particle?: 'photon' | 'electron';
+  /** The significant figures of the numbers of a `wave` picture (3 otherwise). */
+  figures?: number;
+  clips: Record<string, MatterClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof MATTER_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3657,6 +3739,39 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a matter element: a picture with nothing to send, a speed or a voltage that is not above zero, or a clip that changes what the picture does not have. */
+export function checkMatter(e: MatterEl): string[] {
+  const problems: string[] = [];
+  const wave = e.picture === 'wave';
+  const rated = (rate: number) => rate >= 0 && rate <= 200;
+  const swung = (angle: number) => angle >= 20 && angle <= 80;
+  if (wave && e.speed === undefined && e.volts === undefined) problems.push('a wave picture needs a speed, or a voltage to accelerate the particle through.');
+  if (wave && e.speed !== undefined && e.volts !== undefined) problems.push('give a wave picture a speed or a voltage, not both.');
+  if (e.speed !== undefined && !(e.speed > 0)) problems.push('the speed must be more than zero.');
+  if (e.volts !== undefined && !(e.volts > 0)) problems.push('the voltage must be more than zero.');
+  if (!wave && e.volts === undefined && e.picture !== 'slits') problems.push(`a ${e.picture} picture needs a voltage.`);
+  if (!wave && !(e.rate !== undefined && e.rate > 0 && rated(e.rate))) problems.push(`a ${e.picture} picture needs a rate: the particles sent each second, up to 200.`);
+  if (typeof e.body === 'object' && !(e.body.mass > 0)) problems.push('the mass must be more than zero.');
+  if (e.detector !== undefined && !swung(e.detector)) problems.push('the detector swings from 20 to 80 degrees.');
+  if (e.scale !== undefined && !(e.scale > 0)) problems.push('the scale must be more than zero.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(MATTER_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.speed !== undefined && !(wave && e.speed !== undefined)) problems.push(`clip "${name}" changes the speed, and the picture is not a wave with a speed.`);
+      if (ph.speed !== undefined && !(ph.speed > 0)) problems.push(`clip "${name}" slides the speed to nothing.`);
+      if (ph.volts !== undefined && e.volts === undefined) problems.push(`clip "${name}" changes the voltage, and the picture has none.`);
+      if (ph.volts !== undefined && !(ph.volts > 0)) problems.push(`clip "${name}" slides the voltage to nothing.`);
+      if (ph.rate !== undefined && (wave || !rated(ph.rate))) problems.push(`clip "${name}" asks for a rate that the picture cannot draw (0 to 200 each second, and none for a wave).`);
+      if (ph.detector !== undefined && (e.picture !== 'crystal' || !swung(ph.detector))) problems.push(`clip "${name}" swings a detector that is not there, or out of range (20 to 80 degrees).`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a photons element: light with no wavelength, a tube with no metal, a graph that is not a whole number of electronvolts high, clips that ask for what is not there. */
 export function checkPhotons(e: PhotonsEl): string[] {
   const problems: string[] = [];
@@ -3992,7 +4107,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -4079,6 +4194,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(PHOTONS_PARTS));
         motions.set(e.id, e);
         problems.push(...checkPhotons(e).map((p) => `Scene ${si + 1}: photons "${e.id}": ${p}`));
+      }
+      if (e.kind === 'matter') {
+        diagrams.set(e.id, new Set<string>(MATTER_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkMatter(e).map((p) => `Scene ${si + 1}: matter "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

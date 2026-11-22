@@ -746,6 +746,30 @@ See `src/video/script.ts` for every element and option. In short:
   sets the decimal places of the wavelengths. Photons move only while a clip plays, so give
   every line of a scene a clip.
 
+- `matter` (`src/video/matter.ts`) is matter as a wave, in four pictures, each true to
+  λ = h ÷ mv with the lessons' constants. `picture: 'wave'` sends one particle across with its
+  de Broglie wave drawn to scale around it (`scale` is the pixels to a nanometre, 220 unless
+  you say): give the `body` (`'electron'`, `'proton'`, or `{ name, mass }` in kilograms) and its
+  `speed` in m/s, or `volts`, the voltage that accelerated it from rest, which draws the two
+  plates as well. A phase slides `speed` or `volts`, and the particle moves faster as the wave
+  shortens. Parts: `names`, `values` (m and v, or the voltage), `momentum`, `wavelength` (a
+  bracket over one wavelength, and λ as a number), `scale` (a ruler) and `atom` (an atom to the
+  same scale). A wave too short to draw, a baseball's for one, is said to be so in words.
+  `picture: 'crystal'` is Davisson and Germer: electrons of `volts` electronvolts fall on a
+  nickel crystal (rows 0.215 nm apart) and come off most strongly where d sin θ = λ, and a
+  `detector` (its angle in degrees, 20 to 80, slid by a phase) swings round and draws the
+  graph of what it counts; parts: `names`, `values`, `plot` and `peak`. `picture: 'rings'` is
+  Thomson's foil: each electron lands as a dot on a screen seen from the front, the dots build
+  up rings, and the rings shrink in step with the wavelength as a phase raises `volts`; parts:
+  `names`, `values` and `rings` (the rings marked). `picture: 'slits'` sends photons
+  (`particle: 'photon'`) or electrons through two slits one at a time: each lands as one dot,
+  at a place drawn by chance from the brightness of the two-slit pattern, always the same for
+  the same particle; parts: `names`, `count`, `bars` (the dots counted in strips beside the
+  screen) and `curve` (the pattern the wave predicts). For the last three, `rate` is the
+  particles sent each second (up to 200; a phase slides it), and they need a `height` of
+  about 470. Particles are sent only while a clip
+  plays, so give every line of a scene a clip.
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as

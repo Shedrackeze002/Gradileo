@@ -1492,7 +1492,16 @@ items ship or decisions change.
        farther apart, and the electron recoils, with energy and momentum both conserved (the
        three momenta close a triangle). The videos: `p30-3-7` (The Momentum of a Photon) and
        `p30-3-7-b` (The Compton Effect).
-     - Next: lesson 3.8, then Unit 4. The physics lessons have no tutor recordings yet.
+     - Written (22 November 2026): **the two videos of lesson 3.8** (matter waves and
+       wave-particle duality), on a new `matter` picture. A particle crosses with its de Broglie
+       wave drawn to scale, which shortens as the particle speeds up; electrons come off a
+       nickel crystal most strongly where d sin θ = λ while a detector swings round and draws
+       the peak that Davisson and Germer found; Thomson's rings shrink as the voltage rises; and
+       photons go through two slits one at a time, each landing as a single dot, until the dots
+       build up the fringes that the wave predicts. The videos: `p30-3-8` (Matter Waves) and
+       `p30-3-8-b` (Wave-Particle Duality). This finishes the videos of Unit 3.
+     - Next: the videos of Unit 4 (atomic and nuclear physics, lessons 4.1 to 4.7). The physics
+       lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
