@@ -239,10 +239,30 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-ink-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <Logo compact />
           <p>Mastery-based mathematics, chemistry, physics and English for teachers and students.</p>
+          <SocialLinks />
           <LegalLinks />
         </div>
       </footer>
     </div>
+  );
+}
+
+/** Gradileo's own accounts, so visitors (and search engines) can find the explainer videos. */
+const SOCIAL = [
+  ['YouTube', 'https://www.youtube.com/@Gradileo'],
+  ['Facebook', 'https://www.facebook.com/learnwithgradileo'],
+  ['Instagram', 'https://www.instagram.com/learnwithgradileo/'],
+] as const;
+
+function SocialLinks() {
+  return (
+    <nav aria-label="Gradileo elsewhere" className="flex gap-4 text-sm">
+      {SOCIAL.map(([name, href]) => (
+        <a key={name} href={href} target="_blank" rel="noopener noreferrer me" className="text-ink-3 hover:text-ink hover:underline">
+          {name}
+        </a>
+      ))}
+    </nav>
   );
 }
 
