@@ -1739,7 +1739,12 @@ items ship or decisions change.
      Quadratic Equations) with four, from 2.5 (12x² + 11x + 2 = 0 by grouping, the 119 ft² garden,
      x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant),
      and Unit 5 (Radical Expressions and Equations) with three, from 1.3 and 2.6 (3√(80x) − 4√(45x) = 0,
-     7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root).
+     7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root),
+     and Unit 6 (Rational Expressions and Equations) with four, from 1.6 and 2.2 (Brenda's floor tiles,
+     a quotient of four factored polynomials that comes to 1, 3/(x + 5) − 1/(x − 3), and
+     2/(x − 2) + 1/(x + 1) = 1/(x² − x − 2)), and Unit 7 (Absolute Value and Reciprocal Functions) with
+     four, from 3.6 and 5.6 (the numbers 4 away from 8, the graph of y = |x − 1|, |2x − 1| − 3 = 0, and
+     the domain and asymptotes of 2/(5x + 2) as the reciprocal of a line).
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
