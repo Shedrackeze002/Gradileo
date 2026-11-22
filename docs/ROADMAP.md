@@ -1713,7 +1713,11 @@ items ship or decisions change.
      road to work); Unit 7 (Equations of Linear Relations) with five, `xq-m10c-7-1` to
      `xq-m10c-7-5`, from OpenStax Elementary Algebra 2e and College Algebra 2e (Celsius to
      Fahrenheit, Ilya's weekly pay, the slope and intercept of x + 2y = 6, the line perpendicular
-     to y = 3x + 1 through (4, 2), and cricket chirps by interpolation and extrapolation). The
+     to y = 3x + 1 through (4, 2), and cricket chirps by interpolation and extrapolation); Unit 8
+     (Systems of Linear Equations) with four, `xq-m10c-8-1` to `xq-m10c-8-4`, from OpenStax
+     Elementary Algebra 2e 5.1 to 5.3 (Manny's orange juice by graphing, Geraldine's two job offers
+     by substitution, Andrea's shirts and sweaters by elimination, and how many solutions
+     y = −2x − 4 and 4x + 2y = 9 have). Math 10 is complete: 42 exam videos, one per lesson. The
      owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
