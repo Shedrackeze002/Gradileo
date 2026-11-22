@@ -1756,7 +1756,9 @@ items ship or decisions change.
      one, and a number riddle), and Unit 2 (Properties of Angles and Triangles) with four from OpenStax
      Contemporary Mathematics 10.2 to 10.4 (angle 5 between parallel lines, a triangle with angles
      x, x + 1 and x − 19, the angles of a regular pentagon, and which congruence theorem a figure
-     shows).
+     shows), and Unit 3 (Acute Triangle Trigonometry) with three from OpenStax Precalculus 2e 8.1
+     and 8.2 (solving a triangle with the sine law, a guy-wire on a hill with the cosine law, and the
+     height of a blimp over a stadium).
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
