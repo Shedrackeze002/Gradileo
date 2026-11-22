@@ -1740,7 +1740,12 @@ items ship or decisions change.
      x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant),
      and Unit 5 (Radical Expressions and Equations) with three, from 1.3 and 2.6 (3√(80x) − 4√(45x) = 0,
      7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root).
-     The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
+     English has an exam video for every lesson of all nine
+     courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
+     #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
+     Topics) on public-domain texts, plus a few key stage 2 grammar questions under the Open
+     Government Licence; texts still in copyright are described, never quoted. Grade 5 is rendered
+     and on Drive, and the other grades are rendering in turn. The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
 
