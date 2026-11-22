@@ -13,6 +13,11 @@ import {
   fibreCritical,
   fibrePath,
   fieldAt,
+  gratingAngle,
+  gratingAt,
+  gratingBrightness,
+  gratingOrders,
+  gratingSpacing,
   incidenceOf,
   prismAt,
   prismIndex,
@@ -508,6 +513,84 @@ describe('an optical fibre', () => {
   it('turns the incoming ray while a clip plays', () => {
     expect(fibreAt(fibre())).toEqual({ time: 0, angle: 20 });
     expect(fibreAt(fibre(), [['a', 6], ['steep', 4]])).toEqual({ time: 10, angle: 50 });
+  });
+});
+
+// The lesson's grating: 500 lines in each millimetre, and light of 600 nm.
+const grating = (set: Partial<NonNullable<LightEl['grating']>> = {}, clips: LightEl['clips'] = { go: { phases: [{ dur: 4 }] } }): LightEl => ({ kind: 'light', id: 'gr', grating: { lines: 500, nm: 600, ...set }, clips });
+
+describe('a diffraction grating', () => {
+  it('finds the slit spacing from the lines in each millimetre', () => {
+    expect(gratingSpacing(500)).toBeCloseTo(2.0e-6, 12);
+    expect(gratingSpacing(300)).toBeCloseTo(3.333e-6, 9);
+  });
+
+  it('puts each bright line where d sin θ = n λ', () => {
+    // The lesson's example: 17.5° and 36.9°, the same on each side, and the central line straight through.
+    expect(gratingAngle(500, 600, 0)).toBeCloseTo(0, 9);
+    expect(gratingAngle(500, 600, 1)).toBeCloseTo(17.46, 2);
+    expect(gratingAngle(500, 600, 2)).toBeCloseTo(36.87, 2);
+    expect(gratingAngle(500, 600, -1)).toBeCloseTo(-17.46, 2);
+    // 300 lines in each millimetre, and a first order at 10.0°: light of 579 nm.
+    expect(gratingAngle(300, 579, 1)).toBeCloseTo(10.0, 1);
+  });
+
+  it('has no line beyond the order where sin θ would pass 1', () => {
+    // d ÷ λ = 3.33, so the third order is the last: seven lines in all.
+    expect(gratingOrders(500, 600)).toBe(3);
+    expect(gratingAngle(500, 600, 3)).toBeCloseTo(64.16, 2);
+    expect(gratingAngle(500, 600, 4)).toBeUndefined();
+    // An order that lands at exactly 90° still counts.
+    expect(gratingOrders(500, 400)).toBe(5);
+    expect(gratingAngle(500, 400, 5)).toBeCloseTo(90, 6);
+  });
+
+  it('turns red light through a larger angle than violet', () => {
+    expect(gratingAngle(500, 700, 1)!).toBeGreaterThan(gratingAngle(500, 400, 1)!);
+    // More lines in each millimetre spread the light over larger angles.
+    expect(gratingAngle(600, 600, 1)!).toBeGreaterThan(gratingAngle(300, 600, 1)!);
+  });
+
+  it('is as bright as can be at each line, however many slits are lit', () => {
+    for (const slits of [2, 5, 20]) for (const n of [0, 1, 2, 3]) expect(gratingBrightness(500, 600, slits, gratingAngle(500, 600, n)!)).toBeCloseTo(1, 6);
+  });
+
+  it('gives two slits broad fringes, and many slits sharp lines', () => {
+    // Half way to the first dark band of two slits, the light is still half as bright.
+    const near = gratingAngle(500, 600, 0.25)!;
+    expect(gratingBrightness(500, 600, 2, near)).toBeCloseTo(0.5, 6);
+    // With twenty slits lit, the same direction is nearly dark.
+    expect(gratingBrightness(500, 600, 20, near)).toBeLessThan(0.01);
+    // Two slits are dark half way between two lines.
+    expect(gratingBrightness(500, 600, 2, gratingAngle(500, 600, 0.5)!)).toBeCloseTo(0, 9);
+  });
+
+  it('slides the wavelength and the lines, and lights the slits one at a time', () => {
+    const el = grating({ slits: 2 }, { go: { phases: [{ dur: 4, nm: 700, lines: 300 }, { dur: 9, slits: 20 }] } });
+    expect(gratingAt(el)).toEqual({ time: 0, nm: 600, lines: 500, slits: 2 });
+    const half = gratingAt(el, [['go', 2]]);
+    expect(half.nm).toBeCloseTo(650, 9);
+    expect(half.lines).toBeCloseTo(400, 9);
+    expect(half.slits).toBe(2);
+    expect(gratingAt(el, [['go', 4 + 4.5]]).slits).toBe(11);
+    expect(gratingAt(el, [['go', 13]])).toEqual({ time: 13, nm: 700, lines: 300, slits: 20 });
+    // A whole grating has no count of slits to change.
+    expect(gratingAt(grating(), [['go', 4]]).slits).toBeUndefined();
+  });
+
+  it('is checked for a grating that can be ruled and light that can be seen', () => {
+    expect(checkLight(grating())).toEqual([]);
+    expect(checkLight(grating({ white: true, most: 2 }))).toEqual([]);
+    expect(checkLight(grating({ slits: 2 }, { go: { phases: [{ dur: 9, slits: 20 }] } }))).toEqual([]);
+    expect(checkLight(grating({ lines: 20 })).join(' ')).toContain('50 to 2000 lines');
+    expect(checkLight(grating({ nm: 900 })).join(' ')).toContain('380 nm to 750 nm');
+    expect(checkLight(grating({ slits: 1 })).join(' ')).toContain('2 to 20 slits');
+    expect(checkLight(grating({ slits: 4, white: true })).join(' ')).toContain('white light');
+    expect(checkLight(grating({ most: 1.5 })).join(' ')).toContain('highest order');
+    expect(checkLight(grating({}, { go: { phases: [{ dur: 3, slits: 8 }] } })).join(' ')).toContain('to start from');
+    expect(checkLight(grating({ white: true }, { go: { phases: [{ dur: 3, nm: 500 }] } })).join(' ')).toContain('light of one colour');
+    expect(checkLight(grating({}, { go: { phases: [{ dur: 3, lines: 5000 }] } })).join(' ')).toContain('50 to 2000 lines');
+    expect(checkLight(prism({}, { go: { phases: [{ dur: 3, nm: 500 }] } })).join(' ')).toContain('not a grating');
   });
 });
 

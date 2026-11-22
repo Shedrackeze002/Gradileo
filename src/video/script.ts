@@ -658,6 +658,18 @@ export interface RipplePhase {
   move?: Record<string, [number, number]>;
   /** A short note shown over the picture while the phase plays ("Slow motion"). */
   note?: string;
+  /** A barrier: bring the width of its openings steadily to this, in metres. */
+  gap?: number;
+  /** Two sources: bring them steadily to this distance apart, in metres, about the point half way between them. */
+  apart?: number;
+  /**
+   * Bring the wavelength steadily to this, in metres. The picture stays a steady one at every
+   * moment: the crests keep time and stand farther apart or closer together, and light changes
+   * colour with its wavelength.
+   */
+  wavelength?: number;
+  /** Slide the screen steadily to this x, in metres. */
+  screen?: number;
 }
 
 export interface RippleClip {
@@ -666,7 +678,7 @@ export interface RippleClip {
   reset?: boolean;
 }
 
-export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'pattern', 'wavelength', 'centres', 'heard', 'velocity', 'count', 'clock'] as const;
+export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'pattern', 'wavelength', 'centres', 'heard', 'velocity', 'count', 'clock', 'fringes', 'orders', 'lengths'] as const;
 
 /**
  * Waves seen from above, spreading in circles from their sources (src/video/ripples.ts): each
@@ -685,6 +697,13 @@ export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'patt
  * since the start) and `clock`. When the picture leaves 380 pixels or more beside it and there
  * is a listener, the picture sits on the left and `paths`, `difference`, `traces` and `loudness`
  * are written in a panel on the right. Emphasising a source's id makes its crests glow.
+ *
+ * With a `barrier`, the sources are openings in a wall: straight waves arrive from the left and
+ * spread out beyond each opening (diffraction), and two openings give Young's double slit. A
+ * `screen` is a line down the picture that the waves fall on: `fringes` lights it where the waves
+ * arrive in step, `orders` numbers the bright fringes of two sources from 0 at the centre, and
+ * `lengths` marks d (between the sources), L (from the sources to the screen) and Δx (from one
+ * bright fringe to the next). `light` draws the waves as light of that wavelength.
  */
 export interface RipplesEl {
   kind: 'ripples';
@@ -699,11 +718,29 @@ export interface RipplesEl {
   full?: boolean;
   /** Draw only one crest in every so many, where the wavelength is too short for the picture. */
   every?: number;
+  /**
+   * A wall across the picture at this x, with an opening at each source (every source stands on
+   * it). Straight waves arrive from the left in step with the sources, and the sources' own waves
+   * are drawn only beyond the wall. `gap` is the width of each opening, in metres: where it is
+   * wider than the wavelength, the waves beyond are drawn as a beam with only its edges bent.
+   * What is worked out for a listener still treats each opening as one point, so give a `gap`
+   * only in a picture without listeners.
+   */
+  barrier?: { x: number; gap?: number };
+  /** A screen that the waves fall on: a line down the picture at this x, to the right of every source. */
+  screen?: number;
+  /**
+   * The waves are light of this wavelength, in nanometres: they are drawn in its colour, lengths
+   * are written in wavelengths, and "bright" and "dark" stand in place of "loud" and "quiet".
+   */
+  light?: number;
   /** A clock in another unit: its name, and how many seconds one of it is ({ unit: 'ms', seconds: 0.001 }). */
   clock?: { unit: string; seconds: number };
   clips: Record<string, RippleClip>;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
+  /** The parts drawn on the thumbnail (the paths to the listener and the velocity of a moving source, otherwise). */
+  thumb?: string[];
   height?: number;
 }
 
@@ -2424,6 +2461,12 @@ export interface LightPhase {
   send?: boolean;
   /** A prism or a fibre: turn the incoming ray steadily to this angle, in degrees (from the normal of a prism's face, or from the axis of a fibre). */
   angle?: number;
+  /** A grating: bring the wavelength of the light steadily to this, in nanometres. */
+  nm?: number;
+  /** A grating: bring the number of lines in each millimetre steadily to this. */
+  lines?: number;
+  /** A grating lit over a few slits: bring the number of slits steadily to this, one at a time. */
+  slits?: number;
 }
 
 export interface LightClip {
@@ -2489,11 +2532,25 @@ export interface LightFibre {
   index?: [core: number, cladding: number];
 }
 
+/** Light that crosses a diffraction grating and leaves it as bright lines at the angles where d sin θ = n λ. */
+export interface LightGrating {
+  /** The lines (slits) in each millimetre, from 50 to 2000. */
+  lines: number;
+  /** The wavelength of the light, in nanometres (380 to 750). */
+  nm: number;
+  /** White light in place of one colour: every colour from red to violet, so that each order is a spectrum. */
+  white?: boolean;
+  /** How many slits the light falls on, from 2 to 20: the fewer, the broader each bright line. Without it there are so many that every line is sharp. */
+  slits?: number;
+  /** The highest order drawn (every order that there is, otherwise). */
+  most?: number;
+}
+
 /** What a light element can show; each is a part ("em.magnetic"). */
-export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'values', 'scale', 'wave', 'made', 'use', 'visible', 'ionizing', 'arrows', 'clock', 'distance', 'travelled', 'turn', 'rate', 'names', 'angles'] as const;
+export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'values', 'scale', 'wave', 'made', 'use', 'visible', 'ionizing', 'arrows', 'clock', 'distance', 'travelled', 'turn', 'rate', 'names', 'angles', 'orders', 'path'] as const;
 
 /**
- * Light as an electromagnetic wave (src/video/light.ts). One element is one of six pictures.
+ * Light as an electromagnetic wave (src/video/light.ts). One element is one of seven pictures.
  *
  * `wave` is the wave that leaves a charge driven up and down an aerial: its electric field
  * (yellow, part `electric`) is up and down, its magnetic field (violet, part `magnetic`) is at
@@ -2526,6 +2583,14 @@ export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'valu
  * than the critical angle it is totally reflected, and pulses of light run along it; at less,
  * most of the light escapes into the cladding at each bounce. Parts: `names` (the core and the
  * cladding) and `angles` (the angle at the wall beside the critical angle).
+ *
+ * `grating` is light that crosses a diffraction grating and lands on a curved screen: a bright
+ * line wherever d sin θ = n λ, so the picture is true to its numbers. With `slits` only a few
+ * slits are lit and the lines are broad; a clip that raises the number sharpens them. With
+ * `white`, each order is a spectrum, with red turned the most. A phase can change the wavelength
+ * or the lines in each millimetre. Parts: `orders` (the number of each line), `angles` (its
+ * angle), `values` (the lines in each millimetre, d and λ), `names` (the two ends of a spectrum)
+ * and `path` (two neighbouring slits close up, with the extra path d sin θ).
  */
 export interface LightEl {
   kind: 'light';
@@ -2536,6 +2601,7 @@ export interface LightEl {
   spin?: LightSpin;
   prism?: LightPrism;
   fibre?: LightFibre;
+  grating?: LightGrating;
   /** Seconds of the model for each second of video, for a trip or a spinning mirror (a trip one way, or a round trip of the spinning mirror, takes 2.5 seconds of video otherwise). */
   rate?: number;
   /** Significant figures of what is written (3 otherwise). */
@@ -3201,12 +3267,33 @@ export function checkRipples(e: RipplesEl): string[] {
     taken(l.id, 'listener');
     if (!inside(l.at)) problems.push(`listener "${l.id}" is outside the view.`);
   }
+  const moving = e.sources.some((s) => s.velocity && Math.hypot(...s.velocity) > 0);
+  if (e.barrier) {
+    if (!(e.barrier.x > x0 && e.barrier.x < x1)) problems.push('the barrier is outside the view.');
+    if (e.sources.some((s) => Math.abs(s.at[0] - e.barrier!.x) > 1e-9)) problems.push('every source must stand on the barrier (at its x).');
+    if (moving) problems.push('a source in a barrier cannot move.');
+    if (e.barrier.gap !== undefined && !(e.barrier.gap > 0)) problems.push('the openings of the barrier need a width above zero.');
+    if (e.barrier.gap !== undefined && e.listeners?.length) problems.push('give the barrier a `gap` only in a picture without listeners.');
+  }
+  if (e.screen !== undefined) {
+    if (!(e.screen > x0 && e.screen <= x1)) problems.push('the screen is outside the view.');
+    if (e.sources.some((s) => s.at[0] >= e.screen!)) problems.push('the screen must be to the right of every source.');
+  }
+  if (e.light !== undefined && !(e.light >= 380 && e.light <= 750)) problems.push('light that can be seen has a wavelength from 380 nm to 750 nm.');
   const listeners = new Set((e.listeners ?? []).map((l) => l.id));
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     for (const ph of clip.phases) {
       if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase that lasts no time.`);
       if (ph.slow !== undefined && !(ph.slow > 0)) problems.push(`clip "${name}" has a phase with a slow motion of zero or less.`);
+      if (ph.gap !== undefined && (e.barrier?.gap === undefined || !(ph.gap > 0))) problems.push(`clip "${name}" changes the gap: the barrier needs a \`gap\` to start from, and the new one must be above zero.`);
+      if (ph.apart !== undefined && (e.sources.length !== 2 || moving || !(ph.apart > 0))) problems.push(`clip "${name}" changes how far apart the sources are: that needs two sources at rest, and a distance above zero.`);
+      if (ph.wavelength !== undefined && (moving || !(ph.wavelength > 0))) problems.push(`clip "${name}" changes the wavelength: that needs sources at rest, and a wavelength above zero.`);
+      if (ph.wavelength !== undefined && e.light !== undefined) {
+        const nm = (e.light * ph.wavelength * e.sources[0].frequency) / e.speed;
+        if (!(nm >= 380 && nm <= 750)) problems.push(`clip "${name}" changes the wavelength of the light to ${Math.round(nm)} nm, which cannot be seen.`);
+      }
+      if (ph.screen !== undefined && (e.screen === undefined || !(ph.screen > x0 && ph.screen <= x1) || e.sources.some((s) => s.at[0] >= ph.screen!))) problems.push(`clip "${name}" slides the screen: it needs a screen, and a place for it in the view to the right of the sources.`);
       for (const [id, to] of Object.entries(ph.move ?? {})) {
         if (!listeners.has(id)) problems.push(`clip "${name}" moves a listener "${id}" that is not there.`);
         else if (!inside(to)) problems.push(`clip "${name}" moves listener "${id}" out of the view.`);
@@ -3214,6 +3301,7 @@ export function checkRipples(e: RipplesEl): string[] {
     }
   }
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const part of e.thumb ?? []) if (!(RIPPLES_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
   return problems;
 }
 
@@ -3391,8 +3479,11 @@ export function checkInduction(e: InductionEl): string[] {
 /** Problems with a light element: no picture or more than one, a wave with no frequency, a trip of no length, clips that ask for what the picture does not have. */
 export function checkLight(e: LightEl): string[] {
   const problems: string[] = [];
-  const pictures = [e.wave, e.spectrum, e.trip, e.spin, e.prism, e.fibre].filter((picture) => picture !== undefined).length;
-  if (pictures !== 1) problems.push('give it exactly one of `wave`, `spectrum`, `trip`, `spin`, `prism` and `fibre`.');
+  const pictures = [e.wave, e.spectrum, e.trip, e.spin, e.prism, e.fibre, e.grating].filter((picture) => picture !== undefined).length;
+  if (pictures !== 1) problems.push('give it exactly one of `wave`, `spectrum`, `trip`, `spin`, `prism`, `fibre` and `grating`.');
+  const seen = (nm: number) => nm >= 380 && nm <= 750;
+  const ruled = (lines: number) => lines >= 50 && lines <= 2000;
+  const lit = (slits: number) => slits >= 2 && slits <= 20;
   const inSpectrum = (metres: number) => metres >= 1e-13 && metres <= 1e4;
   if (e.wave) {
     if (!(e.wave.hertz > 0)) problems.push('the wave needs a frequency above zero.');
@@ -3419,6 +3510,13 @@ export function checkLight(e: LightEl): string[] {
     if (!(e.fibre.angle >= 1 && e.fibre.angle <= 80)) problems.push('the ray must enter the fibre at 1° to 80° from its axis.');
     if (e.fibre.index && !(e.fibre.index[1] >= 1 && e.fibre.index[0] > e.fibre.index[1])) problems.push('the core needs a larger refractive index than the cladding, and neither can be less than 1.');
   }
+  if (e.grating) {
+    if (!ruled(e.grating.lines)) problems.push('the grating needs from 50 to 2000 lines in each millimetre.');
+    if (!seen(e.grating.nm)) problems.push('light that can be seen has a wavelength from 380 nm to 750 nm.');
+    if (e.grating.slits !== undefined && !(Number.isInteger(e.grating.slits) && lit(e.grating.slits))) problems.push('the light can fall on 2 to 20 slits (leave `slits` out for a whole grating).');
+    if (e.grating.slits !== undefined && e.grating.white) problems.push('white light is drawn only with the whole grating lit (leave `slits` out).');
+    if (e.grating.most !== undefined && !(Number.isInteger(e.grating.most) && e.grating.most >= 0)) problems.push('the highest order drawn is a whole number, 0 or more.');
+  }
   if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
   if (e.rate !== undefined && !e.trip && !e.spin) problems.push('only a trip or a spinning mirror has a rate.');
   if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
@@ -3439,6 +3537,10 @@ export function checkLight(e: LightEl): string[] {
       if (ph.angle !== undefined && !e.prism && !e.fibre) problems.push(`clip "${name}" turns a ray, and the picture is not a prism or a fibre.`);
       if (ph.angle !== undefined && e.prism && !(ph.angle >= 10 && ph.angle <= 85)) problems.push(`clip "${name}" turns the ray past what the prism can take (10° to 85°).`);
       if (ph.angle !== undefined && e.fibre && !(ph.angle >= 1 && ph.angle <= 80)) problems.push(`clip "${name}" turns the ray past what the fibre can take (1° to 80°).`);
+      if ((ph.nm !== undefined || ph.lines !== undefined || ph.slits !== undefined) && !e.grating) problems.push(`clip "${name}" changes a grating or its light, and the picture is not a grating.`);
+      if (ph.nm !== undefined && e.grating && (e.grating.white || !seen(ph.nm))) problems.push(`clip "${name}" changes the wavelength: that needs light of one colour, and a wavelength from 380 nm to 750 nm.`);
+      if (ph.lines !== undefined && e.grating && !ruled(ph.lines)) problems.push(`clip "${name}" needs from 50 to 2000 lines in each millimetre.`);
+      if (ph.slits !== undefined && e.grating && (e.grating.slits === undefined || !(Number.isInteger(ph.slits) && lit(ph.slits)))) problems.push(`clip "${name}" changes the slits that are lit: the grating needs \`slits\` to start from, and 2 to 20 of them.`);
     }
   }
   return problems;

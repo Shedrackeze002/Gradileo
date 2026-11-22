@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkRipples, checkScript, type Explainer, type RippleSource, type RipplesEl } from './script.ts';
-import { arrival, crestsOf, loudness, received, ripplesAt, sourceAt, type Point } from './ripples.ts';
+import { arrival, arriving, crestsOf, fringeAt, loudness, received, ripplesAt, settled, sourceAt, wavelengthOf, type Point } from './ripples.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 // Waves of 2 Hz that travel at 6 m/s: 3 m from crest to crest when the source is at rest.
@@ -245,5 +245,102 @@ describe('ripples: checks', () => {
     expect(end.p).toBeGreaterThan(0);
     expect(end.parts.heard ?? 0).toBeLessThan(0.1);
     expect(end.parts.centres).toBeGreaterThan(0.9);
+  });
+});
+
+// Young's double slit, in wavelengths: waves of 1 m, two slits 6 m apart in a wall at x = 0, and a screen 24 m away.
+const young = (over: Partial<RipplesEl> = {}): RipplesEl => ({
+  kind: 'ripples',
+  id: 'y',
+  view: [-5, -10, 28, 10],
+  speed: 2,
+  full: true,
+  light: 600,
+  barrier: { x: 0 },
+  screen: 24,
+  sources: [
+    { id: 's1', at: [0, 3], frequency: 2 },
+    { id: 's2', at: [0, -3], frequency: 2 },
+  ],
+  clips: { go: { phases: [{ dur: 4 }] } },
+  ...over,
+});
+
+describe('ripples: a barrier, two slits and a screen', () => {
+  it('brings straight crests to the wall in step with the openings', () => {
+    const e = young();
+    expect(wavelengthOf(e)).toBe(1);
+    // The opening sends a crest on at 0.125 s: at that moment a straight crest is at the wall, and the others are a wavelength apart behind it.
+    const at = arriving(e, 0.125 - 1e-9);
+    expect(at[0]).toBeCloseTo(0, 6);
+    expect(at[1] - at[0]).toBeCloseTo(-1, 9);
+    // The view starts 5 m before the wall, so five of them are in the picture.
+    expect(at[at.length - 1]).toBeGreaterThanOrEqual(-5);
+    expect(at).toHaveLength(5);
+    // A quarter of a second later they have moved on by half a wavelength.
+    expect(arriving(e, 0.375 - 1e-9)[0]).toBeCloseTo(-0.5, 6);
+    expect(arriving(el(), 1)).toEqual([]);
+  });
+
+  it('finds each fringe where the two paths differ by so many wavelengths', () => {
+    const e = young();
+    const paths = (y: number) => Math.hypot(24, y + 3) - Math.hypot(24, y - 3);
+    expect(fringeAt(e, 0)).toBeCloseTo(0, 9);
+    for (const n of [0.5, 1, 1.5, 2, -1]) expect(paths(fringeAt(e, n)!)).toBeCloseTo(n, 9);
+    // Bright where the difference is a whole number of wavelengths, and dark half way between.
+    expect(loudness(e, [24, fringeAt(e, 1)!], 3)).toBeCloseTo(1, 6);
+    expect(loudness(e, [24, fringeAt(e, 0.5)!], 3)).toBeCloseTo(0, 6);
+    // Near the centre the fringes are about λ L ÷ d apart: 4 m here (a little more, so close to the slits).
+    expect(fringeAt(e, 1)!).toBeGreaterThan(4);
+    expect(fringeAt(e, 1)!).toBeLessThan(4.2);
+    // Slits six wavelengths apart cannot give a path difference of six.
+    expect(fringeAt(e, 6)).toBeUndefined();
+    expect(fringeAt(young({ screen: undefined }), 1)).toBeUndefined();
+  });
+
+  it('moves the fringes apart for a longer wavelength, closer slits or a farther screen', () => {
+    const e = young({ clips: { red: { phases: [{ dur: 2, wavelength: 1.2 }] }, close: { phases: [{ dur: 2, apart: 3 }] }, far: { phases: [{ dur: 2, screen: 27 }] }, back: { phases: [{ dur: 1 }], reset: true } } });
+    const first = fringeAt(e, 1)!;
+    const red = settled(e, ripplesAt(e, [['red', 2]]));
+    expect(wavelengthOf(red)).toBeCloseTo(1.2, 9);
+    expect(red.light).toBeCloseTo(720, 9);
+    expect(red.sources[0].frequency).toBe(2);
+    expect(fringeAt(red, 1)!).toBeGreaterThan(first * 1.15);
+    const close = settled(e, ripplesAt(e, [['close', 2]]));
+    expect(close.sources.map((s) => s.at)).toEqual([[0, 1.5], [0, -1.5]]);
+    expect(fringeAt(close, 1)!).toBeGreaterThan(first * 1.9);
+    const far = settled(e, ripplesAt(e, [['far', 2]]));
+    expect(far.screen).toBeCloseTo(27, 9);
+    expect(fringeAt(far, 1)!).toBeGreaterThan(first * 1.1);
+    // Half way through a change the picture is part of the way there, and a clip that resets puts it back.
+    expect(ripplesAt(e, [['close', 1]]).apart).toBeCloseTo(4.5, 9);
+    expect(settled(e, ripplesAt(e, [['red', 2], ['close', 2], ['back', 1]]))).toBe(e);
+    // A picture that no clip has changed is the element itself.
+    expect(settled(e, ripplesAt(e, [['back', 0.5]]))).toBe(e);
+  });
+
+  it('narrows the openings of a barrier with a gap', () => {
+    const e = el({ barrier: { x: 0, gap: 6 }, clips: { narrow: { phases: [{ dur: 4, gap: 1 }] } } });
+    expect(checkRipples(e)).toEqual([]);
+    expect(ripplesAt(e).gap).toBe(6);
+    expect(ripplesAt(e, [['narrow', 2]]).gap).toBeCloseTo(3.5, 9);
+    expect(settled(e, ripplesAt(e, [['narrow', 4]])).barrier).toEqual({ x: 0, gap: 1 });
+  });
+
+  it('is checked for a wall, a screen and light that can be drawn', () => {
+    expect(checkRipples(young())).toEqual([]);
+    expect(checkRipples(young({ thumb: ['pattern', 'fringes'] }))).toEqual([]);
+    expect(checkRipples(young({ thumb: ['glow'] })).join(' ')).toContain('not a part');
+    expect(checkRipples(young({ barrier: { x: 1 } })).join(' ')).toContain('stand on the barrier');
+    expect(checkRipples(young({ barrier: { x: 40 } })).join(' ')).toContain('barrier is outside');
+    expect(checkRipples(young({ barrier: { x: 0, gap: 2 }, listeners: [{ id: 'p', at: [24, 0] }] })).join(' ')).toContain('without listeners');
+    expect(checkRipples(young({ screen: 40 })).join(' ')).toContain('screen is outside');
+    expect(checkRipples(young({ screen: -2 })).join(' ')).toContain('to the right of every source');
+    expect(checkRipples(young({ light: 900 })).join(' ')).toContain('380 nm to 750 nm');
+    expect(checkRipples(young({ clips: { go: { phases: [{ dur: 2, gap: 1 }] } } })).join(' ')).toContain('changes the gap');
+    expect(checkRipples(young({ clips: { go: { phases: [{ dur: 2, wavelength: 2 }] } } })).join(' ')).toContain('cannot be seen');
+    expect(checkRipples(young({ screen: undefined, clips: { go: { phases: [{ dur: 2, screen: 20 }] } } })).join(' ')).toContain('slides the screen');
+    expect(checkRipples(el({ clips: { go: { phases: [{ dur: 2, apart: 3 }] } } })).join(' ')).toContain('two sources at rest');
+    expect(checkRipples(el({ sources: [mover], clips: { go: { phases: [{ dur: 2, wavelength: 2 }] } } })).join(' ')).toContain('sources at rest');
   });
 });

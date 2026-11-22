@@ -1,5 +1,5 @@
 /**
- * Light as an electromagnetic wave (src/video/light.ts works out all six pictures).
+ * Light as an electromagnetic wave (src/video/light.ts works out all seven pictures).
  *
  * A wave: an electron is driven up and down an aerial at the left, and the wave runs to the
  * right. Its electric field is yellow arrows that point up and down; its magnetic field is violet
@@ -19,10 +19,13 @@
  *
  * A fibre: a lamp at one end of an optical fibre with a gentle bend, a ray that zigzags along the
  * core, and a detector at the far end.
+ *
+ * A grating: a beam that comes in from the left, crosses a diffraction grating and lands on a
+ * curved screen as bright lines, each at the angle that d sin θ = n λ gives it.
  */
 import type { ReactElement } from 'react';
 import type { LightEl, LightShape } from '../script.ts';
-import { C, FACE, FIBRE, PRISM_COLOURS, REGIONS, TOLERANCE, chargeAt, fibreAt, fibreCentre, fibreCritical, fibreIndex, fibrePath, fibreSlope, fieldAt, lightWaveAt, prismAt, prismIndex, prismPath, prismShape, realHertz, realMetres, reflectRay, regionOf, roundTrip, samplePixels, spectrumAt, spectrumShare, spinAt, tiltOf, tripAt, tripMetres, turnInTrip, visibleColour, type Vec } from '../light.ts';
+import { C, FACE, FIBRE, GRATING_COLOURS, PRISM_COLOURS, REGIONS, TOLERANCE, chargeAt, gratingAngle, gratingAt, gratingBrightness, gratingOrders, gratingSpacing, fibreAt, fibreCentre, fibreCritical, fibreIndex, fibrePath, fibreSlope, fieldAt, lightWaveAt, prismAt, prismIndex, prismPath, prismShape, realHertz, realMetres, reflectRay, regionOf, roundTrip, samplePixels, spectrumAt, spectrumShare, spinAt, tiltOf, tripAt, tripMetres, turnInTrip, visibleColour, type Vec } from '../light.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Arrow, clamp01, FONT, INK2, Text } from './motionKit.tsx';
 import { TONES } from './tex.ts';
@@ -982,6 +985,191 @@ function drawFibre(el: LightEl, plays: Array<[string, number]>, { out, top, HIGH
   }
 }
 
+// ── A diffraction grating ─────────────────────────────────────────────────────────────────────
+
+const DEG = Math.PI / 180;
+
+function drawGrating(el: LightEl, plays: Array<[string, number]>, { out, top, HIGH, part }: Frame): void {
+  const g = el.grating!;
+  const state = gratingAt(el, plays);
+  const [ordersPart, anglesPart, valuesPart, namesPart, pathPart] = ['orders', 'angles', 'values', 'names', 'path'].map(part);
+  const mid = top + (HIGH - top) / 2;
+  // The grating, and a screen bent into half a circle round it, so that a line at any angle lands on it.
+  const R = Math.min(230, (HIGH - top) / 2 - 34);
+  // It stands in the middle of the picture, and moves to the left to make room for what is written or drawn beside it.
+  const gx = 300 + (WIDE / 2 - (R - 160) / 2 - 300) * (1 - Math.max(valuesPart, pathPart));
+  const start = gx - 260;
+  const arriving = gx - start;
+  const grown = state.time * GROW;
+  const reach = Math.max(0, Math.min(R, grown - arriving));
+  const whole = clamp01((grown - arriving - R) / 80);
+  const colourOf = (nm: number) => `rgb(${visibleColour(nm).join(' ')})`;
+  const own = g.white ? '#fffdf2' : colourOf(state.nm);
+  const tip = (degrees: number, r: number): Vec => [gx + r * Math.cos(degrees * DEG), mid - r * Math.sin(degrees * DEG)];
+  const limit = (most: number) => (g.most === undefined ? most : Math.min(most, g.most));
+
+  out.push(
+    <g key="screen">
+      <path d={`M${gx},${mid - R} A${R},${R} 0 0 1 ${gx},${mid + R}`} fill="none" stroke="#e8ecff" strokeWidth={4} strokeLinecap="round" opacity={0.5} />
+      <Text x={gx - 12} y={mid - R} anchor="end" size={18} color={INK2}>Screen</Text>
+    </g>,
+  );
+  const tall = Math.min(64, R * 0.4);
+  out.push(
+    <g key="grating">
+      <line x1={gx} y1={mid - tall} x2={gx} y2={mid + tall} stroke="#cfe0ff" strokeWidth={10} strokeDasharray="3 3" />
+      <Text x={gx - 14} y={mid + tall + 20} anchor="end" size={18} color={INK2}>Grating</Text>
+    </g>,
+  );
+
+  // The light that arrives.
+  if (grown > 0)
+    out.push(
+      <g key="beam">
+        <line x1={start} y1={mid} x2={start + Math.min(grown, arriving)} y2={mid} stroke={own} strokeWidth={6} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 6px ${own})` }} />
+        <Text x={(start + gx) / 2 - 6} y={mid - 30} size={19} color={own} opacity={clamp01(grown / 120)}>{g.white ? 'White light' : `Light of ${Math.round(state.nm)} nm`}</Text>
+      </g>,
+    );
+
+  // The light beyond the grating. A whole grating sends each colour out in sharp lines; a few slits send it out in broad bands.
+  const rays: ReactElement[] = [];
+  const flows: ReactElement[] = [];
+  const lands: ReactElement[] = [];
+  if (reach > 0 && state.slits === undefined) {
+    for (const nm of g.white ? GRATING_COLOURS : [state.nm]) {
+      const most = limit(gratingOrders(state.lines, nm));
+      for (let n = -most; n <= most; n++) {
+        // Every colour of white light goes straight through together: that line is drawn once, in white.
+        if (g.white && n === 0) continue;
+        const degrees = gratingAngle(state.lines, nm, n);
+        if (degrees === undefined) continue;
+        const [x, y] = tip(degrees, reach);
+        const [ex, ey] = tip(degrees, R);
+        rays.push(<line key={`${nm}:${n}`} x1={gx} y1={mid} x2={x} y2={y} stroke={colourOf(nm)} strokeWidth={g.white ? 2.6 : 3.6} strokeLinecap="round" opacity={g.white ? 0.85 : 0.95} />);
+        if (!g.white || nm % 60 === 40) flows.push(<line key={`${nm}:${n}`} x1={gx} y1={mid} x2={ex} y2={ey} stroke={colourOf(nm)} strokeWidth={6} strokeLinecap="round" strokeDasharray="20 110" strokeDashoffset={(arriving - state.time * FLOW).toFixed(1)} />);
+        if (reach >= R) lands.push(<circle key={`${nm}:${n}`} cx={ex} cy={ey} r={g.white ? 3.6 : 6.5} fill={colourOf(nm)} />);
+      }
+    }
+    if (g.white) {
+      rays.push(<line key="centre" x1={gx} y1={mid} x2={gx + reach} y2={mid} stroke="#fffdf2" strokeWidth={3.6} strokeLinecap="round" />);
+      if (reach >= R) lands.push(<circle key="centre" cx={gx + R} cy={mid} r={6.5} fill="#fffdf2" />);
+    }
+  } else if (reach > 0 && state.slits !== undefined) {
+    for (let degrees = -89.5; degrees <= 89.5; degrees += 0.5) {
+      const bright = gratingBrightness(state.lines, state.nm, state.slits, degrees);
+      if (bright < 0.012) continue;
+      const [a, b] = [tip(degrees - 0.27, reach), tip(degrees + 0.27, reach)];
+      rays.push(<polygon key={degrees} points={`${gx},${mid} ${a[0].toFixed(1)},${a[1].toFixed(1)} ${b[0].toFixed(1)},${b[1].toFixed(1)}`} fill={own} opacity={(0.72 * bright).toFixed(3)} />);
+      if (reach >= R) {
+        const [c, d] = [tip(degrees - 0.3, R + 7), tip(degrees + 0.3, R + 7)];
+        lands.push(<line key={degrees} x1={c[0]} y1={c[1]} x2={d[0]} y2={d[1]} stroke={own} strokeWidth={10} opacity={bright.toFixed(3)} />);
+      }
+    }
+  }
+  if (rays.length) out.push(<g key="rays" style={{ mixBlendMode: 'screen' }}>{rays}</g>);
+  if (lands.length) out.push(<g key="lands" style={{ mixBlendMode: 'screen' }}>{lands}</g>);
+  // Once the light has reached the screen, brighter stretches run along it, so that the way it goes still shows.
+  if (whole > 0)
+    out.push(
+      <g key="flow" opacity={0.8 * whole} style={{ mixBlendMode: 'screen' }}>
+        <line x1={start} y1={mid} x2={gx} y2={mid} stroke={own} strokeWidth={7} strokeLinecap="round" strokeDasharray="20 110" strokeDashoffset={(-(state.time * FLOW)).toFixed(1)} />
+        {flows}
+      </g>,
+    );
+  if (state.slits !== undefined) out.push(<Text key="slits" x={36} y={top + 32} anchor="start" size={21} color={INK}>{`Slits lit: ${state.slits}`}</Text>);
+
+  // The number of each bright line, and its angle from straight through.
+  const guide = g.white ? 550 : state.nm;
+  const most = limit(gratingOrders(state.lines, guide));
+  const first = gratingAngle(state.lines, guide, 1);
+  if (ordersPart > 0 || anglesPart > 0)
+    for (let n = -most; n <= most; n++) {
+      const degrees = gratingAngle(state.lines, guide, n);
+      if (degrees === undefined) continue;
+      // The names of the two ends of a spectrum stand beside the first order above the centre.
+      if (g.white && n === 1 && namesPart > 0) continue;
+      const [x, y] = tip(degrees, R + 18);
+      const shift = 68 * ordersPart;
+      if (ordersPart > 0) out.push(<Text key={`order${n}`} x={x + 2} y={y} anchor="start" size={19} color={INK} opacity={ordersPart * whole}>{`n = ${Math.abs(n)}`}</Text>);
+      if (anglesPart > 0 && !g.white) out.push(<Text key={`angle${n}`} x={x + 2 + shift} y={y} anchor="start" size={19} color={own} opacity={anglesPart * whole}>{n === 0 ? '0°' : `${Math.abs(degrees).toFixed(1)}°`}</Text>);
+    }
+  if (anglesPart > 0 && !g.white && first !== undefined && first > 3) {
+    const r = R * 0.46;
+    const [ax, ay] = tip(first, r);
+    const [lx, ly] = tip(first / 2, r + 18);
+    out.push(
+      <g key="arc" opacity={anglesPart * whole}>
+        <path d={`M${gx + r},${mid} A${r},${r} 0 0 0 ${ax.toFixed(1)},${ay.toFixed(1)}`} fill="none" stroke={INK} strokeWidth={2.2} />
+        <Text x={lx} y={ly} size={19} color={INK}>θ</Text>
+      </g>,
+    );
+  }
+  if (namesPart > 0 && g.white) {
+    const [red, violet] = [gratingAngle(state.lines, 700, 1), gratingAngle(state.lines, 400, 1)];
+    if (red !== undefined && violet !== undefined) {
+      const [r, v] = [tip(red, R + 18), tip(violet, R + 18)];
+      out.push(
+        <g key="names" opacity={namesPart * whole}>
+          <Text x={r[0] + 2} y={r[1] - 6} anchor="start" size={20} color={colourOf(660)}>Red: turned most</Text>
+          <Text x={v[0] + 2} y={v[1] + 6} anchor="start" size={20} color={colourOf(430)}>Violet: turned least</Text>
+        </g>,
+      );
+    }
+  }
+
+  const side = 700;
+  if (valuesPart > 0)
+    out.push(
+      <g key="values" opacity={valuesPart}>
+        <Text x={side} y={top + 34} anchor="start" size={21} color={INK}>{`${Math.round(state.lines)} lines in each millimetre`}</Text>
+        <Value x={side} y={top + 66} pre="d = " n={gratingSpacing(Math.round(state.lines))} unit=" m" anchor="start" />
+        <Text x={side} y={top + 98} anchor="start" size={21} color={own}>{g.white ? 'White light: 400 nm to 700 nm' : `λ = ${Math.round(state.nm)} nm`}</Text>
+      </g>,
+    );
+
+  // Two neighbouring slits, close up: the light of the lower one has farther to go, by d sin θ.
+  if (pathPart > 0) {
+    const angle = Math.max(14, Math.min(40, first ?? 20)) * DEG;
+    const [ux, uy] = [Math.cos(angle), -Math.sin(angle)];
+    const gapD = 130;
+    const wave = gapD * Math.sin(angle);
+    const wx = side + 60;
+    const cy = mid + 30;
+    const [topY, lowY] = [cy - gapD / 2, cy + gapD / 2];
+    const long = 250;
+    const drawn: ReactElement[] = [];
+    // The wall, with two slits in it.
+    let from = topY - 40;
+    for (const y of [topY, lowY, lowY + 60]) {
+      drawn.push(<line key={`wall${y}`} x1={wx} y1={from} x2={wx} y2={Math.min(y - 8, lowY + 40)} stroke="#cfe0ff" strokeWidth={8} />);
+      from = y + 8;
+    }
+    [topY, lowY].forEach((y, k) => {
+      drawn.push(<line key={`ray${k}`} x1={wx} y1={y} x2={wx + ux * long} y2={y + uy * long} stroke={own} strokeWidth={3} strokeLinecap="round" opacity={0.9} />);
+      // Crests leave both slits together, a wavelength apart: along a line across the rays they line up.
+      for (let along = (state.time * 46) % wave; along < long - 6; along += wave) {
+        const [px, py] = [wx + ux * along, y + uy * along];
+        drawn.push(<line key={`crest${k}:${along.toFixed(1)}`} x1={px + uy * 10} y1={py - ux * 10} x2={px - uy * 10} y2={py + ux * 10} stroke={own} strokeWidth={2.6} strokeLinecap="round" />);
+      }
+    });
+    // A line across the rays from the upper slit, and the extra path of the lower one.
+    const foot: Vec = [wx + ux * wave, lowY + uy * wave];
+    drawn.push(<line key="across" x1={wx} y1={topY} x2={foot[0] + (foot[0] - wx) * 0.35} y2={foot[1] + (foot[1] - topY) * 0.35} stroke={INK2} strokeWidth={2} strokeDasharray="6 6" />);
+    drawn.push(<line key="extra" x1={wx} y1={lowY} x2={foot[0]} y2={foot[1]} stroke={TONES.good} strokeWidth={7} strokeLinecap="round" />);
+    drawn.push(<Text key="extra-name" x={wx + 14} y={lowY + 30} anchor="start" size={21} color={TONES.good}>Extra path: d sin θ</Text>);
+    drawn.push(<line key="d" x1={wx - 22} y1={topY} x2={wx - 22} y2={lowY} stroke={INK} strokeWidth={2.4} />);
+    drawn.push(<line key="d0" x1={wx - 29} y1={topY} x2={wx - 15} y2={topY} stroke={INK} strokeWidth={2.4} />);
+    drawn.push(<line key="d1" x1={wx - 29} y1={lowY} x2={wx - 15} y2={lowY} stroke={INK} strokeWidth={2.4} />);
+    drawn.push(<Text key="d-name" x={wx - 40} y={cy} size={21} color={INK}>d</Text>);
+    // The angle of the rays from straight through.
+    drawn.push(<line key="level" x1={wx} y1={topY} x2={wx + 150} y2={topY} stroke={INK2} strokeWidth={2} strokeDasharray="6 6" />);
+    drawn.push(<path key="theta" d={`M${wx + 96},${topY} A96,96 0 0 0 ${(wx + 96 * ux).toFixed(1)},${(topY + 96 * uy).toFixed(1)}`} fill="none" stroke={INK} strokeWidth={2.2} />);
+    drawn.push(<Text key="theta-name" x={wx + 116 * Math.cos(angle / 2)} y={topY - 116 * Math.sin(angle / 2)} size={19} color={INK}>θ</Text>);
+    drawn.push(<Text key="title" x={wx - 46} y={topY - 34 - long * Math.sin(angle)} anchor="start" size={19} color={INK2}>Two neighbouring slits, close up</Text>);
+    out.push(<g key="path" opacity={pathPart}>{drawn}</g>);
+  }
+}
+
 /** `fit` is the height the picture is designed for: it is then drawn whole in a room of another shape (a thumbnail), with space to spare at the sides. */
 export function LightView({ el, st, w, h, plays, fit }: { el: LightEl; st: ElState | undefined; w: number; h: number; plays?: Array<[string, number]>; fit?: number }) {
   const p = st?.p ?? 0;
@@ -1006,6 +1194,7 @@ export function LightView({ el, st, w, h, plays, fit }: { el: LightEl; st: ElSta
   else if (el.spin) drawSpin(el, played, frame);
   else if (el.prism) drawPrism(el, played, frame);
   else if (el.fibre) drawFibre(el, played, frame);
+  else if (el.grating) drawGrating(el, played, frame);
   return (
     <div style={{ width: w, height: h, opacity: clamp01(p), transform: `translateY(${(1 - clamp01(p)) * 14}px)` }}>
       <svg width={w} height={h} viewBox={`${left} 0 ${across} ${HIGH}`} style={{ overflow: 'visible', display: 'block' }}>

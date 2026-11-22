@@ -311,6 +311,22 @@ See `src/video/script.ts` for every element and option. In short:
   3 Hz and 1.5 Hz), and use the lesson's real numbers with heavy slow motion (`slow: 100`) for
   the worked examples.
 
+  For diffraction and Young's double slit, `barrier: { x, gap }` makes the sources openings in
+  a wall: straight waves arrive from the left in step with them, and their own waves are drawn
+  only beyond it. With a `gap` (the width of each opening, for a picture without listeners) a
+  crest is straight across the opening and bent round its edges as far as the wavelength
+  allows, and a phase can narrow the gap (`gap`). `screen: x` is a screen that the waves fall
+  on, and `light: 600` draws them as light of that wavelength in nanometres, with lengths in
+  wavelengths and "Bright" and "Dark" in place of "Loud" and "Quiet". The parts are `fringes`
+  (the screen lit where the waves arrive in step), `orders` (the bright fringes of two sources,
+  numbered from 0 at the centre) and `lengths` (d, L and Δx). A phase can change the
+  `wavelength`, bring two sources to a new distance `apart`, or slide the `screen`, and the
+  fringes follow. `fringeAt(el, n)` in `src/video/ripples.ts` gives the place on the screen
+  where the paths differ by n wavelengths (0.5 for the first dark fringe), to walk a listener
+  there. Work in wavelengths (a speed and a frequency that make the wavelength 1), and leave
+  3 to 4 wavelengths to the right of the screen for the labels. `thumb` lists the parts drawn on
+  the thumbnail.
+
 - `flight` (`src/video/flight.ts`) is for motion in two dimensions, drawn to one scale so that
   every angle on screen is the true one. Give the `view` (left, right, bottom, top), the bodies
   (each with where it starts, `at`, and its starting velocity, `v`) and the clips, whose phases
@@ -609,7 +625,7 @@ See `src/video/script.ts` for every element and option. In short:
   The check stops a line that would waste all the power it is sent.
 
 - `light` (`src/video/light.ts`) is light as an electromagnetic wave. One element is one of
-  six pictures, and time passes only while a clip plays.
+  seven pictures, and time passes only while a clip plays.
   - `wave` is the wave an electron sends out when it is driven up and down an aerial, at `hertz`
     cycles for each second of video, taking `cross` seconds to cross the picture (3). The
     electric field is drawn up and down in yellow, and the magnetic field towards you and away in
@@ -658,6 +674,17 @@ See `src/video/script.ts` for every element and option. In short:
     escapes at each bounce. A phase turns the incoming ray (`angle`). Parts: `names` (the core
     and the cladding, with their indices) and `angles` (the angle at the first bounce beside the
     critical angle, and whether the light is held in).
+  - `grating` (`{ lines, nm, white, slits, most }`) is light that crosses a diffraction grating
+    with `lines` lines in each millimetre and lands on a screen bent into half a circle: a bright
+    line wherever d sin θ = n λ, so the picture is true to its numbers (500 lines and 600 nm give
+    17.5°, 36.9° and 64.2°). With `slits` (2 to 20) only that many slits are lit and the lines
+    are broad bands; a phase that raises `slits` sharpens them. `white: true` draws every colour,
+    so each order is a spectrum with red turned the most (`most` caps the orders drawn, since the
+    higher ones overlap). A phase can also slide the wavelength (`nm`) or the `lines`. Parts:
+    `orders` (the number of each line), `angles` (its angle), `values` (the lines in each
+    millimetre, d and λ), `names` (the two ends of a spectrum) and `path` (two neighbouring
+    slits close up, with the extra path d sin θ and crests that line up). The picture stands in
+    the middle, and moves to the left while `values` or `path` is shown.
   `poster` names the clip the thumbnail is taken from, `posterAt` the share of it that has
   played (0.7), and `thumb` the parts the thumbnail shows.
 
