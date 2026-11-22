@@ -56,7 +56,7 @@ export default englishExam({
     ['Name the **device**', 'Third, name the device.'],
   ],
   steps: [
-    scene('Step 1: Heard and true', [table('t', ['', 'Meaning'], [['what Macbeth **heard**', '[[bad:no human being can ever harm me]]'], ['what was **true**', '[[good:a man not born in the usual way **can**]]'], ['*from his mother’s womb / Untimely ripp’d*', 'Macduff was born by an early **operation**']])], [
+    scene('Step 1: Heard and true', [table('t', ['Prophecy', 'Meaning'], [['what Macbeth **heard**', '[[bad:no human being can ever harm me]]'], ['what was **true**', '[[good:a man not born in the usual way **can**]]'], ['*from his mother’s womb / Untimely ripp’d*', 'Macduff was born by an early **operation**']])], [
       { say: 'Step one. Macbeth heard: no human can ever harm me, because every human is born of a woman. So he laughs at danger.', show: 't.0' },
       { say: 'But the words had a hidden meaning. Macduff was untimely ripped from his mother’s womb, born by an early operation, not in the usual way.', show: ['t.1', 't.2'] },
     ]),

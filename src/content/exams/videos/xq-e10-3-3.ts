@@ -50,7 +50,7 @@ export default englishExam({
     ['Name the **gap**', 'Third, name the gap between them.'],
   ],
   steps: [
-    scene('Step 1: Two kinds of knowledge', [table('t', ['', 'Believes Juliet is…'], [['**Romeo**', '[[bad:dead]]'], ['**the audience**', '[[good:alive: drugged by Friar Laurence’s potion]]']])], [
+    scene('Step 1: Two kinds of knowledge', [table('t', ['Who', 'Believes Juliet is…'], [['**Romeo**', '[[bad:dead]]'], ['**the audience**', '[[good:alive: drugged by Friar Laurence’s potion]]']])], [
       { say: 'Step one. Romeo believes Juliet is dead. The message explaining the Friar’s plan never reached him.', show: 't.0' },
       { say: 'But we, the audience, watched Juliet drink the potion. We know she is only asleep, and will wake soon.', show: 't.1' },
     ]),
