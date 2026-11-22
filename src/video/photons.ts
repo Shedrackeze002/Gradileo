@@ -79,7 +79,14 @@ export interface PhotonsState {
   volts: number;
   /** Every photon sent so far, in order. */
   sent: PhotonSent[];
+  /** In a Compton collision: the angle of scattering now, in degrees, and each collision so far with the angle it had. */
+  angle: number;
+  collisions: Array<{ at: number; angle: number }>;
 }
+
+/** In the picture of a Compton collision, an X-ray photon arrives every so many seconds, and meets the electron this long after it sets out. */
+export const COLLIDE_EVERY = 4.6;
+export const COLLIDE_LEAD = 2.2;
 
 const ease = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 const mix = (a: number, b: number, k: number) => a + (b - a) * k;
@@ -88,7 +95,8 @@ const STEP = 1 / 30;
 
 /** The state of a photons element after its clips. A phase can slide the wavelength, the brightness and the voltage to new values, gently. */
 export function photonsAt(el: PhotonsEl, plays: Plays = []): PhotonsState {
-  let [nm, rate, volts] = [el.nm, el.rate, el.tube?.volts ?? 0];
+  let [nm, rate, volts, angle] = [el.nm, el.rate, el.tube?.volts ?? 0, el.compton?.angle ?? 0];
+  const collisions: PhotonsState['collisions'] = [];
   let time = 0;
   // The first photon leaves a quarter of the way to the second one, so a picture is never empty for long.
   let count = 0.75;
@@ -100,10 +108,10 @@ export function photonsAt(el: PhotonsEl, plays: Plays = []): PhotonsState {
     for (const ph of clip.phases) {
       if (left <= 0) break;
       const run = Math.min(left, ph.dur);
-      const from = { nm, rate, volts };
+      const from = { nm, rate, volts, angle };
       const at = (t: number) => {
         const k = ease(t / ph.dur);
-        return { nm: mix(from.nm, ph.nm ?? from.nm, k), rate: mix(from.rate, ph.rate ?? from.rate, k), volts: mix(from.volts, ph.volts ?? from.volts, k) };
+        return { nm: mix(from.nm, ph.nm ?? from.nm, k), rate: mix(from.rate, ph.rate ?? from.rate, k), volts: mix(from.volts, ph.volts ?? from.volts, k), angle: mix(from.angle, ph.angle ?? from.angle, k) };
       };
       for (let t0 = 0; t0 < run - 1e-9; t0 += STEP) {
         const dt = Math.min(STEP, run - t0);
@@ -112,13 +120,18 @@ export function photonsAt(el: PhotonsEl, plays: Plays = []): PhotonsState {
         count += now.rate * dt;
         // Each whole number that the count passes is a photon, which leaves part of the way through the step.
         for (let n = Math.floor(before) + 1; n <= count; n++) sent.push({ n, at: time + t0 + (n - before) / now.rate, nm: now.nm, volts: now.volts });
+        if (el.compton) {
+          // A collision that falls in this step keeps the angle of its moment.
+          const meets = Math.ceil((time + t0 - COLLIDE_LEAD) / COLLIDE_EVERY - 1e-9) * COLLIDE_EVERY + COLLIDE_LEAD;
+          if (meets >= COLLIDE_LEAD - 1e-9 && meets >= time + t0 - 1e-9 && meets < time + t0 + dt - 1e-9) collisions.push({ at: meets, angle: now.angle });
+        }
       }
-      ({ nm, rate, volts } = at(run));
+      ({ nm, rate, volts, angle } = at(run));
       time += run;
       left -= ph.dur;
     }
   }
-  return { time, nm, rate, volts, sent };
+  return { time, nm, rate, volts, sent, angle, collisions };
 }
 
 /**
@@ -160,4 +173,86 @@ export function electronFlight(kinetic: number, volts: number): { seconds: numbe
   if (!(kinetic > volts + 1e-9)) return { seconds: (2 * v0) / a, fate: 'returned' };
   if (Math.abs(a) < 1e-9) return { seconds: 1 / v0, fate: 'collected' };
   return { seconds: (v0 - Math.sqrt(v0 * v0 - 2 * a)) / a, fate: 'collected' };
+}
+
+// ── The momentum of a photon ─────────────────────────────────────────────────────────────────
+
+/** The momentum of one photon, in kilogram metres per second: h ÷ λ. */
+export const photonMomentum = (nm: number) => PLANCK / (nm * 1e-9);
+
+/** The force of a beam of light on a surface, in newtons: P ÷ c when the light is taken in, and twice that when it is sent straight back. */
+export const lightForce = (watts: number, surface: 'black' | 'mirror') => ((surface === 'mirror' ? 2 : 1) * watts) / C;
+
+/**
+ * In the picture of the push of light, a lane runs from the lamp (0) to the far end (1). A
+ * photon crosses it at LANE_SPEED lanes each second, the surface starts at LANE_START, and each
+ * photon that it takes in adds KICK to its speed (a mirror, which sends the photon back, gains
+ * twice as much). The kick is far larger than a real one, so that the push can be seen.
+ */
+export const LANE_SPEED = 0.45;
+export const LANE_START = 0.5;
+export const KICK = 7e-5;
+
+export interface PushState {
+  /** Where the surface is, and how fast it moves, in lanes and lanes each second. */
+  x: number;
+  v: number;
+  /** The photons that have reached it: which, when and where. */
+  hits: Array<{ n: number; at: number; x: number }>;
+}
+
+/** A surface on wheels and the photons that have reached it. Between two photons it rolls at a steady speed, so each meeting is found exactly. */
+export function pushAt(state: PhotonsState, surface: 'black' | 'mirror'): PushState {
+  let [x, v, t] = [LANE_START, 0, 0];
+  const hits: PushState['hits'] = [];
+  for (const ph of state.sent) {
+    // The photon has gone LANE_SPEED (T − sent) when the surface is at x + v (T − t).
+    const meets = (x - v * t + LANE_SPEED * ph.at) / (LANE_SPEED - v);
+    if (meets > state.time) break;
+    x += v * (meets - t);
+    t = meets;
+    v += KICK * (surface === 'mirror' ? 2 : 1);
+    hits.push({ n: ph.n, at: meets, x });
+  }
+  return { x: x + v * (state.time - t), v, hits };
+}
+
+// ── The Compton effect ───────────────────────────────────────────────────────────────────────
+
+const RAD = Math.PI / 180;
+
+/** h ÷ mc for an electron, in picometres, as the lesson gives it. */
+export const COMPTON = 2.43;
+
+/** The change in the wavelength of a photon that an electron scatters through an angle, in picometres. */
+export const comptonShift = (degrees: number) => COMPTON * (1 - Math.cos(degrees * RAD));
+
+export interface Scatter {
+  /** The wavelength of the photon afterwards, in picometres. */
+  after: number;
+  /** The momentum of the photon afterwards, and of the electron, as shares of the photon's momentum before. */
+  photon: number;
+  electron: number;
+  /** The direction of the electron, in degrees from the line of the photon's arrival (negative: on the other side of it from the scattered photon). */
+  electronAngle: number;
+  /** The energy of the photon before and afterwards, and the kinetic energy of the electron, in electronvolts. */
+  before: number;
+  left: number;
+  kinetic: number;
+  /** The speed of the electron, as a share of the speed of light. */
+  beta: number;
+}
+
+/** A photon of a wavelength in picometres, scattered through an angle by an electron at rest: energy and momentum are both conserved. */
+export function scatterAt(pm: number, degrees: number): Scatter {
+  const after = pm + comptonShift(degrees);
+  const photon = pm / after;
+  // The electron takes the momentum that the photon has lost: before = after, as vectors.
+  const [ex, ey] = [1 - photon * Math.cos(degrees * RAD), -photon * Math.sin(degrees * RAD)];
+  const electron = Math.hypot(ex, ey);
+  const volts = (length: number) => (PLANCK * C) / (length * 1e-12) / EV;
+  const [before, left] = [volts(pm), volts(after)];
+  // Its speed is pc ÷ E, with its rest energy mc² = hc ÷ (h ÷ mc).
+  const beta = (electron * before) / (before - left + volts(COMPTON));
+  return { after, photon, electron, electronAngle: electron > 1e-12 ? Math.atan2(ey, ex) / RAD : 0, before, left, kinetic: before - left, beta };
 }

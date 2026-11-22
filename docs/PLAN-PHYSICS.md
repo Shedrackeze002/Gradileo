@@ -104,8 +104,8 @@ built when the first unit that needs it is reached.
 | Transformers (`transformer`, `powerline`) | Two coils on an iron core with a screen for each voltage (the turns rule, power in and out, a battery that gives only a kick); a power line whose loss falls as its voltage is stepped up | Grade 12, Unit B | Built |
 | Mirrors and lenses (`optics`) | A curved mirror or a thin lens, an object that slides along the axis, the three rays that find its image, and the readouts of the mirror equation | Grade 12, Unit C | Built |
 | Light (`light`) | An electromagnetic wave leaving an aerial, with its two fields and a polarizing filter; the spectrum with a sliding pointer; a flash timed over a distance, and its echo; Michelson's spinning mirror; white light spread into colours by a prism; a ray held inside an optical fibre; a diffraction grating, with lines that sharpen as more slits are lit and spectra of white light | Grade 12, Unit C | Built |
-| Photons (`photons`) | Light as packets of waves that cross to a detector, or land on a metal and free electrons (the photoelectric effect): a tube with a stopping voltage, energy bars, and the graph of Ek max against f | Grade 12, Unit C | Built |
-| Particles | Scattering, matter waves, radioactive decay | Grade 12, Units C and D | To build, shared with chemistry's remake |
+| Photons (`photons`) | Light as packets of waves that cross to a detector, or land on a metal and free electrons (the photoelectric effect): a tube with a stopping voltage, energy bars, and the graph of Ek max against f. Also the momentum of a photon, the push of light on a black card and a mirror, and the Compton collision of an X-ray photon with an electron | Grade 12, Unit C | Built |
+| Particles | Matter waves, alpha scattering, radioactive decay | Grade 12, Units C and D | To build, shared with chemistry's remake |
 
 ## What physics needs that the platform does not have
 

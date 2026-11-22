@@ -305,7 +305,7 @@ function PhotonsThumb({ el, w, h }: { el: PhotonsEl; w: number; h: number }) {
   const names = Object.keys(el.clips);
   const poster = el.poster ?? names[0];
   const plays: Array<[string, number]> = [...names.slice(0, names.indexOf(poster)).map((name): [string, number] => [name, clipSeconds(el, name)]), [poster, clipSeconds(el, poster) * (el.posterAt ?? 0.7)]];
-  const parts = el.thumb ?? (el.metal ? ['names', 'bars'] : ['names']);
+  const parts = el.thumb ?? (el.metal ? ['names', 'bars'] : el.push ? ['names', 'force'] : el.compton ? ['names', 'angle'] : ['names']);
   return <PhotonsView el={{ ...el, label: undefined }} st={{ ...FULL, parts: Object.fromEntries(parts.map((part) => [part, 1])) }} w={w} h={h} plays={plays} fit={330} />;
 }
 

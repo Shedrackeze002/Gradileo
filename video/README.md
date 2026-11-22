@@ -715,8 +715,10 @@ See `src/video/script.ts` for every element and option. In short:
   photon is a short packet of waves in the colour of its wavelength (pale violet for
   ultraviolet), and a phase slides `nm`, `rate` and, in a tube, `volts`. With nothing else, the
   photons cross from a lamp to a detector; parts: `names`, `values` (λ and f), `energy` (one
-  photon, in joules and electronvolts), `bars` (that energy on a scale of electronvolts) and
-  `count` (the photons each second: the number drawn, or with `watts` the real number). With a
+  photon, in joules and electronvolts), `bars` (that energy on a scale of electronvolts),
+  `count` (the photons each second: the number drawn, or with `watts` the real number) and
+  `momentum` (an arrow on each photon, longer for a shorter wavelength, and p = h ÷ λ as a
+  number). A wavelength under 1 nm is written in picometres and drawn pale blue, for X-rays. With a
   `metal` (`{ name, work }`, the work function in electronvolts) the light lands on a plate:
   a photon with more energy than W frees one electron at once, the fastest leave with hf − W
   and the rest with a share of it, and speed goes with the square root of the kinetic energy.
@@ -728,8 +730,21 @@ See `src/video/script.ts` for every element and option. In short:
   collected each second), `graph` (Ek max against f, with a dot that follows the light) and
   `slope`. The readouts sit on the right, from x = 770 of 1136: with no tube the electrons fly
   on across the picture unless `bars` or `graph` is shown. A tube with its meter needs a
-  `height` of 360 or more, and the graph about 470. Photons move only while a clip plays, so
-  give every line of a scene a clip.
+  `height` of 360 or more, and the graph about 470. With a `push` (`{ watts, surfaces }`, one
+  or two of `'black'` and `'mirror'`) each beam lands on a surface on wheels: a black card
+  takes each photon in, a mirror sends it straight back and gains twice the speed (the kick of
+  one photon is drawn far larger than a real one, so say so). Parts: `names`, `values` (the
+  power), `momentum` (the arrows) and `force` (P ÷ c or 2P ÷ c, as an arrow and a number); two
+  lanes need a `height` of 360 or more, and a `rate` of 2 to 4 keeps the mirror's lane clear and
+  the surfaces inside the picture for a scene of about a minute. With `compton` (`{ angle }`,
+  and `nm` as a part of a nanometre: 0.005 is 5 pm, which stretches enough to be seen) an X-ray
+  photon meets an electron at rest every 4.6 seconds: the photon leaves at the angle with its
+  crests farther apart, by Δλ = (h ÷ mc)(1 − cos θ) with h ÷ mc = 2.43 pm, and the electron
+  recoils with the momentum and the energy the photon lost. A phase slides `angle`. Parts:
+  `names`, `angle`, `values` (λ before and after), `shift` (Δλ), `energy` (in keV) and
+  `momentum` (a triangle of the three momenta, which needs a `height` of about 470); `figures`
+  sets the decimal places of the wavelengths. Photons move only while a clip plays, so give
+  every line of a scene a clip.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

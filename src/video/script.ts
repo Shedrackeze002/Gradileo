@@ -2685,6 +2685,8 @@ export interface PhotonsPhase {
   rate?: number;
   /** In a tube: slide the supply to this many volts (the collecting plate is negative by so much). */
   volts?: number;
+  /** In a Compton collision: slide the angle of scattering to this many degrees. */
+  angle?: number;
 }
 
 export interface PhotonsClip {
@@ -2692,7 +2694,7 @@ export interface PhotonsClip {
 }
 
 /** What a photons element can show; each is a part ("tube.meter"). */
-export const PHOTONS_PARTS = ['names', 'values', 'energy', 'count', 'bars', 'graph', 'slope', 'fastest', 'meter'] as const;
+export const PHOTONS_PARTS = ['names', 'values', 'energy', 'count', 'bars', 'graph', 'slope', 'fastest', 'meter', 'momentum', 'force', 'angle', 'shift'] as const;
 
 /**
  * Light as a stream of photons (src/video/photons.ts), with the lessons' constants. The light
@@ -2702,8 +2704,21 @@ export const PHOTONS_PARTS = ['names', 'values', 'energy', 'count', 'bars', 'gra
  *
  * With no metal, the photons cross from a lamp to a detector. Parts: `names`, `values` (λ and
  * f), `energy` (the energy of one photon, in joules and in electronvolts), `bars` (that energy
- * on a scale of electronvolts) and `count` (the photons each second: the number drawn, or with
- * `watts` the real number, power ÷ the energy of one photon).
+ * on a scale of electronvolts), `count` (the photons each second: the number drawn, or with
+ * `watts` the real number, power ÷ the energy of one photon) and `momentum` (an arrow on each
+ * photon, longer for a shorter wavelength, and p = h ÷ λ as a number).
+ *
+ * With a `push`, each beam lands on a surface on wheels: a black card takes each photon in, and
+ * a mirror sends it straight back, so the mirror gains speed twice as fast. Parts: `names`,
+ * `values` (the power of each beam), `momentum` (an arrow on each photon) and `force` (the push
+ * on each surface, P ÷ c or 2P ÷ c, as an arrow and a number).
+ *
+ * With `compton`, an X-ray photon (give `nm` as a part of a nanometre: 0.005 is 5 pm) meets an
+ * electron at rest, again and again: the photon leaves at the angle of scattering with the
+ * longer wavelength that Δλ = (h ÷ mc)(1 − cos θ) gives it, and the electron takes the momentum
+ * and the energy that the photon has lost. Parts: `names`, `angle` (θ), `values` (λ before and
+ * after), `shift` (Δλ), `energy` (the photon's energy before and after, and the electron's
+ * gain) and `momentum` (the momentum before, drawn as the sum of the two afterwards).
  *
  * With a `metal`, the light lands on a plate, for the photoelectric effect. A photon with more
  * energy than the work function frees one electron at once; the fastest leave with hf − W and
@@ -2728,6 +2743,10 @@ export interface PhotonsEl {
   metal?: { name: string; work: number };
   /** With a metal: a collecting plate that faces it, negative by so many volts at the start. */
   tube?: { volts: number };
+  /** The push of light: the power of each beam in watts, and one lane for each surface it lands on (a black card or a mirror; one or two). */
+  push?: { watts: number; surfaces: Array<'black' | 'mirror'> };
+  /** A Compton collision: the angle through which the photon is scattered at the start, in degrees. */
+  compton?: { angle: number };
   /** The reach of the graph: the greatest frequency, in units of 10¹⁴ Hz (12 otherwise), and the greatest kinetic energy, in electronvolts (3 otherwise). */
   graph?: { hertz?: number; volts?: number };
   /** The significant figures of the count of photons (2 otherwise). */
@@ -3641,8 +3660,14 @@ export function checkOptics(e: OpticsEl): string[] {
 /** Problems with a photons element: light with no wavelength, a tube with no metal, a graph that is not a whole number of electronvolts high, clips that ask for what is not there. */
 export function checkPhotons(e: PhotonsEl): string[] {
   const problems: string[] = [];
-  const colour = (nm: number) => nm >= 10 && nm <= 2000;
-  if (!colour(e.nm)) problems.push('the wavelength is in nanometres, from 10 to 2000.');
+  const colour = (nm: number) => nm >= 0.001 && nm <= 2000;
+  if (!colour(e.nm)) problems.push('the wavelength is in nanometres, from 0.001 to 2000.');
+  if ([e.metal, e.push, e.compton].filter(Boolean).length > 1) problems.push('give a metal, a push or a Compton collision, not more than one.');
+  if (e.push && !(e.push.watts > 0)) problems.push('the power of the beam must be more than zero.');
+  if (e.push && !(e.push.surfaces.length >= 1 && e.push.surfaces.length <= 2)) problems.push('the push of light has one or two surfaces.');
+  const turned = (angle: number) => angle >= 0 && angle <= 180;
+  if (e.compton && !turned(e.compton.angle)) problems.push('the angle of scattering is from 0 to 180 degrees.');
+  if (e.compton && !(e.nm <= 0.2)) problems.push('a Compton collision needs X-rays: a wavelength of 0.2 nm (200 pm) or less.');
   if (!(e.rate >= 0 && e.rate <= 12)) problems.push('the picture can draw from 0 to 12 photons each second.');
   if (e.watts !== undefined && !(e.watts > 0)) problems.push('the power must be more than zero.');
   if (e.metal && !(e.metal.work > 0)) problems.push('the work function must be more than zero.');
@@ -3656,7 +3681,9 @@ export function checkPhotons(e: PhotonsEl): string[] {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     for (const ph of clip.phases) {
       if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
-      if (ph.nm !== undefined && !colour(ph.nm)) problems.push(`clip "${name}" slides the wavelength out of range (10 to 2000 nm).`);
+      if (ph.nm !== undefined && !colour(ph.nm)) problems.push(`clip "${name}" slides the wavelength out of range (0.001 to 2000 nm).`);
+      if (ph.angle !== undefined && !e.compton) problems.push(`clip "${name}" changes the angle of scattering, and the picture has no Compton collision.`);
+      if (ph.angle !== undefined && !turned(ph.angle)) problems.push(`clip "${name}" slides the angle of scattering out of range (0 to 180 degrees).`);
       if (ph.rate !== undefined && !(ph.rate >= 0 && ph.rate <= 12)) problems.push(`clip "${name}" asks for more photons than the picture can draw (0 to 12 each second).`);
       if (ph.volts !== undefined && !e.tube) problems.push(`clip "${name}" changes the supply, and the picture has no tube.`);
     }
