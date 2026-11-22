@@ -1735,7 +1735,10 @@ items ship or decisions change.
      from two angles of elevation, the two triangles from α = 80°, a = 120, b = 121, and two airplanes
      25° apart), and Unit 3 (Quadratic Functions) with four, from OpenStax College Algebra 2e 5.1 (the
      domain and range of 2(x − 4/7)² + 8/11, the parabola with vertex (2, 3) through (5, 12), the
-     minimum of 2x² − 10x + 4, and the biggest dog park split into 2 pens). The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
+     minimum of 2x² − 10x + 4, and the biggest dog park split into 2 pens), and Unit 4 (Factoring and
+     Quadratic Equations) with four, from 2.5 (12x² + 11x + 2 = 0 by grouping, the 119 ft² garden,
+     x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant).
+     The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
 
