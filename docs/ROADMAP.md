@@ -1758,7 +1758,19 @@ items ship or decisions change.
      x, x + 1 and x − 19, the angles of a regular pentagon, and which congruence theorem a figure
      shows), and Unit 3 (Acute Triangle Trigonometry) with three from OpenStax Precalculus 2e 8.1
      and 8.2 (solving a triangle with the sine law, a guy-wire on a hill with the cosine law, and the
-     height of a blimp over a stadium).
+     height of a blimp over a stadium), and Unit 4 (Radicals) with four from OpenStax Intermediate
+     Algebra 2e 8.2 to 8.6 (√800, (7 + √3)(9 − √3), three denominators to rationalize, and
+     √(x + 1) − x + 1 = 0 with an extraneous root), and Unit 5 (Statistical Reasoning) with two from
+     OpenStax Contemporary Mathematics 8.7 and 8.8 (percents under a normal curve with mean 500, and
+     the percentile of 211 on a test with mean 250) and two we wrote, since the free books divide by
+     n − 1 and compute intervals rather than read them (which of two players is more consistent,
+     with the population standard deviation, and reading a poll that is accurate 19 times out of 20),
+     and Unit 6 (Quadratic Functions) with three from OpenStax College Algebra 2e 5.1 and
+     Intermediate Algebra 2e 9.6 (the graph of x² − 2x, the highest point of a ball thrown at
+     109 ft/s, and the intercepts of x² + 8x + 12 from factored form), and Unit 7 (Quadratic
+     Equations) with three from Intermediate Algebra 2e 6.5, 9.3 and 9.5 ((x + 6)(x − 3) = −8 by
+     expanding first, x² + 8x − 4 = 0 with the quadratic formula, and the dining table of 24 square
+     feet whose length is two more than twice its width).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
