@@ -123,10 +123,13 @@ export function crossing(o: { name?: string; deg: number; tilt?: number; len?: n
  * to 8 where it crosses `n`. `turn` tips `n` by that many degrees, for lines that only look
  * parallel; arrowheads mark the lines parallel when it is 0.
  *
+ * `names` renames the three lines in the figure (TeX, such as `['l_1', 'l_2', 't']`); the part ids
+ * stay `m`, `n` and `t`.
+ *
  * Parts: `lines` (a group: `m`, `n` and `t`, with their names), `marks` (a group: the arrowheads)
  * and the angles `a1` to `a8`, labelled from `labels`.
  */
-export function transversal(o: { name?: string; deg: number; gap?: number; len?: number; turn?: number; labels?: Partial<Record<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8, string>> }): Part {
+export function transversal(o: { name?: string; deg: number; gap?: number; len?: number; turn?: number; names?: [string, string, string]; labels?: Partial<Record<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8, string>> }): Part {
   const n = namer(o.name);
   const gap = o.gap ?? 4;
   const len = o.len ?? 10;
@@ -149,9 +152,9 @@ export function transversal(o: { name?: string; deg: number; gap?: number; len?:
     { kind: 'line', id: n('m'), from: n('mW'), to: n('mE'), group: n('lines') },
     { kind: 'line', id: n('n'), from: n('nW'), to: n('nE'), group: n('lines') },
     { kind: 'line', id: n('t'), from: n('tDown'), to: n('tUp'), tone: 'adj', group: n('lines') },
-    { kind: 'label', id: n('m-name'), at: n('mE'), tex: 'm', place: 'right', group: n('lines') },
-    { kind: 'label', id: n('n-name'), at: n('nE'), tex: 'n', place: 'right', group: n('lines') },
-    { kind: 'label', id: n('t-name'), at: n('tUp'), tex: 't', tone: 'adj', place: 'above', group: n('lines') },
+    { kind: 'label', id: n('m-name'), at: n('mE'), tex: o.names?.[0] ?? 'm', place: 'right', group: n('lines') },
+    { kind: 'label', id: n('n-name'), at: n('nE'), tex: o.names?.[1] ?? 'n', place: 'right', group: n('lines') },
+    { kind: 'label', id: n('t-name'), at: n('tUp'), tex: o.names?.[2] ?? 't', tone: 'adj', place: 'above', group: n('lines') },
   ];
   if (turn === 0) {
     // A chevron on each line, near its left end.
