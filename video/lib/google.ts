@@ -7,8 +7,9 @@
  * channel). The comment watcher can sign in with its own YOUTUBE_COMMENTS_* client instead, from a
  * second Google Cloud project, so it has a quota of its own. Their values are never printed.
  */
-import { COURSES } from '../../engine/curriculum/index.ts';
+import { COURSES, courseOfLesson, lessonById, unitById } from '../../engine/curriculum/index.ts';
 import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
+import type { Explainer } from '../../src/video/script.ts';
 import { FIRST_NAME, SCRIPT_FILES } from './catalog.ts';
 
 export type Service = 'GDRIVE' | 'YOUTUBE' | 'YOUTUBE_COMMENTS';
@@ -119,15 +120,67 @@ export async function find(name: string, parent: string, folder: boolean) {
   return files[0];
 }
 
-/** The Drive folder holding a video's files, or undefined when it was never uploaded. */
-export async function videoFolder(p: Place): Promise<string | undefined> {
+/** The Drive folder at a path of folder names under My Drive, or undefined when one is missing. */
+export async function folderAt(names: string[]): Promise<string | undefined> {
   let parent = 'root';
-  for (const name of [ROOT_FOLDER, courseFolder(p.course), unitFolder(p.unit), p.folder]) {
+  for (const name of names) {
     const found = await find(name, parent, true);
     if (!found) return undefined;
     parent = found.id;
   }
   return parent;
+}
+
+/** The Drive folder holding a video's files, or undefined when it was never uploaded. */
+export function videoFolder(p: Place): Promise<string | undefined> {
+  return folderAt([ROOT_FOLDER, courseFolder(p.course), unitFolder(p.unit), p.folder]);
+}
+
+// ---------------------------------------------------------------- exam question videos
+
+/** The folder for exam question videos, by course and unit of the lesson each one practises. */
+export const EXAMS_FOLDER = 'Exam Questions';
+
+/** An exam question video: the lesson it practises, that lesson's course and unit, and its folders under Gradileo videos/. */
+export interface ExamPlace {
+  id: string;
+  lesson: string;
+  course: CourseMeta;
+  unit: UnitMeta;
+  /** Exam Questions/<course>/<unit>/<id>. */
+  folders: string[];
+}
+
+const examPlaces = new Map<string, ExamPlace | undefined>();
+
+/** An exam question video's place, or undefined for any other video. */
+export async function examPlace(id: string): Promise<ExamPlace | undefined> {
+  if (examPlaces.has(id)) return examPlaces.get(id);
+  const file = SCRIPT_FILES.get(id);
+  const exam = file ? ((await import(file)).default as Explainer).exam : undefined;
+  let found: ExamPlace | undefined;
+  if (exam) {
+    const course = courseOfLesson(exam.lesson);
+    const lesson = lessonById(exam.lesson);
+    const unit = lesson ? unitById(lesson.unitId) : undefined;
+    if (!course || !unit) throw new Error(`${id}: the exam's lesson ${exam.lesson} is in no course`);
+    found = { id, lesson: exam.lesson, course, unit, folders: [EXAMS_FOLDER, courseFolder(course), unitFolder(unit), id] };
+  }
+  examPlaces.set(id, found);
+  return found;
+}
+
+/** Every exam question video, in course order and, within a course, in the order of the lessons they practise. */
+export async function examVideos(): Promise<ExamPlace[]> {
+  const all: ExamPlace[] = [];
+  for (const id of SCRIPT_FILES.keys()) {
+    const p = await examPlace(id);
+    if (p) all.push(p);
+  }
+  const rank = new Map<string, number>();
+  COURSES.flatMap((c) => c.units.flatMap((u) => u.lessons)).forEach((l, i) => rank.has(l) || rank.set(l, i));
+  const at = (p: ExamPlace) => rank.get(p.lesson) ?? Infinity;
+  return all.sort((a, b) => at(a) - at(b) || a.id.localeCompare(b.id));
 }
 
 /** A file's contents from Drive. */

@@ -1308,6 +1308,14 @@ in `youtube-uploaded.json` there, so a video YouTube's listing leaves out is nev
     npx tsx video/tools/youtube-upload.ts --dry-run math-10c
     npx tsx video/tools/youtube-upload.ts math-10c math-10-3
 
+Exam question videos go up the same way: `exams` stands for every one, in course order and then
+the order of the lessons they practise, and `exams:phys-10` for one course's. Each goes in its
+course's own playlist, "Physics 10 - Exam Questions". Their title, description and tags are read
+from the `youtube.txt` made when they were rendered (they have no record in `videos.json`), and one
+that is not yet rendered and in Drive is skipped, and counted, until it is:
+
+    npx tsx video/tools/youtube-upload.ts --dry-run exams
+
 Each upload prints `<video id> -> https://youtu.be/<youtube id>`. Record it in Gradileo so the
 lesson shows the video: **Admin console → Videos**, or straight into `public.video_links`. Every
 upload declares whether the video is made for kids (YouTube turns off comments and personalised ads
