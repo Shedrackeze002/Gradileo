@@ -1706,7 +1706,11 @@ items ship or decisions change.
      (2w + 15)²); Unit 5 (Relations and Functions) with four, `xq-m10c-5-1` to `xq-m10c-5-4`, of
      which Jordan's bike-ride graph is a question Gradileo wrote (the free banks only ask about story
      graphs through pictures they do not describe) and the rest come from OpenStax Intermediate
-     Algebra 2e 3.5 (the BMI mapping, two sets of ordered pairs and Sylvia's DVR). The owner approved the
+     Algebra 2e 3.5 (the BMI mapping, two sets of ordered pairs and Sylvia's DVR); Unit 6 (Linear
+     Relations) with five, `xq-m10c-6-1` to `xq-m10c-6-5`, from OpenStax College Algebra 2e and
+     Elementary Algebra 2e (the shrinking city's −400 people a year, Damien's road-trip intercepts,
+     the wheelchair ramp, whether 7x + 2y = 3 and 2x + 7y = 5 are perpendicular, and the straight
+     road to work). The owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
