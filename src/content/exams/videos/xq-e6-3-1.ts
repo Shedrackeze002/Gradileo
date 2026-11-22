@@ -1,4 +1,4 @@
-import { englishExam, ours, quote, scene, text, table } from '../english.ts';
+import { englishExam, ours, scene, text, table } from '../english.ts';
 
 // Grade 6 English, lesson 3.1 (summarizing). An exam-style question we wrote, in the style of a
 // Grade 6 reading test, on a passage we wrote about Mary Anning. The answer is A: it gives the main

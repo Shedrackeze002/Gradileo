@@ -1,4 +1,4 @@
-import { englishExam, ours, quote, scene, text, table } from '../english.ts';
+import { englishExam, ours, scene, text, table } from '../english.ts';
 
 // Grade 6 English, lesson 5.2 (connotation). An exam-style question we wrote, in the style of a
 // Grade 6 vocabulary test. The answer is D: "scrawny" means thin with a negative feeling, so it

@@ -1,4 +1,4 @@
-import { englishExam, ours, quote, scene, text, table } from '../english.ts';
+import { englishExam, ours, quote, scene, table } from '../english.ts';
 
 // Grade 6 English, lesson 3.4 (author's purpose and point of view). An exam-style question we
 // wrote, in the style of a Grade 6 reading test, on a passage we wrote. The answer is C: the writer
