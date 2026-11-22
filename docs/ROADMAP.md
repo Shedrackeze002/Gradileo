@@ -1726,7 +1726,10 @@ items ship or decisions change.
      (Systems of Linear Equations) with four, `xq-m10c-8-1` to `xq-m10c-8-4`, from OpenStax
      Elementary Algebra 2e 5.1 to 5.3 (Manny's orange juice by graphing, Geraldine's two job offers
      by substitution, Andrea's shirts and sweaters by elimination, and how many solutions
-     y = −2x − 4 and 4x + 2y = 9 have). Math 10 is complete: 42 exam videos, one per lesson. The
+     y = −2x − 4 and 4x + 2y = 9 have). Math 10 is complete: 42 exam videos, one per lesson. Math 20-1 (`xq-m201-*`) is under way:
+     Unit 1 (Sequences and Series) with five, from OpenStax College Algebra 2e 9.2 to 9.4 (the
+     daily run that grows by 4 minutes a week, twelve weeks of pay rising by \$12.50, website hits
+     growing 2.6% a week, eight years of salary with a 2% raise, and the pendulum's total distance). The
      owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
