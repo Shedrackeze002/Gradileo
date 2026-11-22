@@ -1703,7 +1703,10 @@ items ship or decisions change.
      √288, (m⁴n⁻³)(m⁻⁵n⁻²) and the falling flare); Unit 4 (Polynomials) with six, `xq-m10c-4-1` to
      `xq-m10c-4-6`, from OpenStax Elementary Algebra 2e (18 × 17 by FOIL, (b + 3)(2b² − 5b + 8), the
      area w² − 6w, Deirdre's x² + x − 56, 6x² + 7x + 2 by the "ac" method and the pool deck
-     (2w + 15)²). The owner approved the
+     (2w + 15)²); Unit 5 (Relations and Functions) with four, `xq-m10c-5-1` to `xq-m10c-5-4`, of
+     which Jordan's bike-ride graph is a question Gradileo wrote (the free banks only ask about story
+     graphs through pictures they do not describe) and the rest come from OpenStax Intermediate
+     Algebra 2e 3.5 (the BMI mapping, two sets of ordered pairs and Sylvia's DVR). The owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
