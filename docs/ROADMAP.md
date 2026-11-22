@@ -1733,7 +1733,14 @@ items ship or decisions change.
      Unit 2 (Trigonometry) with five, from OpenStax Algebra and Trigonometry 2e 7.1, 7.3, 10.1 and 10.2
      (the angle coterminal with 870°, sin t from cos t = 24/25 in quadrant IV, a building's height
      from two angles of elevation, the two triangles from α = 80°, a = 120, b = 121, and two airplanes
-     25° apart). English has an exam video for every lesson of all nine
+     25° apart), and Unit 3 (Quadratic Functions) with four, from OpenStax College Algebra 2e 5.1 (the
+     domain and range of 2(x − 4/7)² + 8/11, the parabola with vertex (2, 3) through (5, 12), the
+     minimum of 2x² − 10x + 4, and the biggest dog park split into 2 pens), and Unit 4 (Factoring and
+     Quadratic Equations) with four, from 2.5 (12x² + 11x + 2 = 0 by grouping, the 119 ft² garden,
+     x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant),
+     and Unit 5 (Radical Expressions and Equations) with three, from 1.3 and 2.6 (3√(80x) − 4√(45x) = 0,
+     7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root).
+     English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
      Topics) on public-domain texts, plus a few key stage 2 grammar questions under the Open
