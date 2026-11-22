@@ -1697,7 +1697,10 @@ items ship or decisions change.
      the rest come from OpenStax Prealgebra 2e (feet and inches, 100 km in miles, the soda can, the
      globe, the cone of fries, the street light post); Unit 2 (Trigonometry) with four,
      `xq-m10c-2-1` to `xq-m10c-2-4`, from OpenStax Algebra and Trigonometry 2e 7.2 (the tree, the
-     ladder, the unknown sides of a 30° triangle and the radio tower). The owner approved the
+     ladder, the unknown sides of a 30° triangle and the radio tower); Unit 3 (Factors, Roots and
+     Powers) with six, `xq-m10c-3-1` to `xq-m10c-3-6`, from OpenStax Prealgebra 2e and Elementary
+     Algebra 2e (hot dogs and buns, the 2704 cm² mosaic, Reed's garden, Elliott's garden of
+     √288, (m⁴n⁻³)(m⁻⁵n⁻²) and the falling flare). The owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
