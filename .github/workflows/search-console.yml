@@ -1,0 +1,40 @@
+name: Search Console report
+
+# Once a month, reads how gradileo.com did in Google search over the last 28 days and opens an
+# issue labelled "search-console" with the pages to improve (scripts/search-console-report.mjs):
+# queries where a page sits on page 2, and queries that are seen but rarely clicked. The monthly
+# SEO review reads the newest issue and improves those pages.
+#
+# Needs the secret GSC_SERVICE_ACCOUNT_KEY: the JSON key of a Google Cloud service account that is
+# a user of the gradileo.com property in Search Console (docs/SETUP.md, "Search Console report").
+# Without it the run does nothing.
+
+on:
+  schedule:
+    - cron: '41 6 3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Read Search Console
+        env:
+          GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+        run: node scripts/search-console-report.mjs report.md
+      - name: Open the report as an issue
+        if: hashFiles('report.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          gh label create search-console --color 6a43e3 --description "Monthly Search Console report" 2>/dev/null || true
+          gh issue create --title "$(head -1 report.md | sed 's/^# //')" --label search-console --body-file report.md

@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { TOPIC_COURSES } from '@engine/curriculum/index.ts';
 import { VIDEOS } from '@/content/videos.ts';
-import { lessonPath, plainText, publicPages, slugify, type PublicPage } from './pages.tsx';
+import { lessonPath, OVERRIDES, plainText, publicPages, slugify, type PublicPage } from './pages.tsx';
 
 const root = new URL('../content/', import.meta.url).pathname;
 const allSources = new Map<string, string>();
@@ -28,6 +28,15 @@ describe('public page addresses', () => {
     const paths = lessons.map(lessonPath);
     expect(new Set(paths).size).toBe(paths.length);
     for (const p of paths) expect(p).toMatch(/^\/lessons\/[a-z0-9]+(-[a-z0-9]+)*$/);
+  });
+
+  it('keeps hand-written titles and descriptions to known lessons and search lengths', () => {
+    const ids = new Set(TOPIC_COURSES.flatMap((c) => c.lessons.map((l) => l.id)));
+    for (const [id, o] of Object.entries(OVERRIDES)) {
+      expect(ids.has(id), id).toBe(true);
+      if (o.title) expect(o.title.length, o.title).toBeLessThanOrEqual(62);
+      if (o.description) expect(o.description.length, o.description).toBeLessThanOrEqual(158);
+    }
   });
 
   it('makes readable slugs', () => {

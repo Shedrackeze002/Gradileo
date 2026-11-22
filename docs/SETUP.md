@@ -325,6 +325,38 @@ recording still works: the tutor shows its words on screen.
 To record one lesson on your own computer: `npx tsx --tsconfig tsconfig.json
 video/tools/tutor-voice.ts m10c-1-1 --out video/out/tutor` (after `npm ci` in `video/`).
 
+### 3.5 Search Console report
+
+Once a month the **Search Console report** workflow (`.github/workflows/search-console.yml`,
+`scripts/search-console-report.mjs`) reads how gradileo.com did in Google search over the last 28
+days and opens an issue labelled `search-console`. It lists the queries where a page sits on page 2
+(average position 8 to 20), the queries that are seen often on page 1 but rarely clicked, and the
+pages that bring the most visitors. A page's search title and description can then be changed in
+`src/seo/overrides.json` (keyed by lesson id), or the lesson improved so it answers the query sooner.
+
+It signs in as a Google Cloud service account, so it needs no password and can only read. Do these
+in order, once:
+
+1. In the [Google Cloud console](https://console.cloud.google.com/), choose a project (the one used
+   for YouTube is fine), open **APIs & Services → Library**, search for **Google Search Console
+   API** and press **Enable**.
+2. Open **IAM & Admin → Service accounts → Create service account**, name it
+   `gradileo-search-console`, and press **Done** without giving it any roles. Open it, go to
+   **Keys → Add key → Create new key → JSON**, and keep the file that downloads. Copy the
+   account's email address (it ends in `iam.gserviceaccount.com`).
+3. In [Search Console](https://search.google.com/search-console), open the gradileo.com property,
+   then **Settings → Users and permissions → Add user**. Paste the service account's email and
+   choose **Restricted** permission.
+4. In the GitHub repository, open **Settings → Secrets and variables → Actions → New repository
+   secret**, name it `GSC_SERVICE_ACCOUNT_KEY`, paste the whole JSON file as its value, and save.
+   Then delete the downloaded file.
+5. Run it once from **Actions → Search Console report → Run workflow**. Google needs a few weeks of
+   data on the new lesson pages before the report has much in it.
+
+Also add the site to [Bing Webmaster Tools](https://www.bing.com/webmasters) with **Import from
+Google Search Console**. Bing's index also feeds ChatGPT search and Copilot, and the import brings
+the sitemap with it.
+
 ## Privacy checklist
 
 - Generated student accounts use usernames, so students do not need to share an email address.
