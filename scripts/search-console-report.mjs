@@ -67,7 +67,9 @@ const [rows, pages, now, before] = await Promise.all([
   query(prevStart, prevEnd, []),
 ]);
 
-const path = (url) => url.replace(/^https:\/\/(www\.)?gradileo\.com/, '') || '/';
+// Pages on https://gradileo.com show as a path; any other address (www, http) keeps its host so the
+// rows for the same page at two addresses can be told apart.
+const path = (url) => (url.startsWith('https://gradileo.com/') ? url.slice('https://gradileo.com'.length) : url.replace(/^https:\/\//, ''));
 const pct = (x) => `${(x * 100).toFixed(1)}%`;
 const pos = (x) => x.toFixed(1);
 const total = (r) => r[0] ?? { clicks: 0, impressions: 0, ctr: 0, position: 0 };
