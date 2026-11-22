@@ -1769,8 +1769,11 @@ items ship or decisions change.
      catalyst. Unit 2 (Electrochemical Changes) has eight, `xq-c30-2-1` to `xq-c30-2-8`: aluminium
      meeting oxygen, oxidation numbers in burning ethene, which metal corrodes (OpenStax 17.6),
      permanganate and oxalic acid, an iron(II) titration, the copper and silver cell, the cadmium and
-     aluminum cell that is not spontaneous (17.3), and copper plating a key. Chem 10 is rendered and
-     on Drive, and Chem 20 is rendering.
+     aluminum cell that is not spontaneous (17.3), and copper plating a key (#265). Unit 3 (Chemical
+     Changes of Organic Compounds) has seven, `xq-c30-3-1` to `xq-c30-3-7`: naming pentane, 1-pentene
+     and 1-pentyne, naming a branched alkane, the four isomers of C4H9Cl, ethanol and its ether
+     isomer, 2-bromopropane from propene (OpenStax 20.1), the percent yield of ethyl acetate (20.3),
+     and burning octane. Chem 10 is rendered and on Drive, and Chem 20 is rendering.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
