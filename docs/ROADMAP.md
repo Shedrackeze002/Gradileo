@@ -1476,8 +1476,23 @@ items ship or decisions change.
        bands that sharpen as more slits are lit, two neighbouring slits close up, and white
        light spread into spectra. The videos: `p30-3-5` (Young's Double-Slit Experiment) and
        `p30-3-5-b` (Diffraction Gratings).
-     - Next: the rest of Unit 3 (lessons 3.6 to 3.8), then Unit 4. The physics lessons have no
-       tutor recordings yet.
+     - Written (20 November 2026): **the two videos of lesson 3.6** (photons and the
+       photoelectric effect), on a new `photons` picture: light drawn as packets of waves in the
+       colour of their wavelength, which cross from a lamp to a detector, or land on a metal and
+       free electrons only when hf is more than the work function. In a tube the electrons slow
+       on their way to a negative plate and turn back at the stopping voltage, bars set hf
+       beside W and the kinetic energy left over, and a dot follows the light along the graph of
+       Ek max against f. The videos: `p30-3-6` (Photons) and `p30-3-6-b` (The Photoelectric
+       Effect).
+     - Written (22 November 2026): **the two videos of lesson 3.7** (the momentum of a photon
+       and the Compton effect), on the same `photons` picture. Each photon carries an arrow for
+       its momentum, h ÷ λ; two beams alike land on a black card and a mirror on wheels, and the
+       mirror, which sends each photon back, gains speed twice as fast; and an X-ray photon
+       collides with an electron at rest, leaves at the angle of scattering with its waves
+       farther apart, and the electron recoils, with energy and momentum both conserved (the
+       three momenta close a triangle). The videos: `p30-3-7` (The Momentum of a Photon) and
+       `p30-3-7-b` (The Compton Effect).
+     - Next: lesson 3.8, then Unit 4. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
