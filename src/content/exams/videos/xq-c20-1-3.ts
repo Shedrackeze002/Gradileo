@@ -124,7 +124,7 @@ const video: Explainer = {
     {
       chapter: 'Step 3: Part (c)',
       layout: 'center',
-      main: [{ ...pick(acids, 'ai'), key: true }],
+      main: [pick(acids, 'ai')],
       lines: [
         { say: 'Step three, part c. An acid is a compound that gives hydrogen ions in water. Here is hydrogen chloride dissolving, up close.', show: ['ai', 'ai.labels', 'ai.key'] },
         { say: 'Each molecule hands over its hydrogen as a hydrogen ion and leaves a chloride ion behind. The acid is named from that negative ion.', show: 'ai.tally', play: 'ai.go' },
