@@ -19,10 +19,17 @@ import { Markdown } from '@/components/math/Markdown.tsx';
 import { Logo } from '@/components/layout/Logo.tsx';
 import { Figure } from '@/components/figures/Figure.tsx';
 import { coursePath, COURSES_PATH, lessonPath } from './paths.ts';
+import overrides from './overrides.json';
 
 export { coursePath, COURSES_PATH, lessonPath, slugify } from './paths.ts';
 
 export const SITE = 'https://gradileo.com';
+
+/**
+ * A lesson's own search title and description, where the made ones do not match what people
+ * search for (the monthly Search Console review adds them). Keyed by lesson id.
+ */
+export const OVERRIDES: Record<string, { title?: string; description?: string }> = overrides;
 
 /** A video's YouTube id and when it was recorded on Gradileo (the video_links table). */
 export interface VideoLink {
@@ -335,9 +342,10 @@ function lessonPage(place: LessonPlace, source: string, links: Map<string, Video
   const grade = gradeOf(course, lesson);
   const definition = [...content.intro, ...content.sections.flatMap((s) => s.blocks)].find((b): b is Extract<Block, { type: 'callout' }> => b.type === 'callout' && b.variant === 'definition');
   const lead = definition ? plainText(definition.md) : plainText(lesson.objectives.join(' '));
-  const description = clip(`${lesson.title}, a free Grade ${grade} ${subjectName(course).toLowerCase()} lesson: ${lead}`, 158);
+  const own = OVERRIDES[lesson.id];
+  const description = own?.description ?? clip(`${lesson.title}, a free Grade ${grade} ${subjectName(course).toLowerCase()} lesson: ${lead}`, 158);
   const full = `${lesson.title} · ${course.title} · Gradileo`;
-  const title = full.length <= 62 ? full : clip(`${lesson.title} · Gradileo`, 62);
+  const title = own?.title ?? (full.length <= 62 ? full : clip(`${lesson.title} · Gradileo`, 62));
   const videos = VIDEOS.filter((v) => v.lessonId === lesson.id && links.has(v.id));
 
   const body = renderToStaticMarkup(

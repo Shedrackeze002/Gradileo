@@ -1740,7 +1740,7 @@ items ship or decisions change.
   pages. Built in PR #247: `robots.txt` (dashboards, join links and shared reports kept out),
   preview tags and image (`public/og-image.jpg`), Organization structured data with the YouTube,
   Facebook and Instagram accounts, a title naming all four subjects, and footer links to the
-  accounts. Built next: public lesson pages. The build (`scripts/prerender.mjs`,
+  accounts. Built in PR #248: public lesson pages. The build (`scripts/prerender.mjs`,
   `src/seo/pages.tsx`) writes a plain HTML page for every lesson of every listed course at
   `/lessons/<id>-<title>`, one per course at `/courses/<course>` and a list at `/courses/`, plus the
   sitemap. A lesson page has the whole lesson (worked examples with every step, diagrams, one
@@ -1749,10 +1749,12 @@ items ship or decisions change.
   VideoObject (each chapter a Clip) and BreadcrumbList structured data. Anyone may now read
   `video_links` without the private `updated_by` column, so the build reads the videos with the
   public key; the deploy also runs daily so newly uploaded videos appear. New courses and lessons
-  get pages with no extra work. Next: a monthly Search Console review that finds queries where a
-  page sits on page 2 and improves those pages (needs a Search Console API connection), and adding
-  the site to Bing Webmaster Tools (it can import the Google property), which also feeds ChatGPT
-  search. Not adopted from the posts: Google Business Profile and local citation work, paid
+  get pages with no extra work (PR #248). Built next: the monthly *Search Console report* workflow
+  (docs/SETUP.md 3.5) opens an issue with the queries where a page sits on page 2 and those seen but
+  rarely clicked, and `src/seo/overrides.json` holds a lesson's own search title and description
+  for the review to change. Owner-side: the service account and its secret `GSC_SERVICE_ACCOUNT_KEY`
+  (docs/SETUP.md 3.5), and adding the site to Bing Webmaster Tools (it imports the Google
+  property and also feeds ChatGPT search). Not adopted from the posts: Google Business Profile and local citation work, paid
   backlinks, competitor comparison pages and paid rank trackers, since Gradileo is a free online
   platform with no local customers.
 
