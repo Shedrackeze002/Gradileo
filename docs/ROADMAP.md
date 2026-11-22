@@ -1749,7 +1749,11 @@ items ship or decisions change.
      3x − y = −2 with 2x² − y = 0 by substitution), and Unit 9 (Linear and Quadratic Inequalities) with
      three, from Intermediate Algebra 2e 3.4 and 9.8 and College Algebra 2e 7.3 (Hugh's two jobs,
      10x + 13y ≥ 260, x² − 2x − 15 ≤ 0, and the graph of x² + y < 9). Math 20-1 is complete: 34 exam
-     videos, one per lesson.
+     videos, one per lesson. Math 20-2 has begun with Unit 1 (Inductive and Deductive Reasoning):
+     four questions we wrote in the style of a Grade 11 reasoning unit test, since the free banks
+     have none at this level (a pattern's prediction for 12,345 × 9 + 6, a counterexample to "the sum
+     of two primes is even", a proof that three consecutive integers add to three times the middle
+     one, and a number riddle).
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
