@@ -1700,7 +1700,10 @@ items ship or decisions change.
      ladder, the unknown sides of a 30° triangle and the radio tower); Unit 3 (Factors, Roots and
      Powers) with six, `xq-m10c-3-1` to `xq-m10c-3-6`, from OpenStax Prealgebra 2e and Elementary
      Algebra 2e (hot dogs and buns, the 2704 cm² mosaic, Reed's garden, Elliott's garden of
-     √288, (m⁴n⁻³)(m⁻⁵n⁻²) and the falling flare). The owner approved the
+     √288, (m⁴n⁻³)(m⁻⁵n⁻²) and the falling flare); Unit 4 (Polynomials) with six, `xq-m10c-4-1` to
+     `xq-m10c-4-6`, from OpenStax Elementary Algebra 2e (18 × 17 by FOIL, (b + 3)(2b² − 5b + 8), the
+     area w² − 6w, Deirdre's x² + x − 56, 6x² + 7x + 2 by the "ac" method and the pool deck
+     (2w + 15)²). The owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
