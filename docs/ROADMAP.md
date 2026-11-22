@@ -1749,7 +1749,16 @@ items ship or decisions change.
      3x − y = −2 with 2x² − y = 0 by substitution), and Unit 9 (Linear and Quadratic Inequalities) with
      three, from Intermediate Algebra 2e 3.4 and 9.8 and College Algebra 2e 7.3 (Hugh's two jobs,
      10x + 13y ≥ 260, x² − 2x − 15 ≤ 0, and the graph of x² + y < 9). Math 20-1 is complete: 34 exam
-     videos, one per lesson.
+     videos, one per lesson. Math 20-2 has begun with Unit 1 (Inductive and Deductive Reasoning):
+     four questions we wrote in the style of a Grade 11 reasoning unit test, since the free banks
+     have none at this level (a pattern's prediction for 12,345 × 9 + 6, a counterexample to "the sum
+     of two primes is even", a proof that three consecutive integers add to three times the middle
+     one, and a number riddle), and Unit 2 (Properties of Angles and Triangles) with four from OpenStax
+     Contemporary Mathematics 10.2 to 10.4 (angle 5 between parallel lines, a triangle with angles
+     x, x + 1 and x − 19, the angles of a regular pentagon, and which congruence theorem a figure
+     shows), and Unit 3 (Acute Triangle Trigonometry) with three from OpenStax Precalculus 2e 8.1
+     and 8.2 (solving a triangle with the sine law, a guy-wire on a hill with the cosine law, and the
+     height of a blimp over a stadium).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
