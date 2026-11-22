@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Gradileo — a mastery-based mathematics, chemistry, physics and English platform with lessons, practice, assignments and an AI teaching assistant." />
+    <meta name="description" content="Free mastery-based lessons, explainer videos and unlimited practice questions in mathematics, chemistry, physics and English for Grades 5 to 12, with assignments and an AI teaching assistant for teachers." />
     <meta name="theme-color" content="#6a43e3" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
@@ -12,7 +12,47 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Gradileo" />
-    <title>Gradileo — Learn math and chemistry to mastery</title>
+    <title>Gradileo: Mathematics, Chemistry, Physics and English, Grades 5 to 12</title>
+    <!-- How a shared link to gradileo.com looks on social sites and in chat apps. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gradileo" />
+    <meta property="og:title" content="Gradileo: Mathematics, Chemistry, Physics and English, Grades 5 to 12" />
+    <meta property="og:description" content="Free mastery-based lessons, explainer videos and unlimited practice questions in mathematics, chemistry, physics and English for Grades 5 to 12, with assignments and an AI teaching assistant for teachers." />
+    <meta property="og:url" content="https://gradileo.com/" />
+    <meta property="og:image" content="https://gradileo.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Gradileo: Learn it. Practise it. Master it." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Tells search engines who runs the site and which social accounts belong to it. A data block,
+         not a script that runs, so the Content-Security-Policy does not need its hash. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://gradileo.com/#organization",
+            "name": "Gradileo",
+            "url": "https://gradileo.com/",
+            "logo": "https://gradileo.com/icon-512.png",
+            "description": "Free mastery-based lessons, explainer videos and practice in mathematics, chemistry, physics and English for Grades 5 to 12.",
+            "sameAs": [
+              "https://www.youtube.com/@Gradileo",
+              "https://www.facebook.com/learnwithgradileo",
+              "https://www.instagram.com/learnwithgradileo/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://gradileo.com/#website",
+            "name": "Gradileo",
+            "url": "https://gradileo.com/",
+            "publisher": { "@id": "https://gradileo.com/#organization" }
+          }
+        ]
+      }
+    </script>
     <script>
       // Apply the saved theme before first paint to avoid a flash.
       try {
