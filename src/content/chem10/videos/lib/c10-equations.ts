@@ -46,6 +46,8 @@ const T: Record<string, Template> = {
     bonds: '1=2 1-3 1-4',
     formula: 'CaCO₃',
   },
+  BaO: { atoms: [['Ba', -0.7, 0, 2], ['O', 0.7, 0, -2]], bonds: '', formula: 'BaO' },
+  BaO2: { atoms: [['Ba', -1.15, 0, 2], ['O', 0.3, 0, -1], ['O', 1.45, 0, -1]], bonds: '1-2', formula: 'BaO₂' },
   NaOH: { atoms: [['Na', -1.05, 0, 1], ['O', 0.35, 0, -1], ['H', 1.15, 0]], bonds: '1-2', formula: 'NaOH' },
   MgCl2: { atoms: [['Cl', -1.5, 0, -1], ['Mg', 0, 0, 2], ['Cl', 1.5, 0, -1]], bonds: '', formula: 'MgCl₂' },
   MgOH2: {
