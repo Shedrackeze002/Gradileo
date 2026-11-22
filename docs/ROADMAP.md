@@ -1690,7 +1690,13 @@ items ship or decisions change.
      bending a TV's cathode ray (22.5), an alpha particle's closest approach to gold (19.3), and,
      with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
      distance (16.3). Next: lessons 3.6 and 3.7 once the photon animation is on main, and 4.3 to
-     4.7 once their animations are built. The owner approved the
+     4.7 once their animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
+     Unit 1 (Measurement) with eight, `xq-m10c-1-1` to `xq-m10c-1-8`, of which the hand-span
+     referent and the vernier caliper are questions Gradileo wrote (the free banks have none) and
+     the rest come from OpenStax Prealgebra 2e (feet and inches, 100 km in miles, the soda can, the
+     globe, the cone of fries, the street light post); Unit 2 (Trigonometry) with four,
+     `xq-m10c-2-1` to `xq-m10c-2-4`, from OpenStax Algebra and Trigonometry 2e 7.2 (the tree, the
+     ladder, the unknown sides of a 30° triangle and the radio tower). The owner approved the
      exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
