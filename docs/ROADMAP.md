@@ -1758,7 +1758,9 @@ items ship or decisions change.
      x, x + 1 and x − 19, the angles of a regular pentagon, and which congruence theorem a figure
      shows), and Unit 3 (Acute Triangle Trigonometry) with three from OpenStax Precalculus 2e 8.1
      and 8.2 (solving a triangle with the sine law, a guy-wire on a hill with the cosine law, and the
-     height of a blimp over a stadium).
+     height of a blimp over a stadium), and Unit 4 (Radicals) with four from OpenStax Intermediate
+     Algebra 2e 8.2 to 8.6 (√800, (7 + √3)(9 − √3), three denominators to rationalize, and
+     √(x + 1) − x + 1 = 0 with an extraneous root).
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
