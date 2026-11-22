@@ -10,7 +10,7 @@ const [, left, front, back] = SHAPES.tetrahedral();
 const shift = ([x, y]: [number, number], dx: number): [number, number] => [x + dx, y];
 
 // Carbon dioxide: δ− on each oxygen, δ+ on carbon, and two equal pulls pointing opposite ways.
-const co2 = figure(
+export const co2 = figure(
   'm',
   [
     model({
@@ -40,7 +40,7 @@ const co2 = figure(
 );
 
 // Water: both pulls lean up towards the oxygen at the point of the V.
-const h2o = figure('m', [
+export const h2o = figure('m', [
   model({
     atoms: [
       { id: 'O', symbol: 'O', at: [0, 0] },
@@ -68,7 +68,7 @@ const h2o = figure('m', [
 // Boron trifluoride (three pulls spread evenly round a flat triangle) beside ammonia (three pulls
 // leaning up towards the nitrogen at the top of the pyramid).
 const N0 = 6.4;
-const pair = figure('m', [
+export const pair = figure('m', [
   model({
     name: 'b',
     atoms: [
@@ -116,7 +116,7 @@ const pair = figure('m', [
 
 // Carbon dioxide (src/video/atoms.ts): each oxygen shares two pairs with carbon (clip `share`), then
 // both oxygens pull their pairs outwards (`pull`), in opposite directions, so the pulls cancel.
-const co2Atoms: AtomsEl = {
+export const co2Atoms: AtomsEl = {
   kind: 'atoms',
   id: 'ca',
   span: [17, 7],
@@ -141,7 +141,7 @@ const co2Atoms: AtomsEl = {
 // Water: oxygen shares a pair with each hydrogen (clip `share`), then pulls both towards itself
 // (`pull`), so both pulls lean the same way.
 const water = waterShare('wa', 400);
-const waterAtoms: AtomsEl = {
+export const waterAtoms: AtomsEl = {
   ...water,
   clips: { ...water.clips, pull: { phases: [{ dur: 2.2, pull: [{ to: 'o', from: 'h1', by: 0.55 }, { to: 'o', from: 'h2', by: 0.55 }] }, { dur: 0.4 }] } },
   poster: 'pull',
