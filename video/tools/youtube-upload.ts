@@ -10,6 +10,12 @@
 // not uploaded again, only put in its playlist if it is missing, so a run can be repeated. A unit or
 // course id stands for every video in videos.json in it.
 //
+// Exam question videos (src/content/exams/videos/) go up too: "exams" stands for every one, in course
+// and lesson order, and "exams:<course id>" for one course's. Each goes in its course's own playlist,
+// "Physics 10 - Exam Questions", in the order of the lessons they practise; its title, description
+// and tags come from the youtube.txt made when it was rendered (it has no record in videos.json), and
+// one not yet rendered and put in Drive is skipped until it is.
+//
 // A unit's playlist is named for its course and unit, "Math 10 - Unit 3 (Factors and Products)", and
 // is made when missing. A playlist named for the course's first name ("Math 10C - Unit 1
 // (Measurements)", "Maths 10C Unit 2 (Trigonometry)", made before courses were named by grade and
@@ -30,8 +36,9 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
-import { FIRST_NAME, MANIFEST, scriptOf, youtubeFieldsFor } from '../lib/catalog.ts';
-import { download, find, place, unitVideos, videoFolder, videoIds } from '../lib/google.ts';
+import { fieldsFromText } from '../../src/video/youtube-text.ts';
+import { FIRST_NAME, MANIFEST, SCRIPT_FILES, scriptOf, youtubeFieldsFor } from '../lib/catalog.ts';
+import { download, examPlace, examVideos, find, folderAt, place, ROOT_FOLDER, unitVideos, videoFolder, videoIds, type ExamPlace } from '../lib/google.ts';
 import { loadUnfinished, loadUploaded, saveUnfinished, saveUploaded, type Missing } from '../lib/unfinished.ts';
 import {
   addToPlaylist,
@@ -102,7 +109,8 @@ async function files(id: string): Promise<{ from: string; mp4: Buffer; png: Buff
 async function fetchFiles(id: string, names: string[]): Promise<Array<{ from: string; data: Buffer }>> {
   const local = path.join(OUT, id);
   if (names.every((n) => existsSync(path.join(local, n)))) return names.map((n) => ({ from: 'session', data: readFileSync(path.join(local, n)) }));
-  const folder = await videoFolder(place(id));
+  const exam = await examPlace(id);
+  const folder = exam ? await folderAt([ROOT_FOLDER, ...exam.folders]) : await videoFolder(place(id));
   if (!folder) throw new Error('not in the session and not in Drive');
   const got: Array<{ from: string; data: Buffer }> = [];
   for (const n of names) {
@@ -111,6 +119,20 @@ async function fetchFiles(id: string, names: string[]): Promise<Array<{ from: st
     got.push({ from: 'Drive', data: await download(file.id) });
   }
   return got;
+}
+
+/** A video's YouTube title, description and tags: an exam question video's from its youtube.txt. */
+async function fieldsOf(id: string) {
+  if (!(await examPlace(id))) return youtubeFieldsFor(id);
+  const [text] = await fetchFiles(id, ['youtube.txt']);
+  return fieldsFromText(text.data.toString('utf8'));
+}
+
+/** Whether an exam question video has been rendered: its MP4 is in the session or in Drive. */
+async function rendered(exam: ExamPlace): Promise<boolean> {
+  if (existsSync(path.join(OUT, exam.id, `${exam.id}.mp4`))) return true;
+  const folder = await folderAt([ROOT_FOLDER, ...exam.folders]);
+  return Boolean(folder && (await find(`${exam.id}.mp4`, folder, false)));
 }
 
 // ---------------------------------------------------------------- playlists
@@ -124,8 +146,11 @@ const scriptOfYoutube = new Map<string, string>();
  * videos left out to their playlists.
  */
 let newPlaylistsRefused = false;
-/** The playlists this run has looked at, by playlist id, with their units. */
-const touched = new Map<string, { list: Playlist; unit: UnitMeta }>();
+/** The playlists this run has looked at, by playlist id, with their videos in order. */
+const touched = new Map<string, { list: Playlist; order: string[] }>();
+
+/** Every exam question video, in order; filled before the uploads start. */
+let exams: ExamPlace[] = [];
 
 /** A unit's playlist title: "Math 10 - Unit 3 (Factors and Products)". */
 const playlistTitle = (course: CourseMeta, unit: UnitMeta) => `${course.shortTitle} - Unit ${unit.number} (${unit.title})`;
@@ -145,11 +170,33 @@ async function unitPlaylist(course: CourseMeta, unit: UnitMeta): Promise<Playlis
  * Puts a video on the channel into its unit's playlist (made if missing), after the unit's earlier
  * videos already there. Returns what it did, for the log.
  */
-async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Promise<string> {
+/** A video's playlist: its title, the playlist when there is one, what the playlist says about itself, and its videos in order. */
+async function playlistFor(id: string): Promise<{ title: string; list?: Playlist; about: string; order: string[] }> {
+  const exam = await examPlace(id);
+  if (exam) {
+    const { course } = exam;
+    const title = `${course.shortTitle} - Exam Questions`;
+    lists ??= await playlists();
+    return {
+      title,
+      list: lists.find((p) => p.title === title),
+      about: `Real exam and quiz questions for ${course.title}, each solved one small step at a time, in lesson order. Every video names the question's source.\nPractise each topic with instant feedback on Gradileo: https://gradileo.com/`,
+      order: exams.filter((e) => e.course.id === course.id).map((e) => e.id),
+    };
+  }
   const { course, unit } = place(id);
-  let list = await unitPlaylist(course, unit);
-  const title = playlistTitle(course, unit);
-  if (list) touched.set(list.id, { list, unit });
+  return {
+    title: playlistTitle(course, unit),
+    list: await unitPlaylist(course, unit),
+    about: `${unit.title}: ${unit.description}\n\nExplainer videos in lesson order, each with a "Your turn" question to try.\nPractise this topic with instant feedback on Gradileo: https://gradileo.com/`,
+    order: unitVideos(unit),
+  };
+}
+
+async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Promise<string> {
+  const { title, about, order, list: found } = await playlistFor(id);
+  let list = found;
+  if (list) touched.set(list.id, { list, order });
   const old = list && list.title !== title ? list.title : undefined;
   if (dryRun) {
     const where = list ? `"${list.title}"${old ? `, to be renamed "${title}"` : ''}` : `a new playlist, "${title}"`;
@@ -158,7 +205,6 @@ async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Pro
   if (list && old) await renamePlaylist(list, title);
   if (list?.videos.includes(youtubeId)) return `in "${list.title}"${old ? ` (renamed from "${old}")` : ''}`;
   if (!list) {
-    const about = `${unit.title}: ${unit.description}\n\nExplainer videos in lesson order, each with a "Your turn" question to try.\nPractise this topic with instant feedback on Gradileo: https://gradileo.com/`;
     if (newPlaylistsRefused) throw new Error(`no new playlist: YouTube refused one earlier this run, so "${title}" is made on a later run`);
     try {
       list = await createPlaylist(title, about);
@@ -167,9 +213,8 @@ async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Pro
       throw e;
     }
     lists!.push(list);
-    touched.set(list.id, { list, unit });
+    touched.set(list.id, { list, order });
   }
-  const order = unitVideos(unit);
   const mine = order.indexOf(id);
   const position = list.videos.filter((v) => {
     const at = order.indexOf(scriptOfYoutube.get(v) ?? '');
@@ -235,10 +280,15 @@ if (!withCaptions && !dryRun) {
   for (const [id, missing] of unfinished) if (missing.includes('captions')) setUnfinished(id, missing.filter((m) => m !== 'captions'));
 }
 
+exams = await examVideos();
+/** Exam question videos by their title, to know them on the channel (they have no record in videos.json). */
+const examByTitle = new Map<string, string>();
+for (const e of exams) examByTitle.set((await import(SCRIPT_FILES.get(e.id)!)).default.title as string, e.id);
+
 const onChannel = new Map<string, string>();
 try {
   for (const v of await uploads()) {
-    const id = scriptOf(v.snippet.title, v.snippet.description);
+    const id = scriptOf(v.snippet.title, v.snippet.description) ?? examByTitle.get(v.snippet.title.split(' | ')[0].trim());
     if (id) onChannel.set(id, v.id);
     if (id) scriptOfYoutube.set(v.id, id);
   }
@@ -270,7 +320,12 @@ if (unlisted) console.log(`${unlisted} uploaded earlier but missing from YouTube
 
 let done = 0;
 let failed = 0;
-const ids = videoIds(targets, (v) => v in MANIFEST);
+// "exams" is every exam question video, and "exams:<course id>" a course's.
+const examTargets = targets.flatMap((t) =>
+  t === 'exams' ? exams.map((e) => e.id) : t.startsWith('exams:') ? exams.filter((e) => e.course.id === t.slice(6)).map((e) => e.id) : [t],
+);
+const ids = videoIds(examTargets, (v) => v in MANIFEST);
+let notRendered = 0;
 for (const id of ids) {
   const known = onChannel.get(id);
   if (known) {
@@ -305,13 +360,18 @@ for (const id of ids) {
   }
   if (done >= limit) continue;
   try {
-    const course = place(id).course;
+    const exam = await examPlace(id);
+    if (exam && !(await rendered(exam))) {
+      notRendered++;
+      continue;
+    }
+    const course = exam?.course ?? place(id).course;
     const kids = MADE_FOR_KIDS[course.id];
     if (kids === undefined) throw new Error(`decide whether ${course.shortTitle} is made for kids (MADE_FOR_KIDS in this tool)`);
-    const text = await youtubeFieldsFor(id);
+    const text = await fieldsOf(id);
     if (dryRun) {
-      const list = await unitPlaylist(course, place(id).unit);
-      console.log(`${id}: would upload "${text.title}" (${privacy}${kids ? ', made for kids' : ''}) into "${list?.title ?? 'a new playlist'}"`);
+      const { title, list } = await playlistFor(id);
+      console.log(`${id}: would upload "${text.title}" (${privacy}${kids ? ', made for kids' : ''}) into "${list?.title ?? `a new playlist, "${title}"`}"`);
       done++;
       continue;
     }
@@ -354,8 +414,7 @@ for (const id of ids) {
 if (unfinishedChanged) await saveUnfinished(unfinished);
 if (uploadedChanged && !dryRun) await saveUploaded(uploaded);
 
-for (const { list, unit } of touched.values()) {
-  const order = unitVideos(unit);
+for (const { list, order } of touched.values()) {
   const rank = (v: string) => {
     const at = order.indexOf(scriptOfYoutube.get(v) ?? '');
     return at < 0 ? Infinity : at;
@@ -370,9 +429,10 @@ for (const { list, unit } of touched.values()) {
   }
 }
 
-const left = ids.filter((id) => !onChannel.has(id)).length - (dryRun ? 0 : done);
+const left = ids.filter((id) => !onChannel.has(id)).length - (dryRun ? 0 : done) - notRendered;
 console.log(
   `${done} ${dryRun ? 'to upload' : 'uploaded'}${failed ? `, ${failed} failed` : ''}; ${left} of ${ids.length} not on YouTube yet` +
+    (notRendered ? `; ${notRendered} exam question videos not rendered yet` : '') +
     (unfinished.size ? `; ${unfinished.size} on YouTube still need ${withCaptions ? 'a thumbnail or captions' : 'a thumbnail'}` : ''),
 );
 if (failed) process.exit(1);

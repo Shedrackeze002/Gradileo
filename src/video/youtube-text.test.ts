@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getCourse } from '../../engine/curriculum/index.ts';
-import { levelOf, youtubeFields, youtubeText, youtubeTitle } from './youtube-text.ts';
+import { fieldsFromText, levelOf, youtubeFields, youtubeText, youtubeTitle } from './youtube-text.ts';
 
 const video = { title: 'Percents of Money, Part 1: Percent of an Amount and Tips', summary: 'Finding a percent of an amount.', lessonId: 'm104-3-3' };
 const chapters = [
@@ -104,5 +104,21 @@ describe('levelOf', () => {
     expect(f.description).toContain('Level: Grade 11');
     expect(f.tags).toContain('exam question');
     expect(f.tags).not.toContain('explainer');
+  });
+});
+
+describe('fieldsFromText', () => {
+  it('reads back the title, description and tags that youtubeText writes', () => {
+    const exam = {
+      ...video,
+      lessonId: '',
+      exam: { lesson: 'm104-3-3', source: 'A test source', licence: 'CC BY 4.0', url: 'https://example.org/', question: 'What is 15% of 40?', choices: ['4', '6'] },
+    };
+    expect(fieldsFromText(youtubeText(exam, chapters))).toEqual(youtubeFields(exam, chapters));
+    expect(fieldsFromText(youtubeText(video, null))).toEqual(youtubeFields(video, null));
+  });
+
+  it('refuses a file that is not a YouTube text', () => {
+    expect(() => fieldsFromText('hello')).toThrow();
   });
 });
