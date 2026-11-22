@@ -1739,7 +1739,17 @@ items ship or decisions change.
      Quadratic Equations) with four, from 2.5 (12x² + 11x + 2 = 0 by grouping, the 119 ft² garden,
      x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant),
      and Unit 5 (Radical Expressions and Equations) with three, from 1.3 and 2.6 (3√(80x) − 4√(45x) = 0,
-     7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root).
+     7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root),
+     and Unit 6 (Rational Expressions and Equations) with four, from 1.6 and 2.2 (Brenda's floor tiles,
+     a quotient of four factored polynomials that comes to 1, 3/(x + 5) − 1/(x − 3), and
+     2/(x − 2) + 1/(x + 1) = 1/(x² − x − 2)), and Unit 7 (Absolute Value and Reciprocal Functions) with
+     four, from 3.6 and 5.6 (the numbers 4 away from 8, the graph of y = |x − 1|, |2x − 1| − 3 = 0, and
+     the domain and asymptotes of 2/(5x + 2) as the reciprocal of a line), Unit 8 (Systems of Equations)
+     with two, from 7.3 (the laptop company's break-even points, 2 to 20 laptops a day, and
+     3x − y = −2 with 2x² − y = 0 by substitution), and Unit 9 (Linear and Quadratic Inequalities) with
+     three, from Intermediate Algebra 2e 3.4 and 9.8 and College Algebra 2e 7.3 (Hugh's two jobs,
+     10x + 13y ≥ 260, x² − 2x − 15 ≤ 0, and the graph of x² + y < 9). Math 20-1 is complete: 34 exam
+     videos, one per lesson.
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
@@ -1747,7 +1757,11 @@ items ship or decisions change.
      (Thermochemical Changes) has seven, `xq-c30-1-1` to `xq-c30-1-7`: the cold pack, coffee and the
      silver spoon (OpenStax 5.2), methane's molar enthalpy (5.3), propane's enthalpy diagram, Hess's
      law for propane, ethanol from enthalpies of formation, and a potential energy diagram with a
-     catalyst. Chem 10 is rendered and on Drive, and Chem 20 is rendering.
+     catalyst. Unit 2 (Electrochemical Changes) has eight, `xq-c30-2-1` to `xq-c30-2-8`: aluminium
+     meeting oxygen, oxidation numbers in burning ethene, which metal corrodes (OpenStax 17.6),
+     permanganate and oxalic acid, an iron(II) titration, the copper and silver cell, the cadmium and
+     aluminum cell that is not spontaneous (17.3), and copper plating a key. Chem 10 is rendered and
+     on Drive, and Chem 20 is rendering.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
