@@ -2936,7 +2936,168 @@ export interface MatterEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+/** One step of a cathode ray tube's clip. */
+export interface CathodePhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** Switch the high voltage on or off at the start of the step: the rays then cross the tube from the cathode, or stop. */
+  on?: boolean;
+  /** Slide the speed of the electrons to this many metres per second (a tube that is given a speed). */
+  speed?: number;
+  /** Slide the accelerating voltage to this (a tube that is given a voltage). */
+  volts?: number;
+  /** Slide the electric field between the plates to this, in volts per metre (positive: the top plate is positive). */
+  field?: number;
+  /** Slide the magnetic field to this, in teslas (positive: into the picture). */
+  tesla?: number;
+  /** Slide the air left in the tube to this, from 0 (pumped out) to 1. */
+  air?: number;
+  /** In a `shadow` picture: stand the cross up (true) or fold it down flat (false). */
+  stand?: boolean;
+  /** Name the metal of the cathode, and the gas left in the tube, from the start of the step. */
+  metal?: string;
+  gas?: string;
+}
+
+export interface CathodeClip {
+  phases: CathodePhase[];
+}
+
+/** What a cathode ray tube can show; each is a part ("tube.force"). */
+export const CATHODE_PARTS = ['names', 'values', 'speed', 'straight', 'force', 'circle', 'face', 'made'] as const;
+
+/**
+ * A cathode ray tube (src/video/cathode.ts), drawn to scale from the side. Electrons leave the
+ * cathode with a `speed`, or after being accelerated through `volts`, pass the slit of the
+ * anode and cross to a screen that glows where they land. With a `field` (volts per metre) the
+ * tube has two plates, 5 cm long and 4 cm apart, and with `tesla` a magnetic field in the same
+ * place, at right angles to the picture; the path of the beam is worked out from the two forces
+ * with q/m = 1.76 × 10¹¹ C/kg, and phases slide the fields. Parts: `names`, `values` (E, B and
+ * the accelerating voltage), `speed`, `straight` (the path with no fields, dashed), `force` (the
+ * electric and the magnetic force on one electron), `circle` (the circle that the magnetic
+ * field bends the beam along, with its radius) and `made` (the metal of the cathode and the gas
+ * left in the tube).
+ *
+ * `picture: 'wheel'` puts a paddle wheel on rails in the way of the rays, which push it along;
+ * `picture: 'shadow'` stands a metal cross in a broad beam, and the part `face` draws the end of
+ * the tube from the front, with the shadow of the cross.
+ */
+export interface CathodeEl {
+  kind: 'cathode';
+  id: string;
+  /** What the tube holds: plates and a magnetic field for a narrow beam (`ray`, as otherwise), a paddle wheel, or a cross that casts a shadow. */
+  picture?: 'ray' | 'wheel' | 'shadow';
+  /** The speed of the electrons, in metres per second, or the voltage that accelerates them from rest (one of the two, for a `ray` picture). */
+  speed?: number;
+  volts?: number;
+  /** The electric field between the plates at the start, in volts per metre (positive: the top plate is positive). Leave it out for a tube with no plates. */
+  field?: number;
+  /** The magnetic field at the start, in teslas (positive: into the picture). Leave it out for a tube with no magnetic field. */
+  tesla?: number;
+  /** The air left in the tube at the start, from 0 (pumped out, as otherwise) to 1. */
+  air?: number;
+  /** Start with the high voltage off. */
+  off?: boolean;
+  /** In a `shadow` picture: start with the cross folded down flat. */
+  flat?: boolean;
+  /** The metal of the cathode and the gas left in the tube, for the part `made`. */
+  metal?: string;
+  gas?: string;
+  /** The pixels drawn for each centimetre (44 otherwise), where the left end of the glass is, in pixels from the left of the picture (centred otherwise), and the height of the beam as a share of the picture's height, from the top (0.5 otherwise). */
+  scale?: number;
+  left?: number;
+  axis?: number;
+  clips: Record<string, CathodeClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof CATHODE_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of alpha particles. */
+export interface AlphasPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** Alpha particles to send, evenly through the step. In a `past` picture each number is how far from the line through the centre of the nucleus the particle is aimed, in femtometres (positive: above it); elsewhere the numbers only count the particles. */
+  fire?: number[];
+  /** Slide the alpha particles sent each second to this (a `pudding` or a `ring` picture). */
+  rate?: number;
+  /** Slide the kinetic energy of the alpha particles to this many MeV. */
+  mev?: number;
+  /** Change the nucleus from the start of the step: its protons, and the name of its element. */
+  z?: number;
+  name?: string;
+  /** In an `orbit` picture: the electrons radiate their energy away through this step, and spiral into the nucleus by its end. */
+  fall?: boolean;
+}
+
+export interface AlphasClip {
+  phases: AlphasPhase[];
+}
+
+/** What a picture of alpha particles can show; each is a part ("foil.count"). */
+export const ALPHAS_PARTS = ['names', 'paths', 'count', 'angle', 'scale', 'energy', 'distance', 'force', 'values', 'waves'] as const;
+
+/**
+ * Alpha particles fired at atoms (src/video/alphas.ts). An alpha particle has a charge of +2e
+ * and a nucleus of `z` protons +Ze, so the two repel with a force k(2e)(Ze) ÷ r², and each path
+ * is worked out from that force with k = 8.99 × 10⁹ N·m²/C², e = 1.60 × 10⁻¹⁹ C and
+ * 1 MeV = 1.60 × 10⁻¹³ J. The `picture` is one of five:
+ *
+ * - `pudding`: Thomson's atom, a ball of positive charge with electrons dotted through it. Given
+ *   a `rate`, a source sends alpha particles across it in straight lines. Parts: `names`,
+ *   `paths`, `count`.
+ * - `ring`: the experiment from above, with a source, a gold foil and a screen all round that
+ *   flashes and keeps a mark where each alpha particle lands. A share `back` of them (0.02
+ *   otherwise) are turned through more than 90°. Parts: `names`, `count`.
+ * - `past`: one nucleus to scale, `span` femtometres across the picture (1000 otherwise), and
+ *   the paths of the alpha particles that a phase fires, each aimed to miss by its own distance.
+ *   Parts: `names`, `angle` (the angle each was turned through), `scale` (a ruler).
+ * - `head`: one alpha particle that heads straight for the nucleus, stops where its kinetic
+ *   energy has all become electric potential energy, and is pushed back. Parts: `names`,
+ *   `energy` (the two energies as bars), `distance` (r, and the closest approach), `force`,
+ *   `values` (the energy of the particle and the protons of the nucleus).
+ * - `orbit`: Rutherford's atom, a small nucleus with `electrons` (1 otherwise) that circle it. A
+ *   phase with `fall` makes them radiate their energy away and spiral into the nucleus, which
+ *   is what the model wrongly predicts. Parts: `names`, `waves` (the waves that an accelerating
+ *   charge gives out).
+ */
+export interface AlphasEl {
+  kind: 'alphas';
+  id: string;
+  picture: 'pudding' | 'ring' | 'past' | 'head' | 'orbit';
+  /** The kinetic energy of each alpha particle, in MeV (5 otherwise). */
+  mev?: number;
+  /** The protons in the nucleus (79 otherwise) and the name of its element ('Gold' otherwise). */
+  z?: number;
+  name?: string;
+  /** The alpha particles sent each second at the start (a `pudding` or `ring` picture). A `pudding` with no rate is drawn alone, with no source. */
+  rate?: number;
+  /** In an `orbit` picture: the electrons that circle the nucleus, from 1 to 4. */
+  electrons?: number;
+  /** In a `ring` picture: the share of the alpha particles that are turned back, from 0 to 0.2. */
+  back?: number;
+  /** In a `past` picture: the femtometres across the picture, and the seconds a particle takes to cross it (3.2 otherwise). */
+  span?: number;
+  cross?: number;
+  /** In a `head` picture: the pixels drawn for each femtometre (2 otherwise), the femtometres the particle covers each second far from the nucleus (130 otherwise), and the pixels of force arrow for each newton (5 otherwise). */
+  scale?: number;
+  pace?: number;
+  forceScale?: number;
+  clips: Record<string, AlphasClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof ALPHAS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3739,6 +3900,75 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a picture of alpha particles: an energy or a nucleus that is not there, a rate where particles are fired one by one, or a clip that sends nothing that the picture can show. */
+export function checkAlphas(e: AlphasEl): string[] {
+  const problems: string[] = [];
+  const stream = e.picture === 'pudding' || e.picture === 'ring';
+  if (!['pudding', 'ring', 'past', 'head', 'orbit'].includes(e.picture)) problems.push(`"${e.picture}" is not a picture of alpha particles.`);
+  if (e.electrons !== undefined && (e.picture !== 'orbit' || !(Number.isInteger(e.electrons) && e.electrons >= 1 && e.electrons <= 4))) problems.push('`electrons` is the number that circle the nucleus of an orbit picture, from 1 to 4.');
+  if (e.mev !== undefined && !(e.mev > 0)) problems.push('the energy of the alpha particles must be more than zero.');
+  if (e.z !== undefined && !(Number.isInteger(e.z) && e.z > 0)) problems.push('the protons in the nucleus are a whole number above zero.');
+  if (e.rate !== undefined && !stream) problems.push(`a ${e.picture} picture fires its alpha particles one by one (\`fire\`), and takes no rate.`);
+  if (e.rate !== undefined && !(e.rate >= 0 && e.rate <= 40)) problems.push('the rate is from 0 to 40 alpha particles each second.');
+  if (e.back !== undefined && (e.picture !== 'ring' || !(e.back >= 0 && e.back <= 0.2))) problems.push('`back` is the share turned back in a ring picture, from 0 to 0.2.');
+  if ((e.span !== undefined || e.cross !== undefined) && e.picture !== 'past') problems.push('only a past picture has a `span` and a `cross`.');
+  if (e.span !== undefined && !(e.span >= 100 && e.span <= 20000)) problems.push('the span is from 100 to 20000 femtometres.');
+  if (e.cross !== undefined && !(e.cross > 0)) problems.push('`cross` is the seconds an alpha particle takes to cross the picture, above zero.');
+  if ((e.scale !== undefined || e.pace !== undefined || e.forceScale !== undefined) && e.picture !== 'head') problems.push('only a head picture has a `scale`, a `pace` and a `forceScale`.');
+  if (e.scale !== undefined && !(e.scale > 0)) problems.push('the scale must be more than zero.');
+  if (e.pace !== undefined && !(e.pace > 0)) problems.push('the pace must be more than zero.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(ALPHAS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.rate !== undefined && (!stream || e.rate === undefined)) problems.push(`clip "${name}" changes a rate, and the picture was not given one (give a pudding or a ring a rate of 0 to start with).`);
+      if (ph.rate !== undefined && !(ph.rate >= 0 && ph.rate <= 40)) problems.push(`clip "${name}" asks for a rate that is not from 0 to 40.`);
+      if (ph.mev !== undefined && !(ph.mev > 0)) problems.push(`clip "${name}" slides the energy to nothing.`);
+      if (ph.z !== undefined && !(Number.isInteger(ph.z) && ph.z > 0)) problems.push(`clip "${name}" asks for a nucleus whose protons are not a whole number above zero.`);
+      if (ph.fall !== undefined && e.picture !== 'orbit') problems.push(`clip "${name}" makes electrons fall, and only an orbit picture has electrons that circle.`);
+      if (ph.fire !== undefined && e.picture === 'orbit') problems.push(`clip "${name}" fires alpha particles, and an orbit picture has none.`);
+      if (ph.fire !== undefined && e.picture === 'pudding' && e.rate === undefined) problems.push(`clip "${name}" fires alpha particles at a pudding that has no source (give it a rate of 0 to start with).`);
+      if (ph.fire !== undefined && e.picture === 'head' && ph.fire.some((miss) => miss !== 0)) problems.push(`clip "${name}" aims to one side in a head picture, where every alpha particle heads straight for the nucleus (fire 0).`);
+    }
+  }
+  return problems;
+}
+
+/** Problems with a cathode ray tube: no speed, a field it has no plates for, or a clip that changes what the tube does not have. */
+export function checkCathode(e: CathodeEl): string[] {
+  const problems: string[] = [];
+  const ray = (e.picture ?? 'ray') === 'ray';
+  const share = (x: number) => x >= 0 && x <= 1;
+  if (ray && e.speed === undefined && e.volts === undefined) problems.push('a tube needs the speed of its electrons, or a voltage to accelerate them through.');
+  if (e.speed !== undefined && e.volts !== undefined) problems.push('give a tube a speed or a voltage, not both.');
+  if (e.speed !== undefined && !(e.speed > 0)) problems.push('the speed must be more than zero.');
+  if (e.volts !== undefined && !(e.volts > 0)) problems.push('the voltage must be more than zero.');
+  if (!ray && (e.field !== undefined || e.tesla !== undefined)) problems.push(`a ${e.picture} picture has no plates and no magnetic field.`);
+  if (e.air !== undefined && !share(e.air)) problems.push('the air left in the tube is from 0 to 1.');
+  if (e.flat && e.picture !== 'shadow') problems.push('only a shadow picture has a cross to fold flat.');
+  if (e.scale !== undefined && !(e.scale >= 20 && e.scale <= 60)) problems.push('the scale is from 20 to 60 pixels to a centimetre.');
+  if (e.axis !== undefined && !(e.axis >= 0.2 && e.axis <= 0.8)) problems.push('the beam is drawn between 0.2 and 0.8 of the way down the picture.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(CATHODE_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.speed !== undefined && (e.speed === undefined || !(ph.speed > 0))) problems.push(`clip "${name}" changes a speed that the tube was not given, or slides it to nothing.`);
+      if (ph.volts !== undefined && (e.volts === undefined || !(ph.volts > 0))) problems.push(`clip "${name}" changes a voltage that the tube was not given, or slides it to nothing.`);
+      if (ph.field !== undefined && e.field === undefined) problems.push(`clip "${name}" changes the electric field, and the tube has no plates (give it a field of 0 to start with).`);
+      if (ph.tesla !== undefined && e.tesla === undefined) problems.push(`clip "${name}" changes the magnetic field, and the tube has none (give it 0 teslas to start with).`);
+      if (ph.air !== undefined && !share(ph.air)) problems.push(`clip "${name}" asks for air that is not from 0 to 1.`);
+      if (ph.stand !== undefined && e.picture !== 'shadow') problems.push(`clip "${name}" moves a cross, and only a shadow picture has one.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a matter element: a picture with nothing to send, a speed or a voltage that is not above zero, or a clip that changes what the picture does not have. */
 export function checkMatter(e: MatterEl): string[] {
   const problems: string[] = [];
@@ -4107,7 +4337,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -4199,6 +4429,16 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(MATTER_PARTS));
         motions.set(e.id, e);
         problems.push(...checkMatter(e).map((p) => `Scene ${si + 1}: matter "${e.id}": ${p}`));
+      }
+      if (e.kind === 'cathode') {
+        diagrams.set(e.id, new Set<string>(CATHODE_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkCathode(e).map((p) => `Scene ${si + 1}: cathode ray tube "${e.id}": ${p}`));
+      }
+      if (e.kind === 'alphas') {
+        diagrams.set(e.id, new Set<string>(ALPHAS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkAlphas(e).map((p) => `Scene ${si + 1}: alpha particles "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
