@@ -129195,5 +129195,292 @@
         "working": "$d = \\dfrac{1}{4.00 \\times 10^{5}} = 2.50 \\times 10^{-6}$ m, so $\\sin\\theta = \\dfrac{\\lambda}{d} = \\dfrac{500 \\times 10^{-9}}{2.50 \\times 10^{-6}} = 0.200$ and $\\theta = 11.5°$."
       }
     ]
+  },
+  "p30-3-6": {
+    "lessonId": "p30-3-6",
+    "title": "Photons",
+    "duration": 345,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Packets of light",
+        "t": 21.456
+      },
+      {
+        "title": "The energy of a photon",
+        "t": 67.856
+      },
+      {
+        "title": "Brighter light",
+        "t": 120.99
+      },
+      {
+        "title": "Joules and electronvolts",
+        "t": 149.69
+      },
+      {
+        "title": "Counting photons",
+        "t": 215.937
+      },
+      {
+        "title": "Your turn",
+        "t": 266.403
+      },
+      {
+        "title": "Summary",
+        "t": 305.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-6:q",
+        "t": 278.644,
+        "prompt": "What is the energy of one photon of violet light with a wavelength of 400 nm, in electronvolts?",
+        "choices": [
+          "0.32 eV",
+          "1.24 eV",
+          "2.49 eV",
+          "3.11 eV"
+        ],
+        "answer": 3,
+        "working": "$E = \\dfrac{hc}{\\lambda} = \\dfrac{6.63 \\times 10^{-34} \\times 3.00 \\times 10^{8}}{400 \\times 10^{-9}} = 4.97 \\times 10^{-19}$ J, and $\\dfrac{4.97 \\times 10^{-19}}{1.60 \\times 10^{-19}} = 3.11$ eV."
+      }
+    ]
+  },
+  "p30-3-6-b": {
+    "lessonId": "p30-3-6",
+    "title": "The Photoelectric Effect",
+    "duration": 537,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the experiments showed",
+        "t": 20.719
+      },
+      {
+        "title": "Why waves fail",
+        "t": 70.615
+      },
+      {
+        "title": "Einstein's explanation",
+        "t": 102.067
+      },
+      {
+        "title": "The threshold",
+        "t": 150.268
+      },
+      {
+        "title": "The kinetic energy",
+        "t": 238.577
+      },
+      {
+        "title": "The stopping voltage",
+        "t": 295.012
+      },
+      {
+        "title": "The graph",
+        "t": 398.474
+      },
+      {
+        "title": "Your turn",
+        "t": 447.474
+      },
+      {
+        "title": "Summary",
+        "t": 497.223
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-6-b:q",
+        "t": 467.826,
+        "prompt": "Light whose photons each have an energy of 5.00 eV shines on zinc, which has a work function of 4.33 eV. What stopping voltage just stops the fastest electrons?",
+        "choices": [
+          "0.67 V",
+          "1.15 V",
+          "4.33 V",
+          "9.33 V"
+        ],
+        "answer": 0,
+        "working": "$E_{k\\,\\text{max}} = hf - W = 5.00 - 4.33 = 0.67$ eV, and electrons with 0.67 eV are stopped by 0.67 V."
+      }
+    ]
+  },
+  "p30-3-7": {
+    "lessonId": "p30-3-7",
+    "title": "The Momentum of a Photon",
+    "duration": 357,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The momentum of a photon",
+        "t": 24.496
+      },
+      {
+        "title": "A photon of green light",
+        "t": 77.311
+      },
+      {
+        "title": "An X-ray photon",
+        "t": 114.209
+      },
+      {
+        "title": "The push of light",
+        "t": 149.622
+      },
+      {
+        "title": "The force of a beam",
+        "t": 197.21
+      },
+      {
+        "title": "Solar sails",
+        "t": 255.429
+      },
+      {
+        "title": "Your turn",
+        "t": 281.029
+      },
+      {
+        "title": "Summary",
+        "t": 319.308
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-7:q",
+        "t": 293.573,
+        "prompt": "A laser beam with a power of 60 W is reflected straight back by a mirror. What force does the light put on the mirror?",
+        "choices": [
+          "$2.0 \\times 10^{-7}$ N",
+          "$4.0 \\times 10^{-7}$ N",
+          "$1.8 \\times 10^{10}$ N",
+          "$3.6 \\times 10^{10}$ N"
+        ],
+        "answer": 1,
+        "working": "The light is reflected, so $F = \\dfrac{2P}{c} = \\dfrac{2 \\times 60}{3.00 \\times 10^{8}} = 4.0 \\times 10^{-7}$ N."
+      }
+    ]
+  },
+  "p30-3-7-b": {
+    "lessonId": "p30-3-7",
+    "title": "The Compton Effect",
+    "duration": 355,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What Compton saw",
+        "t": 18.598
+      },
+      {
+        "title": "A collision of particles",
+        "t": 57.598
+      },
+      {
+        "title": "The Compton equation",
+        "t": 110.264
+      },
+      {
+        "title": "The wavelength afterwards",
+        "t": 186.718
+      },
+      {
+        "title": "Finding the angle",
+        "t": 225.101
+      },
+      {
+        "title": "Your turn",
+        "t": 263.646
+      },
+      {
+        "title": "Summary",
+        "t": 303.265
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-7-b:q",
+        "t": 276.125,
+        "prompt": "An X-ray photon is scattered through 60° by an electron that was at rest. What is the change in its wavelength? Use $\\dfrac{h}{mc} = 2.43$ pm.",
+        "choices": [
+          "0.50 pm",
+          "0.61 pm",
+          "1.22 pm",
+          "2.43 pm"
+        ],
+        "answer": 2,
+        "working": "$\\Delta\\lambda = \\dfrac{h}{mc}(1 - \\cos\\theta) = 2.43 \\times (1 - \\cos 60°) = 2.43 \\times 0.500 = 1.22$ pm."
+      }
+    ]
+  },
+  "p30-3-8": {
+    "lessonId": "p30-3-8",
+    "title": "Matter Waves",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "De Broglie's idea",
+        "t": 29.813
+      },
+      {
+        "title": "The wavelength of an electron",
+        "t": 76.052
+      },
+      {
+        "title": "The wavelength of a baseball",
+        "t": 122.16
+      },
+      {
+        "title": "Electrons that are accelerated",
+        "t": 160.286
+      },
+      {
+        "title": "From kinetic energy",
+        "t": 207.327
+      },
+      {
+        "title": "Your turn",
+        "t": 249.852
+      },
+      {
+        "title": "Summary",
+        "t": 293.99
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-8:q",
+        "t": 260.973,
+        "prompt": "At what speed does an electron have a de Broglie wavelength of 0.50 nm? The mass of an electron is $9.11 \\times 10^{-31}$ kg.",
+        "choices": [
+          "$3.64 \\times 10^{5}$ m/s",
+          "$7.28 \\times 10^{5}$ m/s",
+          "$1.21 \\times 10^{6}$ m/s",
+          "$1.46 \\times 10^{6}$ m/s"
+        ],
+        "answer": 3,
+        "working": "$\\lambda = \\dfrac{h}{mv}$, so $v = \\dfrac{h}{m\\lambda} = \\dfrac{6.63 \\times 10^{-34}}{9.11 \\times 10^{-31} \\times 0.50 \\times 10^{-9}} = 1.46 \\times 10^{6}$ m/s."
+      }
+    ]
   }
 }
