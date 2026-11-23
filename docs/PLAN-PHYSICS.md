@@ -106,7 +106,9 @@ built when the first unit that needs it is reached.
 | Light (`light`) | An electromagnetic wave leaving an aerial, with its two fields and a polarizing filter; the spectrum with a sliding pointer; a flash timed over a distance, and its echo; Michelson's spinning mirror; white light spread into colours by a prism; a ray held inside an optical fibre; a diffraction grating, with lines that sharpen as more slits are lit and spectra of white light | Grade 12, Unit C | Built |
 | Photons (`photons`) | Light as packets of waves that cross to a detector, or land on a metal and free electrons (the photoelectric effect): a tube with a stopping voltage, energy bars, and the graph of Ek max against f. Also the momentum of a photon, the push of light on a black card and a mirror, and the Compton collision of an X-ray photon with an electron | Grade 12, Unit C | Built |
 | Matter waves (`matter`) | A particle with its de Broglie wave drawn to scale; electrons diffracted by a crystal, with a detector that swings round (Davisson and Germer); rings from a foil that shrink as the voltage rises; and two slits with one photon or electron at a time, whose dots build up the fringes | Grade 12, Unit C | Built |
-| Particles | Alpha scattering, radioactive decay | Grade 12, Unit D | To build, shared with chemistry's remake |
+| Cathode ray tube (`cathode`) | A tube drawn to scale: rays that cross once the air is pumped out, a cross that casts a shadow, a paddle wheel pushed along, and a beam bent by charged plates and a magnetic field along the path the forces give | Grade 12, Unit D | Built |
+| Alpha particles (`alphas`) | Thomson's atom crossed in straight lines, the gold foil experiment with a screen that flashes, paths past a nucleus to scale, a head-on approach with its energies and closest distance, and Rutherford's atom with an electron that spirals in | Grade 12, Unit D | Built |
+| Particles | Energy levels and spectra, radioactive decay, half-life, fission and fusion | Grade 12, Unit D | To build |
 
 ## What physics needs that the platform does not have
 

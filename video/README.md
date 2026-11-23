@@ -769,6 +769,47 @@ See `src/video/script.ts` for every element and option. In short:
   particles sent each second (up to 200; a phase slides it), and they need a `height` of
   about 470. Particles are sent only while a clip
   plays, so give every line of a scene a clip.
+- `cathode` (`src/video/cathode.ts`) is a cathode ray tube drawn to scale from the side.
+  Electrons leave the cathode with a `speed` in m/s, or after being accelerated from rest
+  through `volts`, pass the slit of the anode and cross to a screen that glows where they land.
+  With a `field` (volts per metre, positive when the top plate is positive) the tube has two
+  plates, 5 cm long and 4 cm apart, and with `tesla` a magnetic field in the same place
+  (positive into the picture); give either one as 0 to have it there but off. The path of the
+  beam is worked out from the two forces with q/m = 1.76 × 10¹¹ C/kg, so it goes straight when
+  v = E ÷ B and follows a circle of radius v ÷ (B q/m) when only the magnetic field is on, and
+  it stops at a plate or the glass when a field is too strong. A phase slides `speed`, `volts`,
+  `field` or `tesla`, switches the high voltage (`on`; start with `off: true`), slides the `air`
+  left in the tube (0 is pumped out, 1 stops the rays), and names the `metal` of the cathode and
+  the `gas`. Parts: `names`, `values` (V, E and B), `speed`, `straight` (the path with no
+  fields, dashed), `force` (the electric and the magnetic force on one electron), `circle` (the
+  circle the beam bends along, with its radius) and `made` (the metal and the gas).
+  `picture: 'wheel'` puts a paddle wheel on rails in the way of the rays, which push it along,
+  and `picture: 'shadow'` stands a metal cross in a broad beam (`stand` in a phase stands it up
+  or folds it down; start with `flat: true`), with the part `face` for the end of the tube seen
+  from the front. `scale` is the pixels to a centimetre (44 unless you say), and `left` and
+  `axis` place the tube when a circle needs room.
+- `alphas` (`src/video/alphas.ts`) is alpha particles fired at atoms, in five pictures. An alpha
+  particle has +2e and a nucleus of `z` protons +Ze (gold, 79, unless you say, with its `name`),
+  so the two repel with k(2e)(Ze) ÷ r², and every path is worked out from that force with the
+  lessons' constants. `picture: 'pudding'` is Thomson's atom, a ball of positive charge with
+  electrons dotted through it; given a `rate` (alpha particles each second, slid by a phase), a
+  broad beam crosses it in straight lines (parts `names`, `paths`, `count`). `picture: 'ring'`
+  is the gold foil experiment from above: a source, the foil, and a screen all round that
+  flashes and keeps a mark where each alpha particle lands, with a share `back` turned through
+  more than 90° (parts `names`, `count`). Which particles are turned back is fixed by their
+  numbers, so choose `back` and the rates so that one lands while the narration says so.
+  `picture: 'past'` is one nucleus to scale, `span` femtometres across the picture (1000 unless
+  you say): a phase's `fire` lists how far to one side each alpha particle is aimed, in
+  femtometres, and each is turned through 2 atan(d ÷ 2b) (parts `names`, `angle`, `scale`).
+  `picture: 'head'` sends one alpha particle of `mev` MeV straight at the nucleus (`fire: [0]`):
+  it stops where its kinetic energy has all become potential energy, r = k(2e)(Ze) ÷ Ek, and
+  is pushed back. Parts: `names`, `energy` (the two energies as bars), `distance` (r, and the
+  closest approach, with the marks of earlier particles), `force` and `values`; a phase slides
+  `mev` or changes `z` and `name`, and `pace` (femtometres a second far away) sets how long an
+  approach takes, so set it for the particle to stop as the narration says. `picture: 'orbit'`
+  is Rutherford's atom, with `electrons` that circle a small nucleus; a phase with `fall: true`
+  makes them radiate and spiral in, as the model wrongly predicts (parts `names`, `waves`).
+  These pictures are drawn for the full width of a `center` scene, not for a split.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

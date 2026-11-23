@@ -1500,8 +1500,21 @@ items ship or decisions change.
        photons go through two slits one at a time, each landing as a single dot, until the dots
        build up the fringes that the wave predicts. The videos: `p30-3-8` (Matter Waves) and
        `p30-3-8-b` (Wave-Particle Duality). This finishes the videos of Unit 3.
-     - Next: the videos of Unit 4 (atomic and nuclear physics, lessons 4.1 to 4.7). The physics
-       lessons have no tutor recordings yet.
+     - Written (23 November 2026): **the four videos of lessons 4.1 and 4.2**, which start
+       Unit 4, on two new pictures. `cathode` is a cathode ray tube drawn to scale: the rays
+       cross it only once the air is pumped out, a metal cross casts a sharp shadow, a paddle
+       wheel is pushed along its rails, and the beam bends between charged plates and in a
+       magnetic field along a path worked out from the force on each electron, straight when
+       v = E ÷ B and a circle of radius v ÷ (B q/m). `alphas` is alpha particles fired at atoms:
+       they cross Thomson's atom in straight lines, the gold foil sends a few back to a screen
+       that flashes, each path past a gold nucleus is turned by the repulsion k(2e)(Ze) ÷ r², one
+       that heads straight in stops at r = k(2e)(Ze) ÷ Ek and is pushed back, and the electron of
+       Rutherford's atom radiates and spirals in. The videos: `p30-4-1` (Cathode Rays),
+       `p30-4-1-b` (The Charge-to-Mass Ratio), `p30-4-2` (The Gold Foil Experiment) and
+       `p30-4-2-b` (The Closest Approach).
+     - Next: the videos of lessons 4.3 to 4.7 (the Bohr model and spectra, the nucleus and
+       isotopes, radioactive decay, half-life, and fission, fusion and binding energy). The
+       physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
