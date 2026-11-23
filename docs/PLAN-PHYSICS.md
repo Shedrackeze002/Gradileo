@@ -108,7 +108,8 @@ built when the first unit that needs it is reached.
 | Matter waves (`matter`) | A particle with its de Broglie wave drawn to scale; electrons diffracted by a crystal, with a detector that swings round (Davisson and Germer); rings from a foil that shrink as the voltage rises; and two slits with one photon or electron at a time, whose dots build up the fringes | Grade 12, Unit C | Built |
 | Cathode ray tube (`cathode`) | A tube drawn to scale: rays that cross once the air is pumped out, a cross that casts a shadow, a paddle wheel pushed along, and a beam bent by charged plates and a magnetic field along the path the forces give | Grade 12, Unit D | Built |
 | Alpha particles (`alphas`) | Thomson's atom crossed in straight lines, the gold foil experiment with a screen that flashes, paths past a nucleus to scale, a head-on approach with its energies and closest distance, and Rutherford's atom with an electron that spirals in | Grade 12, Unit D | Built |
-| Particles | Energy levels and spectra, radioactive decay, half-life, fission and fusion | Grade 12, Unit D | To build |
+| Energy levels (`levels`) | An atom with its allowed orbits beside a ladder of its energy levels: photons given out and taken in as the electron jumps, photons that pass or free the electron, the three kinds of spectrum through a prism, and the electron's wave bent round its orbit | Grade 12, Unit D | Built |
+| Particles | Radioactive decay, half-life, fission and fusion | Grade 12, Unit D | To build |
 
 ## What physics needs that the platform does not have
 
