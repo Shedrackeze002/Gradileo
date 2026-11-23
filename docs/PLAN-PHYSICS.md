@@ -109,6 +109,7 @@ built when the first unit that needs it is reached.
 | Cathode ray tube (`cathode`) | A tube drawn to scale: rays that cross once the air is pumped out, a cross that casts a shadow, a paddle wheel pushed along, and a beam bent by charged plates and a magnetic field along the path the forces give | Grade 12, Unit D | Built |
 | Alpha particles (`alphas`) | Thomson's atom crossed in straight lines, the gold foil experiment with a screen that flashes, paths past a nucleus to scale, a head-on approach with its energies and closest distance, and Rutherford's atom with an electron that spirals in | Grade 12, Unit D | Built |
 | Energy levels (`levels`) | An atom with its allowed orbits beside a ladder of its energy levels: photons given out and taken in as the electron jumps, photons that pass or free the electron, the three kinds of spectrum through a prism, and the electron's wave bent round its orbit | Grade 12, Unit D | Built |
+| The nucleus (`nucleus`) | A nucleus built of protons and neutrons and drawn to scale, isotopes and ions made by adding neutrons and removing electrons, the electric repulsion and the strong attraction of two nucleons, and the average mass of a mixture of isotopes | Grade 12, Unit D | Built |
 | Particles | Radioactive decay, half-life, fission and fusion | Grade 12, Unit D | To build |
 
 ## What physics needs that the platform does not have

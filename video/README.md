@@ -830,6 +830,29 @@ See `src/video/script.ts` for every element and option. In short:
   a hot solid (`solid`: every colour), the glowing gas (`gas`: bright lines) and the hot solid
   seen through the cool gas (`through`: dark lines at the same wavelengths), and `lamp` and
   `cloud` rename the hot solid and the cool gas (parts `names`, `axis`, `lines`).
+- `nucleus` (`src/video/nucleus.ts`) is the nucleus of an atom, in three pictures.
+  `picture: 'build'` (the one drawn unless you say) is a ball of `z` protons and `n` neutrons
+  (carbon-12 unless you say, with the `symbol` and `name` of its element), packed closely and
+  drawn to scale at `scale` pixels to a femtometre, so that its radius is 1.2 fm × ∛A; a
+  nucleus too large for the picture is drawn smaller. A phase's `z` and `n` change it:
+  nucleons arrive from the right or leave, and a new number of protons needs the `symbol` and
+  `name` of the new element. A phase's `decay` (`alpha`, `beta-`, `beta+` or `gamma`) makes
+  the nucleus decay and throws out the particle, and needs the `symbol` and `name` of the
+  daughter unless it is a gamma decay; `shaky: true` marks a nucleus as unstable. Give
+  `electrons` and they circle the nucleus (far closer than they really are), and a phase's
+  `electrons` makes some leave or arrive, for an ion. Parts: `names`, `symbol` (the nuclide
+  written out), `counts` (Z, N and A), `radius` (a ruler), `charge` (the electrons and the
+  charge of the atom or ion), `glue` (links from one proton to its neighbours: the strong
+  attraction) and `repel` (lines from it to every other proton: the electric repulsion).
+  `picture: 'pair'` is two nucleons (`kinds`: `pp`, `pn` or `nn`) that a phase's `apart`
+  slides to between 1 and 8 femtometres apart. The electric repulsion of two protons is
+  ke² ÷ r² (57.5 N at 2.0 fm). The strong attraction has no number: it is a sketch of a force
+  with a very short range, full when the nucleons touch and gone by 3 fm, and once it is
+  shown both forces are drawn on one scale, on which it is about five times the repulsion at
+  1 fm (in a real nucleus it is larger still). Parts: `names`, `distance`, `electric`,
+  `strong`. `picture: 'mix'` is a hundred atoms of an element with two isotopes of `masses`,
+  `share` of them the lighter (a phase's `share` slides it), and a beam that balances at the
+  average mass (parts `names`, `share`, `average`).
   `picture: 'wave'` is the electron as a wave bent round its orbit, with `waves` wavelengths
   round it (slid by a phase): a whole number joins up as a standing wave, and anything else
   comes round out of step (parts `names`, `fits`). These pictures too are drawn for the full
