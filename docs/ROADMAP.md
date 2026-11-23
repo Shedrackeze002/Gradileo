@@ -1816,8 +1816,13 @@ items ship or decisions change.
      compounds, mixtures, counting atoms in formulas, the periodic table's order, metals and
      non-metals, the alkali metals and noble gases, the halogen trend, four kitchen changes,
      signs of a reaction, word equations, burning and the fire triangle, three rusting nails,
-     choosing metals and carats of gold, and polymers, ceramics and composites. Chem 10 is
-     rendered and on Drive, and Chem 20, 30, 7 and 8 are rendering in turn.
+     choosing metals and carats of gold, and polymers, ceramics and composites. Chem 9 has all
+     15, `xq-c9-1-1` to `xq-c9-4-3`, in the style of a Grade 9 science unit test: the gold
+     foil results, isotopes of magnesium, electron arrangements, ions, ionic and covalent
+     bonds, ionic formulas, naming compounds, relative formula mass and percentage by mass,
+     conservation of mass, balancing equations, reaction types and displacement, rates of
+     reaction, litmus and the ions in acids and alkalis, the pH scale, and neutralization. Chem 10
+     is rendered and on Drive, and Chem 20, 30, 7, 8 and 9 are rendering in turn.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
