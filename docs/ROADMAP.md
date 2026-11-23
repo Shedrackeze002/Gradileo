@@ -1777,6 +1777,15 @@ items ship or decisions change.
      and volume of a larger similar soup can), and Unit 9 (Mathematics Research Project) with one we
      wrote (fixing a leading research question about sleep and marks, and naming primary and
      secondary data). Math 20-2 is complete: 30 exam videos, one per lesson.
+     Math 30-1 (`xq-m301-*`, 39 lessons) is under way: Units 1 to 6 (23 videos) use OpenStax
+     College Algebra 2e (translations, reflections and stretches, combined transformations, an
+     inverse on a restricted domain, a radical function, a radical equation checked on a graph,
+     degree and end behaviour, the remainder and factor theorems, graphing a factored cubic) and
+     Precalculus 2e (arc length, the unit circle at 7π/6, six ratios from cos t = −1/3, 2cos θ = √2,
+     4 sin x, −cos(t + π/3) + 1, tan(x + π/4), the Ferris wheel, simplifying tan x sin x + sec x cos²x,
+     the exact value of cos(π/12), proving cos²x − tan²x = 2 − sin²x − sec²x and solving
+     cos 2t = sin t), with one we wrote for the square root of a function, which the free books do
+     not cover. Units 7 to 9 come next.
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
