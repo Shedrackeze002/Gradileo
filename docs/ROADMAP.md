@@ -1865,6 +1865,18 @@ items ship or decisions change.
      suitcase, the leaking cone). Units 8 and 9 use 4.10, 5.1, 5.3, 5.5, 6.1 and 6.2 (the braking
      car, L₈ for (x − 1)², the trapezoid estimate and exact area under √x + x², ∫₀¹ x/√(1 + x²) dx,
      the area between y = x² and y = −x² + 18x, and the washer volume between y = √x and y = x²).
+     Math 10-3 (`xq-m103-*`, 31 lessons) is complete: 31 exam videos. Most come word for word from
+     OpenStax Prealgebra 2e 4.6, 5.6, 6.3, 6.5, 7.5 and 9.3 to 9.5 (Hugh's drive, the better buy in
+     storage bags, Homer's commission, the highway reflectors, Connie's fabric, the framed picture,
+     Jose's and Christa's fences, Perry's lawn, the footbridge, the garden path, Joe's doll house),
+     Contemporary Mathematics 6.2, 9.1, 9.5, 10.2 and 10.6 to 10.8 (the microwave discount, the
+     amoxicillin doses, the cooling compound, three angle questions with their figures redrawn, the
+     pizza value, the carpet, the living room paint, the house's shadow, the kite and Willis Tower),
+     College Algebra 2e 4.2 (the jewelry pay options) and Intermediate Algebra 2e 7.5 (Kyra's
+     currency exchange, and the map of Seattle, Portland and Boise). Four we wrote, since the free
+     books have no Canadian payroll, overtime, ruler-reading or square-counting questions: Jordan's
+     overtime pay (2.1), Priya's CPP, EI and tax deductions with every rate given in the question
+     (2.4), trim between two ruler marks (4.1) and the squares in a 4 by 4 grid (6.4).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
