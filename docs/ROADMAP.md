@@ -1802,8 +1802,13 @@ items ship or decisions change.
      density, two syringes, the states of bromine, a mug of cocoa cooling, a stuck lid and a
      spreading colour, two white solids, salt water's concentration, potassium nitrate's
      solubility, a fair test of stirring, separating iron, sand and salt, water from the sea, and
-     matching a note to a pen by chromatography. Chem 10 is rendered and on Drive, and Chem 20,
-     30 and 7 are rendering in turn.
+     matching a note to a pen by chromatography (#271). Chem 8 has all 15, `xq-c8-1-1` to
+     `xq-c8-4-4`, in the style of a Grade 8 science unit test: element symbols, elements and
+     compounds, mixtures, counting atoms in formulas, the periodic table's order, metals and
+     non-metals, the alkali metals and noble gases, the halogen trend, four kitchen changes,
+     signs of a reaction, word equations, burning and the fire triangle, three rusting nails,
+     choosing metals and carats of gold, and polymers, ceramics and composites. Chem 10 is
+     rendered and on Drive, and Chem 20, 30, 7 and 8 are rendering in turn.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
