@@ -1843,6 +1843,19 @@ items ship or decisions change.
      and Contemporary Mathematics 8.9 (predicting a salary from a regression line). Three we wrote,
      since the free books have no questions on them: a reflection then a translation on a grid
      (4.1), the break-even point of a T-shirt business (8.3) and a logic grid puzzle (9.1).
+     Math 31 (`xq-m31-*`, 26 lessons) is complete: 26 exam videos, all from OpenStax Calculus
+     Volume 1 exercises with the book's answers checked. Unit 1 uses sections 1.1 and 1.3 (the
+     bacteria culture, 2cos θ sin θ = sin θ). Unit 2 uses 2.2 to 2.4 and 4.6 (the jump in
+     (x² − 1)/|x − 1|, the limit of (t − 9)/(√t − 3), the asymptotes of (x³ + 1)/(x³ − 1), and the k
+     that makes a piecewise function continuous). Units 3 and 4 use 3.1, 3.3 and 3.6 (the race car's
+     velocity, the tangent to 7/x from the definition, x²(2/x² + 5/x³), the herring population, the
+     flat tangents of (x − 6/x)⁸). Unit 5 uses 3.5, 3.8 and 3.9 (tangents of cot x parallel to
+     y = −2x, Toledo's growing population, the tilted ellipse x² + xy + y² = 7). Units 6 and 7 use
+     3.6, 4.1 to 4.3, 4.5 and 4.7 ((15.99)^(1/4) by a linear approximation, the extrema of
+     3x⁴ + 8x³ − 18x², the curve sketch of x³ − 6x², the braking freight train, the largest
+     suitcase, the leaking cone). Units 8 and 9 use 4.10, 5.1, 5.3, 5.5, 6.1 and 6.2 (the braking
+     car, L₈ for (x − 1)², the trapezoid estimate and exact area under √x + x², ∫₀¹ x/√(1 + x²) dx,
+     the area between y = x² and y = −x² + 18x, and the washer volume between y = √x and y = x²).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
