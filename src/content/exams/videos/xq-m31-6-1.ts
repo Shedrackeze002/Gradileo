@@ -21,7 +21,7 @@ const graph = (height = 440) =>
     'g',
     [
       g,
-      plot(g, { id: 'f', f: (x) => x ** 0.25, from: 0, to: 20, tone: 'adj', label: 'y = x^{1/4}', labelAt: 0.3 }),
+      plot(g, { id: 'f', f: (x) => x ** 0.25, from: 0, to: 20, tone: 'adj' }),
       plot(g, { id: 'L', f: (x) => 2 + (x - 16) / 32, from: 4, to: 20, tone: 'theta', label: 'L(x)', labelAt: 0.25, side: 'right' }),
       dots(g, [{ id: 'p', x: 16, y: 2, tex: '(16, 2)', tone: 'theta', place: 'below right' }]),
     ],
@@ -76,7 +76,7 @@ const video: Explainer = {
       layout: 'split',
       leftWidth: 640,
       left: [graph()],
-      right: [{ kind: 'text', id: 't', size: 'md', md: 'Near a point we know, the **tangent line** is almost the same as the curve. So we read the estimate off the line instead.' }],
+      right: [{ kind: 'text', id: 't', size: 'md', md: 'Blue: $y = x^{1/4}$. Yellow: its tangent at $16$. Near a point we know, the **tangent line** is almost the same as the curve. So we read the estimate off the line instead.' }],
       lines: [
         { say: 'Here is the graph of y equals x to the one quarter.', show: ['g.grid', 'g.axes', 'g.f'] },
         { say: 'At 16 we know the value exactly: the fourth root of 16 is 2. Here is the tangent line there.', show: ['g.p', 'g.L'] },
