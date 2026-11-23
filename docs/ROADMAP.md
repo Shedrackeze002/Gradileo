@@ -1777,7 +1777,7 @@ items ship or decisions change.
      and volume of a larger similar soup can), and Unit 9 (Mathematics Research Project) with one we
      wrote (fixing a leading research question about sleep and marks, and naming primary and
      secondary data). Math 20-2 is complete: 30 exam videos, one per lesson.
-     Math 30-1 (`xq-m301-*`, 39 lessons) is under way: Units 1 to 6 (23 videos) use OpenStax
+     Math 30-1 (`xq-m301-*`, 39 lessons) is complete: 39 exam videos. Units 1 to 6 (23 videos) use OpenStax
      College Algebra 2e (translations, reflections and stretches, combined transformations, an
      inverse on a restricted domain, a radical function, a radical equation checked on a graph,
      degree and end behaviour, the remainder and factor theorems, graphing a factored cubic) and
@@ -1785,7 +1785,13 @@ items ship or decisions change.
      4 sin x, −cos(t + π/3) + 1, tan(x + π/4), the Ferris wheel, simplifying tan x sin x + sec x cos²x,
      the exact value of cos(π/12), proving cos²x − tan²x = 2 − sin²x − sec²x and solving
      cos 2t = sin t), with one we wrote for the square root of a function, which the free books do
-     not cover. Units 7 to 9 come next.
+     not cover. Units 7 to 9 (16 videos) use College Algebra 2e 6.1 to 6.6 (growth or decay of
+     11,701(0.97)^t, four transformations of an exponential, like bases, 6 log₈ 4, the domain and
+     asymptote of −ln(3x + 9) − 7, expanding a logarithm, ln x + ln(x − 3) = ln 7x), 5.6 (a shifted
+     reciprocal, asymptotes and a hole), 3.4 (f + g, f − g, fg and f/g with their domains, and
+     f(g(x)) with g(f(x))) and 13.5 to 13.6 (T-shirts, the letters of "academia", choosing
+     motorcycles, the fourth term of (3x − 2y)⁵), and Intermediate Algebra 2e 7.4 (a rational
+     equation with an extraneous root, shown as a hole on a graph).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
