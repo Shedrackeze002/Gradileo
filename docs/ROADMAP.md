@@ -1770,7 +1770,13 @@ items ship or decisions change.
      109 ft/s, and the intercepts of x² + 8x + 12 from factored form), and Unit 7 (Quadratic
      Equations) with three from Intermediate Algebra 2e 6.5, 9.3 and 9.5 ((x + 6)(x − 3) = −8 by
      expanding first, x² + 8x − 4 = 0 with the quadratic formula, and the dining table of 24 square
-     feet whose length is two more than twice its width).
+     feet whose length is two more than twice its width), Unit 8 (Proportional Reasoning) with three
+     from OpenStax Prealgebra 2e 5.6 and 6.5 and Elementary Algebra 2e 8.7 (the better buy between
+     two boxes of cereal, the gas for Jesse's road trip to Las Vegas and back, and a real distance
+     from a scale map) and one we wrote, since the free books have no k² and k³ questions (the label
+     and volume of a larger similar soup can), and Unit 9 (Mathematics Research Project) with one we
+     wrote (fixing a leading research question about sleep and marks, and naming primary and
+     secondary data). Math 20-2 is complete: 30 exam videos, one per lesson.
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
