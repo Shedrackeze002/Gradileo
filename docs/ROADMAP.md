@@ -1821,8 +1821,15 @@ items ship or decisions change.
      foil results, isotopes of magnesium, electron arrangements, ions, ionic and covalent
      bonds, ionic formulas, naming compounds, relative formula mass and percentage by mass,
      conservation of mass, balancing equations, reaction types and displacement, rates of
-     reaction, litmus and the ions in acids and alkalis, the pH scale, and neutralization. Chem 10
-     is rendered and on Drive, and Chem 20, 30, 7, 8 and 9 are rendering in turn.
+     reaction, litmus and the ions in acids and alkalis, the pH scale, and neutralization (#272,
+     #274). More Chemistry Topics has its 18 GCSE lessons done, `xq-cx-1-1` to `xq-cx-6-3`, in
+     the style of a GCSE chemistry exam: the reactivity series, extracting iron, copper sulfate
+     crystals, electrolysing brine, purity and gas tests, identifying ions, empirical formulae,
+     atom economy, the atmosphere, pollutants and the greenhouse effect, potable water, life
+     cycle assessments, the model of the atom, transition metals, forms of carbon and
+     nanoparticles, rusting and alloys, the Haber process, and cells and fuel cells. Its 27 A
+     level lessons (units 7 to 12) are next. Chem 10 is rendered and on Drive, and Chem 20, 30,
+     7, 8, 9 and More Chemistry Topics are rendering in turn.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
