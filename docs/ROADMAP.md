@@ -1807,6 +1807,20 @@ items ship or decisions change.
      the video redraws, and the temperature at 9 AM). Unit 8 has two we wrote, since the free books
      have no puzzle-game or research-project questions (winning the 15-counter take-away game, and
      fixing a research plan about part-time jobs and marks).
+     Math 30-3 (`xq-m303-*`, 22 lessons) is complete: 22 exam videos. Unit 1 uses OpenStax College
+     Physics 2e 1.3 (the measuring tape off by 0.50 cm over 20 m, and the speedometer's percent
+     uncertainty and range of speeds). Unit 2 uses Precalculus 2e 8.1 and 8.2 (the distance across a
+     lake by the sine law, the third side of a triangular pool by the cosine law, and the vertical
+     support for a solar panel on a 20° roof). Units 3, 4, 6, 7 and 8 use Contemporary Mathematics
+     "Your Turn" and "Check Your Understanding" questions from sections 10.3 and 10.4 (angles x,
+     x + 1 and x − 19, the regular pentagon's angles, trim for an arched window, the tree's height
+     from shadows), 8.4 and 8.6 (the median and mean of a frequency table, the percentile of 12),
+     7.5 (Jessie's faulty taillights, a sum of 6 or 7 with two 4-sided dice) and 6.11 (Luther's total
+     car cost, a lease's monthly depreciation). Unit 5 uses College Algebra 2e 4.1 (the cost per
+     training session), Elementary Algebra 2e 4.5 (Cherie's salary with commission, with its graph)
+     and Contemporary Mathematics 8.9 (predicting a salary from a regression line). Three we wrote,
+     since the free books have no questions on them: a reflection then a translation on a grid
+     (4.1), the break-even point of a T-shirt business (8.3) and a logic grid puzzle (9.1).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
