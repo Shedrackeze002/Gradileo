@@ -3165,7 +3165,81 @@ export interface LevelsEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+/** One step of a clip of a nucleus. */
+export interface NucleusPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** A `build` picture: change the nucleus to this many protons and neutrons (nucleons arrive from the right, or leave), with the symbol and the name of its element. */
+  z?: number;
+  n?: number;
+  symbol?: string;
+  name?: string;
+  /** A `build` picture: the nucleus decays. An alpha decay throws out two protons and two neutrons together; a beta decay turns a neutron into a proton (`beta-`) or a proton into a neutron (`beta+`), and throws out an electron or a positron with a neutrino; a gamma decay gives out a photon. Give the `symbol` and `name` of the daughter with it. */
+  decay?: 'alpha' | 'beta-' | 'beta+' | 'gamma';
+  /** A `build` picture: mark the nucleus as unstable (it trembles), or as stable again. */
+  shaky?: boolean;
+  /** A `build` picture that has `electrons`: change them to this many. The ones that are lost fly away, and new ones arrive. */
+  electrons?: number;
+  /** A `pair` picture: slide the two nucleons to this many femtometres apart, or change which two they are. */
+  apart?: number;
+  kinds?: 'pp' | 'pn' | 'nn';
+  /** A `mix` picture: slide the share of the atoms that are the first isotope to this, from 0 to 1. */
+  share?: number;
+}
+
+export interface NucleusClip {
+  phases: NucleusPhase[];
+}
+
+/** What a picture of a nucleus can show; each is a part ("carbon.counts"). */
+export const NUCLEUS_PARTS = ['names', 'symbol', 'counts', 'radius', 'charge', 'repel', 'glue', 'electric', 'strong', 'distance', 'share', 'average'] as const;
+
+/**
+ * The nucleus of an atom (src/video/nucleus.ts). The `picture` is one of three:
+ *
+ * - `build` (the one drawn otherwise): the nucleus as a ball of `z` protons and `n` neutrons,
+ *   packed closely and drawn to scale, `scale` pixels to a femtometre: its radius is
+ *   1.2 fm × ∛A. Parts: `names` (which ball is which, and what a decay throws out), `symbol`
+ *   (the nuclide written out, with its name), `counts` (Z, N and A), `radius` (a ruler),
+ *   `charge` (the `electrons` circling the nucleus, far closer than they really are, their
+ *   number, and the charge of the atom or ion), `repel`
+ *   (lines from one proton to every other proton: the electric repulsion) and `glue` (links
+ *   from that proton to its neighbours alone: the strong attraction).
+ * - `pair`: two nucleons `apart` femtometres apart. Parts: `names`, `electric` (the repulsion of
+ *   two protons, ke² ÷ r², as arrows and a number), `strong` (the strong attraction, which has
+ *   no number here: it is drawn full when the nucleons touch and gone by 3 fm), `distance`.
+ * - `mix`: a hundred atoms of an element with two isotopes of `masses`, `share` of them the
+ *   first, and the average mass of an atom. Parts: `names`, `share`, `average`.
+ */
+export interface NucleusEl {
+  kind: 'nucleus';
+  id: string;
+  picture?: 'build' | 'pair' | 'mix';
+  /** A `build` picture: the protons and neutrons at the start (carbon-12 otherwise), the symbol and name of the element, the pixels to a femtometre (16 otherwise), the electrons round the nucleus for the `charge` part, and whether it starts marked as unstable. A `mix` picture uses the `name` too. */
+  z?: number;
+  n?: number;
+  symbol?: string;
+  name?: string;
+  scale?: number;
+  electrons?: number;
+  shaky?: boolean;
+  /** A `pair` picture: the two nucleons (two protons otherwise) and the femtometres between them at the start (2 otherwise). */
+  kinds?: 'pp' | 'pn' | 'nn';
+  apart?: number;
+  /** A `mix` picture: the mass numbers of the two isotopes, lighter first (35 and 37 otherwise), and the share of the atoms that are the first at the start (0.5 otherwise). */
+  masses?: [number, number];
+  share?: number;
+  clips: Record<string, NucleusClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof NUCLEUS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3968,6 +4042,50 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a picture of a nucleus: a nucleus with no protons, a decay that it cannot make or that does not name its daughter, or an option that belongs to another picture. */
+export function checkNucleus(e: NucleusEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'build';
+  if (!['build', 'pair', 'mix'].includes(picture)) problems.push(`"${picture}" is not a picture of a nucleus.`);
+  const whole = (n: number | undefined, least: number) => n === undefined || (Number.isInteger(n) && n >= least);
+  if (!whole(e.z, 1) || !whole(e.n, 0) || (e.z ?? 6) + (e.n ?? 6) > 300) problems.push('a nucleus has a whole number of protons (at least 1) and of neutrons, and at most 300 nucleons.');
+  if ((e.z !== undefined || e.n !== undefined || e.electrons !== undefined || e.shaky !== undefined) && picture !== 'build') problems.push('only a build picture has `z`, `n`, `electrons` and `shaky`.');
+  if (e.electrons !== undefined && !(Number.isInteger(e.electrons) && e.electrons >= 0)) problems.push('the electrons are a whole number.');
+  if (e.scale !== undefined && (picture === 'mix' || !(e.scale > 0))) problems.push('the scale is the pixels to a femtometre in a build or a pair picture, above zero.');
+  if ((e.kinds !== undefined || e.apart !== undefined) && picture !== 'pair') problems.push('only a pair picture has `kinds` and `apart`.');
+  if (e.apart !== undefined && !(e.apart >= 1 && e.apart <= 8)) problems.push('the two nucleons are from 1 to 8 femtometres apart.');
+  if ((e.masses !== undefined || e.share !== undefined) && picture !== 'mix') problems.push('only a mix picture has `masses` and a `share`.');
+  if (e.masses !== undefined && !(e.masses.length === 2 && e.masses[0] > 0 && e.masses[1] > e.masses[0])) problems.push('the masses are those of two isotopes, lighter first.');
+  if (e.share !== undefined && !(e.share >= 0 && e.share <= 1)) problems.push('the share is from 0 to 1.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(NUCLEUS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  let [z, n] = [e.z ?? 6, e.n ?? 6];
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.electrons !== undefined && (e.electrons === undefined || !(Number.isInteger(ph.electrons) && ph.electrons >= 0))) problems.push(`clip "${name}" changes the electrons, which are a whole number in a picture that starts with \`electrons\`.`);
+      if ((ph.z !== undefined || ph.n !== undefined || ph.decay !== undefined || ph.shaky !== undefined || ph.symbol !== undefined) && picture !== 'build') problems.push(`clip "${name}" changes a nucleus, which only a build picture shows.`);
+      if ((ph.apart !== undefined || ph.kinds !== undefined) && picture !== 'pair') problems.push(`clip "${name}" moves or changes two nucleons, which only a pair picture shows.`);
+      if (ph.apart !== undefined && !(ph.apart >= 1 && ph.apart <= 8)) problems.push(`clip "${name}" moves the nucleons to a distance that is not from 1 to 8 femtometres.`);
+      if (ph.share !== undefined && (picture !== 'mix' || !(ph.share >= 0 && ph.share <= 1))) problems.push(`clip "${name}" slides a share, which is from 0 to 1 in a mix picture.`);
+      if (ph.decay !== undefined && (ph.z !== undefined || ph.n !== undefined)) problems.push(`clip "${name}" has a phase with both a decay and a new nucleus; the decay alone decides the new nucleus.`);
+      if (ph.decay !== undefined) {
+        const [dz, dn] = { alpha: [-2, -2], 'beta-': [1, -1], 'beta+': [-1, 1], gamma: [0, 0] }[ph.decay] ?? [0, 0];
+        if (z + dz < 1 || n + dn < 0) problems.push(`clip "${name}" asks for a ${ph.decay} decay of a nucleus with ${z} protons and ${n} neutrons, which cannot make it.`);
+        if (dz !== 0 && (ph.symbol === undefined || ph.name === undefined)) problems.push(`clip "${name}" has a ${ph.decay} decay that does not give the symbol and the name of the daughter.`);
+        [z, n] = [z + dz, n + dn];
+      } else {
+        if (!whole(ph.z, 1) || !whole(ph.n, 0) || ((ph.z !== undefined || ph.n !== undefined) && (ph.z ?? z) + (ph.n ?? n) > 300)) problems.push(`clip "${name}" asks for a nucleus that is not a whole number of protons (at least 1) and neutrons, up to 300 nucleons.`);
+        if (ph.z !== undefined && ph.z !== z && (ph.symbol === undefined || ph.name === undefined)) problems.push(`clip "${name}" changes the protons, and does not give the symbol and the name of the new element.`);
+        [z, n] = [ph.z ?? z, ph.n ?? n];
+      }
+    }
+  }
+  return problems;
+}
+
 /** Problems with a picture of energy levels: levels out of order, a jump to a level that is not there, a photon with no time to arrive, or an option that belongs to another picture. */
 export function checkLevels(e: LevelsEl): string[] {
   const problems: string[] = [];
@@ -4450,7 +4568,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -4557,6 +4675,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(LEVELS_PARTS));
         motions.set(e.id, e);
         problems.push(...checkLevels(e).map((p) => `Scene ${si + 1}: energy levels "${e.id}": ${p}`));
+      }
+      if (e.kind === 'nucleus') {
+        diagrams.set(e.id, new Set<string>(NUCLEUS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkNucleus(e).map((p) => `Scene ${si + 1}: nucleus "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

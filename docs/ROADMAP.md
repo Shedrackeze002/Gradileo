@@ -1521,9 +1521,18 @@ items ship or decisions change.
        three kinds of spectrum, with the dark lines where the bright ones were, and bends the
        electron's wave round its orbit to show why only some orbits are allowed. The videos:
        `p30-4-3` (The Bohr Model) and `p30-4-3-b` (Spectra).
-     - Next: the videos of lessons 4.4 to 4.7 (the nucleus and isotopes, radioactive decay,
-       half-life, and fission, fusion and binding energy). The physics lessons have no tutor
-       recordings yet.
+     - Written (23 November 2026): **the two videos of lesson 4.4**, on a new picture, `nucleus`:
+       a nucleus as a ball of protons and neutrons, packed closely and drawn to scale with the
+       radius 1.2 fm × ∛A. Carbon-12 is put together a nucleon at a time and grows into
+       uranium-238, two neutrons arrive to make carbon-14, two electrons leave an atom of
+       copper to make an ion, and a hundred atoms of chlorine balance on a beam at their average
+       mass. Two protons are pushed together while Coulomb's law gives their repulsion
+       (57.5 N at 2.0 fm), the strong attraction takes over as they touch and is gone by 3 fm,
+       and one proton in calcium-40, lead-208 and uranium-238 is held by its neighbours alone
+       while every other proton repels it. The videos: `p30-4-4` (Inside the Nucleus) and
+       `p30-4-4-b` (The Strong Nuclear Force).
+     - Next: the videos of lessons 4.5 to 4.7 (radioactive decay, half-life, and fission, fusion
+       and binding energy). The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
