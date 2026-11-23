@@ -1833,9 +1833,16 @@ items ship or decisions change.
      crystals, electrolysing brine, purity and gas tests, identifying ions, empirical formulae,
      atom economy, the atmosphere, pollutants and the greenhouse effect, potable water, life
      cycle assessments, the model of the atom, transition metals, forms of carbon and
-     nanoparticles, rusting and alloys, the Haber process, and cells and fuel cells. Its 27 A
-     level lessons (units 7 to 12) are next. Chem 10 is rendered and on Drive, and Chem 20, 30,
-     7, 8, 9 and More Chemistry Topics are rendering in turn.
+     nanoparticles, rusting and alloys, the Haber process, and cells and fuel cells (#275). Its
+     27 A level lessons are done too, `xq-cx-7-1` to `xq-cx-12-8`, in the style of an A level
+     chemistry exam: mass spectra, ionisation energies, shapes of molecules, Maxwell–Boltzmann,
+     Period 3 trends, Groups 2 and 7, curly-arrow mechanisms, halogenoalkanes, E/Z isomers,
+     alcohols, identifying an unknown compound, Born–Haber cycles, entropy and Gibbs free
+     energy, rate equations, Kp, Period 3 oxides, copper complexes, metal aqua ions, optical
+     isomers, aldehydes and ketones, esters, benzene, amines, amino acids, a two-step synthesis,
+     and NMR and chromatography. So every chemistry lesson now has its exam video. Chem 10 is
+     rendered and on Drive, and Chem 20, 30, 7, 8, 9 and More Chemistry Topics are rendering in
+     turn.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
