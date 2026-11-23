@@ -1796,8 +1796,14 @@ items ship or decisions change.
      for PCl5 from an ICE table (13.4), sulfur trioxide and temperature (13.3), labelling acids,
      bases and conjugates (14.1), hydrofluoric acid meeting cyanide, Ka of the methylammonium ion
      and the pH of propionic acid (14.3), and hydronium in a nitrite buffer (14.6). Chem 30 is
-     complete: 30 exam videos, one per lesson. Chem 10 is rendered and on Drive, and Chem 20 is
-     rendering.
+     complete: 30 exam videos, one per lesson (#269). Chem 7 has all 15, `xq-c7-1-1` to
+     `xq-c7-4-3`, each a question we wrote in the style of a Grade 7 science unit test: hazard
+     symbols on ethanol, what counts as matter, a stone's volume by displacement, a metal block's
+     density, two syringes, the states of bromine, a mug of cocoa cooling, a stuck lid and a
+     spreading colour, two white solids, salt water's concentration, potassium nitrate's
+     solubility, a fair test of stirring, separating iron, sand and salt, water from the sea, and
+     matching a note to a pen by chromatography. Chem 10 is rendered and on Drive, and Chem 20,
+     30 and 7 are rendering in turn.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
