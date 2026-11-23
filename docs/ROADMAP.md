@@ -1792,6 +1792,21 @@ items ship or decisions change.
      f(g(x)) with g(f(x))) and 13.5 to 13.6 (T-shirts, the letters of "academia", choosing
      motorcycles, the fourth term of (3x − 2y)⁵), and Intermediate Algebra 2e 7.4 (a rational
      equation with an extraneous root, shown as a hole on a graph).
+     Math 30-2 (`xq-m302-*`, 24 lessons) is complete: 24 exam videos. Units 1 to 3 (set theory and
+     logic, counting methods, probability) use OpenStax Contemporary Mathematics "Your Turn"
+     questions from sections 1.2, 1.4, 2.5 and 7.1 to 7.9 (the subsets of nine tennis champions, soup
+     and salad at a wedding, Elvis and the superheroes' capes, college ID codes, the pig race, raffle
+     winners, the odds for an 80% event, two spades and three hearts in a hand, the lettered and
+     numbered die, and drawing two cards in order), plus College Algebra 2e 13.5 (the letters of
+     "mountains" with the vowels together). Unit 4 uses Elementary Algebra 2e 8.1 and Intermediate
+     Algebra 2e 7.2 and 7.4 ((y² − 2y − 3)/(y² − 9), 6/(m + 6) − 12m/(m² − 36), and
+     −10/(q − 2) − 7/(q + 4) = 1). Units 5 and 6 use College Algebra 2e 5.2 and 6.1 to 6.7 (the
+     intercepts and end behaviour of x³ − 2x² − 15x, the open box from an 8-inch square, the fox
+     population, 2^(−3n) · 1/4 = 2^(n+2), condensing log x − ½log y + 3log z, and half-lives from
+     132.8 g to 8.3 g). Unit 7 uses Precalculus 2e 6.1 and 7.6 (the equation of a cosine graph, which
+     the video redraws, and the temperature at 9 AM). Unit 8 has two we wrote, since the free books
+     have no puzzle-game or research-project questions (winning the 15-counter take-away game, and
+     fixing a research plan about part-time jobs and marks).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
