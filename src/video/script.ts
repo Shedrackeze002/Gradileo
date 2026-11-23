@@ -3097,7 +3097,75 @@ export interface AlphasEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+/** One step of a clip of an atom's energy levels. */
+export interface LevelsPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** An `atom` picture: the level the electron jumps to. A drop gives out its photon at once; for a rise a photon of exactly the right energy arrives first, unless `bump` is set: then a collision lifts the electron, and no photon is drawn. */
+  to?: number;
+  bump?: boolean;
+  /** An `atom` picture: send a photon of this many electronvolts at the atom. The electron rises if a jump from its level matches, is freed if the photon has enough energy, and otherwise the photon passes. */
+  photon?: number;
+  /** A `spectrum` picture: change the source of the light. */
+  source?: 'solid' | 'gas' | 'through';
+  /** A `wave` picture: slide the wavelengths round the orbit to this. */
+  waves?: number;
+}
+
+export interface LevelsClip {
+  phases: LevelsPhase[];
+}
+
+/** What a picture of energy levels can show; each is a part ("atom.energies"). */
+export const LEVELS_PARTS = ['names', 'energies', 'photon', 'kept', 'radius', 'axis', 'lines', 'fits'] as const;
+
+/**
+ * The energy levels of an atom (src/video/levels.ts). The levels are hydrogen's, −13.6 ÷ n² eV
+ * rounded to three figures as the lessons write them, unless `levels` gives another atom's; a
+ * photon's energy is the difference between two of them, and its wavelength is hc ÷ E with the
+ * lessons' constants. The `picture` is one of three:
+ *
+ * - `atom` (the one drawn otherwise): the atom's orbits, with the electron going round one of
+ *   them, beside a ladder of its energy levels. Parts: `names` (n = 1, 2 …), `energies` (the eV
+ *   of each level), `photon` (the energy, wavelength and kind of light of the latest photon),
+ *   `kept` (the arrows of the earlier drops stay on the ladder, one for each pair of levels),
+ *   `radius` (of the electron's orbit). The orbits and the ladder are not drawn to scale: the
+ *   first orbit and the gaps between the upper levels would be too small to see.
+ * - `spectrum`: light from a hot solid (`solid`), a glowing gas (`gas`), or a hot solid seen
+ *   through the cool gas (`through`), spread out by a prism onto a strip from 380 to 750 nm.
+ *   Parts: `names`, `axis` (the wavelengths), `lines` (the jump that makes each line).
+ * - `wave`: the electron as a wave bent round its orbit, with `waves` wavelengths round it.
+ *   Parts: `names`, `fits` (whether it joins up with itself).
+ */
+export interface LevelsEl {
+  kind: 'levels';
+  id: string;
+  picture?: 'atom' | 'spectrum' | 'wave';
+  /** The energies of the levels in electronvolts, lowest first, for an atom that is not hydrogen, and the name of the atom ('hydrogen' otherwise). */
+  levels?: number[];
+  name?: string;
+  /** The levels of hydrogen to use: 4 for an `atom` otherwise, 6 for a `spectrum`. */
+  top?: number;
+  /** An `atom` picture: the level the electron starts in (1 otherwise), and the lowest level that the ladder shows (1 otherwise; 2 leaves room to tell the upper levels apart). */
+  start?: number;
+  from?: number;
+  /** A `spectrum` picture: the source at the start ('solid' otherwise), and other names for the hot solid and for the cool gas in front of it (the hot inside of a star, say, and its cooler outer layers). */
+  source?: 'solid' | 'gas' | 'through';
+  lamp?: string;
+  cloud?: string;
+  /** A `wave` picture: the wavelengths round the orbit at the start (3 otherwise). */
+  waves?: number;
+  clips: Record<string, LevelsClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof LEVELS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3900,6 +3968,51 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a picture of energy levels: levels out of order, a jump to a level that is not there, a photon with no time to arrive, or an option that belongs to another picture. */
+export function checkLevels(e: LevelsEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'atom';
+  if (!['atom', 'spectrum', 'wave'].includes(picture)) problems.push(`"${picture}" is not a picture of energy levels.`);
+  if (e.levels !== undefined) {
+    if (e.levels.length < 2 || e.levels.length > 8) problems.push('an atom is given from 2 to 8 levels.');
+    if (e.levels.some((volts, i) => !(volts < 0) || (i > 0 && !(volts > e.levels![i - 1])))) problems.push('the levels are energies below zero, in electronvolts, lowest first.');
+    if (e.top !== undefined) problems.push('`top` counts the levels of hydrogen; an atom given its own `levels` takes none.');
+  }
+  if (e.top !== undefined && !(Number.isInteger(e.top) && e.top >= 2 && e.top <= 8)) problems.push('`top` is a whole number of levels from 2 to 8.');
+  const count = e.levels?.length ?? e.top ?? (picture === 'spectrum' ? 6 : 4);
+  const inLevels = (n: number) => Number.isInteger(n) && n >= 1 && n <= count;
+  if ((e.start !== undefined || e.from !== undefined) && picture !== 'atom') problems.push('only an atom picture has a `start` and a `from`.');
+  if (e.start !== undefined && !inLevels(e.start)) problems.push(`the electron starts in a level from 1 to ${count}.`);
+  if (e.from !== undefined && !(inLevels(e.from) && e.from < count)) problems.push(`the ladder starts from a level below the top one, from 1 to ${count - 1}.`);
+  if (e.from !== undefined && (e.start ?? 1) < e.from) problems.push('the electron starts in a level that the ladder does not show.');
+  if ((e.source !== undefined || e.lamp !== undefined || e.cloud !== undefined) && picture !== 'spectrum') problems.push('only a spectrum picture has a `source`, a `lamp` and a `cloud`.');
+  if (e.waves !== undefined && picture !== 'wave') problems.push('only a wave picture has `waves`.');
+  if (e.waves !== undefined && !(e.waves >= 1 && e.waves <= 8)) problems.push('the wavelengths round the orbit are from 1 to 8.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(LEVELS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  let level = e.start ?? 1;
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if ((ph.to !== undefined || ph.photon !== undefined) && picture !== 'atom') problems.push(`clip "${name}" moves an electron or sends a photon, which only an atom picture shows.`);
+      if (ph.source !== undefined && picture !== 'spectrum') problems.push(`clip "${name}" changes the source, which only a spectrum picture has.`);
+      if (ph.waves !== undefined && picture !== 'wave') problems.push(`clip "${name}" changes the wavelengths round the orbit, which only a wave picture has.`);
+      if (ph.waves !== undefined && !(ph.waves >= 1 && ph.waves <= 8)) problems.push(`clip "${name}" asks for wavelengths round the orbit that are not from 1 to 8.`);
+      if (ph.to !== undefined && ph.photon !== undefined) problems.push(`clip "${name}" has a phase with both a jump and a photon; give each its own phase.`);
+      if (ph.photon !== undefined && !(ph.photon > 0)) problems.push(`clip "${name}" sends a photon with no energy.`);
+      if (ph.to !== undefined && !inLevels(ph.to)) problems.push(`clip "${name}" jumps to level ${ph.to}, and the atom has levels 1 to ${count}.`);
+      if (ph.to !== undefined && e.from !== undefined && ph.to < e.from) problems.push(`clip "${name}" jumps to level ${ph.to}, below the ladder's lowest level.`);
+      // A photon takes 1.6 seconds to arrive (ARRIVE in src/video/levels.ts), and the phase must outlast it.
+      if (ph.bump && !(ph.to !== undefined && ph.to > level)) problems.push(`clip "${name}" has a bump that lifts nothing; a bump goes with a jump to a higher level.`);
+      if (((ph.to !== undefined && ph.to > level && !ph.bump) || ph.photon !== undefined) && ph.dur < 1.6) problems.push(`clip "${name}" gives a photon less than the 1.6 seconds it takes to arrive.`);
+      if (ph.to !== undefined && inLevels(ph.to)) level = ph.to;
+    }
+  }
+  return problems;
+}
+
 /** Problems with a picture of alpha particles: an energy or a nucleus that is not there, a rate where particles are fired one by one, or a clip that sends nothing that the picture can show. */
 export function checkAlphas(e: AlphasEl): string[] {
   const problems: string[] = [];
@@ -4337,7 +4450,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -4439,6 +4552,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(ALPHAS_PARTS));
         motions.set(e.id, e);
         problems.push(...checkAlphas(e).map((p) => `Scene ${si + 1}: alpha particles "${e.id}": ${p}`));
+      }
+      if (e.kind === 'levels') {
+        diagrams.set(e.id, new Set<string>(LEVELS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkLevels(e).map((p) => `Scene ${si + 1}: energy levels "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

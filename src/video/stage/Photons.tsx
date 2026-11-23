@@ -50,7 +50,7 @@ export function photonColour(nm: number): string {
 const volts = (n: number) => n.toFixed(2).replace('-', '−');
 
 /** A photon: a short packet of waves that travels along `dir`, with its crests closer together for a shorter wavelength. */
-function Packet({ at, dir, nm, opacity = 1, wave: given }: { at: P; dir: P; nm: number; opacity?: number; wave?: number }) {
+export function Packet({ at, dir, nm, opacity = 1, wave: given }: { at: P; dir: P; nm: number; opacity?: number; wave?: number }) {
   const color = photonColour(nm);
   const wave = given ?? Math.max(6, Math.min(30, (nm / 700) * 22));
   const pts: string[] = [];

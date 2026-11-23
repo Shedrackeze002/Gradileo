@@ -1512,9 +1512,18 @@ items ship or decisions change.
        Rutherford's atom radiates and spirals in. The videos: `p30-4-1` (Cathode Rays),
        `p30-4-1-b` (The Charge-to-Mass Ratio), `p30-4-2` (The Gold Foil Experiment) and
        `p30-4-2-b` (The Closest Approach).
-     - Next: the videos of lessons 4.3 to 4.7 (the Bohr model and spectra, the nucleus and
-       isotopes, radioactive decay, half-life, and fission, fusion and binding energy). The
-       physics lessons have no tutor recordings yet.
+     - Written (23 November 2026): **the two videos of lesson 4.3**, on a new picture, `levels`:
+       a hydrogen atom with its allowed orbits beside a ladder of its energy levels. A photon
+       leaves when the electron drops and arrives when it rises, with the energy and wavelength
+       that the two levels give; a photon that matches no jump passes straight through, and one
+       with more than 13.6 eV sets the electron free. The same element spreads the light of a
+       hot solid, of glowing hydrogen and of a hot solid seen through cool hydrogen into the
+       three kinds of spectrum, with the dark lines where the bright ones were, and bends the
+       electron's wave round its orbit to show why only some orbits are allowed. The videos:
+       `p30-4-3` (The Bohr Model) and `p30-4-3-b` (Spectra).
+     - Next: the videos of lessons 4.4 to 4.7 (the nucleus and isotopes, radioactive decay,
+       half-life, and fission, fusion and binding energy). The physics lessons have no tutor
+       recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

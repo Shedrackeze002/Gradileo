@@ -810,6 +810,30 @@ See `src/video/script.ts` for every element and option. In short:
   is Rutherford's atom, with `electrons` that circle a small nucleus; a phase with `fall: true`
   makes them radiate and spiral in, as the model wrongly predicts (parts `names`, `waves`).
   These pictures are drawn for the full width of a `center` scene, not for a split.
+- `levels` (`src/video/levels.ts`) is the energy levels of an atom, in three pictures. The levels
+  are hydrogen's, −13.6 ÷ n² eV rounded as the lessons write them (the first `top` of them: 4
+  unless you say, 6 in a spectrum), or another atom's from `levels` (in eV, lowest first, with
+  its `name`). The photon of a jump has the difference between two levels, and its wavelength
+  is hc ÷ E with the lessons' constants. `picture: 'atom'` (the one drawn unless you say) is
+  the atom's orbits, with the electron going round one of them (it starts in level `start`),
+  beside a ladder of the levels, which can begin at level `from` to leave more room for the
+  upper ones. A phase's `to` makes the electron jump: a drop gives out its photon at once, and
+  for a rise a photon of exactly the right energy arrives first (so the phase must last at
+  least 1.6 seconds), unless `bump: true` says that a collision does the lifting. A phase's
+  `photon` sends a photon of that many electronvolts at the atom: the electron rises if a jump
+  matches, is set free if the photon has enough energy, and otherwise the photon passes
+  through. Parts: `names`, `energies`, `photon` (the energy, wavelength and kind of light of
+  the latest photon), `kept` (the arrows of the earlier drops stay on the ladder, one for each
+  pair of levels) and `radius`. The ladder and the orbits are not drawn to scale, since the
+  upper levels and the first orbit would be too small to see. `picture: 'spectrum'` spreads
+  light out with a prism onto a strip from 380 to 750 nm: a phase's `source` changes it between
+  a hot solid (`solid`: every colour), the glowing gas (`gas`: bright lines) and the hot solid
+  seen through the cool gas (`through`: dark lines at the same wavelengths), and `lamp` and
+  `cloud` rename the hot solid and the cool gas (parts `names`, `axis`, `lines`).
+  `picture: 'wave'` is the electron as a wave bent round its orbit, with `waves` wavelengths
+  round it (slid by a phase): a whole number joins up as a standing wave, and anything else
+  comes round out of step (parts `names`, `fits`). These pictures too are drawn for the full
+  width of a `center` scene.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

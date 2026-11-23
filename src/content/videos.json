@@ -129482,5 +129482,56 @@
         "working": "$\\lambda = \\dfrac{h}{mv}$, so $v = \\dfrac{h}{m\\lambda} = \\dfrac{6.63 \\times 10^{-34}}{9.11 \\times 10^{-31} \\times 0.50 \\times 10^{-9}} = 1.46 \\times 10^{6}$ m/s."
       }
     ]
+  },
+  "p30-3-8-b": {
+    "lessonId": "p30-3-8",
+    "title": "Wave-Particle Duality",
+    "duration": 333,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrons diffract",
+        "t": 15.787
+      },
+      {
+        "title": "Rings from a foil",
+        "t": 68.23
+      },
+      {
+        "title": "Two sets of evidence",
+        "t": 119.43
+      },
+      {
+        "title": "One at a time",
+        "t": 162.783
+      },
+      {
+        "title": "Your turn",
+        "t": 244.583
+      },
+      {
+        "title": "Summary",
+        "t": 284.618
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-8-b:q",
+        "t": 255.267,
+        "prompt": "A photon and an electron have the same wavelength. Which other quantity must they also share?",
+        "choices": [
+          "Momentum",
+          "Speed",
+          "Kinetic energy",
+          "Mass"
+        ],
+        "answer": 0,
+        "working": "For a photon and for a particle alike, $p = \\dfrac{h}{\\lambda}$. The same wavelength means the same momentum. Their speeds and energies are different."
+      }
+    ]
   }
 }
