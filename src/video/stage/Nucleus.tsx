@@ -24,6 +24,9 @@ const STRONG = TONES.good;
 /** The newtons that fill the bar of the electric force while it is shown alone, and the newtons that the strong force of two touching nucleons is drawn as. */
 const ALONE = 80;
 const TOUCH = 1200;
+/** How far from the middle of the nucleus what a decay throws out is seen, in pixels (it fades before it reaches the numbers beside the nucleus), and how fast it goes. */
+const REACH = 400;
+const FLY = 115;
 
 interface Frame {
   out: ReactElement[];
@@ -182,14 +185,14 @@ function drawBuild({ out, el, state, top, HIGH, part }: Frame): void {
     const edge = radiusOf(change.from.z + change.from.n) * S;
     const start = change.over * 0.3;
     const t = since - start;
-    const fade = clamp01((560 - (edge + 150 * Math.max(0, t))) / 80);
+    const fade = clamp01((REACH - (edge + FLY * Math.max(0, t))) / 70);
     if (change.kind === 'alpha') {
       // The four gather at the edge of the nucleus, and leave together.
       const A = nucleons(change.from.z, change.from.n);
       const [outP, outN] = [rightmost(A.protons, 2), rightmost(A.neutrons, 2)];
       const he = nucleons(2, 2);
       const gather = ease(clamp01(since / start));
-      const centre: P3 = [(edge + 6 + 150 * Math.max(0, t)) / S, 0, 0];
+      const centre: P3 = [(edge + 6 + FLY * Math.max(0, t)) / S, 0, 0];
       const four: Array<[P3, P3, number]> = [...[...outP].map((i, j): [P3, P3, number] => [A.protons[i], he.protons[j], 1]), ...[...outN].map((i, j): [P3, P3, number] => [A.neutrons[i], he.neutrons[j], 0])];
       four.forEach(([from, slot, proton], j) => {
         const at = lerp(from, [centre[0] + slot[0], centre[1] + slot[1], slot[2]], gather);
@@ -197,22 +200,28 @@ function drawBuild({ out, el, state, top, HIGH, part }: Frame): void {
       });
       if (names > 0 && t > 0.2) out.push(<Text key="he-n" x={cx + centre[0] * S} y={cy - he.ball * S * 2 - 22} color={INK} size={18} opacity={names * fade * clamp01((t - 0.2) / 0.3)}>Alpha particle</Text>);
     } else if (change.kind === 'gamma') {
-      if (t > 0) out.push(<Packet key="gamma" at={[cx + edge + 30 + 260 * t, cy]} dir={[1, 0]} nm={0.001} wave={7} opacity={clamp01((560 - (edge + 260 * t)) / 80)} />);
-      if (names > 0 && t > 0.2) out.push(<Text key="gamma-n" x={cx + edge + 30 + 260 * t} y={cy - 30} color="#bfe3ff" size={18} opacity={names * clamp01((t - 0.2) / 0.3) * clamp01((560 - (edge + 260 * t)) / 80)}>Gamma ray</Text>);
+      const seen = clamp01((REACH - 30 - (edge + 1.5 * FLY * t)) / 70);
+      if (t > 0) out.push(<Packet key="gamma" at={[cx + edge + 30 + 1.5 * FLY * t, cy]} dir={[1, 0]} nm={0.001} wave={7} opacity={seen} />);
+      if (names > 0 && t > 0.2) out.push(<Text key="gamma-n" x={cx + edge + 30 + 1.5 * FLY * t} y={cy - 30} color="#bfe3ff" size={18} opacity={names * clamp01((t - 0.2) / 0.3) * seen}>Gamma ray</Text>);
     } else if (t > 0) {
       const minus = change.kind === 'beta-';
       const B = nucleons(change.to.z, change.to.n);
       const from = minus ? B.protons[change.to.z - 1] : B.neutrons[change.to.n - 1];
       const [x0, y0] = [cx + from[0] * S, cy - from[1] * S];
-      const go = (angle: number, speed: number): [number, number] => [x0 + Math.cos(angle) * speed * t, y0 - Math.sin(angle) * speed * t];
-      const [bx, by] = go(0.32, 300);
-      const [nx, ny] = go(-0.42, 300);
-      const seen = (x: number) => clamp01((cx + 560 - x) / 80);
-      out.push(<Sphere key="beta" x={bx} y={by} r={7} color={minus ? NEGATIVE : POSITIVE} opacity={seen(bx)} />);
-      out.push(<text key="beta-s" x={bx} y={by + 4.5} textAnchor="middle" fontSize={13} fontWeight={700} fill="#fff" opacity={seen(bx)} style={{ fontFamily: FONT }}>{minus ? '−' : '+'}</text>);
-      out.push(<circle key="nu" cx={nx} cy={ny} r={3.5} fill={INK2} opacity={0.85 * seen(nx)} />);
+      // Both leave the nucleon that changed, towards the right of the picture: one a little above the middle, one a little below.
+      const go = (dy: number, speed: number): [number, number] => {
+        const [ux, uy] = [cx + REACH + 40 - x0, cy + dy - y0];
+        const far = Math.hypot(ux, uy);
+        return [x0 + (ux / far) * speed * t, y0 + (uy / far) * speed * t];
+      };
+      const [bx, by] = go(-64, 1.6 * FLY);
+      const [nx, ny] = go(72, 1.6 * FLY);
+      const seen = (x: number) => clamp01((cx + REACH - x) / 70);
+      out.push(<Sphere key="beta" x={bx} y={by} r={10} color={minus ? NEGATIVE : POSITIVE} opacity={seen(bx)} />);
+      out.push(<text key="beta-s" x={bx} y={by + 6} textAnchor="middle" fontSize={17} fontWeight={700} fill="#fff" opacity={seen(bx)} style={{ fontFamily: FONT }}>{minus ? '−' : '+'}</text>);
+      out.push(<circle key="nu" cx={nx} cy={ny} r={4.5} fill={INK2} opacity={0.85 * seen(nx)} />);
       if (names > 0 && t > 0.15) {
-        out.push(<Text key="beta-n" x={bx} y={by - 18} color={minus ? NEGATIVE : POSITIVE} size={18} opacity={names * seen(bx + 40)}>{minus ? 'Electron' : 'Positron'}</Text>);
+        out.push(<Text key="beta-n" x={bx} y={by - 22} color={minus ? NEGATIVE : POSITIVE} size={18} opacity={names * seen(bx + 40)}>{minus ? 'Electron' : 'Positron'}</Text>);
         out.push(<Text key="nu-n" x={nx} y={ny + 24} color={INK2} size={17} opacity={names * seen(nx + 60)}>{minus ? 'Antineutrino' : 'Neutrino'}</Text>);
       }
     }
@@ -282,8 +291,9 @@ function drawBuild({ out, el, state, top, HIGH, part }: Frame): void {
   }
   // An unstable nucleus says so: between its name and its numbers, or above it when it has no name beside it.
   if (state.shaky && !(busy && state.gone < 0.5)) {
-    if (symbol > 0 && counts > 0) out.push(<Text key="shaky" x={tx + 100} y={cy + 8} color={TONES.bad} size={19} opacity={Math.min(symbol, counts)}>Unstable: it will decay</Text>);
-    else out.push(<Text key="shaky" x={cx} y={Math.max(top + 22, cy - r * S - 22)} color={TONES.bad} size={19}>Unstable: it will decay</Text>);
+    const says = state.note || 'Unstable: it will decay';
+    if (symbol > 0 && counts > 0) out.push(<Text key="shaky" x={tx + 100} y={cy + 8} color={TONES.bad} size={19} opacity={Math.min(symbol, counts)}>{says}</Text>);
+    else out.push(<Text key="shaky" x={cx} y={Math.max(top + 22, cy - r * S - 22)} color={TONES.bad} size={19}>{says}</Text>);
   }
 }
 

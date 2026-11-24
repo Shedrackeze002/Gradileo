@@ -126,8 +126,9 @@ export interface NucleusState {
   gone: number;
   /** Every change so far. */
   changes: Change[];
-  /** Whether the nucleus is marked as unstable, and trembles. */
+  /** Whether the nucleus is marked as unstable, and trembles; and what the mark says, if a phase has given it other words. */
   shaky: boolean;
+  note?: string;
   /** The electrons round the nucleus (when the element gives them), how many there were before the latest change of them, and when that change began. */
   electrons?: number;
   electronsWere?: number;
@@ -145,6 +146,7 @@ export function nucleusAt(el: NucleusEl, plays: Plays = []): NucleusState {
   let [apart, share] = [el.apart ?? 2, el.share ?? 0.5];
   let [shaky, kinds] = [el.shaky ?? false, el.kinds ?? 'pp'];
   let time = 0;
+  let note: string | undefined;
   let [electrons, electronsWere, electronsAt] = [el.electrons, el.electrons, -Infinity];
   const changes: Change[] = [];
   for (const [clipName, seconds] of plays) {
@@ -161,6 +163,7 @@ export function nucleusAt(el: NucleusEl, plays: Plays = []): NucleusState {
         now = to;
       } else if (to.symbol !== now.symbol || to.name !== now.name) now = to;
       if (ph.shaky !== undefined) shaky = ph.shaky;
+      if (ph.note !== undefined) note = ph.note || undefined;
       if (ph.electrons !== undefined && ph.electrons !== electrons) [electrons, electronsWere, electronsAt] = [ph.electrons, electrons, time];
       if (ph.kinds !== undefined) kinds = ph.kinds;
       const part = ease(run / ph.dur);
@@ -171,5 +174,5 @@ export function nucleusAt(el: NucleusEl, plays: Plays = []): NucleusState {
     }
   }
   const change = changes[changes.length - 1];
-  return { time, ...now, change, gone: change ? Math.min(1, (time - change.at) / change.over) : 1, changes, shaky, electrons, electronsWere, electronsAt, apart, kinds, share };
+  return { time, ...now, change, gone: change ? Math.min(1, (time - change.at) / change.over) : 1, changes, shaky, note, electrons, electronsWere, electronsAt, apart, kinds, share };
 }
