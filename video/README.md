@@ -830,6 +830,10 @@ See `src/video/script.ts` for every element and option. In short:
   a hot solid (`solid`: every colour), the glowing gas (`gas`: bright lines) and the hot solid
   seen through the cool gas (`through`: dark lines at the same wavelengths), and `lamp` and
   `cloud` rename the hot solid and the cool gas (parts `names`, `axis`, `lines`).
+  `picture: 'wave'` is the electron as a wave bent round its orbit, with `waves` wavelengths
+  round it (slid by a phase): a whole number joins up as a standing wave, and anything else
+  comes round out of step (parts `names`, `fits`). These pictures too are drawn for the full
+  width of a `center` scene.
 - `nucleus` (`src/video/nucleus.ts`) is the nucleus of an atom, in three pictures.
   `picture: 'build'` (the one drawn unless you say) is a ball of `z` protons and `n` neutrons
   (carbon-12 unless you say, with the `symbol` and `name` of its element), packed closely and
@@ -838,7 +842,8 @@ See `src/video/script.ts` for every element and option. In short:
   nucleons arrive from the right or leave, and a new number of protons needs the `symbol` and
   `name` of the new element. A phase's `decay` (`alpha`, `beta-`, `beta+` or `gamma`) makes
   the nucleus decay and throws out the particle, and needs the `symbol` and `name` of the
-  daughter unless it is a gamma decay; `shaky: true` marks a nucleus as unstable. Give
+  daughter unless it is a gamma decay; `shaky: true` marks a nucleus as unstable, and a
+  phase's `note` gives the mark other words (a daughter that is left with extra energy). Give
   `electrons` and they circle the nucleus (far closer than they really are), and a phase's
   `electrons` makes some leave or arrive, for an ion. Parts: `names`, `symbol` (the nuclide
   written out), `counts` (Z, N and A), `radius` (a ruler), `charge` (the electrons and the
@@ -852,11 +857,40 @@ See `src/video/script.ts` for every element and option. In short:
   1 fm (in a real nucleus it is larger still). Parts: `names`, `distance`, `electric`,
   `strong`. `picture: 'mix'` is a hundred atoms of an element with two isotopes of `masses`,
   `share` of them the lighter (a phase's `share` slides it), and a beam that balances at the
-  average mass (parts `names`, `share`, `average`).
-  `picture: 'wave'` is the electron as a wave bent round its orbit, with `waves` wavelengths
-  round it (slid by a phase): a whole number joins up as a standing wave, and anything else
-  comes round out of step (parts `names`, `fits`). These pictures too are drawn for the full
+  average mass (parts `names`, `share`, `average`). These pictures are drawn for the full
   width of a `center` scene.
+- `radiation` (`src/video/radiation.ts`) is a source that sends out alpha particles, beta
+  particles and gamma rays (`rays` chooses which: all three unless you say), in two pictures.
+  `picture: 'through'` (the one drawn unless you say) gives each radiation a lane of its own
+  from the source to the right. An alpha particle stops in a few centimetres of air, or at the
+  `paper`; a beta particle passes the paper and stops in the `aluminium`; gamma rays pass
+  both, and the `lead` stops about two in three of them. A shield is there from the start
+  (`paper: true`) or slides in or out when a phase says so, and a particle meets a shield only
+  if it is there when the particle arrives. `open: false` closes the source, and a phase can
+  close or open it. Parts: `names`, `ions` (the trail of ions that each leaves, closest
+  together for alpha), `air` (the note that air stops the alpha particles) and `counter` (a
+  Geiger tube at the right, which flashes and counts a click for every particle that reaches
+  it, and one for the background every `background` seconds: 2.4 unless you say, 0 for none).
+  `picture: 'fields'` sends the rays in one beam through a field that a phase's `field` turns
+  on or off (`electric`: two plates, the positive one above; `magnetic`: a field into the
+  page; `off`). The alpha and beta particles bend opposite ways, the beta particles more
+  (though far less than they really would beside an alpha particle, as a note in the picture
+  says), and the gamma rays go straight on. Parts: `names` and `screen` (where each lands).
+  Both pictures are drawn for the full width of a `center` scene.
+- `halflife` (`src/video/halflife.ts`) is a sample of a radioactive isotope beside the graph of
+  its decay. The sample is `count` nuclei (400 unless you say) of the isotope `name`, with a
+  `halfLife` in `unit` (days unless you say). Every nucleus has a moment of its own to decay,
+  in no order, but the moments are spread so that the sample follows N = N₀ × (1/2)^(t/T):
+  half of the nuclei that are left go in each half-life, each with a flash. A phase's `to`
+  runs the sample's clock on to that time at a steady rate (it only runs forwards), and the
+  graph draws itself as the clock runs. The graph is `span` half-lives wide (5 unless you say)
+  and shows an `amount` at the start in an `amountUnit` (100 and % unless you say: a mass, an
+  activity, a count rate), named `amountName` on its axis. The time axis is marked at each
+  half-life, or `every` so many units when the half-life is the thing to find. Parts: `names`
+  (the sample's name, and the count of the nuclei that have not decayed), `left` (the clock
+  and the amount left), `graph`, `ahead` (the rest of the curve, dotted) and `halves` (a mark
+  at each half-life that has passed, with the share left). The sample is in the middle of the
+  picture until the graph is shown. Drawn for the full width of a `center` scene.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

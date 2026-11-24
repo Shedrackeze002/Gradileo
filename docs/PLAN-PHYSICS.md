@@ -110,7 +110,9 @@ built when the first unit that needs it is reached.
 | Alpha particles (`alphas`) | Thomson's atom crossed in straight lines, the gold foil experiment with a screen that flashes, paths past a nucleus to scale, a head-on approach with its energies and closest distance, and Rutherford's atom with an electron that spirals in | Grade 12, Unit D | Built |
 | Energy levels (`levels`) | An atom with its allowed orbits beside a ladder of its energy levels: photons given out and taken in as the electron jumps, photons that pass or free the electron, the three kinds of spectrum through a prism, and the electron's wave bent round its orbit | Grade 12, Unit D | Built |
 | The nucleus (`nucleus`) | A nucleus built of protons and neutrons and drawn to scale, isotopes and ions made by adding neutrons and removing electrons, the electric repulsion and the strong attraction of two nucleons, and the average mass of a mixture of isotopes | Grade 12, Unit D | Built |
-| Particles | Radioactive decay, half-life, fission and fusion | Grade 12, Unit D | To build |
+| Radiation (`nucleus`, `radiation`) | A nucleus that decays by alpha, beta and gamma decay, a decay series, the trail of ions of each radiation, what stops each one, how fields bend them, and a counter with its background | Grade 12, Unit D | Built |
+| Half-life (`halflife`) | A sample whose nuclei decay at random beside the graph of the amount left, for half-life, the decay equation, activity and carbon dating | Grade 12, Unit D | Built |
+| Particles | Fission and fusion | Grade 12, Unit D | To build |
 
 ## What physics needs that the platform does not have
 

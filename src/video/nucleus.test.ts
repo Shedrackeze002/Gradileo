@@ -128,6 +128,13 @@ describe('a nucleus through its clips', () => {
     const shaky = el({ clips: { a: { phases: [{ dur: 2 }, { dur: 2, shaky: true }] } } });
     expect(nucleusAt(shaky, [['a', 1]]).shaky).toBe(false);
     expect(nucleusAt(shaky, [['a', 3]]).shaky).toBe(true);
+    // A phase can give the mark other words, and '' gives it its own words again.
+    const noted = el({ shaky: true, clips: { a: { phases: [{ dur: 2 }, { dur: 2, note: 'It still has extra energy' }, { dur: 2, note: '' }] } } });
+    expect(nucleusAt(noted, [['a', 1]]).note).toBeUndefined();
+    expect(nucleusAt(noted, [['a', 3]]).note).toBe('It still has extra energy');
+    expect(nucleusAt(noted, [['a', 5]]).note).toBeUndefined();
+    expect(checkNucleus(noted)).toEqual([]);
+    expect(checkNucleus(el({ picture: 'pair', clips: { a: { phases: [{ dur: 2, note: 'x' }] } } })).join(' ')).toMatch(/only a build picture/);
   });
 
   it('slides two nucleons apart, and the share of an isotope', () => {

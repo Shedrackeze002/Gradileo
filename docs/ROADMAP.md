@@ -1531,8 +1531,25 @@ items ship or decisions change.
        and one proton in calcium-40, lead-208 and uranium-238 is held by its neighbours alone
        while every other proton repels it. The videos: `p30-4-4` (Inside the Nucleus) and
        `p30-4-4-b` (The Strong Nuclear Force).
-     - Next: the videos of lessons 4.5 to 4.7 (radioactive decay, half-life, and fission, fusion
-       and binding energy). The physics lessons have no tutor recordings yet.
+     - Written (23 November 2026): **the two videos of lesson 4.5**. The `nucleus` picture now
+       decays: radium-226 throws out an alpha particle, a neutron of carbon-14 turns into a
+       proton and sends out an electron and an antineutrino, sodium-22 gives out a positron and
+       then a gamma ray, and thorium-232 is followed through five decays to radon-220. A new
+       picture, `radiation`, sends alpha particles, beta particles and gamma rays out of a
+       source: each leaves its trail of ions, paper, aluminium and lead slide in and stop them
+       in turn, charged plates and a magnetic field bend the alpha and beta particles opposite
+       ways, and a Geiger tube clicks for the ones that reach it and goes on clicking for the
+       background when the source is closed. The videos: `p30-4-5` (Radioactive Decay) and
+       `p30-4-5-b` (Alpha, Beta and Gamma).
+     - Written (23 November 2026): **the two videos of lesson 4.6**, on a new picture,
+       `halflife`: 400 nuclei that decay one by one in no order, beside a graph of the amount
+       left that draws itself as the sample's clock runs. Iodine-131 is followed through five
+       half-lives, 80 mg of it through 24 days, 200 g of cobalt-60 to a time between two
+       half-lives, and a sample that falls to an eighth in 45 hours gives its half-life. The
+       same picture shows the activity of technetium-99m, a count rate with the background
+       taken off, and the carbon-14 of old wood and of charcoal, which gives their ages. The
+       videos: `p30-4-6` (Half-Life) and `p30-4-6-b` (Activity and Carbon Dating).
+     - Next: the videos of lesson 4.7 (fission, fusion and binding energy). The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

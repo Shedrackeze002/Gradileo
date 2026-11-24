@@ -3176,8 +3176,9 @@ export interface NucleusPhase {
   name?: string;
   /** A `build` picture: the nucleus decays. An alpha decay throws out two protons and two neutrons together; a beta decay turns a neutron into a proton (`beta-`) or a proton into a neutron (`beta+`), and throws out an electron or a positron with a neutrino; a gamma decay gives out a photon. Give the `symbol` and `name` of the daughter with it. */
   decay?: 'alpha' | 'beta-' | 'beta+' | 'gamma';
-  /** A `build` picture: mark the nucleus as unstable (it trembles), or as stable again. */
+  /** A `build` picture: mark the nucleus as unstable (it trembles), or as stable again. A `note` is what the mark says from here on, in place of "Unstable: it will decay" ('' for those words again). */
   shaky?: boolean;
+  note?: string;
   /** A `build` picture that has `electrons`: change them to this many. The ones that are lost fly away, and new ones arrive. */
   electrons?: number;
   /** A `pair` picture: slide the two nucleons to this many femtometres apart, or change which two they are. */
@@ -3239,7 +3240,125 @@ export interface NucleusEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+/** One step of a clip of the three radiations. */
+export interface RadiationPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** A `through` picture: slide the sheet of paper, the plate of aluminium or the block of lead into the way (true) or out of it (false). */
+  paper?: boolean;
+  aluminium?: boolean;
+  lead?: boolean;
+  /** Open or close the source. */
+  open?: boolean;
+  /** A `fields` picture: turn on two charged plates (`electric`, the positive one above) or a magnetic field into the page (`magnetic`), or turn the field `off`. */
+  field?: 'off' | 'electric' | 'magnetic';
+}
+
+export interface RadiationClip {
+  phases: RadiationPhase[];
+}
+
+/** What a picture of the three radiations can show; each is a part ("rays.ions"). */
+export const RADIATION_PARTS = ['names', 'ions', 'air', 'counter', 'screen'] as const;
+
+/**
+ * Alpha particles, beta particles and gamma rays from a source (src/video/radiation.ts). The
+ * `picture` is one of two:
+ *
+ * - `through` (the one drawn otherwise): each of the `rays` in a lane of its own. A phase slides
+ *   the `paper`, the `aluminium` or the `lead` into the way: paper (or a few centimetres of air)
+ *   stops an alpha particle, aluminium a beta particle, and lead two gamma rays in three. Parts:
+ *   `names`, `ions` (the ions each particle leaves: an alpha particle a dense trail, a beta
+ *   particle a thin one, a gamma ray hardly any) and `counter` (a tube at the end of the lanes
+ *   that clicks for each particle that reaches it, and every `background` seconds or so with no
+ *   particle at all).
+ * - `fields`: the `rays` in one beam, which a phase's `field` bends: alpha and beta particles
+ *   opposite ways, the beta particles far more, and gamma rays not at all. Parts: `names` and
+ *   `screen` (where each lands).
+ *
+ * Both are sketches: the speeds, the distances and the bends are chosen to be seen.
+ */
+export interface RadiationEl {
+  kind: 'radiation';
+  id: string;
+  picture?: 'through' | 'fields';
+  /** The radiations the source gives out (all three otherwise). */
+  rays?: Array<'alpha' | 'beta' | 'gamma'>;
+  /** A `through` picture: which shields are in the way at the start (none otherwise). */
+  paper?: boolean;
+  aluminium?: boolean;
+  lead?: boolean;
+  /** Whether the source is open at the start (it is otherwise). */
+  open?: boolean;
+  /** A `fields` picture: the field at the start (`off` otherwise). */
+  field?: 'off' | 'electric' | 'magnetic';
+  /** A `through` picture: the seconds between one click of the background and the next, about (2.4 otherwise; 0 for none). */
+  background?: number;
+  clips: Record<string, RadiationClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof RADIATION_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of a decaying sample. */
+export interface HalflifePhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** Run the sample's clock on to this time, in the element's unit, at a steady rate through the step. */
+  to?: number;
+}
+
+export interface HalflifeClip {
+  phases: HalflifePhase[];
+}
+
+/** What a picture of a decaying sample can show; each is a part ("iodine.graph"). */
+export const HALFLIFE_PARTS = ['names', 'left', 'graph', 'halves', 'ahead'] as const;
+
+/**
+ * A sample of a radioactive isotope with a `halfLife` (src/video/halflife.ts): `count` nuclei,
+ * each of which decays at a moment of its own, beside a graph of the amount that is left, which
+ * follows N = N₀ × (1/2)^(t/T) and draws itself as a phase's `to` runs the clock on. Parts:
+ * `names` (what the sample is, and how many nuclei have not decayed), `left` (the clock and the
+ * amount left), `graph`, `halves` (each half-life that has passed, marked with the share left)
+ * and `ahead` (the rest of the curve, faintly).
+ */
+export interface HalflifeEl {
+  kind: 'halflife';
+  id: string;
+  /** The half-life, and the unit of time it is in (`days` otherwise). */
+  halfLife: number;
+  unit?: string;
+  /** The isotope's name, for the sample ("iodine-131"). */
+  name?: string;
+  /** The number of nuclei drawn (400 otherwise), and a number that deals them other moments to decay. */
+  count?: number;
+  salt?: number;
+  /** The amount at the start, its unit and what it is called on the graph (100, `%` and "Amount left" otherwise). */
+  amount?: number;
+  amountUnit?: string;
+  amountName?: string;
+  /** How many half-lives the graph is wide (5 otherwise), the time on the clock at the start (0 otherwise), and the decimal places of the clock (0 otherwise). */
+  span?: number;
+  start?: number;
+  places?: number;
+  /** The time between the marks of the time axis (one half-life otherwise): give it when the half-life is the thing to find. */
+  every?: number;
+  clips: Record<string, HalflifeClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof HALFLIFE_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -4042,6 +4161,56 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a picture of a decaying sample: no half-life, too many nuclei to draw, or a clock that runs backwards or off the graph. */
+export function checkHalflife(e: HalflifeEl): string[] {
+  const problems: string[] = [];
+  if (!(e.halfLife > 0)) problems.push('the half-life is above zero.');
+  if (e.count !== undefined && !(Number.isInteger(e.count) && e.count >= 4 && e.count <= 900)) problems.push('the count is a whole number of nuclei from 4 to 900.');
+  if (e.amount !== undefined && !(e.amount > 0)) problems.push('the amount at the start is above zero.');
+  if (e.span !== undefined && !(Number.isInteger(e.span) && e.span >= 1 && e.span <= 8)) problems.push('the span is a whole number of half-lives from 1 to 8.');
+  if (e.start !== undefined && !(e.start >= 0)) problems.push('the clock starts at zero or later.');
+  if (e.every !== undefined && !(e.every > 0 && ((e.span ?? 5) * e.halfLife) / e.every <= 16)) problems.push('`every` is the time between the marks of the time axis: above zero, and no more than 16 marks.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(HALFLIFE_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  let clock = e.start ?? 0;
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.to === undefined) continue;
+      if (ph.to < clock) problems.push(`clip "${name}" runs the clock back from ${clock} to ${ph.to}; a sample only decays.`);
+      else if (ph.to > (e.span ?? 5) * e.halfLife + 1e-9) problems.push(`clip "${name}" runs the clock to ${ph.to}, past the ${e.span ?? 5} half-lives of the graph.`);
+      else clock = ph.to;
+    }
+  }
+  return problems;
+}
+
+/** Problems with a picture of the three radiations: no radiation, the same one twice, or an option that belongs to the other picture. */
+export function checkRadiation(e: RadiationEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'through';
+  if (!['through', 'fields'].includes(picture)) problems.push(`"${picture}" is not a picture of the three radiations.`);
+  const rays = e.rays ?? ['alpha', 'beta', 'gamma'];
+  if (!rays.length || new Set(rays).size !== rays.length || rays.some((ray) => !['alpha', 'beta', 'gamma'].includes(ray))) problems.push('the rays are one or more of alpha, beta and gamma, each once.');
+  if ((e.paper !== undefined || e.aluminium !== undefined || e.lead !== undefined || e.background !== undefined) && picture !== 'through') problems.push('only a through picture has shields and a background.');
+  if (e.background !== undefined && !(e.background >= 0)) problems.push('the background is the seconds between its clicks, or 0 for none.');
+  if (e.field !== undefined && picture !== 'fields') problems.push('only a fields picture has a field.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(RADIATION_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if ((ph.paper !== undefined || ph.aluminium !== undefined || ph.lead !== undefined) && picture !== 'through') problems.push(`clip "${name}" moves a shield, which only a through picture has.`);
+      if (ph.field !== undefined && picture !== 'fields') problems.push(`clip "${name}" changes a field, which only a fields picture has.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a picture of a nucleus: a nucleus with no protons, a decay that it cannot make or that does not name its daughter, or an option that belongs to another picture. */
 export function checkNucleus(e: NucleusEl): string[] {
   const problems: string[] = [];
@@ -4066,7 +4235,7 @@ export function checkNucleus(e: NucleusEl): string[] {
     for (const ph of clip.phases) {
       if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
       if (ph.electrons !== undefined && (e.electrons === undefined || !(Number.isInteger(ph.electrons) && ph.electrons >= 0))) problems.push(`clip "${name}" changes the electrons, which are a whole number in a picture that starts with \`electrons\`.`);
-      if ((ph.z !== undefined || ph.n !== undefined || ph.decay !== undefined || ph.shaky !== undefined || ph.symbol !== undefined) && picture !== 'build') problems.push(`clip "${name}" changes a nucleus, which only a build picture shows.`);
+      if ((ph.z !== undefined || ph.n !== undefined || ph.decay !== undefined || ph.shaky !== undefined || ph.note !== undefined || ph.symbol !== undefined) && picture !== 'build') problems.push(`clip "${name}" changes a nucleus, which only a build picture shows.`);
       if ((ph.apart !== undefined || ph.kinds !== undefined) && picture !== 'pair') problems.push(`clip "${name}" moves or changes two nucleons, which only a pair picture shows.`);
       if (ph.apart !== undefined && !(ph.apart >= 1 && ph.apart <= 8)) problems.push(`clip "${name}" moves the nucleons to a distance that is not from 1 to 8 femtometres.`);
       if (ph.share !== undefined && (picture !== 'mix' || !(ph.share >= 0 && ph.share <= 1))) problems.push(`clip "${name}" slides a share, which is from 0 to 1 in a mix picture.`);
@@ -4568,7 +4737,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -4680,6 +4849,16 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(NUCLEUS_PARTS));
         motions.set(e.id, e);
         problems.push(...checkNucleus(e).map((p) => `Scene ${si + 1}: nucleus "${e.id}": ${p}`));
+      }
+      if (e.kind === 'radiation') {
+        diagrams.set(e.id, new Set<string>(RADIATION_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkRadiation(e).map((p) => `Scene ${si + 1}: radiation "${e.id}": ${p}`));
+      }
+      if (e.kind === 'halflife') {
+        diagrams.set(e.id, new Set<string>(HALFLIFE_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkHalflife(e).map((p) => `Scene ${si + 1}: half-life "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
