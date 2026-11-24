@@ -1730,8 +1730,9 @@ items ship or decisions change.
      bending a TV's cathode ray (22.5), an alpha particle's closest approach to gold (19.3), and,
      with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
      distance (16.3), and, with the photon animation, violet light on calcium (21.2) and the
-     momentum of a 500 nm photon beside an electron's (21.3). Next: 4.3 to 4.7 once their
-     animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
+     momentum of a 500 nm photon beside an electron's (21.3), and, with the energy levels
+     animation, the level that 0.850 eV can ionize (College Physics 2e 30.3). Next: 4.4 to 4.7
+     once their animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
      Unit 1 (Measurement) with eight, `xq-m10c-1-1` to `xq-m10c-1-8`, of which the hand-span
      referent and the vernier caliper are questions Gradileo wrote (the free banks have none) and
      the rest come from OpenStax Prealgebra 2e (feet and inches, 100 km in miles, the soda can, the
