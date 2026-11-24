@@ -130217,5 +130217,123 @@
         "working": "$\\dfrac{800}{100} = 8 = 2^3$, so 3 half-lives have passed in 24 hours. One half-life is $\\dfrac{24}{3} = 8$ hours."
       }
     ]
+  },
+  "p30-4-7": {
+    "lessonId": "p30-4-7",
+    "title": "Mass Defect and Binding Energy",
+    "duration": 376,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The missing mass",
+        "t": 18.249
+      },
+      {
+        "title": "Mass and energy",
+        "t": 64.737
+      },
+      {
+        "title": "Binding energy",
+        "t": 114.1
+      },
+      {
+        "title": "For each nucleon",
+        "t": 157.099
+      },
+      {
+        "title": "The graph",
+        "t": 209.062
+      },
+      {
+        "title": "Mass that becomes power",
+        "t": 259.462
+      },
+      {
+        "title": "Your turn",
+        "t": 288.468
+      },
+      {
+        "title": "Summary",
+        "t": 336.825
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-7:q",
+        "t": 304.942,
+        "prompt": "A nucleus of lithium-7 has 3 protons and 4 neutrons, and a mass of 7.0144 u. A proton has a mass of 1.0073 u and a neutron 1.0087 u. What is the mass defect of the nucleus?",
+        "choices": [
+          "0.0144 u",
+          "0.0423 u",
+          "0.0567 u",
+          "39.4 u"
+        ],
+        "answer": 1,
+        "working": "Separate nucleons: $3 \\times 1.0073 + 4 \\times 1.0087 = 7.0567$ u. Mass defect: $7.0567 - 7.0144 = 0.0423$ u."
+      }
+    ]
+  },
+  "p30-4-7-b": {
+    "lessonId": "p30-4-7",
+    "title": "Fission and Fusion",
+    "duration": 396,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fission",
+        "t": 19.29
+      },
+      {
+        "title": "The chain reaction",
+        "t": 88.696
+      },
+      {
+        "title": "A reactor",
+        "t": 124.296
+      },
+      {
+        "title": "Fusion",
+        "t": 180.424
+      },
+      {
+        "title": "The same reason",
+        "t": 248.504
+      },
+      {
+        "title": "Which gives more?",
+        "t": 287.004
+      },
+      {
+        "title": "Your turn",
+        "t": 311.583
+      },
+      {
+        "title": "Summary",
+        "t": 356.221
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-7-b:q",
+        "t": 330.844,
+        "prompt": "A nucleus of uranium-235 absorbs a neutron and splits into tellurium-134, a second nucleus, and 3 free neutrons. What is the mass number of the second nucleus?",
+        "choices": [
+          "102",
+          "101",
+          "99",
+          "96"
+        ],
+        "answer": 2,
+        "working": "The mass numbers balance: $235 + 1 = 134 + A + 3$, so $A = 236 - 137 = 99$."
+      }
+    ]
   }
 }

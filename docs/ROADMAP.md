@@ -1560,7 +1560,10 @@ items ship or decisions change.
        between control rods; and hydrogen-2 and hydrogen-3 are turned back by their repulsion
        when slow and fuse into helium-4 when fast. The videos: `p30-4-7` (Mass Defect and
        Binding Energy) and `p30-4-7-b` (Fission and Fusion).
-     - Next: render the videos of lessons 4.5 to 4.7. The physics lessons have no tutor recordings yet.
+     - Done (24 November 2026): **all fourteen videos of Unit 4 are rendered**, checked (lengths,
+       the pronunciation report, a frame and the thumbnail of each) and in Drive, so Grade 12
+       Physics has a video for every lesson (61 videos). The physics lessons have no tutor
+       recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
