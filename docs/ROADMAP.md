@@ -1947,6 +1947,18 @@ items ship or decisions change.
      and 8.2 (a 50-30-20 budget, a month of credit card interest, the monthly cost of a car and the
      bookstore bar graph). One we wrote, where the free books have no question that fits: the
      total cost of a fridge bought on payments (2.3).
+     Math 5 (`xq-m5-*`, 26 lessons) is complete: 26 exam videos. Twenty-one come word for word from
+     OpenStax: Prealgebra 2e 1.1, 1.2, 1.4, 1.5, 2.1 to 2.4, 4.1, 4.4, 5.1, 5.5, 6.1, 9.4 and 11.1
+     (Miami-Dade's population in words, rounding Danny's pay, Natalie's three salaries, Sophia's
+     appliances, divisibility of 3765, the factors of 80, Yousef's shingles, Marcus's crackers,
+     Jenna's contact lenses, quarter notes in music, Janet's flour, the household mode, the
+     thunderstorm chance, linear, square or cubic measure, the 15 by 14 room, 8 + 3 · 9 against
+     (8 + 3) · 9, Adele's skirt, Arthur's suit and plotting (5, 2) and (2, 5)), Intermediate Algebra
+     2e 12.2 (4, 12, 20, … is arithmetic) and Contemporary Mathematics 8.1 (a frequency table of
+     majors). Five we wrote, where the free books have no question that fits a Grade 5 lesson: red
+     and blue marbles (6.1), the symmetry of the letter H (8.1) and of a pentagon tile (8.2), the
+     missing corner of a rectangle on a grid (9.2) and rows of path tiles in a table and on a grid
+     (11.1).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
