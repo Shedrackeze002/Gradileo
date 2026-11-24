@@ -130005,5 +130005,217 @@
         "working": "The strong force attracts any two nucleons, with or without charge: two protons, two neutrons, or a proton and a neutron. Its range is only about $10^{-15}$ m. It is the electric force that acts only between the protons."
       }
     ]
+  },
+  "p30-4-5": {
+    "lessonId": "p30-4-5",
+    "title": "Radioactive Decay",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Alpha decay",
+        "t": 21.91
+      },
+      {
+        "title": "Beta-minus decay",
+        "t": 80.655
+      },
+      {
+        "title": "Beta-plus and gamma decay",
+        "t": 130.458
+      },
+      {
+        "title": "The four decays",
+        "t": 175.399
+      },
+      {
+        "title": "A decay series",
+        "t": 201.351
+      },
+      {
+        "title": "Your turn",
+        "t": 248.161
+      },
+      {
+        "title": "Summary",
+        "t": 286.241
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-5:q",
+        "t": 265.545,
+        "prompt": "A nucleus of polonium-218, ${}^{218}_{84}\\text{Po}$, decays and becomes lead-214, ${}^{214}_{82}\\text{Pb}$. Which kind of decay is this?",
+        "choices": [
+          "Beta-minus decay",
+          "Alpha decay",
+          "Beta-plus decay",
+          "Gamma decay"
+        ],
+        "answer": 1,
+        "working": "The mass number falls by 4 and the atomic number falls by 2, so the nucleus has given out ${}^{4}_{2}\\text{He}$: ${}^{218}_{84}\\text{Po} \\rightarrow {}^{214}_{82}\\text{Pb} + {}^{4}_{2}\\text{He}$."
+      }
+    ]
+  },
+  "p30-4-5-b": {
+    "lessonId": "p30-4-5",
+    "title": "Alpha, Beta and Gamma",
+    "duration": 317,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three radiations",
+        "t": 14.758
+      },
+      {
+        "title": "What stops them",
+        "t": 74.358
+      },
+      {
+        "title": "In a field",
+        "t": 111.008
+      },
+      {
+        "title": "Detecting radiation",
+        "t": 150.308
+      },
+      {
+        "title": "Uses and safety",
+        "t": 200.008
+      },
+      {
+        "title": "Your turn",
+        "t": 248.63
+      },
+      {
+        "title": "Summary",
+        "t": 275.754
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-5-b:q",
+        "t": 257.324,
+        "prompt": "Which radiation is the most ionizing, and what is enough to stop it?",
+        "choices": [
+          "Gamma rays, stopped by a sheet of paper",
+          "Beta particles, stopped by a few millimetres of aluminium",
+          "Alpha particles, stopped by a sheet of paper",
+          "Alpha particles, stopped only by thick lead"
+        ],
+        "answer": 2,
+        "working": "Alpha particles ionize the most strongly, so they lose their energy the most quickly: a sheet of paper, or a few centimetres of air, stops them. Gamma rays are the least ionizing and the most penetrating."
+      }
+    ]
+  },
+  "p30-4-6": {
+    "lessonId": "p30-4-6",
+    "title": "Half-Life",
+    "duration": 296,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Random, but regular",
+        "t": 17.903
+      },
+      {
+        "title": "The decay equation",
+        "t": 99.659
+      },
+      {
+        "title": "Between half-lives",
+        "t": 141.067
+      },
+      {
+        "title": "Working backwards",
+        "t": 185.45
+      },
+      {
+        "title": "Your turn",
+        "t": 219.639
+      },
+      {
+        "title": "Summary",
+        "t": 258.094
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-6:q",
+        "t": 236.316,
+        "prompt": "Caesium-137 has a half-life of 30 years. What percentage of the caesium-137 in a sample is still there after 150 years?",
+        "choices": [
+          "20%",
+          "16.7%",
+          "6.25%",
+          "3.125%"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{150}{30} = 5$ half-lives have passed, so the percentage left is $100\\% \\times \\left(\\dfrac{1}{2}\\right)^{5} = 3.125\\%$."
+      }
+    ]
+  },
+  "p30-4-6-b": {
+    "lessonId": "p30-4-6",
+    "title": "Activity and Carbon Dating",
+    "duration": 303,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Activity",
+        "t": 13.196
+      },
+      {
+        "title": "Allowing for the background",
+        "t": 69.311
+      },
+      {
+        "title": "Carbon dating",
+        "t": 119.163
+      },
+      {
+        "title": "With logarithms",
+        "t": 177.541
+      },
+      {
+        "title": "Your turn",
+        "t": 231.908
+      },
+      {
+        "title": "Summary",
+        "t": 266.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-6-b:q",
+        "t": 245.576,
+        "prompt": "The activity of a sample falls from 800 Bq to 100 Bq in 24 hours. What is the half-life of the isotope?",
+        "choices": [
+          "8 hours",
+          "3 hours",
+          "12 hours",
+          "6 hours"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{800}{100} = 8 = 2^3$, so 3 half-lives have passed in 24 hours. One half-life is $\\dfrac{24}{3} = 8$ hours."
+      }
+    ]
   }
 }
