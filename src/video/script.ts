@@ -3358,7 +3358,69 @@ export interface HalflifeEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+/** One step of a clip of a nuclear reaction. */
+export interface ReactionPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** A `weigh` picture: bring the nucleons together into the nucleus (true), or pull the nucleus apart again (false). */
+  join?: boolean;
+  /** A `curve` picture: slide the marker along the graph to this mass number. */
+  to?: number;
+  /** A `fission`, `chain` or `fusion` picture: start it (again). The two nuclei of a fusion can be `slow`: then their repulsion turns them back. */
+  fire?: boolean | 'slow';
+}
+
+export interface ReactionClip {
+  phases: ReactionPhase[];
+}
+
+/** What a picture of a nuclear reaction can show; each is a part ("helium.masses"). */
+export const REACTION_PARTS = ['names', 'masses', 'energy', 'value', 'peak', 'fusion', 'fission', 'repel', 'count'] as const;
+
+/**
+ * A nuclear reaction and the energy it releases (src/video/reaction.ts), in five pictures.
+ * `weigh` (the one drawn unless you say): the protons and neutrons of a nucleus come together,
+ * and the mass falls by the mass defect (parts `names`, `masses`, `energy`). `curve`: the graph
+ * of the binding energy for each nucleon, with a marker that a phase's `to` slides (parts
+ * `names`, `value`, `peak`, `fusion`, `fission`). `fission`: a neutron splits uranium-235 into
+ * two `products` and some neutrons (parts `names`, `energy`). `chain`: a chain reaction, with
+ * control `rods` or without them (parts `names`, `count`). `fusion`: hydrogen-2 and hydrogen-3,
+ * which fuse if they are fast enough (parts `names`, `repel`, `energy`).
+ */
+export interface ReactionEl {
+  kind: 'reaction';
+  id: string;
+  picture?: 'weigh' | 'curve' | 'fission' | 'chain' | 'fusion';
+  /** A `weigh` picture: the protons and neutrons (helium-4 otherwise), the name of the element, the mass of the nucleus in u (4.0015 otherwise), whether it starts as a nucleus, whether the binding energy for each nucleon is shown too, and the decimal places of the binding energy (1 otherwise). */
+  z?: number;
+  n?: number;
+  name?: string;
+  mass?: number;
+  joined?: boolean;
+  each?: boolean;
+  places?: number;
+  /** A `weigh`, `fission` or `fusion` picture: the pixels to a femtometre. */
+  scale?: number;
+  /** A `curve` picture: the mass number that the marker starts at (56 otherwise), and the nuclei that are marked on the graph. */
+  at?: number;
+  marks?: Array<{ a: number; label: string }>;
+  /** A `fission` picture: the two nuclei that uranium-235 splits into, the lighter first (krypton-92 and barium-141 otherwise). */
+  products?: [{ z: number; n: number; name: string }, { z: number; n: number; name: string }];
+  /** A `fission` or `fusion` picture: the energy released, in MeV (173.2 and 17.5 otherwise). */
+  released?: number;
+  /** A `chain` picture: with control rods, one neutron from each fission causes another; without them, two do. */
+  rods?: boolean;
+  clips: Record<string, ReactionClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof REACTION_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | ReactionEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -4161,6 +4223,45 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a picture of a nuclear reaction: a nucleus that cannot be, a fission that does not balance, or an option or a step that belongs to another picture. */
+export function checkReaction(e: ReactionEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'weigh';
+  if (!['weigh', 'curve', 'fission', 'chain', 'fusion'].includes(picture)) problems.push(`"${picture}" is not a picture of a reaction.`);
+  const whole = (n: number | undefined, least: number) => n === undefined || (Number.isInteger(n) && n >= least);
+  const [z, n] = [e.z ?? 2, e.n ?? 2];
+  if ((e.z !== undefined || e.n !== undefined || e.mass !== undefined || e.joined !== undefined || e.each !== undefined || e.places !== undefined) && picture !== 'weigh') problems.push('only a weigh picture has `z`, `n`, `mass`, `joined`, `each` and `places`.');
+  if (!whole(e.z, 1) || !whole(e.n, 0) || z + n > 240) problems.push('a nucleus has a whole number of protons (at least 1) and of neutrons, and at most 240 nucleons.');
+  else if (picture === 'weigh' && !((e.mass ?? 4.0015) > 0 && (e.mass ?? 4.0015) < z * 1.0073 + n * 1.0087)) problems.push('the mass of a nucleus is above zero, and less than the mass of its separate nucleons.');
+  if (e.scale !== undefined && (picture === 'curve' || picture === 'chain' || !(e.scale > 0))) problems.push('the scale is the pixels to a femtometre in a weigh, fission or fusion picture, above zero.');
+  if ((e.at !== undefined || e.marks !== undefined) && picture !== 'curve') problems.push('only a curve picture has `at` and `marks`.');
+  if (e.at !== undefined && !(e.at >= 1 && e.at <= 238)) problems.push('the marker is at a mass number from 1 to 238.');
+  for (const m of e.marks ?? []) if (!(m.a >= 1 && m.a <= 238)) problems.push(`the mark "${m.label}" is not at a mass number from 1 to 238.`);
+  if (e.products !== undefined) {
+    if (picture !== 'fission') problems.push('only a fission picture has `products`.');
+    const [a, b] = e.products;
+    const free = 236 - a.z - a.n - b.z - b.n;
+    if (a.z + b.z !== 92) problems.push('the protons of the two products of a fission of uranium add up to 92.');
+    if (!(free >= 1 && free <= 4)) problems.push('a fission of uranium-235 sets from 1 to 4 neutrons free: the mass numbers of its products add up to 232 to 235.');
+  }
+  if (e.released !== undefined && ((picture !== 'fission' && picture !== 'fusion') || !(e.released > 0))) problems.push('`released` is the energy of a fission or a fusion in MeV, above zero.');
+  if (e.rods !== undefined && picture !== 'chain') problems.push('only a chain picture has `rods`.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(REACTION_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.join !== undefined && picture !== 'weigh') problems.push(`clip "${name}" joins nucleons, which only a weigh picture shows.`);
+      if (ph.to !== undefined && (picture !== 'curve' || !(ph.to >= 1 && ph.to <= 238))) problems.push(`clip "${name}" slides a marker, which is at a mass number from 1 to 238 in a curve picture.`);
+      if (ph.fire !== undefined && !['fission', 'chain', 'fusion'].includes(picture)) problems.push(`clip "${name}" starts a reaction, which only a fission, chain or fusion picture shows.`);
+      if (ph.fire === 'slow' && picture !== 'fusion') problems.push(`clip "${name}" starts a slow reaction, which only a fusion picture shows.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a picture of a decaying sample: no half-life, too many nuclei to draw, or a clock that runs backwards or off the graph. */
 export function checkHalflife(e: HalflifeEl): string[] {
   const problems: string[] = [];
@@ -4737,7 +4838,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | ReactionEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -4859,6 +4960,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(HALFLIFE_PARTS));
         motions.set(e.id, e);
         problems.push(...checkHalflife(e).map((p) => `Scene ${si + 1}: half-life "${e.id}": ${p}`));
+      }
+      if (e.kind === 'reaction') {
+        diagrams.set(e.id, new Set<string>(REACTION_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkReaction(e).map((p) => `Scene ${si + 1}: reaction "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

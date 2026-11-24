@@ -18,10 +18,11 @@ Unit B, Forces and Fields, has its ten lessons and twenty skills, and Unit C, El
 Radiation, has its eight lessons and sixteen skills, and Unit D, Atomic and Nuclear Physics, has
 its seven lessons and fourteen skills. Grade 12 Physics is listed for classes and sign-up
 (18 November 2026): it is recommended in Grade 12, with a placement check on Grade 11 Physics.
-Its videos are being made unit by unit: the nine videos of Unit A, Momentum and Impulse, and the
-24 videos of Unit B, Forces and Fields, are made (18 November 2026). Unit C was started on
-20 November 2026 with the videos of lessons 3.1 (electromagnetic waves and the speed of light) and
-3.2 (mirrors); the rest of Unit C and Unit D come next.
+Its videos were made unit by unit: the nine videos of Unit A, Momentum and Impulse, and the
+22 videos of Unit B, Forces and Fields, were made by 18 November 2026, the sixteen videos of
+Unit C, Electromagnetic Radiation, followed from 20 November, and the fourteen videos of Unit D,
+Atomic and Nuclear Physics, were written by 24 November 2026, so every lesson of Grade 12 Physics
+has its videos (61 in all).
 
 ## Shape
 
@@ -112,7 +113,7 @@ built when the first unit that needs it is reached.
 | The nucleus (`nucleus`) | A nucleus built of protons and neutrons and drawn to scale, isotopes and ions made by adding neutrons and removing electrons, the electric repulsion and the strong attraction of two nucleons, and the average mass of a mixture of isotopes | Grade 12, Unit D | Built |
 | Radiation (`nucleus`, `radiation`) | A nucleus that decays by alpha, beta and gamma decay, a decay series, the trail of ions of each radiation, what stops each one, how fields bend them, and a counter with its background | Grade 12, Unit D | Built |
 | Half-life (`halflife`) | A sample whose nuclei decay at random beside the graph of the amount left, for half-life, the decay equation, activity and carbon dating | Grade 12, Unit D | Built |
-| Particles | Fission and fusion | Grade 12, Unit D | To build |
+| Nuclear energy (`reaction`) | Nucleons that come together and lose mass, the graph of the binding energy for each nucleon, a neutron that splits uranium-235, a chain reaction with and without control rods, and two nuclei of hydrogen that fuse when they are fast enough | Grade 12, Unit D | Built |
 
 ## What physics needs that the platform does not have
 

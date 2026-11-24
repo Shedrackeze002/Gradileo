@@ -1549,7 +1549,18 @@ items ship or decisions change.
        same picture shows the activity of technetium-99m, a count rate with the background
        taken off, and the carbon-14 of old wood and of charcoal, which gives their ages. The
        videos: `p30-4-6` (Half-Life) and `p30-4-6-b` (Activity and Carbon Dating).
-     - Next: the videos of lesson 4.7 (fission, fusion and binding energy). The physics lessons have no tutor recordings yet.
+     - Written (24 November 2026): **the two videos of lesson 4.7**, on a new picture,
+       `reaction`, which gives **every lesson of Grade 12 Physics its videos**. Two protons and
+       two neutrons come together into helium-4 while gamma rays leave and the mass shown falls
+       by 0.0305 u, the same nucleus is pulled apart again, and iron-56 is compared with
+       uranium-235 for each nucleon. The graph of the binding energy for each nucleon has a
+       marker that slides to its peak near iron and out to both ends. A neutron splits a
+       nucleus of uranium-235, drawn with all of its 236 nucleons, into krypton-92, barium-141
+       and 3 neutrons; a chain reaction doubles from 1 fission to 8 and is then held steady
+       between control rods; and hydrogen-2 and hydrogen-3 are turned back by their repulsion
+       when slow and fuse into helium-4 when fast. The videos: `p30-4-7` (Mass Defect and
+       Binding Energy) and `p30-4-7-b` (Fission and Fusion).
+     - Next: render the videos of lessons 4.5 to 4.7. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
