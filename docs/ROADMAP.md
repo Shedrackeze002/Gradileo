@@ -1760,8 +1760,10 @@ items ship or decisions change.
      distance (16.3), and, with the photon animation, violet light on calcium (21.2) and the
      momentum of a 500 nm photon beside an electron's (21.3), and, with the energy levels
      animation, the level that 0.850 eV can ionize (College Physics 2e 30.3), and, with the
-     nucleus animation, the radius of an alpha particle (31.3). Next: 4.5 to 4.7 once their
-     animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
+     nucleus animation, the radius of an alpha particle (31.3), and, with the decay and half-life
+     animations, the beta decay that makes barium-137 (31.4) and the age of an old campfire
+     (31.5), and, with the binding energy animation, the binding energy per nucleon of
+     deuterium (31.6), so Physics 30 has an exam video for every lesson. Maths started 22 November 2026 with Math 10 (Math 10C):
      Unit 1 (Measurement) with eight, `xq-m10c-1-1` to `xq-m10c-1-8`, of which the hand-span
      referent and the vernier caliper are questions Gradileo wrote (the free banks have none) and
      the rest come from OpenStax Prealgebra 2e (feet and inches, 100 km in miles, the soda can, the
