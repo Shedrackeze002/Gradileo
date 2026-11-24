@@ -91,7 +91,7 @@ const video: Explainer = {
       layout: 'split',
       leftWidth: 620,
       left: [chart('c')],
-      right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['1 + 2 + 2 + 3 + 6 + 4 + 2 = 20', '\\text{highest: } 6 \\text{ times}', '\\text{mode} = \\good{5}'] }],
+      right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\text{total: } 20 \\text{ answers}', '\\text{highest: } 6 \\text{ times}', '\\text{mode} = \\good{5}'] }],
       lines: [
         { say: 'Step one. Make a row for each answer, from 1 to 7. Go through the list once, and put a tally mark in the right row for each answer.', show: ['c.frame', 'c.names', 'c.tally0', 'c.tally1', 'c.tally2', 'c.tally3', 'c.tally4', 'c.tally5', 'c.tally6'] },
         { say: 'Step two. Count the marks to get each frequency. 1 appears once, 2 and 3 twice each, 4 three times, 5 six times, 6 four times, and 7 twice.', show: ['c.freqs', 'm.0'] },

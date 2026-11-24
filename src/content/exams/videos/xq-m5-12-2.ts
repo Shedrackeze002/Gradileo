@@ -18,7 +18,7 @@ const ROWS = [
   { label: 'Undecided', count: 4 },
 ];
 
-const chart = (id: string) => figure(id, [tallyChart({ head: ['Major', 'Tally', 'Frequency'], rows: ROWS, widths: [4.6, 3.4, 3.2] })], 460);
+const chart = (id: string) => figure(id, [tallyChart({ head: ['Major', 'Tally', 'Frequency'], rows: ROWS, widths: [6, 3.4, 3.2] })], 460);
 
 const video: Explainer = {
   id: 'xq-m5-12-2',

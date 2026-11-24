@@ -21,7 +21,7 @@ const rect = (id: string) =>
     pt(g, 'B', 6, 1, 'B(6,\\ 1)', 'below'),
     pt(g, 'C', 6, 4, 'C(6,\\ 4)', 'above'),
     move(g, 'up', [1, 1], [1, 4], { label: '\\text{above } A', side: 'right', dashed: true }),
-    move(g, 'level', [6, 4], [1, 4], { label: '\\text{level with } C', side: 'right', tone: 'adj' }),
+    move(g, 'level', [6, 4], [1, 4], { label: '\\text{level with } C', tone: 'adj' }),
     pt(g, 'D', 1, 4, 'D(1,\\ 4)', 'above', 'good'),
   ]);
 

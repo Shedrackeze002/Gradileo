@@ -24,7 +24,7 @@ const graph = (id: string) =>
   figure(id, [
     g,
     guide(g, 'line', [0.5, 2.5], [5.5, 17.5], 'good', { weight: 3 }),
-    dots(g, TERMS.map((t, i) => ({ id: `p${i}`, x: i + 1, y: t, tex: `(${i + 1},\\ ${t})`, place: 'left' as const }))),
+    dots(g, TERMS.map((t, i) => ({ id: `p${i}`, x: i + 1, y: t, tex: `(${i + 1},\\ ${t})`, place: 'below right' as const }))),
   ]);
 
 const video: Explainer = {
