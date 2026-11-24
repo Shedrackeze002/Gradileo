@@ -1936,6 +1936,17 @@ items ship or decisions change.
      boxes (5.2), a flat-pack bookshelf (5.3), two chequing plans (6.2), the Rule of 72 with the
      rule stated in the question (7.2), a dugout's falling water level on a line graph (8.2) and a
      magic square (8.3).
+     Math 20-4 (`xq-m204-*`, 29 lessons) is complete: 29 exam videos. All but one come word for
+     word from OpenStax Prealgebra 2e 3.3, 4.6, 5.2, 5.5, 5.6, 6.2 to 6.5, 7.5, 8.2, 9.3 to 9.5,
+     9.7, 11.1 and 11.2 (the overdrawn account, the jacket fabric, a child's dose, the raise,
+     ketchup prices, stacked coupons, two jobs' pay, insurance commission, saving part of a
+     paycheque, the loan from parents, the juice bottle, base pay plus commission, the motor home
+     rental, ribbon in yards, a height in feet, a cold day in Celsius, the saw blade, the trapezoid
+     patio, the lawn around a house, the dollhouse, the campus grid map, the Catalina ferry,
+     Joaquin's paycheques and Donovan's college visit) and Contemporary Mathematics 6.5, 6.10, 6.11
+     and 8.2 (a 50-30-20 budget, a month of credit card interest, the monthly cost of a car and the
+     bookstore bar graph). One we wrote, where the free books have no question that fits: the
+     total cost of a fridge bought on payments (2.3).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
