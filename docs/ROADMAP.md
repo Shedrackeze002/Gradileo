@@ -1921,6 +1921,18 @@ items ship or decisions change.
      fits: sand as 3/8 of a bag (2.2), reading pay from a graph (5.4), a bolt between two ruler marks
      (6.2), the faces, edges and vertices of a square pyramid (8.2) and a rectangle's lines of
      symmetry (8.3).
+     Math 20-3 (`xq-m203-*`, 23 lessons) is complete: 23 exam videos. Most come word for word from
+     OpenStax Prealgebra 2e 6.5, 9.6 and 11.4 (the cleaning concentrate, the teepee and the roof
+     pitch), College Algebra 2e 4.1 (the shrinking city), Algebra and Trigonometry 2e 7.2 (the
+     building seen from 2 miles away and the lightning rod), Elementary Algebra 2e's Chapter 8
+     Practice Test (the map of Dayton, Columbus and Cincinnati) and Contemporary Mathematics 6.4,
+     6.5, 6.10, 8.2, 9.3, 10.6 and 10.7 (Oksana's CD, Mateo's budget, a month of credit card
+     interest, the zoo's bar graph and pie chart, the fish tank, the kitchen tiles, the greenhouse
+     and the pie filling cans). Eight we wrote, where the free books have no question that fits:
+     sheet metal for a grain bin roof (2.2), three survey stakes (4.3), the views of a stack of
+     boxes (5.2), a flat-pack bookshelf (5.3), two chequing plans (6.2), the Rule of 72 with the
+     rule stated in the question (7.2), a dugout's falling water level on a line graph (8.2) and a
+     magic square (8.3).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e

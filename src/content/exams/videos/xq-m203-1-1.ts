@@ -54,7 +54,7 @@ const video: Explainer = {
           id: 'q',
           kicker: 'The question',
           prompt:
-            'Slope of a roof. A fairly easy way to determine the slope is to take a $12$-inch level and set it on one end on the roof surface. Then take a tape measure or ruler, and measure from the other end of the level down to the roof surface. You can use these measurements to calculate the slope of the roof. What is the slope of the roof in this picture?',
+            'Slope of a roof. A fairly easy way to determine the slope is to take a 12-inch level and set it on one end on the roof surface. Then take a tape measure or ruler, and measure from the other end of the level down to the roof surface. You can use these measurements to calculate the slope of the roof. What is the slope of the roof in this picture?',
           answer: '$\\dfrac{1}{3}$',
           working: '$\\dfrac{\\text{rise}}{\\text{run}} = \\dfrac{4}{12} = \\dfrac{1}{3}$',
         },
@@ -153,7 +153,7 @@ const video: Explainer = {
         {
           kind: 'try',
           id: 'q2',
-          prompt: 'On another roof, it is $6$ inches from the end of a $12$-inch level down to the roof. What is the slope of this roof?',
+          prompt: 'On another roof, it is $6$ inches from the end of a 12-inch level down to the roof. What is the slope of this roof?',
           choices: ['$2$', '$6$', '$\\dfrac{1}{2}$', '$\\dfrac{1}{6}$'],
           answer: 2,
           working: '$\\dfrac{6}{12} = \\dfrac{1}{2}$',
