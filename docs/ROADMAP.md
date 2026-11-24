@@ -1748,8 +1748,9 @@ items ship or decisions change.
      with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
      distance (16.3), and, with the photon animation, violet light on calcium (21.2) and the
      momentum of a 500 nm photon beside an electron's (21.3), and, with the energy levels
-     animation, the level that 0.850 eV can ionize (College Physics 2e 30.3). Next: 4.4 to 4.7
-     once their animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
+     animation, the level that 0.850 eV can ionize (College Physics 2e 30.3), and, with the
+     nucleus animation, the radius of an alpha particle (31.3). Next: 4.5 to 4.7 once their
+     animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
      Unit 1 (Measurement) with eight, `xq-m10c-1-1` to `xq-m10c-1-8`, of which the hand-span
      referent and the vernier caliper are questions Gradileo wrote (the free banks have none) and
      the rest come from OpenStax Prealgebra 2e (feet and inches, 100 km in miles, the soda can, the
@@ -1895,6 +1896,18 @@ items ship or decisions change.
      books have no Canadian payroll, overtime, ruler-reading or square-counting questions: Jordan's
      overtime pay (2.1), Priya's CPP, EI and tax deductions with every rate given in the question
      (2.4), trim between two ruler marks (4.1) and the squares in a 4 by 4 grid (6.4).
+     Math 10-4 (`xq-m104-*`, 27 lessons) is complete: 27 exam videos. Most come word for word from
+     OpenStax Prealgebra 2e 1.1, 1.3, 3.1, 3.3, 4.2, 4.5, 5.2, 5.5, 6.1, 6.2, 9.3 and 9.7 (Jorge's
+     car price rounded four ways, Noah's road trip, Rafael's pizza slices, Vanessa's sugar,
+     Nicole's babysitting money, Boston's 44%, Kimngoc's tip, Mount McKinley and Death Valley, the
+     38° drop in Urbana, Lindsay's drive, Lee's trip time, the supplement and complement of 25°,
+     Jim's mean ride time and Tanya's candy), Elementary Algebra 2e 8.7 (Phil's fertilizer bags)
+     and Contemporary Mathematics 3.10, 8.1, 9.1 to 9.3, 9.5 and 10.4 (Christina's savings, the
+     courses frequency table, Kyrie's skydive, the garden path topsoil, the 96 L container, the
+     heated liquid and the fenced area). Five we wrote, where the free books have no question that
+     fits: sand as 3/8 of a bag (2.2), reading pay from a graph (5.4), a bolt between two ruler marks
+     (6.2), the faces, edges and vertices of a square pyramid (8.2) and a rectangle's lines of
+     symmetry (8.3).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
