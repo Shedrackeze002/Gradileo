@@ -129533,5 +129533,477 @@
         "working": "For a photon and for a particle alike, $p = \\dfrac{h}{\\lambda}$. The same wavelength means the same momentum. Their speeds and energies are different."
       }
     ]
+  },
+  "p30-4-1": {
+    "lessonId": "p30-4-1",
+    "title": "Cathode Rays",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A glow in a tube",
+        "t": 17.408
+      },
+      {
+        "title": "Straight lines",
+        "t": 59.408
+      },
+      {
+        "title": "Mass and momentum",
+        "t": 81.008
+      },
+      {
+        "title": "Negative charge",
+        "t": 103.508
+      },
+      {
+        "title": "In a magnetic field",
+        "t": 132.908
+      },
+      {
+        "title": "Always the same",
+        "t": 159.408
+      },
+      {
+        "title": "The electron",
+        "t": 193.308
+      },
+      {
+        "title": "Thomson's atom",
+        "t": 219.791
+      },
+      {
+        "title": "Your turn",
+        "t": 250.891
+      },
+      {
+        "title": "Summary",
+        "t": 279.561
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-1:q",
+        "t": 261.556,
+        "prompt": "Cathode rays pass between two charged plates. Which way do they bend, and what does that show?",
+        "choices": [
+          "Towards the negative plate, so they are positive",
+          "Towards the positive plate, so they are negative",
+          "They do not bend, so they are waves",
+          "Towards the positive plate, so they are positive"
+        ],
+        "answer": 1,
+        "working": "Opposite charges attract. The rays bend **towards the positive plate**, so the particles in them are **negative**."
+      }
+    ]
+  },
+  "p30-4-1-b": {
+    "lessonId": "p30-4-1",
+    "title": "The Charge-to-Mass Ratio",
+    "duration": 344,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Step 1: the speed",
+        "t": 17.019
+      },
+      {
+        "title": "Step 2: the circle",
+        "t": 74.525
+      },
+      {
+        "title": "Thomson's result",
+        "t": 110.192
+      },
+      {
+        "title": "Which particle is it?",
+        "t": 171.425
+      },
+      {
+        "title": "Starting from rest",
+        "t": 223.956
+      },
+      {
+        "title": "Your turn",
+        "t": 264.294
+      },
+      {
+        "title": "Summary",
+        "t": 300.165
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-1-b:q",
+        "t": 280.575,
+        "prompt": "A beam goes straight through crossed electric and magnetic fields. The magnetic field is made twice as strong. What must happen to the electric field to keep the same beam straight?",
+        "choices": [
+          "It must be halved",
+          "It must stay the same",
+          "It must be doubled",
+          "It must be four times as strong"
+        ],
+        "answer": 2,
+        "working": "The beam is straight when $v = \\dfrac{E}{B}$. The speed has not changed, so if $B$ is doubled, $E$ must be **doubled** as well."
+      }
+    ]
+  },
+  "p30-4-2": {
+    "lessonId": "p30-4-2",
+    "title": "The Gold Foil Experiment",
+    "duration": 360,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Thomson's prediction",
+        "t": 20.257
+      },
+      {
+        "title": "The experiment",
+        "t": 71.557
+      },
+      {
+        "title": "A tiny nucleus",
+        "t": 132.457
+      },
+      {
+        "title": "Rutherford's atom",
+        "t": 183.557
+      },
+      {
+        "title": "What each result shows",
+        "t": 217.857
+      },
+      {
+        "title": "A fault in the model",
+        "t": 247.693
+      },
+      {
+        "title": "Your turn",
+        "t": 291.946
+      },
+      {
+        "title": "Summary",
+        "t": 320.799
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-2:q",
+        "t": 300.989,
+        "prompt": "Most alpha particles passed straight through the gold foil. What does this show?",
+        "choices": [
+          "Alpha particles have no charge",
+          "Gold atoms have no electrons",
+          "The nucleus has a negative charge",
+          "Most of an atom is empty space"
+        ],
+        "answer": 3,
+        "working": "An alpha particle is turned only when it passes close to a nucleus. Most pass straight through, so **most of an atom is empty space**."
+      }
+    ]
+  },
+  "p30-4-2-b": {
+    "lessonId": "p30-4-2",
+    "title": "The Closest Approach",
+    "duration": 416,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Head-on",
+        "t": 14.206
+      },
+      {
+        "title": "Energy is conserved",
+        "t": 64.783
+      },
+      {
+        "title": "A gold nucleus",
+        "t": 112.083
+      },
+      {
+        "title": "More energy, closer",
+        "t": 187.622
+      },
+      {
+        "title": "How much energy?",
+        "t": 246.299
+      },
+      {
+        "title": "The force",
+        "t": 301.161
+      },
+      {
+        "title": "Your turn",
+        "t": 346.771
+      },
+      {
+        "title": "Summary",
+        "t": 379.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-2-b:q",
+        "t": 359.083,
+        "prompt": "The kinetic energy of an alpha particle is doubled. What happens to its distance of closest approach to a nucleus?",
+        "choices": [
+          "It is halved",
+          "It is doubled",
+          "It stays the same",
+          "It is four times as large"
+        ],
+        "answer": 0,
+        "working": "The distance is $r = k(2e)(Ze) \\div E_k$, so it is inversely proportional to the kinetic energy. Twice the energy gives **half the distance**."
+      }
+    ]
+  },
+  "p30-4-3": {
+    "lessonId": "p30-4-3",
+    "title": "The Bohr Model",
+    "duration": 463,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bohr's atom",
+        "t": 21.371
+      },
+      {
+        "title": "The levels of hydrogen",
+        "t": 83.271
+      },
+      {
+        "title": "The photon of a jump",
+        "t": 164.182
+      },
+      {
+        "title": "The red line of hydrogen",
+        "t": 197.582
+      },
+      {
+        "title": "Jumping up",
+        "t": 266.51
+      },
+      {
+        "title": "How many lines?",
+        "t": 309.017
+      },
+      {
+        "title": "Your turn",
+        "t": 369.517
+      },
+      {
+        "title": "Summary",
+        "t": 411.105
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-3:q",
+        "t": 388.728,
+        "prompt": "The electron of a hydrogen atom drops from $n = 3$ ($-1.51$ eV) to $n = 1$ ($-13.6$ eV). What is the energy of the photon?",
+        "choices": [
+          "15.11 eV",
+          "12.09 eV",
+          "1.51 eV",
+          "10.2 eV"
+        ],
+        "answer": 1,
+        "working": "$E = E_3 - E_1 = -1.51 - (-13.6) = 12.09$ eV."
+      }
+    ]
+  },
+  "p30-4-3-b": {
+    "lessonId": "p30-4-3",
+    "title": "Spectra",
+    "duration": 441,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of spectrum",
+        "t": 18.216
+      },
+      {
+        "title": "The bright lines",
+        "t": 78.416
+      },
+      {
+        "title": "The series of hydrogen",
+        "t": 125.831
+      },
+      {
+        "title": "The dark lines",
+        "t": 157.404
+      },
+      {
+        "title": "Fingerprints",
+        "t": 217.904
+      },
+      {
+        "title": "Freeing the electron",
+        "t": 242.604
+      },
+      {
+        "title": "Why the orbits are allowed",
+        "t": 272.796
+      },
+      {
+        "title": "Where the model falls short",
+        "t": 318.196
+      },
+      {
+        "title": "Your turn",
+        "t": 352.428
+      },
+      {
+        "title": "Summary",
+        "t": 396.803
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-3-b:q",
+        "t": 371.842,
+        "prompt": "A hydrogen atom in its ground state can jump up by 10.2 eV or by 12.09 eV. A photon of 11.0 eV arrives. What happens?",
+        "choices": [
+          "The electron rises to $n = 2$",
+          "The atom takes in 10.2 eV, and the rest carries on",
+          "The photon passes straight through",
+          "The electron is set free"
+        ],
+        "answer": 2,
+        "working": "An atom absorbs only a photon whose energy **matches a gap exactly**, or one with enough to free the electron (13.6 eV). 11.0 eV does neither, so it passes straight through."
+      }
+    ]
+  },
+  "p30-4-4": {
+    "lessonId": "p30-4-4",
+    "title": "Inside the Nucleus",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Protons and neutrons",
+        "t": 16.626
+      },
+      {
+        "title": "Two numbers",
+        "t": 57.225
+      },
+      {
+        "title": "Atoms and ions",
+        "t": 111.067
+      },
+      {
+        "title": "Isotopes",
+        "t": 145.068
+      },
+      {
+        "title": "The average mass",
+        "t": 184.717
+      },
+      {
+        "title": "Your turn",
+        "t": 236.177
+      },
+      {
+        "title": "Summary",
+        "t": 271.983
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-4:q",
+        "t": 248.252,
+        "prompt": "A nucleus contains 26 protons and 30 neutrons. What are its atomic number $Z$ and its mass number $A$?",
+        "choices": [
+          "$Z = 30$ and $A = 26$",
+          "$Z = 26$ and $A = 30$",
+          "$Z = 56$ and $A = 26$",
+          "$Z = 26$ and $A = 56$"
+        ],
+        "answer": 3,
+        "working": "The atomic number is the number of protons, $Z = 26$. The mass number counts protons and neutrons together: $A = 26 + 30 = 56$. This is iron-56."
+      }
+    ]
+  },
+  "p30-4-4-b": {
+    "lessonId": "p30-4-4",
+    "title": "The Strong Nuclear Force",
+    "duration": 345,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The repulsion",
+        "t": 13.196
+      },
+      {
+        "title": "The strong nuclear force",
+        "t": 61.04
+      },
+      {
+        "title": "Why neutrons are needed",
+        "t": 115.84
+      },
+      {
+        "title": "The size of a nucleus",
+        "t": 184.605
+      },
+      {
+        "title": "Your turn",
+        "t": 265.606
+      },
+      {
+        "title": "Summary",
+        "t": 295.831
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-4-b:q",
+        "t": 273.23,
+        "prompt": "Which particles does the strong nuclear force act between?",
+        "choices": [
+          "Any two nucleons that are almost touching",
+          "Two protons only",
+          "A proton and a neutron only",
+          "Any two charged particles, at any distance"
+        ],
+        "answer": 0,
+        "working": "The strong force attracts any two nucleons, with or without charge: two protons, two neutrons, or a proton and a neutron. Its range is only about $10^{-15}$ m. It is the electric force that acts only between the protons."
+      }
+    ]
   }
 }
