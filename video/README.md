@@ -891,6 +891,29 @@ See `src/video/script.ts` for every element and option. In short:
   and the amount left), `graph`, `ahead` (the rest of the curve, dotted) and `halves` (a mark
   at each half-life that has passed, with the share left). The sample is in the middle of the
   picture until the graph is shown. Drawn for the full width of a `center` scene.
+- `reaction` (`src/video/reaction.ts`) is for the energy of the nucleus, in five pictures.
+  `weigh` (the default) shows `z` protons and `n` neutrons apart (2 and 2 unless you say), a
+  phase's `join: true` brings them together into the nucleus `name` of that `mass` in u while
+  gamma rays leave and the mass shown falls, and `join: false` pulls them apart again
+  (`joined: true` starts as a nucleus). Its parts are `names`, `masses` (the masses apart and
+  as a nucleus, and the mass defect, worked out with 1.0073 u and 1.0087 u) and `energy` (the
+  binding energy at 931.5 MeV for each u, to `places` decimal places, and with `each: true`
+  the binding energy for each nucleon). `picture: 'curve'` is the graph of the binding energy
+  for each nucleon against the mass number, with a marker that starts `at` a mass number and
+  slides with a phase's `to`; its parts are `names` (the `marks`: helium-4, iron-56 and
+  uranium-235 unless you say), `value` (the marker and its reading), `peak`, `fusion` and
+  `fission` (an arrow towards the peak from each side). `picture: 'fission'` is a nucleus of
+  uranium-235 drawn nucleon by nucleon: a phase's `fire: true` sends a neutron into it, it
+  stretches and splits into its two `products` (krypton-92 and barium-141 unless you say) and
+  the neutrons left over fly out; its parts are `names` and `energy` (the energy `released`).
+  `picture: 'chain'` is a chain reaction started by `fire: true`: 1, 2, 4 and 8 fissions with
+  the path of every neutron left drawn, or with `rods: true` one fission after another while
+  two control rods take the other neutrons; its parts are `names` (the rule) and `count` (the
+  fissions so far). `picture: 'fusion'` is hydrogen-2 and hydrogen-3: `fire: 'slow'` sends them
+  together and their repulsion turns them back, and `fire: true` sends them fast enough to
+  fuse into helium-4 and a neutron; its parts are `names`, `repel` (the two forces, which grow
+  as the nuclei close) and `energy`. Firing again starts a picture afresh. Drawn for the full
+  width of a `center` scene.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

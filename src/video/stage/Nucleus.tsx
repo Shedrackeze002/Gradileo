@@ -50,7 +50,7 @@ interface Ball {
 }
 
 /** A ball lit from the upper left. */
-function Sphere({ x, y, r, color, opacity = 1, sign }: { x: number; y: number; r: number; color: string; opacity?: number; sign?: string }) {
+export function Sphere({ x, y, r, color, opacity = 1, sign }: { x: number; y: number; r: number; color: string; opacity?: number; sign?: string }) {
   return (
     <g opacity={opacity}>
       <circle cx={x} cy={y} r={r} fill={color} stroke="#0d0c24" strokeWidth={Math.max(0.8, r * 0.09)} />
