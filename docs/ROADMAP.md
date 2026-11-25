@@ -1972,6 +1972,19 @@ items ship or decisions change.
      which rectangle is congruent (7.2), sliding and flipping a triangle (8.2), turning a triangle
      about a vertex (8.3), an arrow-shaped signpost (9.3), Maya's pages read (11.1) and the gym
      equation (11.2).
+     Math 7 (`xq-m7-*`, 35 lessons) is complete: 35 exam videos. Twenty-nine come word for word
+     from OpenStax: Prealgebra 2e 2.1, 2.3, 2.4, 3.2, 3.3, 4.5, 4.6, 5.2, 5.3, 6.1, 6.2, 8.2, 8.3,
+     9.4, 9.5 and 11.1 and its Chapter 5 Practice Test (divisibility, 27/11 and 17/20 as decimals,
+     Adam's, Maria's and the beans and corn money, 30% as a fraction and a decimal, the fat in
+     Veronica's muffins, 7/12 + 11/15, Renata's fabric, Nishant's print area, the diver, Anchorage's
+     drop in temperature, the football on the field, Frank's savings, a table for y = 3x − 1,
+     expression or equation, seven more than x, 4z = −52, 3m − 8 = 19, the trampoline, the
+     painting, the pizza, the quadrants, the preschool ages and the extra shift), and Contemporary
+     Mathematics 7.4, 8.2 and 10.6 (a coin and a die, a pie chart of a zoo's patients and sod for
+     half a backyard). Six we wrote, where the free books have no question that fits a Grade 7
+     lesson: parallel and perpendicular segments on a grid (8.1), perpendicular and angle bisectors
+     (8.2), sliding a triangle (9.2), reflecting and rotating a triangle (9.3), an outlier among
+     puzzle times (10.2) and theoretical against experimental probability on a spinner (11.3).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
