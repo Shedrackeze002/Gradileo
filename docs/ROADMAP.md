@@ -1959,6 +1959,19 @@ items ship or decisions change.
      and blue marbles (6.1), the symmetry of the letter H (8.1) and of a pentagon tile (8.2), the
      missing corner of a rectangle on a grid (9.2) and rows of path tiles in a table and on a grid
      (11.1).
+     Math 6 (`xq-m6-*`, 33 lessons) is complete: 33 exam videos. Twenty-five come word for word
+     from OpenStax: Prealgebra 2e 2.1, 2.2, 2.5, 3.1, 3.2, 3.5, 4.2, 4.5, 5.2, 5.6, 6.2, 6.5, 9.4,
+     10.6 and 11.1 (the extreme temperatures, ordering integers, Chicago's warming day, Amber's,
+     Christopher's, the six friends' and Jake's money, the factor tree of 126, 5³ and 1⁷, the GCF of
+     54 and 36, Laronda's ribbon, Imelda's improper fraction, Travis's car wash mix, the juice box
+     unit price, Cierra's tip, 3² + 2⁴ ÷ 2 + 4³, 7x + 9 + 9x + 8, the cookie equation, plotting four
+     points, and the area of a triangle) and Contemporary Mathematics 7.5, 8.2, 9.3 and 10.6 (a
+     fair die, the majors as percentages, a storage area's volume, boxes of frozen yogurt and the
+     area of a parallelogram). Eight we wrote, where the free books have no question that fits a
+     Grade 6 lesson: five cakes shared by eight students (4.1), a boot reflected in a line (7.1),
+     which rectangle is congruent (7.2), sliding and flipping a triangle (8.2), turning a triangle
+     about a vertex (8.3), an arrow-shaped signpost (9.3), Maya's pages read (11.1) and the gym
+     equation (11.2).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
