@@ -2040,8 +2040,8 @@ items ship or decisions change.
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
      Topics) on public-domain texts, plus a few key stage 2 grammar questions under the Open
-     Government Licence; texts still in copyright are described, never quoted. Grade 5 is rendered
-     and on Drive, and the other grades are rendering in turn. The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
+     Government Licence; texts still in copyright are described, never quoted. All 243 were rendered
+     and put on Drive by 25 November 2026, ready for the YouTube uploads. The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
 
