@@ -2033,9 +2033,9 @@ items ship or decisions change.
      alcohols, identifying an unknown compound, Born–Haber cycles, entropy and Gibbs free
      energy, rate equations, Kp, Period 3 oxides, copper complexes, metal aqua ions, optical
      isomers, aldehydes and ketones, esters, benzene, amines, amino acids, a two-step synthesis,
-     and NMR and chromatography. So every chemistry lesson now has its exam video. Chem 10 is
-     rendered and on Drive, and Chem 20, 30, 7, 8, 9 and More Chemistry Topics are rendering in
-     turn.
+     and NMR and chromatography. So every chemistry lesson now has its exam video. All 174
+     chemistry exam videos (Chem 7 to 9, Chem 10, 20 and 30, and More Chemistry Topics) were
+     rendered and uploaded to Drive by 25 November 2026, ready for the YouTube upload task.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
