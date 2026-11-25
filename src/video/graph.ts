@@ -67,6 +67,8 @@ export function plane(o: {
   width?: number;
   height?: number;
   titles?: { x?: string; y?: string };
+  /** The name at the end of the x-axis when there is no x title (TeX, `x` by default). */
+  xName?: string;
   /** Where the plane's origin goes in the diagram, to put two planes side by side. */
   at?: P;
   /** How to number each axis (TeX), instead of as decimals: `piTex` numbers an axis in radians. */
@@ -126,7 +128,7 @@ export function plane(o: {
   }
   if (o.titles?.y) items.push({ kind: 'label', id: n('y-title'), at: n('yb'), tex: o.titles.y, place: 'above right', group: n('axes') });
   else items.push({ kind: 'label', id: n('y-name'), at: n('yb'), tex: 'y', place: 'above right', group: n('axes') });
-  if (!o.titles?.x) items.push({ kind: 'label', id: n('x-name'), at: n('xb'), tex: 'x', place: 'right', group: n('axes') });
+  if (!o.titles?.x) items.push({ kind: 'label', id: n('x-name'), at: n('xb'), tex: o.xName ?? 'x', place: 'right', group: n('axes') });
   return { points, items, map, n, x: o.x, y: o.y };
 }
 

@@ -1500,8 +1500,70 @@ items ship or decisions change.
        photons go through two slits one at a time, each landing as a single dot, until the dots
        build up the fringes that the wave predicts. The videos: `p30-3-8` (Matter Waves) and
        `p30-3-8-b` (Wave-Particle Duality). This finishes the videos of Unit 3.
-     - Next: the videos of Unit 4 (atomic and nuclear physics, lessons 4.1 to 4.7). The physics
-       lessons have no tutor recordings yet.
+     - Written (23 November 2026): **the four videos of lessons 4.1 and 4.2**, which start
+       Unit 4, on two new pictures. `cathode` is a cathode ray tube drawn to scale: the rays
+       cross it only once the air is pumped out, a metal cross casts a sharp shadow, a paddle
+       wheel is pushed along its rails, and the beam bends between charged plates and in a
+       magnetic field along a path worked out from the force on each electron, straight when
+       v = E ÷ B and a circle of radius v ÷ (B q/m). `alphas` is alpha particles fired at atoms:
+       they cross Thomson's atom in straight lines, the gold foil sends a few back to a screen
+       that flashes, each path past a gold nucleus is turned by the repulsion k(2e)(Ze) ÷ r², one
+       that heads straight in stops at r = k(2e)(Ze) ÷ Ek and is pushed back, and the electron of
+       Rutherford's atom radiates and spirals in. The videos: `p30-4-1` (Cathode Rays),
+       `p30-4-1-b` (The Charge-to-Mass Ratio), `p30-4-2` (The Gold Foil Experiment) and
+       `p30-4-2-b` (The Closest Approach).
+     - Written (23 November 2026): **the two videos of lesson 4.3**, on a new picture, `levels`:
+       a hydrogen atom with its allowed orbits beside a ladder of its energy levels. A photon
+       leaves when the electron drops and arrives when it rises, with the energy and wavelength
+       that the two levels give; a photon that matches no jump passes straight through, and one
+       with more than 13.6 eV sets the electron free. The same element spreads the light of a
+       hot solid, of glowing hydrogen and of a hot solid seen through cool hydrogen into the
+       three kinds of spectrum, with the dark lines where the bright ones were, and bends the
+       electron's wave round its orbit to show why only some orbits are allowed. The videos:
+       `p30-4-3` (The Bohr Model) and `p30-4-3-b` (Spectra).
+     - Written (23 November 2026): **the two videos of lesson 4.4**, on a new picture, `nucleus`:
+       a nucleus as a ball of protons and neutrons, packed closely and drawn to scale with the
+       radius 1.2 fm × ∛A. Carbon-12 is put together a nucleon at a time and grows into
+       uranium-238, two neutrons arrive to make carbon-14, two electrons leave an atom of
+       copper to make an ion, and a hundred atoms of chlorine balance on a beam at their average
+       mass. Two protons are pushed together while Coulomb's law gives their repulsion
+       (57.5 N at 2.0 fm), the strong attraction takes over as they touch and is gone by 3 fm,
+       and one proton in calcium-40, lead-208 and uranium-238 is held by its neighbours alone
+       while every other proton repels it. The videos: `p30-4-4` (Inside the Nucleus) and
+       `p30-4-4-b` (The Strong Nuclear Force).
+     - Written (23 November 2026): **the two videos of lesson 4.5**. The `nucleus` picture now
+       decays: radium-226 throws out an alpha particle, a neutron of carbon-14 turns into a
+       proton and sends out an electron and an antineutrino, sodium-22 gives out a positron and
+       then a gamma ray, and thorium-232 is followed through five decays to radon-220. A new
+       picture, `radiation`, sends alpha particles, beta particles and gamma rays out of a
+       source: each leaves its trail of ions, paper, aluminium and lead slide in and stop them
+       in turn, charged plates and a magnetic field bend the alpha and beta particles opposite
+       ways, and a Geiger tube clicks for the ones that reach it and goes on clicking for the
+       background when the source is closed. The videos: `p30-4-5` (Radioactive Decay) and
+       `p30-4-5-b` (Alpha, Beta and Gamma).
+     - Written (23 November 2026): **the two videos of lesson 4.6**, on a new picture,
+       `halflife`: 400 nuclei that decay one by one in no order, beside a graph of the amount
+       left that draws itself as the sample's clock runs. Iodine-131 is followed through five
+       half-lives, 80 mg of it through 24 days, 200 g of cobalt-60 to a time between two
+       half-lives, and a sample that falls to an eighth in 45 hours gives its half-life. The
+       same picture shows the activity of technetium-99m, a count rate with the background
+       taken off, and the carbon-14 of old wood and of charcoal, which gives their ages. The
+       videos: `p30-4-6` (Half-Life) and `p30-4-6-b` (Activity and Carbon Dating).
+     - Written (24 November 2026): **the two videos of lesson 4.7**, on a new picture,
+       `reaction`, which gives **every lesson of Grade 12 Physics its videos**. Two protons and
+       two neutrons come together into helium-4 while gamma rays leave and the mass shown falls
+       by 0.0305 u, the same nucleus is pulled apart again, and iron-56 is compared with
+       uranium-235 for each nucleon. The graph of the binding energy for each nucleon has a
+       marker that slides to its peak near iron and out to both ends. A neutron splits a
+       nucleus of uranium-235, drawn with all of its 236 nucleons, into krypton-92, barium-141
+       and 3 neutrons; a chain reaction doubles from 1 fission to 8 and is then held steady
+       between control rods; and hydrogen-2 and hydrogen-3 are turned back by their repulsion
+       when slow and fuse into helium-4 when fast. The videos: `p30-4-7` (Mass Defect and
+       Binding Energy) and `p30-4-7-b` (Fission and Fusion).
+     - Done (24 November 2026): **all fourteen videos of Unit 4 are rendered**, checked (lengths,
+       the pronunciation report, a frame and the thumbnail of each) and in Drive, so Grade 12
+       Physics has a video for every lesson (61 videos). The physics lessons have no tutor
+       recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
@@ -1699,8 +1761,12 @@ items ship or decisions change.
      bending a TV's cathode ray (22.5), an alpha particle's closest approach to gold (19.3), and,
      with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
      distance (16.3), and, with the photon animation, violet light on calcium (21.2) and the
-     momentum of a 500 nm photon beside an electron's (21.3). Next: 4.3 to 4.7 once their
-     animations are built. Maths started 22 November 2026 with Math 10 (Math 10C):
+     momentum of a 500 nm photon beside an electron's (21.3), and, with the energy levels
+     animation, the level that 0.850 eV can ionize (College Physics 2e 30.3), and, with the
+     nucleus animation, the radius of an alpha particle (31.3), and, with the decay and half-life
+     animations, the beta decay that makes barium-137 (31.4) and the age of an old campfire
+     (31.5), and, with the binding energy animation, the binding energy per nucleon of
+     deuterium (31.6), so Physics 30 has an exam video for every lesson. Maths started 22 November 2026 with Math 10 (Math 10C):
      Unit 1 (Measurement) with eight, `xq-m10c-1-1` to `xq-m10c-1-8`, of which the hand-span
      referent and the vernier caliper are questions Gradileo wrote (the free banks have none) and
      the rest come from OpenStax Prealgebra 2e (feet and inches, 100 km in miles, the soda can, the
@@ -1733,7 +1799,218 @@ items ship or decisions change.
      Unit 2 (Trigonometry) with five, from OpenStax Algebra and Trigonometry 2e 7.1, 7.3, 10.1 and 10.2
      (the angle coterminal with 870°, sin t from cos t = 24/25 in quadrant IV, a building's height
      from two angles of elevation, the two triangles from α = 80°, a = 120, b = 121, and two airplanes
-     25° apart). English has an exam video for every lesson of all nine
+     25° apart), and Unit 3 (Quadratic Functions) with four, from OpenStax College Algebra 2e 5.1 (the
+     domain and range of 2(x − 4/7)² + 8/11, the parabola with vertex (2, 3) through (5, 12), the
+     minimum of 2x² − 10x + 4, and the biggest dog park split into 2 pens), and Unit 4 (Factoring and
+     Quadratic Equations) with four, from 2.5 (12x² + 11x + 2 = 0 by grouping, the 119 ft² garden,
+     x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant),
+     and Unit 5 (Radical Expressions and Equations) with three, from 1.3 and 2.6 (3√(80x) − 4√(45x) = 0,
+     7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root),
+     and Unit 6 (Rational Expressions and Equations) with four, from 1.6 and 2.2 (Brenda's floor tiles,
+     a quotient of four factored polynomials that comes to 1, 3/(x + 5) − 1/(x − 3), and
+     2/(x − 2) + 1/(x + 1) = 1/(x² − x − 2)), and Unit 7 (Absolute Value and Reciprocal Functions) with
+     four, from 3.6 and 5.6 (the numbers 4 away from 8, the graph of y = |x − 1|, |2x − 1| − 3 = 0, and
+     the domain and asymptotes of 2/(5x + 2) as the reciprocal of a line), Unit 8 (Systems of Equations)
+     with two, from 7.3 (the laptop company's break-even points, 2 to 20 laptops a day, and
+     3x − y = −2 with 2x² − y = 0 by substitution), and Unit 9 (Linear and Quadratic Inequalities) with
+     three, from Intermediate Algebra 2e 3.4 and 9.8 and College Algebra 2e 7.3 (Hugh's two jobs,
+     10x + 13y ≥ 260, x² − 2x − 15 ≤ 0, and the graph of x² + y < 9). Math 20-1 is complete: 34 exam
+     videos, one per lesson. Math 20-2 has begun with Unit 1 (Inductive and Deductive Reasoning):
+     four questions we wrote in the style of a Grade 11 reasoning unit test, since the free banks
+     have none at this level (a pattern's prediction for 12,345 × 9 + 6, a counterexample to "the sum
+     of two primes is even", a proof that three consecutive integers add to three times the middle
+     one, and a number riddle), and Unit 2 (Properties of Angles and Triangles) with four from OpenStax
+     Contemporary Mathematics 10.2 to 10.4 (angle 5 between parallel lines, a triangle with angles
+     x, x + 1 and x − 19, the angles of a regular pentagon, and which congruence theorem a figure
+     shows), and Unit 3 (Acute Triangle Trigonometry) with three from OpenStax Precalculus 2e 8.1
+     and 8.2 (solving a triangle with the sine law, a guy-wire on a hill with the cosine law, and the
+     height of a blimp over a stadium), and Unit 4 (Radicals) with four from OpenStax Intermediate
+     Algebra 2e 8.2 to 8.6 (√800, (7 + √3)(9 − √3), three denominators to rationalize, and
+     √(x + 1) − x + 1 = 0 with an extraneous root), and Unit 5 (Statistical Reasoning) with two from
+     OpenStax Contemporary Mathematics 8.7 and 8.8 (percents under a normal curve with mean 500, and
+     the percentile of 211 on a test with mean 250) and two we wrote, since the free books divide by
+     n − 1 and compute intervals rather than read them (which of two players is more consistent,
+     with the population standard deviation, and reading a poll that is accurate 19 times out of 20),
+     and Unit 6 (Quadratic Functions) with three from OpenStax College Algebra 2e 5.1 and
+     Intermediate Algebra 2e 9.6 (the graph of x² − 2x, the highest point of a ball thrown at
+     109 ft/s, and the intercepts of x² + 8x + 12 from factored form), and Unit 7 (Quadratic
+     Equations) with three from Intermediate Algebra 2e 6.5, 9.3 and 9.5 ((x + 6)(x − 3) = −8 by
+     expanding first, x² + 8x − 4 = 0 with the quadratic formula, and the dining table of 24 square
+     feet whose length is two more than twice its width), Unit 8 (Proportional Reasoning) with three
+     from OpenStax Prealgebra 2e 5.6 and 6.5 and Elementary Algebra 2e 8.7 (the better buy between
+     two boxes of cereal, the gas for Jesse's road trip to Las Vegas and back, and a real distance
+     from a scale map) and one we wrote, since the free books have no k² and k³ questions (the label
+     and volume of a larger similar soup can), and Unit 9 (Mathematics Research Project) with one we
+     wrote (fixing a leading research question about sleep and marks, and naming primary and
+     secondary data). Math 20-2 is complete: 30 exam videos, one per lesson.
+     Math 30-1 (`xq-m301-*`, 39 lessons) is complete: 39 exam videos. Units 1 to 6 (23 videos) use OpenStax
+     College Algebra 2e (translations, reflections and stretches, combined transformations, an
+     inverse on a restricted domain, a radical function, a radical equation checked on a graph,
+     degree and end behaviour, the remainder and factor theorems, graphing a factored cubic) and
+     Precalculus 2e (arc length, the unit circle at 7π/6, six ratios from cos t = −1/3, 2cos θ = √2,
+     4 sin x, −cos(t + π/3) + 1, tan(x + π/4), the Ferris wheel, simplifying tan x sin x + sec x cos²x,
+     the exact value of cos(π/12), proving cos²x − tan²x = 2 − sin²x − sec²x and solving
+     cos 2t = sin t), with one we wrote for the square root of a function, which the free books do
+     not cover. Units 7 to 9 (16 videos) use College Algebra 2e 6.1 to 6.6 (growth or decay of
+     11,701(0.97)^t, four transformations of an exponential, like bases, 6 log₈ 4, the domain and
+     asymptote of −ln(3x + 9) − 7, expanding a logarithm, ln x + ln(x − 3) = ln 7x), 5.6 (a shifted
+     reciprocal, asymptotes and a hole), 3.4 (f + g, f − g, fg and f/g with their domains, and
+     f(g(x)) with g(f(x))) and 13.5 to 13.6 (T-shirts, the letters of "academia", choosing
+     motorcycles, the fourth term of (3x − 2y)⁵), and Intermediate Algebra 2e 7.4 (a rational
+     equation with an extraneous root, shown as a hole on a graph).
+     Math 30-2 (`xq-m302-*`, 24 lessons) is complete: 24 exam videos. Units 1 to 3 (set theory and
+     logic, counting methods, probability) use OpenStax Contemporary Mathematics "Your Turn"
+     questions from sections 1.2, 1.4, 2.5 and 7.1 to 7.9 (the subsets of nine tennis champions, soup
+     and salad at a wedding, Elvis and the superheroes' capes, college ID codes, the pig race, raffle
+     winners, the odds for an 80% event, two spades and three hearts in a hand, the lettered and
+     numbered die, and drawing two cards in order), plus College Algebra 2e 13.5 (the letters of
+     "mountains" with the vowels together). Unit 4 uses Elementary Algebra 2e 8.1 and Intermediate
+     Algebra 2e 7.2 and 7.4 ((y² − 2y − 3)/(y² − 9), 6/(m + 6) − 12m/(m² − 36), and
+     −10/(q − 2) − 7/(q + 4) = 1). Units 5 and 6 use College Algebra 2e 5.2 and 6.1 to 6.7 (the
+     intercepts and end behaviour of x³ − 2x² − 15x, the open box from an 8-inch square, the fox
+     population, 2^(−3n) · 1/4 = 2^(n+2), condensing log x − ½log y + 3log z, and half-lives from
+     132.8 g to 8.3 g). Unit 7 uses Precalculus 2e 6.1 and 7.6 (the equation of a cosine graph, which
+     the video redraws, and the temperature at 9 AM). Unit 8 has two we wrote, since the free books
+     have no puzzle-game or research-project questions (winning the 15-counter take-away game, and
+     fixing a research plan about part-time jobs and marks).
+     Math 30-3 (`xq-m303-*`, 22 lessons) is complete: 22 exam videos. Unit 1 uses OpenStax College
+     Physics 2e 1.3 (the measuring tape off by 0.50 cm over 20 m, and the speedometer's percent
+     uncertainty and range of speeds). Unit 2 uses Precalculus 2e 8.1 and 8.2 (the distance across a
+     lake by the sine law, the third side of a triangular pool by the cosine law, and the vertical
+     support for a solar panel on a 20° roof). Units 3, 4, 6, 7 and 8 use Contemporary Mathematics
+     "Your Turn" and "Check Your Understanding" questions from sections 10.3 and 10.4 (angles x,
+     x + 1 and x − 19, the regular pentagon's angles, trim for an arched window, the tree's height
+     from shadows), 8.4 and 8.6 (the median and mean of a frequency table, the percentile of 12),
+     7.5 (Jessie's faulty taillights, a sum of 6 or 7 with two 4-sided dice) and 6.11 (Luther's total
+     car cost, a lease's monthly depreciation). Unit 5 uses College Algebra 2e 4.1 (the cost per
+     training session), Elementary Algebra 2e 4.5 (Cherie's salary with commission, with its graph)
+     and Contemporary Mathematics 8.9 (predicting a salary from a regression line). Three we wrote,
+     since the free books have no questions on them: a reflection then a translation on a grid
+     (4.1), the break-even point of a T-shirt business (8.3) and a logic grid puzzle (9.1).
+     Math 31 (`xq-m31-*`, 26 lessons) is complete: 26 exam videos, all from OpenStax Calculus
+     Volume 1 exercises with the book's answers checked. Unit 1 uses sections 1.1 and 1.3 (the
+     bacteria culture, 2cos θ sin θ = sin θ). Unit 2 uses 2.2 to 2.4 and 4.6 (the jump in
+     (x² − 1)/|x − 1|, the limit of (t − 9)/(√t − 3), the asymptotes of (x³ + 1)/(x³ − 1), and the k
+     that makes a piecewise function continuous). Units 3 and 4 use 3.1, 3.3 and 3.6 (the race car's
+     velocity, the tangent to 7/x from the definition, x²(2/x² + 5/x³), the herring population, the
+     flat tangents of (x − 6/x)⁸). Unit 5 uses 3.5, 3.8 and 3.9 (tangents of cot x parallel to
+     y = −2x, Toledo's growing population, the tilted ellipse x² + xy + y² = 7). Units 6 and 7 use
+     3.6, 4.1 to 4.3, 4.5 and 4.7 ((15.99)^(1/4) by a linear approximation, the extrema of
+     3x⁴ + 8x³ − 18x², the curve sketch of x³ − 6x², the braking freight train, the largest
+     suitcase, the leaking cone). Units 8 and 9 use 4.10, 5.1, 5.3, 5.5, 6.1 and 6.2 (the braking
+     car, L₈ for (x − 1)², the trapezoid estimate and exact area under √x + x², ∫₀¹ x/√(1 + x²) dx,
+     the area between y = x² and y = −x² + 18x, and the washer volume between y = √x and y = x²).
+     Math 10-3 (`xq-m103-*`, 31 lessons) is complete: 31 exam videos. Most come word for word from
+     OpenStax Prealgebra 2e 4.6, 5.6, 6.3, 6.5, 7.5 and 9.3 to 9.5 (Hugh's drive, the better buy in
+     storage bags, Homer's commission, the highway reflectors, Connie's fabric, the framed picture,
+     Jose's and Christa's fences, Perry's lawn, the footbridge, the garden path, Joe's doll house),
+     Contemporary Mathematics 6.2, 9.1, 9.5, 10.2 and 10.6 to 10.8 (the microwave discount, the
+     amoxicillin doses, the cooling compound, three angle questions with their figures redrawn, the
+     pizza value, the carpet, the living room paint, the house's shadow, the kite and Willis Tower),
+     College Algebra 2e 4.2 (the jewelry pay options) and Intermediate Algebra 2e 7.5 (Kyra's
+     currency exchange, and the map of Seattle, Portland and Boise). Four we wrote, since the free
+     books have no Canadian payroll, overtime, ruler-reading or square-counting questions: Jordan's
+     overtime pay (2.1), Priya's CPP, EI and tax deductions with every rate given in the question
+     (2.4), trim between two ruler marks (4.1) and the squares in a 4 by 4 grid (6.4).
+     Math 10-4 (`xq-m104-*`, 27 lessons) is complete: 27 exam videos. Most come word for word from
+     OpenStax Prealgebra 2e 1.1, 1.3, 3.1, 3.3, 4.2, 4.5, 5.2, 5.5, 6.1, 6.2, 9.3 and 9.7 (Jorge's
+     car price rounded four ways, Noah's road trip, Rafael's pizza slices, Vanessa's sugar,
+     Nicole's babysitting money, Boston's 44%, Kimngoc's tip, Mount McKinley and Death Valley, the
+     38° drop in Urbana, Lindsay's drive, Lee's trip time, the supplement and complement of 25°,
+     Jim's mean ride time and Tanya's candy), Elementary Algebra 2e 8.7 (Phil's fertilizer bags)
+     and Contemporary Mathematics 3.10, 8.1, 9.1 to 9.3, 9.5 and 10.4 (Christina's savings, the
+     courses frequency table, Kyrie's skydive, the garden path topsoil, the 96 L container, the
+     heated liquid and the fenced area). Five we wrote, where the free books have no question that
+     fits: sand as 3/8 of a bag (2.2), reading pay from a graph (5.4), a bolt between two ruler marks
+     (6.2), the faces, edges and vertices of a square pyramid (8.2) and a rectangle's lines of
+     symmetry (8.3).
+     Math 20-3 (`xq-m203-*`, 23 lessons) is complete: 23 exam videos. Most come word for word from
+     OpenStax Prealgebra 2e 6.5, 9.6 and 11.4 (the cleaning concentrate, the teepee and the roof
+     pitch), College Algebra 2e 4.1 (the shrinking city), Algebra and Trigonometry 2e 7.2 (the
+     building seen from 2 miles away and the lightning rod), Elementary Algebra 2e's Chapter 8
+     Practice Test (the map of Dayton, Columbus and Cincinnati) and Contemporary Mathematics 6.4,
+     6.5, 6.10, 8.2, 9.3, 10.6 and 10.7 (Oksana's CD, Mateo's budget, a month of credit card
+     interest, the zoo's bar graph and pie chart, the fish tank, the kitchen tiles, the greenhouse
+     and the pie filling cans). Eight we wrote, where the free books have no question that fits:
+     sheet metal for a grain bin roof (2.2), three survey stakes (4.3), the views of a stack of
+     boxes (5.2), a flat-pack bookshelf (5.3), two chequing plans (6.2), the Rule of 72 with the
+     rule stated in the question (7.2), a dugout's falling water level on a line graph (8.2) and a
+     magic square (8.3).
+     Math 20-4 (`xq-m204-*`, 29 lessons) is complete: 29 exam videos. All but one come word for
+     word from OpenStax Prealgebra 2e 3.3, 4.6, 5.2, 5.5, 5.6, 6.2 to 6.5, 7.5, 8.2, 9.3 to 9.5,
+     9.7, 11.1 and 11.2 (the overdrawn account, the jacket fabric, a child's dose, the raise,
+     ketchup prices, stacked coupons, two jobs' pay, insurance commission, saving part of a
+     paycheque, the loan from parents, the juice bottle, base pay plus commission, the motor home
+     rental, ribbon in yards, a height in feet, a cold day in Celsius, the saw blade, the trapezoid
+     patio, the lawn around a house, the dollhouse, the campus grid map, the Catalina ferry,
+     Joaquin's paycheques and Donovan's college visit) and Contemporary Mathematics 6.5, 6.10, 6.11
+     and 8.2 (a 50-30-20 budget, a month of credit card interest, the monthly cost of a car and the
+     bookstore bar graph). One we wrote, where the free books have no question that fits: the
+     total cost of a fridge bought on payments (2.3).
+     Math 5 (`xq-m5-*`, 26 lessons) is complete: 26 exam videos. Twenty-one come word for word from
+     OpenStax: Prealgebra 2e 1.1, 1.2, 1.4, 1.5, 2.1 to 2.4, 4.1, 4.4, 5.1, 5.5, 6.1, 9.4 and 11.1
+     (Miami-Dade's population in words, rounding Danny's pay, Natalie's three salaries, Sophia's
+     appliances, divisibility of 3765, the factors of 80, Yousef's shingles, Marcus's crackers,
+     Jenna's contact lenses, quarter notes in music, Janet's flour, the household mode, the
+     thunderstorm chance, linear, square or cubic measure, the 15 by 14 room, 8 + 3 · 9 against
+     (8 + 3) · 9, Adele's skirt, Arthur's suit and plotting (5, 2) and (2, 5)), Intermediate Algebra
+     2e 12.2 (4, 12, 20, … is arithmetic) and Contemporary Mathematics 8.1 (a frequency table of
+     majors). Five we wrote, where the free books have no question that fits a Grade 5 lesson: red
+     and blue marbles (6.1), the symmetry of the letter H (8.1) and of a pentagon tile (8.2), the
+     missing corner of a rectangle on a grid (9.2) and rows of path tiles in a table and on a grid
+     (11.1).
+     Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
+     then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
+     Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
+     end-of-chapter exercises or questions we wrote in the style of a unit test. Chem 30 Unit 1
+     (Thermochemical Changes) has seven, `xq-c30-1-1` to `xq-c30-1-7`: the cold pack, coffee and the
+     silver spoon (OpenStax 5.2), methane's molar enthalpy (5.3), propane's enthalpy diagram, Hess's
+     law for propane, ethanol from enthalpies of formation, and a potential energy diagram with a
+     catalyst. Unit 2 (Electrochemical Changes) has eight, `xq-c30-2-1` to `xq-c30-2-8`: aluminium
+     meeting oxygen, oxidation numbers in burning ethene, which metal corrodes (OpenStax 17.6),
+     permanganate and oxalic acid, an iron(II) titration, the copper and silver cell, the cadmium and
+     aluminum cell that is not spontaneous (17.3), and copper plating a key (#265). Unit 3 (Chemical
+     Changes of Organic Compounds) has seven, `xq-c30-3-1` to `xq-c30-3-7`: naming pentane, 1-pentene
+     and 1-pentyne, naming a branched alkane, the four isomers of C4H9Cl, ethanol and its ether
+     isomer, 2-bromopropane from propene (OpenStax 20.1), the percent yield of ethyl acetate (20.3),
+     and burning octane. Unit 4 (Chemical Equilibrium Focusing on Acid–Base Systems) has eight,
+     `xq-c30-4-1` to `xq-c30-4-8`: whether equal concentrations mean equilibrium (OpenStax 13.1), K
+     for PCl5 from an ICE table (13.4), sulfur trioxide and temperature (13.3), labelling acids,
+     bases and conjugates (14.1), hydrofluoric acid meeting cyanide, Ka of the methylammonium ion
+     and the pH of propionic acid (14.3), and hydronium in a nitrite buffer (14.6). Chem 30 is
+     complete: 30 exam videos, one per lesson (#269). Chem 7 has all 15, `xq-c7-1-1` to
+     `xq-c7-4-3`, each a question we wrote in the style of a Grade 7 science unit test: hazard
+     symbols on ethanol, what counts as matter, a stone's volume by displacement, a metal block's
+     density, two syringes, the states of bromine, a mug of cocoa cooling, a stuck lid and a
+     spreading colour, two white solids, salt water's concentration, potassium nitrate's
+     solubility, a fair test of stirring, separating iron, sand and salt, water from the sea, and
+     matching a note to a pen by chromatography (#271). Chem 8 has all 15, `xq-c8-1-1` to
+     `xq-c8-4-4`, in the style of a Grade 8 science unit test: element symbols, elements and
+     compounds, mixtures, counting atoms in formulas, the periodic table's order, metals and
+     non-metals, the alkali metals and noble gases, the halogen trend, four kitchen changes,
+     signs of a reaction, word equations, burning and the fire triangle, three rusting nails,
+     choosing metals and carats of gold, and polymers, ceramics and composites. Chem 9 has all
+     15, `xq-c9-1-1` to `xq-c9-4-3`, in the style of a Grade 9 science unit test: the gold
+     foil results, isotopes of magnesium, electron arrangements, ions, ionic and covalent
+     bonds, ionic formulas, naming compounds, relative formula mass and percentage by mass,
+     conservation of mass, balancing equations, reaction types and displacement, rates of
+     reaction, litmus and the ions in acids and alkalis, the pH scale, and neutralization (#272,
+     #274). More Chemistry Topics has its 18 GCSE lessons done, `xq-cx-1-1` to `xq-cx-6-3`, in
+     the style of a GCSE chemistry exam: the reactivity series, extracting iron, copper sulfate
+     crystals, electrolysing brine, purity and gas tests, identifying ions, empirical formulae,
+     atom economy, the atmosphere, pollutants and the greenhouse effect, potable water, life
+     cycle assessments, the model of the atom, transition metals, forms of carbon and
+     nanoparticles, rusting and alloys, the Haber process, and cells and fuel cells (#275). Its
+     27 A level lessons are done too, `xq-cx-7-1` to `xq-cx-12-8`, in the style of an A level
+     chemistry exam: mass spectra, ionisation energies, shapes of molecules, Maxwell–Boltzmann,
+     Period 3 trends, Groups 2 and 7, curly-arrow mechanisms, halogenoalkanes, E/Z isomers,
+     alcohols, identifying an unknown compound, Born–Haber cycles, entropy and Gibbs free
+     energy, rate equations, Kp, Period 3 oxides, copper complexes, metal aqua ions, optical
+     isomers, aldehydes and ketones, esters, benzene, amines, amino acids, a two-step synthesis,
+     and NMR and chromatography. So every chemistry lesson now has its exam video. Chem 10 is
+     rendered and on Drive, and Chem 20, 30, 7, 8, 9 and More Chemistry Topics are rendering in
+     turn.
+     English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
      Topics) on public-domain texts, plus a few key stage 2 grammar questions under the Open

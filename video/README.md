@@ -769,6 +769,151 @@ See `src/video/script.ts` for every element and option. In short:
   particles sent each second (up to 200; a phase slides it), and they need a `height` of
   about 470. Particles are sent only while a clip
   plays, so give every line of a scene a clip.
+- `cathode` (`src/video/cathode.ts`) is a cathode ray tube drawn to scale from the side.
+  Electrons leave the cathode with a `speed` in m/s, or after being accelerated from rest
+  through `volts`, pass the slit of the anode and cross to a screen that glows where they land.
+  With a `field` (volts per metre, positive when the top plate is positive) the tube has two
+  plates, 5 cm long and 4 cm apart, and with `tesla` a magnetic field in the same place
+  (positive into the picture); give either one as 0 to have it there but off. The path of the
+  beam is worked out from the two forces with q/m = 1.76 × 10¹¹ C/kg, so it goes straight when
+  v = E ÷ B and follows a circle of radius v ÷ (B q/m) when only the magnetic field is on, and
+  it stops at a plate or the glass when a field is too strong. A phase slides `speed`, `volts`,
+  `field` or `tesla`, switches the high voltage (`on`; start with `off: true`), slides the `air`
+  left in the tube (0 is pumped out, 1 stops the rays), and names the `metal` of the cathode and
+  the `gas`. Parts: `names`, `values` (V, E and B), `speed`, `straight` (the path with no
+  fields, dashed), `force` (the electric and the magnetic force on one electron), `circle` (the
+  circle the beam bends along, with its radius) and `made` (the metal and the gas).
+  `picture: 'wheel'` puts a paddle wheel on rails in the way of the rays, which push it along,
+  and `picture: 'shadow'` stands a metal cross in a broad beam (`stand` in a phase stands it up
+  or folds it down; start with `flat: true`), with the part `face` for the end of the tube seen
+  from the front. `scale` is the pixels to a centimetre (44 unless you say), and `left` and
+  `axis` place the tube when a circle needs room.
+- `alphas` (`src/video/alphas.ts`) is alpha particles fired at atoms, in five pictures. An alpha
+  particle has +2e and a nucleus of `z` protons +Ze (gold, 79, unless you say, with its `name`),
+  so the two repel with k(2e)(Ze) ÷ r², and every path is worked out from that force with the
+  lessons' constants. `picture: 'pudding'` is Thomson's atom, a ball of positive charge with
+  electrons dotted through it; given a `rate` (alpha particles each second, slid by a phase), a
+  broad beam crosses it in straight lines (parts `names`, `paths`, `count`). `picture: 'ring'`
+  is the gold foil experiment from above: a source, the foil, and a screen all round that
+  flashes and keeps a mark where each alpha particle lands, with a share `back` turned through
+  more than 90° (parts `names`, `count`). Which particles are turned back is fixed by their
+  numbers, so choose `back` and the rates so that one lands while the narration says so.
+  `picture: 'past'` is one nucleus to scale, `span` femtometres across the picture (1000 unless
+  you say): a phase's `fire` lists how far to one side each alpha particle is aimed, in
+  femtometres, and each is turned through 2 atan(d ÷ 2b) (parts `names`, `angle`, `scale`).
+  `picture: 'head'` sends one alpha particle of `mev` MeV straight at the nucleus (`fire: [0]`):
+  it stops where its kinetic energy has all become potential energy, r = k(2e)(Ze) ÷ Ek, and
+  is pushed back. Parts: `names`, `energy` (the two energies as bars), `distance` (r, and the
+  closest approach, with the marks of earlier particles), `force` and `values`; a phase slides
+  `mev` or changes `z` and `name`, and `pace` (femtometres a second far away) sets how long an
+  approach takes, so set it for the particle to stop as the narration says. `picture: 'orbit'`
+  is Rutherford's atom, with `electrons` that circle a small nucleus; a phase with `fall: true`
+  makes them radiate and spiral in, as the model wrongly predicts (parts `names`, `waves`).
+  These pictures are drawn for the full width of a `center` scene, not for a split.
+- `levels` (`src/video/levels.ts`) is the energy levels of an atom, in three pictures. The levels
+  are hydrogen's, −13.6 ÷ n² eV rounded as the lessons write them (the first `top` of them: 4
+  unless you say, 6 in a spectrum), or another atom's from `levels` (in eV, lowest first, with
+  its `name`). The photon of a jump has the difference between two levels, and its wavelength
+  is hc ÷ E with the lessons' constants. `picture: 'atom'` (the one drawn unless you say) is
+  the atom's orbits, with the electron going round one of them (it starts in level `start`),
+  beside a ladder of the levels, which can begin at level `from` to leave more room for the
+  upper ones. A phase's `to` makes the electron jump: a drop gives out its photon at once, and
+  for a rise a photon of exactly the right energy arrives first (so the phase must last at
+  least 1.6 seconds), unless `bump: true` says that a collision does the lifting. A phase's
+  `photon` sends a photon of that many electronvolts at the atom: the electron rises if a jump
+  matches, is set free if the photon has enough energy, and otherwise the photon passes
+  through. Parts: `names`, `energies`, `photon` (the energy, wavelength and kind of light of
+  the latest photon), `kept` (the arrows of the earlier drops stay on the ladder, one for each
+  pair of levels) and `radius`. The ladder and the orbits are not drawn to scale, since the
+  upper levels and the first orbit would be too small to see. `picture: 'spectrum'` spreads
+  light out with a prism onto a strip from 380 to 750 nm: a phase's `source` changes it between
+  a hot solid (`solid`: every colour), the glowing gas (`gas`: bright lines) and the hot solid
+  seen through the cool gas (`through`: dark lines at the same wavelengths), and `lamp` and
+  `cloud` rename the hot solid and the cool gas (parts `names`, `axis`, `lines`).
+  `picture: 'wave'` is the electron as a wave bent round its orbit, with `waves` wavelengths
+  round it (slid by a phase): a whole number joins up as a standing wave, and anything else
+  comes round out of step (parts `names`, `fits`). These pictures too are drawn for the full
+  width of a `center` scene.
+- `nucleus` (`src/video/nucleus.ts`) is the nucleus of an atom, in three pictures.
+  `picture: 'build'` (the one drawn unless you say) is a ball of `z` protons and `n` neutrons
+  (carbon-12 unless you say, with the `symbol` and `name` of its element), packed closely and
+  drawn to scale at `scale` pixels to a femtometre, so that its radius is 1.2 fm × ∛A; a
+  nucleus too large for the picture is drawn smaller. A phase's `z` and `n` change it:
+  nucleons arrive from the right or leave, and a new number of protons needs the `symbol` and
+  `name` of the new element. A phase's `decay` (`alpha`, `beta-`, `beta+` or `gamma`) makes
+  the nucleus decay and throws out the particle, and needs the `symbol` and `name` of the
+  daughter unless it is a gamma decay; `shaky: true` marks a nucleus as unstable, and a
+  phase's `note` gives the mark other words (a daughter that is left with extra energy). Give
+  `electrons` and they circle the nucleus (far closer than they really are), and a phase's
+  `electrons` makes some leave or arrive, for an ion. Parts: `names`, `symbol` (the nuclide
+  written out), `counts` (Z, N and A), `radius` (a ruler), `charge` (the electrons and the
+  charge of the atom or ion), `glue` (links from one proton to its neighbours: the strong
+  attraction) and `repel` (lines from it to every other proton: the electric repulsion).
+  `picture: 'pair'` is two nucleons (`kinds`: `pp`, `pn` or `nn`) that a phase's `apart`
+  slides to between 1 and 8 femtometres apart. The electric repulsion of two protons is
+  ke² ÷ r² (57.5 N at 2.0 fm). The strong attraction has no number: it is a sketch of a force
+  with a very short range, full when the nucleons touch and gone by 3 fm, and once it is
+  shown both forces are drawn on one scale, on which it is about five times the repulsion at
+  1 fm (in a real nucleus it is larger still). Parts: `names`, `distance`, `electric`,
+  `strong`. `picture: 'mix'` is a hundred atoms of an element with two isotopes of `masses`,
+  `share` of them the lighter (a phase's `share` slides it), and a beam that balances at the
+  average mass (parts `names`, `share`, `average`). These pictures are drawn for the full
+  width of a `center` scene.
+- `radiation` (`src/video/radiation.ts`) is a source that sends out alpha particles, beta
+  particles and gamma rays (`rays` chooses which: all three unless you say), in two pictures.
+  `picture: 'through'` (the one drawn unless you say) gives each radiation a lane of its own
+  from the source to the right. An alpha particle stops in a few centimetres of air, or at the
+  `paper`; a beta particle passes the paper and stops in the `aluminium`; gamma rays pass
+  both, and the `lead` stops about two in three of them. A shield is there from the start
+  (`paper: true`) or slides in or out when a phase says so, and a particle meets a shield only
+  if it is there when the particle arrives. `open: false` closes the source, and a phase can
+  close or open it. Parts: `names`, `ions` (the trail of ions that each leaves, closest
+  together for alpha), `air` (the note that air stops the alpha particles) and `counter` (a
+  Geiger tube at the right, which flashes and counts a click for every particle that reaches
+  it, and one for the background every `background` seconds: 2.4 unless you say, 0 for none).
+  `picture: 'fields'` sends the rays in one beam through a field that a phase's `field` turns
+  on or off (`electric`: two plates, the positive one above; `magnetic`: a field into the
+  page; `off`). The alpha and beta particles bend opposite ways, the beta particles more
+  (though far less than they really would beside an alpha particle, as a note in the picture
+  says), and the gamma rays go straight on. Parts: `names` and `screen` (where each lands).
+  Both pictures are drawn for the full width of a `center` scene.
+- `halflife` (`src/video/halflife.ts`) is a sample of a radioactive isotope beside the graph of
+  its decay. The sample is `count` nuclei (400 unless you say) of the isotope `name`, with a
+  `halfLife` in `unit` (days unless you say). Every nucleus has a moment of its own to decay,
+  in no order, but the moments are spread so that the sample follows N = N₀ × (1/2)^(t/T):
+  half of the nuclei that are left go in each half-life, each with a flash. A phase's `to`
+  runs the sample's clock on to that time at a steady rate (it only runs forwards), and the
+  graph draws itself as the clock runs. The graph is `span` half-lives wide (5 unless you say)
+  and shows an `amount` at the start in an `amountUnit` (100 and % unless you say: a mass, an
+  activity, a count rate), named `amountName` on its axis. The time axis is marked at each
+  half-life, or `every` so many units when the half-life is the thing to find. Parts: `names`
+  (the sample's name, and the count of the nuclei that have not decayed), `left` (the clock
+  and the amount left), `graph`, `ahead` (the rest of the curve, dotted) and `halves` (a mark
+  at each half-life that has passed, with the share left). The sample is in the middle of the
+  picture until the graph is shown. Drawn for the full width of a `center` scene.
+- `reaction` (`src/video/reaction.ts`) is for the energy of the nucleus, in five pictures.
+  `weigh` (the default) shows `z` protons and `n` neutrons apart (2 and 2 unless you say), a
+  phase's `join: true` brings them together into the nucleus `name` of that `mass` in u while
+  gamma rays leave and the mass shown falls, and `join: false` pulls them apart again
+  (`joined: true` starts as a nucleus). Its parts are `names`, `masses` (the masses apart and
+  as a nucleus, and the mass defect, worked out with 1.0073 u and 1.0087 u) and `energy` (the
+  binding energy at 931.5 MeV for each u, to `places` decimal places, and with `each: true`
+  the binding energy for each nucleon). `picture: 'curve'` is the graph of the binding energy
+  for each nucleon against the mass number, with a marker that starts `at` a mass number and
+  slides with a phase's `to`; its parts are `names` (the `marks`: helium-4, iron-56 and
+  uranium-235 unless you say), `value` (the marker and its reading), `peak`, `fusion` and
+  `fission` (an arrow towards the peak from each side). `picture: 'fission'` is a nucleus of
+  uranium-235 drawn nucleon by nucleon: a phase's `fire: true` sends a neutron into it, it
+  stretches and splits into its two `products` (krypton-92 and barium-141 unless you say) and
+  the neutrons left over fly out; its parts are `names` and `energy` (the energy `released`).
+  `picture: 'chain'` is a chain reaction started by `fire: true`: 1, 2, 4 and 8 fissions with
+  the path of every neutron left drawn, or with `rods: true` one fission after another while
+  two control rods take the other neutrons; its parts are `names` (the rule) and `count` (the
+  fissions so far). `picture: 'fusion'` is hydrogen-2 and hydrogen-3: `fire: 'slow'` sends them
+  together and their repulsion turns them back, and `fire: true` sends them fast enough to
+  fuse into helium-4 and a neutron; its parts are `names`, `repel` (the two forces, which grow
+  as the nuclei close) and `energy`. Firing again starts a picture afresh. Drawn for the full
+  width of a `center` scene.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

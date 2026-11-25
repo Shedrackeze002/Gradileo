@@ -129195,5 +129195,1145 @@
         "working": "$d = \\dfrac{1}{4.00 \\times 10^{5}} = 2.50 \\times 10^{-6}$ m, so $\\sin\\theta = \\dfrac{\\lambda}{d} = \\dfrac{500 \\times 10^{-9}}{2.50 \\times 10^{-6}} = 0.200$ and $\\theta = 11.5°$."
       }
     ]
+  },
+  "p30-3-6": {
+    "lessonId": "p30-3-6",
+    "title": "Photons",
+    "duration": 345,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Packets of light",
+        "t": 21.456
+      },
+      {
+        "title": "The energy of a photon",
+        "t": 67.856
+      },
+      {
+        "title": "Brighter light",
+        "t": 120.99
+      },
+      {
+        "title": "Joules and electronvolts",
+        "t": 149.69
+      },
+      {
+        "title": "Counting photons",
+        "t": 215.937
+      },
+      {
+        "title": "Your turn",
+        "t": 266.403
+      },
+      {
+        "title": "Summary",
+        "t": 305.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-6:q",
+        "t": 278.644,
+        "prompt": "What is the energy of one photon of violet light with a wavelength of 400 nm, in electronvolts?",
+        "choices": [
+          "0.32 eV",
+          "1.24 eV",
+          "2.49 eV",
+          "3.11 eV"
+        ],
+        "answer": 3,
+        "working": "$E = \\dfrac{hc}{\\lambda} = \\dfrac{6.63 \\times 10^{-34} \\times 3.00 \\times 10^{8}}{400 \\times 10^{-9}} = 4.97 \\times 10^{-19}$ J, and $\\dfrac{4.97 \\times 10^{-19}}{1.60 \\times 10^{-19}} = 3.11$ eV."
+      }
+    ]
+  },
+  "p30-3-6-b": {
+    "lessonId": "p30-3-6",
+    "title": "The Photoelectric Effect",
+    "duration": 537,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the experiments showed",
+        "t": 20.719
+      },
+      {
+        "title": "Why waves fail",
+        "t": 70.615
+      },
+      {
+        "title": "Einstein's explanation",
+        "t": 102.067
+      },
+      {
+        "title": "The threshold",
+        "t": 150.268
+      },
+      {
+        "title": "The kinetic energy",
+        "t": 238.577
+      },
+      {
+        "title": "The stopping voltage",
+        "t": 295.012
+      },
+      {
+        "title": "The graph",
+        "t": 398.474
+      },
+      {
+        "title": "Your turn",
+        "t": 447.474
+      },
+      {
+        "title": "Summary",
+        "t": 497.223
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-6-b:q",
+        "t": 467.826,
+        "prompt": "Light whose photons each have an energy of 5.00 eV shines on zinc, which has a work function of 4.33 eV. What stopping voltage just stops the fastest electrons?",
+        "choices": [
+          "0.67 V",
+          "1.15 V",
+          "4.33 V",
+          "9.33 V"
+        ],
+        "answer": 0,
+        "working": "$E_{k\\,\\text{max}} = hf - W = 5.00 - 4.33 = 0.67$ eV, and electrons with 0.67 eV are stopped by 0.67 V."
+      }
+    ]
+  },
+  "p30-3-7": {
+    "lessonId": "p30-3-7",
+    "title": "The Momentum of a Photon",
+    "duration": 357,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The momentum of a photon",
+        "t": 24.496
+      },
+      {
+        "title": "A photon of green light",
+        "t": 77.311
+      },
+      {
+        "title": "An X-ray photon",
+        "t": 114.209
+      },
+      {
+        "title": "The push of light",
+        "t": 149.622
+      },
+      {
+        "title": "The force of a beam",
+        "t": 197.21
+      },
+      {
+        "title": "Solar sails",
+        "t": 255.429
+      },
+      {
+        "title": "Your turn",
+        "t": 281.029
+      },
+      {
+        "title": "Summary",
+        "t": 319.308
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-7:q",
+        "t": 293.573,
+        "prompt": "A laser beam with a power of 60 W is reflected straight back by a mirror. What force does the light put on the mirror?",
+        "choices": [
+          "$2.0 \\times 10^{-7}$ N",
+          "$4.0 \\times 10^{-7}$ N",
+          "$1.8 \\times 10^{10}$ N",
+          "$3.6 \\times 10^{10}$ N"
+        ],
+        "answer": 1,
+        "working": "The light is reflected, so $F = \\dfrac{2P}{c} = \\dfrac{2 \\times 60}{3.00 \\times 10^{8}} = 4.0 \\times 10^{-7}$ N."
+      }
+    ]
+  },
+  "p30-3-7-b": {
+    "lessonId": "p30-3-7",
+    "title": "The Compton Effect",
+    "duration": 355,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What Compton saw",
+        "t": 18.598
+      },
+      {
+        "title": "A collision of particles",
+        "t": 57.598
+      },
+      {
+        "title": "The Compton equation",
+        "t": 110.264
+      },
+      {
+        "title": "The wavelength afterwards",
+        "t": 186.718
+      },
+      {
+        "title": "Finding the angle",
+        "t": 225.101
+      },
+      {
+        "title": "Your turn",
+        "t": 263.646
+      },
+      {
+        "title": "Summary",
+        "t": 303.265
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-7-b:q",
+        "t": 276.125,
+        "prompt": "An X-ray photon is scattered through 60° by an electron that was at rest. What is the change in its wavelength? Use $\\dfrac{h}{mc} = 2.43$ pm.",
+        "choices": [
+          "0.50 pm",
+          "0.61 pm",
+          "1.22 pm",
+          "2.43 pm"
+        ],
+        "answer": 2,
+        "working": "$\\Delta\\lambda = \\dfrac{h}{mc}(1 - \\cos\\theta) = 2.43 \\times (1 - \\cos 60°) = 2.43 \\times 0.500 = 1.22$ pm."
+      }
+    ]
+  },
+  "p30-3-8": {
+    "lessonId": "p30-3-8",
+    "title": "Matter Waves",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "De Broglie's idea",
+        "t": 29.813
+      },
+      {
+        "title": "The wavelength of an electron",
+        "t": 76.052
+      },
+      {
+        "title": "The wavelength of a baseball",
+        "t": 122.16
+      },
+      {
+        "title": "Electrons that are accelerated",
+        "t": 160.286
+      },
+      {
+        "title": "From kinetic energy",
+        "t": 207.327
+      },
+      {
+        "title": "Your turn",
+        "t": 249.852
+      },
+      {
+        "title": "Summary",
+        "t": 293.99
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-8:q",
+        "t": 260.973,
+        "prompt": "At what speed does an electron have a de Broglie wavelength of 0.50 nm? The mass of an electron is $9.11 \\times 10^{-31}$ kg.",
+        "choices": [
+          "$3.64 \\times 10^{5}$ m/s",
+          "$7.28 \\times 10^{5}$ m/s",
+          "$1.21 \\times 10^{6}$ m/s",
+          "$1.46 \\times 10^{6}$ m/s"
+        ],
+        "answer": 3,
+        "working": "$\\lambda = \\dfrac{h}{mv}$, so $v = \\dfrac{h}{m\\lambda} = \\dfrac{6.63 \\times 10^{-34}}{9.11 \\times 10^{-31} \\times 0.50 \\times 10^{-9}} = 1.46 \\times 10^{6}$ m/s."
+      }
+    ]
+  },
+  "p30-3-8-b": {
+    "lessonId": "p30-3-8",
+    "title": "Wave-Particle Duality",
+    "duration": 333,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrons diffract",
+        "t": 15.787
+      },
+      {
+        "title": "Rings from a foil",
+        "t": 68.23
+      },
+      {
+        "title": "Two sets of evidence",
+        "t": 119.43
+      },
+      {
+        "title": "One at a time",
+        "t": 162.783
+      },
+      {
+        "title": "Your turn",
+        "t": 244.583
+      },
+      {
+        "title": "Summary",
+        "t": 284.618
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-8-b:q",
+        "t": 255.267,
+        "prompt": "A photon and an electron have the same wavelength. Which other quantity must they also share?",
+        "choices": [
+          "Momentum",
+          "Speed",
+          "Kinetic energy",
+          "Mass"
+        ],
+        "answer": 0,
+        "working": "For a photon and for a particle alike, $p = \\dfrac{h}{\\lambda}$. The same wavelength means the same momentum. Their speeds and energies are different."
+      }
+    ]
+  },
+  "p30-4-1": {
+    "lessonId": "p30-4-1",
+    "title": "Cathode Rays",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A glow in a tube",
+        "t": 17.408
+      },
+      {
+        "title": "Straight lines",
+        "t": 59.408
+      },
+      {
+        "title": "Mass and momentum",
+        "t": 81.008
+      },
+      {
+        "title": "Negative charge",
+        "t": 103.508
+      },
+      {
+        "title": "In a magnetic field",
+        "t": 132.908
+      },
+      {
+        "title": "Always the same",
+        "t": 159.408
+      },
+      {
+        "title": "The electron",
+        "t": 193.308
+      },
+      {
+        "title": "Thomson's atom",
+        "t": 219.791
+      },
+      {
+        "title": "Your turn",
+        "t": 250.891
+      },
+      {
+        "title": "Summary",
+        "t": 279.561
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-1:q",
+        "t": 261.556,
+        "prompt": "Cathode rays pass between two charged plates. Which way do they bend, and what does that show?",
+        "choices": [
+          "Towards the negative plate, so they are positive",
+          "Towards the positive plate, so they are negative",
+          "They do not bend, so they are waves",
+          "Towards the positive plate, so they are positive"
+        ],
+        "answer": 1,
+        "working": "Opposite charges attract. The rays bend **towards the positive plate**, so the particles in them are **negative**."
+      }
+    ]
+  },
+  "p30-4-1-b": {
+    "lessonId": "p30-4-1",
+    "title": "The Charge-to-Mass Ratio",
+    "duration": 344,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Step 1: the speed",
+        "t": 17.019
+      },
+      {
+        "title": "Step 2: the circle",
+        "t": 74.525
+      },
+      {
+        "title": "Thomson's result",
+        "t": 110.192
+      },
+      {
+        "title": "Which particle is it?",
+        "t": 171.425
+      },
+      {
+        "title": "Starting from rest",
+        "t": 223.956
+      },
+      {
+        "title": "Your turn",
+        "t": 264.294
+      },
+      {
+        "title": "Summary",
+        "t": 300.165
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-1-b:q",
+        "t": 280.575,
+        "prompt": "A beam goes straight through crossed electric and magnetic fields. The magnetic field is made twice as strong. What must happen to the electric field to keep the same beam straight?",
+        "choices": [
+          "It must be halved",
+          "It must stay the same",
+          "It must be doubled",
+          "It must be four times as strong"
+        ],
+        "answer": 2,
+        "working": "The beam is straight when $v = \\dfrac{E}{B}$. The speed has not changed, so if $B$ is doubled, $E$ must be **doubled** as well."
+      }
+    ]
+  },
+  "p30-4-2": {
+    "lessonId": "p30-4-2",
+    "title": "The Gold Foil Experiment",
+    "duration": 360,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Thomson's prediction",
+        "t": 20.257
+      },
+      {
+        "title": "The experiment",
+        "t": 71.557
+      },
+      {
+        "title": "A tiny nucleus",
+        "t": 132.457
+      },
+      {
+        "title": "Rutherford's atom",
+        "t": 183.557
+      },
+      {
+        "title": "What each result shows",
+        "t": 217.857
+      },
+      {
+        "title": "A fault in the model",
+        "t": 247.693
+      },
+      {
+        "title": "Your turn",
+        "t": 291.946
+      },
+      {
+        "title": "Summary",
+        "t": 320.799
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-2:q",
+        "t": 300.989,
+        "prompt": "Most alpha particles passed straight through the gold foil. What does this show?",
+        "choices": [
+          "Alpha particles have no charge",
+          "Gold atoms have no electrons",
+          "The nucleus has a negative charge",
+          "Most of an atom is empty space"
+        ],
+        "answer": 3,
+        "working": "An alpha particle is turned only when it passes close to a nucleus. Most pass straight through, so **most of an atom is empty space**."
+      }
+    ]
+  },
+  "p30-4-2-b": {
+    "lessonId": "p30-4-2",
+    "title": "The Closest Approach",
+    "duration": 416,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Head-on",
+        "t": 14.206
+      },
+      {
+        "title": "Energy is conserved",
+        "t": 64.783
+      },
+      {
+        "title": "A gold nucleus",
+        "t": 112.083
+      },
+      {
+        "title": "More energy, closer",
+        "t": 187.622
+      },
+      {
+        "title": "How much energy?",
+        "t": 246.299
+      },
+      {
+        "title": "The force",
+        "t": 301.161
+      },
+      {
+        "title": "Your turn",
+        "t": 346.771
+      },
+      {
+        "title": "Summary",
+        "t": 379.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-2-b:q",
+        "t": 359.083,
+        "prompt": "The kinetic energy of an alpha particle is doubled. What happens to its distance of closest approach to a nucleus?",
+        "choices": [
+          "It is halved",
+          "It is doubled",
+          "It stays the same",
+          "It is four times as large"
+        ],
+        "answer": 0,
+        "working": "The distance is $r = k(2e)(Ze) \\div E_k$, so it is inversely proportional to the kinetic energy. Twice the energy gives **half the distance**."
+      }
+    ]
+  },
+  "p30-4-3": {
+    "lessonId": "p30-4-3",
+    "title": "The Bohr Model",
+    "duration": 463,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bohr's atom",
+        "t": 21.371
+      },
+      {
+        "title": "The levels of hydrogen",
+        "t": 83.271
+      },
+      {
+        "title": "The photon of a jump",
+        "t": 164.182
+      },
+      {
+        "title": "The red line of hydrogen",
+        "t": 197.582
+      },
+      {
+        "title": "Jumping up",
+        "t": 266.51
+      },
+      {
+        "title": "How many lines?",
+        "t": 309.017
+      },
+      {
+        "title": "Your turn",
+        "t": 369.517
+      },
+      {
+        "title": "Summary",
+        "t": 411.105
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-3:q",
+        "t": 388.728,
+        "prompt": "The electron of a hydrogen atom drops from $n = 3$ ($-1.51$ eV) to $n = 1$ ($-13.6$ eV). What is the energy of the photon?",
+        "choices": [
+          "15.11 eV",
+          "12.09 eV",
+          "1.51 eV",
+          "10.2 eV"
+        ],
+        "answer": 1,
+        "working": "$E = E_3 - E_1 = -1.51 - (-13.6) = 12.09$ eV."
+      }
+    ]
+  },
+  "p30-4-3-b": {
+    "lessonId": "p30-4-3",
+    "title": "Spectra",
+    "duration": 441,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of spectrum",
+        "t": 18.216
+      },
+      {
+        "title": "The bright lines",
+        "t": 78.416
+      },
+      {
+        "title": "The series of hydrogen",
+        "t": 125.831
+      },
+      {
+        "title": "The dark lines",
+        "t": 157.404
+      },
+      {
+        "title": "Fingerprints",
+        "t": 217.904
+      },
+      {
+        "title": "Freeing the electron",
+        "t": 242.604
+      },
+      {
+        "title": "Why the orbits are allowed",
+        "t": 272.796
+      },
+      {
+        "title": "Where the model falls short",
+        "t": 318.196
+      },
+      {
+        "title": "Your turn",
+        "t": 352.428
+      },
+      {
+        "title": "Summary",
+        "t": 396.803
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-3-b:q",
+        "t": 371.842,
+        "prompt": "A hydrogen atom in its ground state can jump up by 10.2 eV or by 12.09 eV. A photon of 11.0 eV arrives. What happens?",
+        "choices": [
+          "The electron rises to $n = 2$",
+          "The atom takes in 10.2 eV, and the rest carries on",
+          "The photon passes straight through",
+          "The electron is set free"
+        ],
+        "answer": 2,
+        "working": "An atom absorbs only a photon whose energy **matches a gap exactly**, or one with enough to free the electron (13.6 eV). 11.0 eV does neither, so it passes straight through."
+      }
+    ]
+  },
+  "p30-4-4": {
+    "lessonId": "p30-4-4",
+    "title": "Inside the Nucleus",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Protons and neutrons",
+        "t": 16.626
+      },
+      {
+        "title": "Two numbers",
+        "t": 57.225
+      },
+      {
+        "title": "Atoms and ions",
+        "t": 111.067
+      },
+      {
+        "title": "Isotopes",
+        "t": 145.068
+      },
+      {
+        "title": "The average mass",
+        "t": 184.717
+      },
+      {
+        "title": "Your turn",
+        "t": 236.177
+      },
+      {
+        "title": "Summary",
+        "t": 271.983
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-4:q",
+        "t": 248.252,
+        "prompt": "A nucleus contains 26 protons and 30 neutrons. What are its atomic number $Z$ and its mass number $A$?",
+        "choices": [
+          "$Z = 30$ and $A = 26$",
+          "$Z = 26$ and $A = 30$",
+          "$Z = 56$ and $A = 26$",
+          "$Z = 26$ and $A = 56$"
+        ],
+        "answer": 3,
+        "working": "The atomic number is the number of protons, $Z = 26$. The mass number counts protons and neutrons together: $A = 26 + 30 = 56$. This is iron-56."
+      }
+    ]
+  },
+  "p30-4-4-b": {
+    "lessonId": "p30-4-4",
+    "title": "The Strong Nuclear Force",
+    "duration": 345,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The repulsion",
+        "t": 13.196
+      },
+      {
+        "title": "The strong nuclear force",
+        "t": 61.04
+      },
+      {
+        "title": "Why neutrons are needed",
+        "t": 115.84
+      },
+      {
+        "title": "The size of a nucleus",
+        "t": 184.605
+      },
+      {
+        "title": "Your turn",
+        "t": 265.606
+      },
+      {
+        "title": "Summary",
+        "t": 295.831
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-4-b:q",
+        "t": 273.23,
+        "prompt": "Which particles does the strong nuclear force act between?",
+        "choices": [
+          "Any two nucleons that are almost touching",
+          "Two protons only",
+          "A proton and a neutron only",
+          "Any two charged particles, at any distance"
+        ],
+        "answer": 0,
+        "working": "The strong force attracts any two nucleons, with or without charge: two protons, two neutrons, or a proton and a neutron. Its range is only about $10^{-15}$ m. It is the electric force that acts only between the protons."
+      }
+    ]
+  },
+  "p30-4-5": {
+    "lessonId": "p30-4-5",
+    "title": "Radioactive Decay",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Alpha decay",
+        "t": 21.91
+      },
+      {
+        "title": "Beta-minus decay",
+        "t": 80.655
+      },
+      {
+        "title": "Beta-plus and gamma decay",
+        "t": 130.458
+      },
+      {
+        "title": "The four decays",
+        "t": 175.399
+      },
+      {
+        "title": "A decay series",
+        "t": 201.351
+      },
+      {
+        "title": "Your turn",
+        "t": 248.161
+      },
+      {
+        "title": "Summary",
+        "t": 286.241
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-5:q",
+        "t": 265.545,
+        "prompt": "A nucleus of polonium-218, ${}^{218}_{84}\\text{Po}$, decays and becomes lead-214, ${}^{214}_{82}\\text{Pb}$. Which kind of decay is this?",
+        "choices": [
+          "Beta-minus decay",
+          "Alpha decay",
+          "Beta-plus decay",
+          "Gamma decay"
+        ],
+        "answer": 1,
+        "working": "The mass number falls by 4 and the atomic number falls by 2, so the nucleus has given out ${}^{4}_{2}\\text{He}$: ${}^{218}_{84}\\text{Po} \\rightarrow {}^{214}_{82}\\text{Pb} + {}^{4}_{2}\\text{He}$."
+      }
+    ]
+  },
+  "p30-4-5-b": {
+    "lessonId": "p30-4-5",
+    "title": "Alpha, Beta and Gamma",
+    "duration": 317,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three radiations",
+        "t": 14.758
+      },
+      {
+        "title": "What stops them",
+        "t": 74.358
+      },
+      {
+        "title": "In a field",
+        "t": 111.008
+      },
+      {
+        "title": "Detecting radiation",
+        "t": 150.308
+      },
+      {
+        "title": "Uses and safety",
+        "t": 200.008
+      },
+      {
+        "title": "Your turn",
+        "t": 248.63
+      },
+      {
+        "title": "Summary",
+        "t": 275.754
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-5-b:q",
+        "t": 257.324,
+        "prompt": "Which radiation is the most ionizing, and what is enough to stop it?",
+        "choices": [
+          "Gamma rays, stopped by a sheet of paper",
+          "Beta particles, stopped by a few millimetres of aluminium",
+          "Alpha particles, stopped by a sheet of paper",
+          "Alpha particles, stopped only by thick lead"
+        ],
+        "answer": 2,
+        "working": "Alpha particles ionize the most strongly, so they lose their energy the most quickly: a sheet of paper, or a few centimetres of air, stops them. Gamma rays are the least ionizing and the most penetrating."
+      }
+    ]
+  },
+  "p30-4-6": {
+    "lessonId": "p30-4-6",
+    "title": "Half-Life",
+    "duration": 296,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Random, but regular",
+        "t": 17.903
+      },
+      {
+        "title": "The decay equation",
+        "t": 99.659
+      },
+      {
+        "title": "Between half-lives",
+        "t": 141.067
+      },
+      {
+        "title": "Working backwards",
+        "t": 185.45
+      },
+      {
+        "title": "Your turn",
+        "t": 219.639
+      },
+      {
+        "title": "Summary",
+        "t": 258.094
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-6:q",
+        "t": 236.316,
+        "prompt": "Caesium-137 has a half-life of 30 years. What percentage of the caesium-137 in a sample is still there after 150 years?",
+        "choices": [
+          "20%",
+          "16.7%",
+          "6.25%",
+          "3.125%"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{150}{30} = 5$ half-lives have passed, so the percentage left is $100\\% \\times \\left(\\dfrac{1}{2}\\right)^{5} = 3.125\\%$."
+      }
+    ]
+  },
+  "p30-4-6-b": {
+    "lessonId": "p30-4-6",
+    "title": "Activity and Carbon Dating",
+    "duration": 303,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Activity",
+        "t": 13.196
+      },
+      {
+        "title": "Allowing for the background",
+        "t": 69.311
+      },
+      {
+        "title": "Carbon dating",
+        "t": 119.163
+      },
+      {
+        "title": "With logarithms",
+        "t": 177.541
+      },
+      {
+        "title": "Your turn",
+        "t": 231.908
+      },
+      {
+        "title": "Summary",
+        "t": 266.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-6-b:q",
+        "t": 245.576,
+        "prompt": "The activity of a sample falls from 800 Bq to 100 Bq in 24 hours. What is the half-life of the isotope?",
+        "choices": [
+          "8 hours",
+          "3 hours",
+          "12 hours",
+          "6 hours"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{800}{100} = 8 = 2^3$, so 3 half-lives have passed in 24 hours. One half-life is $\\dfrac{24}{3} = 8$ hours."
+      }
+    ]
+  },
+  "p30-4-7": {
+    "lessonId": "p30-4-7",
+    "title": "Mass Defect and Binding Energy",
+    "duration": 376,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The missing mass",
+        "t": 18.249
+      },
+      {
+        "title": "Mass and energy",
+        "t": 64.737
+      },
+      {
+        "title": "Binding energy",
+        "t": 114.1
+      },
+      {
+        "title": "For each nucleon",
+        "t": 157.099
+      },
+      {
+        "title": "The graph",
+        "t": 209.062
+      },
+      {
+        "title": "Mass that becomes power",
+        "t": 259.462
+      },
+      {
+        "title": "Your turn",
+        "t": 288.468
+      },
+      {
+        "title": "Summary",
+        "t": 336.825
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-7:q",
+        "t": 304.942,
+        "prompt": "A nucleus of lithium-7 has 3 protons and 4 neutrons, and a mass of 7.0144 u. A proton has a mass of 1.0073 u and a neutron 1.0087 u. What is the mass defect of the nucleus?",
+        "choices": [
+          "0.0144 u",
+          "0.0423 u",
+          "0.0567 u",
+          "39.4 u"
+        ],
+        "answer": 1,
+        "working": "Separate nucleons: $3 \\times 1.0073 + 4 \\times 1.0087 = 7.0567$ u. Mass defect: $7.0567 - 7.0144 = 0.0423$ u."
+      }
+    ]
+  },
+  "p30-4-7-b": {
+    "lessonId": "p30-4-7",
+    "title": "Fission and Fusion",
+    "duration": 396,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fission",
+        "t": 19.29
+      },
+      {
+        "title": "The chain reaction",
+        "t": 88.696
+      },
+      {
+        "title": "A reactor",
+        "t": 124.296
+      },
+      {
+        "title": "Fusion",
+        "t": 180.424
+      },
+      {
+        "title": "The same reason",
+        "t": 248.504
+      },
+      {
+        "title": "Which gives more?",
+        "t": 287.004
+      },
+      {
+        "title": "Your turn",
+        "t": 311.583
+      },
+      {
+        "title": "Summary",
+        "t": 356.221
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-4-7-b:q",
+        "t": 330.844,
+        "prompt": "A nucleus of uranium-235 absorbs a neutron and splits into tellurium-134, a second nucleus, and 3 free neutrons. What is the mass number of the second nucleus?",
+        "choices": [
+          "102",
+          "101",
+          "99",
+          "96"
+        ],
+        "answer": 2,
+        "working": "The mass numbers balance: $235 + 1 = 134 + A + 3$, so $A = 236 - 137 = 99$."
+      }
+    ]
   }
 }
