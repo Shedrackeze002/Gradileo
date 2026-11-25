@@ -2936,7 +2936,491 @@ export interface MatterEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+/** One step of a cathode ray tube's clip. */
+export interface CathodePhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** Switch the high voltage on or off at the start of the step: the rays then cross the tube from the cathode, or stop. */
+  on?: boolean;
+  /** Slide the speed of the electrons to this many metres per second (a tube that is given a speed). */
+  speed?: number;
+  /** Slide the accelerating voltage to this (a tube that is given a voltage). */
+  volts?: number;
+  /** Slide the electric field between the plates to this, in volts per metre (positive: the top plate is positive). */
+  field?: number;
+  /** Slide the magnetic field to this, in teslas (positive: into the picture). */
+  tesla?: number;
+  /** Slide the air left in the tube to this, from 0 (pumped out) to 1. */
+  air?: number;
+  /** In a `shadow` picture: stand the cross up (true) or fold it down flat (false). */
+  stand?: boolean;
+  /** Name the metal of the cathode, and the gas left in the tube, from the start of the step. */
+  metal?: string;
+  gas?: string;
+}
+
+export interface CathodeClip {
+  phases: CathodePhase[];
+}
+
+/** What a cathode ray tube can show; each is a part ("tube.force"). */
+export const CATHODE_PARTS = ['names', 'values', 'speed', 'straight', 'force', 'circle', 'face', 'made'] as const;
+
+/**
+ * A cathode ray tube (src/video/cathode.ts), drawn to scale from the side. Electrons leave the
+ * cathode with a `speed`, or after being accelerated through `volts`, pass the slit of the
+ * anode and cross to a screen that glows where they land. With a `field` (volts per metre) the
+ * tube has two plates, 5 cm long and 4 cm apart, and with `tesla` a magnetic field in the same
+ * place, at right angles to the picture; the path of the beam is worked out from the two forces
+ * with q/m = 1.76 × 10¹¹ C/kg, and phases slide the fields. Parts: `names`, `values` (E, B and
+ * the accelerating voltage), `speed`, `straight` (the path with no fields, dashed), `force` (the
+ * electric and the magnetic force on one electron), `circle` (the circle that the magnetic
+ * field bends the beam along, with its radius) and `made` (the metal of the cathode and the gas
+ * left in the tube).
+ *
+ * `picture: 'wheel'` puts a paddle wheel on rails in the way of the rays, which push it along;
+ * `picture: 'shadow'` stands a metal cross in a broad beam, and the part `face` draws the end of
+ * the tube from the front, with the shadow of the cross.
+ */
+export interface CathodeEl {
+  kind: 'cathode';
+  id: string;
+  /** What the tube holds: plates and a magnetic field for a narrow beam (`ray`, as otherwise), a paddle wheel, or a cross that casts a shadow. */
+  picture?: 'ray' | 'wheel' | 'shadow';
+  /** The speed of the electrons, in metres per second, or the voltage that accelerates them from rest (one of the two, for a `ray` picture). */
+  speed?: number;
+  volts?: number;
+  /** The electric field between the plates at the start, in volts per metre (positive: the top plate is positive). Leave it out for a tube with no plates. */
+  field?: number;
+  /** The magnetic field at the start, in teslas (positive: into the picture). Leave it out for a tube with no magnetic field. */
+  tesla?: number;
+  /** The air left in the tube at the start, from 0 (pumped out, as otherwise) to 1. */
+  air?: number;
+  /** Start with the high voltage off. */
+  off?: boolean;
+  /** In a `shadow` picture: start with the cross folded down flat. */
+  flat?: boolean;
+  /** The metal of the cathode and the gas left in the tube, for the part `made`. */
+  metal?: string;
+  gas?: string;
+  /** The pixels drawn for each centimetre (44 otherwise), where the left end of the glass is, in pixels from the left of the picture (centred otherwise), and the height of the beam as a share of the picture's height, from the top (0.5 otherwise). */
+  scale?: number;
+  left?: number;
+  axis?: number;
+  clips: Record<string, CathodeClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof CATHODE_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of alpha particles. */
+export interface AlphasPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** Alpha particles to send, evenly through the step. In a `past` picture each number is how far from the line through the centre of the nucleus the particle is aimed, in femtometres (positive: above it); elsewhere the numbers only count the particles. */
+  fire?: number[];
+  /** Slide the alpha particles sent each second to this (a `pudding` or a `ring` picture). */
+  rate?: number;
+  /** Slide the kinetic energy of the alpha particles to this many MeV. */
+  mev?: number;
+  /** Change the nucleus from the start of the step: its protons, and the name of its element. */
+  z?: number;
+  name?: string;
+  /** In an `orbit` picture: the electrons radiate their energy away through this step, and spiral into the nucleus by its end. */
+  fall?: boolean;
+}
+
+export interface AlphasClip {
+  phases: AlphasPhase[];
+}
+
+/** What a picture of alpha particles can show; each is a part ("foil.count"). */
+export const ALPHAS_PARTS = ['names', 'paths', 'count', 'angle', 'scale', 'energy', 'distance', 'force', 'values', 'waves'] as const;
+
+/**
+ * Alpha particles fired at atoms (src/video/alphas.ts). An alpha particle has a charge of +2e
+ * and a nucleus of `z` protons +Ze, so the two repel with a force k(2e)(Ze) ÷ r², and each path
+ * is worked out from that force with k = 8.99 × 10⁹ N·m²/C², e = 1.60 × 10⁻¹⁹ C and
+ * 1 MeV = 1.60 × 10⁻¹³ J. The `picture` is one of five:
+ *
+ * - `pudding`: Thomson's atom, a ball of positive charge with electrons dotted through it. Given
+ *   a `rate`, a source sends alpha particles across it in straight lines. Parts: `names`,
+ *   `paths`, `count`.
+ * - `ring`: the experiment from above, with a source, a gold foil and a screen all round that
+ *   flashes and keeps a mark where each alpha particle lands. A share `back` of them (0.02
+ *   otherwise) are turned through more than 90°. Parts: `names`, `count`.
+ * - `past`: one nucleus to scale, `span` femtometres across the picture (1000 otherwise), and
+ *   the paths of the alpha particles that a phase fires, each aimed to miss by its own distance.
+ *   Parts: `names`, `angle` (the angle each was turned through), `scale` (a ruler).
+ * - `head`: one alpha particle that heads straight for the nucleus, stops where its kinetic
+ *   energy has all become electric potential energy, and is pushed back. Parts: `names`,
+ *   `energy` (the two energies as bars), `distance` (r, and the closest approach), `force`,
+ *   `values` (the energy of the particle and the protons of the nucleus).
+ * - `orbit`: Rutherford's atom, a small nucleus with `electrons` (1 otherwise) that circle it. A
+ *   phase with `fall` makes them radiate their energy away and spiral into the nucleus, which
+ *   is what the model wrongly predicts. Parts: `names`, `waves` (the waves that an accelerating
+ *   charge gives out).
+ */
+export interface AlphasEl {
+  kind: 'alphas';
+  id: string;
+  picture: 'pudding' | 'ring' | 'past' | 'head' | 'orbit';
+  /** The kinetic energy of each alpha particle, in MeV (5 otherwise). */
+  mev?: number;
+  /** The protons in the nucleus (79 otherwise) and the name of its element ('Gold' otherwise). */
+  z?: number;
+  name?: string;
+  /** The alpha particles sent each second at the start (a `pudding` or `ring` picture). A `pudding` with no rate is drawn alone, with no source. */
+  rate?: number;
+  /** In an `orbit` picture: the electrons that circle the nucleus, from 1 to 4. */
+  electrons?: number;
+  /** In a `ring` picture: the share of the alpha particles that are turned back, from 0 to 0.2. */
+  back?: number;
+  /** In a `past` picture: the femtometres across the picture, and the seconds a particle takes to cross it (3.2 otherwise). */
+  span?: number;
+  cross?: number;
+  /** In a `head` picture: the pixels drawn for each femtometre (2 otherwise), the femtometres the particle covers each second far from the nucleus (130 otherwise), and the pixels of force arrow for each newton (5 otherwise). */
+  scale?: number;
+  pace?: number;
+  forceScale?: number;
+  clips: Record<string, AlphasClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof ALPHAS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of an atom's energy levels. */
+export interface LevelsPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** An `atom` picture: the level the electron jumps to. A drop gives out its photon at once; for a rise a photon of exactly the right energy arrives first, unless `bump` is set: then a collision lifts the electron, and no photon is drawn. */
+  to?: number;
+  bump?: boolean;
+  /** An `atom` picture: send a photon of this many electronvolts at the atom. The electron rises if a jump from its level matches, is freed if the photon has enough energy, and otherwise the photon passes. */
+  photon?: number;
+  /** A `spectrum` picture: change the source of the light. */
+  source?: 'solid' | 'gas' | 'through';
+  /** A `wave` picture: slide the wavelengths round the orbit to this. */
+  waves?: number;
+}
+
+export interface LevelsClip {
+  phases: LevelsPhase[];
+}
+
+/** What a picture of energy levels can show; each is a part ("atom.energies"). */
+export const LEVELS_PARTS = ['names', 'energies', 'photon', 'kept', 'radius', 'axis', 'lines', 'fits'] as const;
+
+/**
+ * The energy levels of an atom (src/video/levels.ts). The levels are hydrogen's, −13.6 ÷ n² eV
+ * rounded to three figures as the lessons write them, unless `levels` gives another atom's; a
+ * photon's energy is the difference between two of them, and its wavelength is hc ÷ E with the
+ * lessons' constants. The `picture` is one of three:
+ *
+ * - `atom` (the one drawn otherwise): the atom's orbits, with the electron going round one of
+ *   them, beside a ladder of its energy levels. Parts: `names` (n = 1, 2 …), `energies` (the eV
+ *   of each level), `photon` (the energy, wavelength and kind of light of the latest photon),
+ *   `kept` (the arrows of the earlier drops stay on the ladder, one for each pair of levels),
+ *   `radius` (of the electron's orbit). The orbits and the ladder are not drawn to scale: the
+ *   first orbit and the gaps between the upper levels would be too small to see.
+ * - `spectrum`: light from a hot solid (`solid`), a glowing gas (`gas`), or a hot solid seen
+ *   through the cool gas (`through`), spread out by a prism onto a strip from 380 to 750 nm.
+ *   Parts: `names`, `axis` (the wavelengths), `lines` (the jump that makes each line).
+ * - `wave`: the electron as a wave bent round its orbit, with `waves` wavelengths round it.
+ *   Parts: `names`, `fits` (whether it joins up with itself).
+ */
+export interface LevelsEl {
+  kind: 'levels';
+  id: string;
+  picture?: 'atom' | 'spectrum' | 'wave';
+  /** The energies of the levels in electronvolts, lowest first, for an atom that is not hydrogen, and the name of the atom ('hydrogen' otherwise). */
+  levels?: number[];
+  name?: string;
+  /** The levels of hydrogen to use: 4 for an `atom` otherwise, 6 for a `spectrum`. */
+  top?: number;
+  /** An `atom` picture: the level the electron starts in (1 otherwise), and the lowest level that the ladder shows (1 otherwise; 2 leaves room to tell the upper levels apart). */
+  start?: number;
+  from?: number;
+  /** A `spectrum` picture: the source at the start ('solid' otherwise), and other names for the hot solid and for the cool gas in front of it (the hot inside of a star, say, and its cooler outer layers). */
+  source?: 'solid' | 'gas' | 'through';
+  lamp?: string;
+  cloud?: string;
+  /** A `wave` picture: the wavelengths round the orbit at the start (3 otherwise). */
+  waves?: number;
+  clips: Record<string, LevelsClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof LEVELS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of a nucleus. */
+export interface NucleusPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** A `build` picture: change the nucleus to this many protons and neutrons (nucleons arrive from the right, or leave), with the symbol and the name of its element. */
+  z?: number;
+  n?: number;
+  symbol?: string;
+  name?: string;
+  /** A `build` picture: the nucleus decays. An alpha decay throws out two protons and two neutrons together; a beta decay turns a neutron into a proton (`beta-`) or a proton into a neutron (`beta+`), and throws out an electron or a positron with a neutrino; a gamma decay gives out a photon. Give the `symbol` and `name` of the daughter with it. */
+  decay?: 'alpha' | 'beta-' | 'beta+' | 'gamma';
+  /** A `build` picture: mark the nucleus as unstable (it trembles), or as stable again. A `note` is what the mark says from here on, in place of "Unstable: it will decay" ('' for those words again). */
+  shaky?: boolean;
+  note?: string;
+  /** A `build` picture that has `electrons`: change them to this many. The ones that are lost fly away, and new ones arrive. */
+  electrons?: number;
+  /** A `pair` picture: slide the two nucleons to this many femtometres apart, or change which two they are. */
+  apart?: number;
+  kinds?: 'pp' | 'pn' | 'nn';
+  /** A `mix` picture: slide the share of the atoms that are the first isotope to this, from 0 to 1. */
+  share?: number;
+}
+
+export interface NucleusClip {
+  phases: NucleusPhase[];
+}
+
+/** What a picture of a nucleus can show; each is a part ("carbon.counts"). */
+export const NUCLEUS_PARTS = ['names', 'symbol', 'counts', 'radius', 'charge', 'repel', 'glue', 'electric', 'strong', 'distance', 'share', 'average'] as const;
+
+/**
+ * The nucleus of an atom (src/video/nucleus.ts). The `picture` is one of three:
+ *
+ * - `build` (the one drawn otherwise): the nucleus as a ball of `z` protons and `n` neutrons,
+ *   packed closely and drawn to scale, `scale` pixels to a femtometre: its radius is
+ *   1.2 fm × ∛A. Parts: `names` (which ball is which, and what a decay throws out), `symbol`
+ *   (the nuclide written out, with its name), `counts` (Z, N and A), `radius` (a ruler),
+ *   `charge` (the `electrons` circling the nucleus, far closer than they really are, their
+ *   number, and the charge of the atom or ion), `repel`
+ *   (lines from one proton to every other proton: the electric repulsion) and `glue` (links
+ *   from that proton to its neighbours alone: the strong attraction).
+ * - `pair`: two nucleons `apart` femtometres apart. Parts: `names`, `electric` (the repulsion of
+ *   two protons, ke² ÷ r², as arrows and a number), `strong` (the strong attraction, which has
+ *   no number here: it is drawn full when the nucleons touch and gone by 3 fm), `distance`.
+ * - `mix`: a hundred atoms of an element with two isotopes of `masses`, `share` of them the
+ *   first, and the average mass of an atom. Parts: `names`, `share`, `average`.
+ */
+export interface NucleusEl {
+  kind: 'nucleus';
+  id: string;
+  picture?: 'build' | 'pair' | 'mix';
+  /** A `build` picture: the protons and neutrons at the start (carbon-12 otherwise), the symbol and name of the element, the pixels to a femtometre (16 otherwise), the electrons round the nucleus for the `charge` part, and whether it starts marked as unstable. A `mix` picture uses the `name` too. */
+  z?: number;
+  n?: number;
+  symbol?: string;
+  name?: string;
+  scale?: number;
+  electrons?: number;
+  shaky?: boolean;
+  /** A `pair` picture: the two nucleons (two protons otherwise) and the femtometres between them at the start (2 otherwise). */
+  kinds?: 'pp' | 'pn' | 'nn';
+  apart?: number;
+  /** A `mix` picture: the mass numbers of the two isotopes, lighter first (35 and 37 otherwise), and the share of the atoms that are the first at the start (0.5 otherwise). */
+  masses?: [number, number];
+  share?: number;
+  clips: Record<string, NucleusClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof NUCLEUS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of the three radiations. */
+export interface RadiationPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** A `through` picture: slide the sheet of paper, the plate of aluminium or the block of lead into the way (true) or out of it (false). */
+  paper?: boolean;
+  aluminium?: boolean;
+  lead?: boolean;
+  /** Open or close the source. */
+  open?: boolean;
+  /** A `fields` picture: turn on two charged plates (`electric`, the positive one above) or a magnetic field into the page (`magnetic`), or turn the field `off`. */
+  field?: 'off' | 'electric' | 'magnetic';
+}
+
+export interface RadiationClip {
+  phases: RadiationPhase[];
+}
+
+/** What a picture of the three radiations can show; each is a part ("rays.ions"). */
+export const RADIATION_PARTS = ['names', 'ions', 'air', 'counter', 'screen'] as const;
+
+/**
+ * Alpha particles, beta particles and gamma rays from a source (src/video/radiation.ts). The
+ * `picture` is one of two:
+ *
+ * - `through` (the one drawn otherwise): each of the `rays` in a lane of its own. A phase slides
+ *   the `paper`, the `aluminium` or the `lead` into the way: paper (or a few centimetres of air)
+ *   stops an alpha particle, aluminium a beta particle, and lead two gamma rays in three. Parts:
+ *   `names`, `ions` (the ions each particle leaves: an alpha particle a dense trail, a beta
+ *   particle a thin one, a gamma ray hardly any) and `counter` (a tube at the end of the lanes
+ *   that clicks for each particle that reaches it, and every `background` seconds or so with no
+ *   particle at all).
+ * - `fields`: the `rays` in one beam, which a phase's `field` bends: alpha and beta particles
+ *   opposite ways, the beta particles far more, and gamma rays not at all. Parts: `names` and
+ *   `screen` (where each lands).
+ *
+ * Both are sketches: the speeds, the distances and the bends are chosen to be seen.
+ */
+export interface RadiationEl {
+  kind: 'radiation';
+  id: string;
+  picture?: 'through' | 'fields';
+  /** The radiations the source gives out (all three otherwise). */
+  rays?: Array<'alpha' | 'beta' | 'gamma'>;
+  /** A `through` picture: which shields are in the way at the start (none otherwise). */
+  paper?: boolean;
+  aluminium?: boolean;
+  lead?: boolean;
+  /** Whether the source is open at the start (it is otherwise). */
+  open?: boolean;
+  /** A `fields` picture: the field at the start (`off` otherwise). */
+  field?: 'off' | 'electric' | 'magnetic';
+  /** A `through` picture: the seconds between one click of the background and the next, about (2.4 otherwise; 0 for none). */
+  background?: number;
+  clips: Record<string, RadiationClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof RADIATION_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of a decaying sample. */
+export interface HalflifePhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** Run the sample's clock on to this time, in the element's unit, at a steady rate through the step. */
+  to?: number;
+}
+
+export interface HalflifeClip {
+  phases: HalflifePhase[];
+}
+
+/** What a picture of a decaying sample can show; each is a part ("iodine.graph"). */
+export const HALFLIFE_PARTS = ['names', 'left', 'graph', 'halves', 'ahead'] as const;
+
+/**
+ * A sample of a radioactive isotope with a `halfLife` (src/video/halflife.ts): `count` nuclei,
+ * each of which decays at a moment of its own, beside a graph of the amount that is left, which
+ * follows N = N₀ × (1/2)^(t/T) and draws itself as a phase's `to` runs the clock on. Parts:
+ * `names` (what the sample is, and how many nuclei have not decayed), `left` (the clock and the
+ * amount left), `graph`, `halves` (each half-life that has passed, marked with the share left)
+ * and `ahead` (the rest of the curve, faintly).
+ */
+export interface HalflifeEl {
+  kind: 'halflife';
+  id: string;
+  /** The half-life, and the unit of time it is in (`days` otherwise). */
+  halfLife: number;
+  unit?: string;
+  /** The isotope's name, for the sample ("iodine-131"). */
+  name?: string;
+  /** The number of nuclei drawn (400 otherwise), and a number that deals them other moments to decay. */
+  count?: number;
+  salt?: number;
+  /** The amount at the start, its unit and what it is called on the graph (100, `%` and "Amount left" otherwise). */
+  amount?: number;
+  amountUnit?: string;
+  amountName?: string;
+  /** How many half-lives the graph is wide (5 otherwise), the time on the clock at the start (0 otherwise), and the decimal places of the clock (0 otherwise). */
+  span?: number;
+  start?: number;
+  places?: number;
+  /** The time between the marks of the time axis (one half-life otherwise): give it when the half-life is the thing to find. */
+  every?: number;
+  clips: Record<string, HalflifeClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof HALFLIFE_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+/** One step of a clip of a nuclear reaction. */
+export interface ReactionPhase {
+  /** How long the step lasts, in seconds of video. */
+  dur: number;
+  /** A `weigh` picture: bring the nucleons together into the nucleus (true), or pull the nucleus apart again (false). */
+  join?: boolean;
+  /** A `curve` picture: slide the marker along the graph to this mass number. */
+  to?: number;
+  /** A `fission`, `chain` or `fusion` picture: start it (again). The two nuclei of a fusion can be `slow`: then their repulsion turns them back. */
+  fire?: boolean | 'slow';
+}
+
+export interface ReactionClip {
+  phases: ReactionPhase[];
+}
+
+/** What a picture of a nuclear reaction can show; each is a part ("helium.masses"). */
+export const REACTION_PARTS = ['names', 'masses', 'energy', 'value', 'peak', 'fusion', 'fission', 'repel', 'count'] as const;
+
+/**
+ * A nuclear reaction and the energy it releases (src/video/reaction.ts), in five pictures.
+ * `weigh` (the one drawn unless you say): the protons and neutrons of a nucleus come together,
+ * and the mass falls by the mass defect (parts `names`, `masses`, `energy`). `curve`: the graph
+ * of the binding energy for each nucleon, with a marker that a phase's `to` slides (parts
+ * `names`, `value`, `peak`, `fusion`, `fission`). `fission`: a neutron splits uranium-235 into
+ * two `products` and some neutrons (parts `names`, `energy`). `chain`: a chain reaction, with
+ * control `rods` or without them (parts `names`, `count`). `fusion`: hydrogen-2 and hydrogen-3,
+ * which fuse if they are fast enough (parts `names`, `repel`, `energy`).
+ */
+export interface ReactionEl {
+  kind: 'reaction';
+  id: string;
+  picture?: 'weigh' | 'curve' | 'fission' | 'chain' | 'fusion';
+  /** A `weigh` picture: the protons and neutrons (helium-4 otherwise), the name of the element, the mass of the nucleus in u (4.0015 otherwise), whether it starts as a nucleus, whether the binding energy for each nucleon is shown too, and the decimal places of the binding energy (1 otherwise). */
+  z?: number;
+  n?: number;
+  name?: string;
+  mass?: number;
+  joined?: boolean;
+  each?: boolean;
+  places?: number;
+  /** A `weigh`, `fission` or `fusion` picture: the pixels to a femtometre. */
+  scale?: number;
+  /** A `curve` picture: the mass number that the marker starts at (56 otherwise), and the nuclei that are marked on the graph. */
+  at?: number;
+  marks?: Array<{ a: number; label: string }>;
+  /** A `fission` picture: the two nuclei that uranium-235 splits into, the lighter first (krypton-92 and barium-141 otherwise). */
+  products?: [{ z: number; n: number; name: string }, { z: number; n: number; name: string }];
+  /** A `fission` or `fusion` picture: the energy released, in MeV (173.2 and 17.5 otherwise). */
+  released?: number;
+  /** A `chain` picture: with control rods, one neutron from each fission causes another; without them, two do. */
+  rods?: boolean;
+  clips: Record<string, ReactionClip>;
+  /** The clip to show on the thumbnail (the first otherwise), and the share of it that has played (0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  /** The parts to show on the thumbnail. */
+  thumb?: Array<(typeof REACTION_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | ReactionEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3739,6 +4223,253 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a picture of a nuclear reaction: a nucleus that cannot be, a fission that does not balance, or an option or a step that belongs to another picture. */
+export function checkReaction(e: ReactionEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'weigh';
+  if (!['weigh', 'curve', 'fission', 'chain', 'fusion'].includes(picture)) problems.push(`"${picture}" is not a picture of a reaction.`);
+  const whole = (n: number | undefined, least: number) => n === undefined || (Number.isInteger(n) && n >= least);
+  const [z, n] = [e.z ?? 2, e.n ?? 2];
+  if ((e.z !== undefined || e.n !== undefined || e.mass !== undefined || e.joined !== undefined || e.each !== undefined || e.places !== undefined) && picture !== 'weigh') problems.push('only a weigh picture has `z`, `n`, `mass`, `joined`, `each` and `places`.');
+  if (!whole(e.z, 1) || !whole(e.n, 0) || z + n > 240) problems.push('a nucleus has a whole number of protons (at least 1) and of neutrons, and at most 240 nucleons.');
+  else if (picture === 'weigh' && !((e.mass ?? 4.0015) > 0 && (e.mass ?? 4.0015) < z * 1.0073 + n * 1.0087)) problems.push('the mass of a nucleus is above zero, and less than the mass of its separate nucleons.');
+  if (e.scale !== undefined && (picture === 'curve' || picture === 'chain' || !(e.scale > 0))) problems.push('the scale is the pixels to a femtometre in a weigh, fission or fusion picture, above zero.');
+  if ((e.at !== undefined || e.marks !== undefined) && picture !== 'curve') problems.push('only a curve picture has `at` and `marks`.');
+  if (e.at !== undefined && !(e.at >= 1 && e.at <= 238)) problems.push('the marker is at a mass number from 1 to 238.');
+  for (const m of e.marks ?? []) if (!(m.a >= 1 && m.a <= 238)) problems.push(`the mark "${m.label}" is not at a mass number from 1 to 238.`);
+  if (e.products !== undefined) {
+    if (picture !== 'fission') problems.push('only a fission picture has `products`.');
+    const [a, b] = e.products;
+    const free = 236 - a.z - a.n - b.z - b.n;
+    if (a.z + b.z !== 92) problems.push('the protons of the two products of a fission of uranium add up to 92.');
+    if (!(free >= 1 && free <= 4)) problems.push('a fission of uranium-235 sets from 1 to 4 neutrons free: the mass numbers of its products add up to 232 to 235.');
+  }
+  if (e.released !== undefined && ((picture !== 'fission' && picture !== 'fusion') || !(e.released > 0))) problems.push('`released` is the energy of a fission or a fusion in MeV, above zero.');
+  if (e.rods !== undefined && picture !== 'chain') problems.push('only a chain picture has `rods`.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(REACTION_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.join !== undefined && picture !== 'weigh') problems.push(`clip "${name}" joins nucleons, which only a weigh picture shows.`);
+      if (ph.to !== undefined && (picture !== 'curve' || !(ph.to >= 1 && ph.to <= 238))) problems.push(`clip "${name}" slides a marker, which is at a mass number from 1 to 238 in a curve picture.`);
+      if (ph.fire !== undefined && !['fission', 'chain', 'fusion'].includes(picture)) problems.push(`clip "${name}" starts a reaction, which only a fission, chain or fusion picture shows.`);
+      if (ph.fire === 'slow' && picture !== 'fusion') problems.push(`clip "${name}" starts a slow reaction, which only a fusion picture shows.`);
+    }
+  }
+  return problems;
+}
+
+/** Problems with a picture of a decaying sample: no half-life, too many nuclei to draw, or a clock that runs backwards or off the graph. */
+export function checkHalflife(e: HalflifeEl): string[] {
+  const problems: string[] = [];
+  if (!(e.halfLife > 0)) problems.push('the half-life is above zero.');
+  if (e.count !== undefined && !(Number.isInteger(e.count) && e.count >= 4 && e.count <= 900)) problems.push('the count is a whole number of nuclei from 4 to 900.');
+  if (e.amount !== undefined && !(e.amount > 0)) problems.push('the amount at the start is above zero.');
+  if (e.span !== undefined && !(Number.isInteger(e.span) && e.span >= 1 && e.span <= 8)) problems.push('the span is a whole number of half-lives from 1 to 8.');
+  if (e.start !== undefined && !(e.start >= 0)) problems.push('the clock starts at zero or later.');
+  if (e.every !== undefined && !(e.every > 0 && ((e.span ?? 5) * e.halfLife) / e.every <= 16)) problems.push('`every` is the time between the marks of the time axis: above zero, and no more than 16 marks.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(HALFLIFE_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  let clock = e.start ?? 0;
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.to === undefined) continue;
+      if (ph.to < clock) problems.push(`clip "${name}" runs the clock back from ${clock} to ${ph.to}; a sample only decays.`);
+      else if (ph.to > (e.span ?? 5) * e.halfLife + 1e-9) problems.push(`clip "${name}" runs the clock to ${ph.to}, past the ${e.span ?? 5} half-lives of the graph.`);
+      else clock = ph.to;
+    }
+  }
+  return problems;
+}
+
+/** Problems with a picture of the three radiations: no radiation, the same one twice, or an option that belongs to the other picture. */
+export function checkRadiation(e: RadiationEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'through';
+  if (!['through', 'fields'].includes(picture)) problems.push(`"${picture}" is not a picture of the three radiations.`);
+  const rays = e.rays ?? ['alpha', 'beta', 'gamma'];
+  if (!rays.length || new Set(rays).size !== rays.length || rays.some((ray) => !['alpha', 'beta', 'gamma'].includes(ray))) problems.push('the rays are one or more of alpha, beta and gamma, each once.');
+  if ((e.paper !== undefined || e.aluminium !== undefined || e.lead !== undefined || e.background !== undefined) && picture !== 'through') problems.push('only a through picture has shields and a background.');
+  if (e.background !== undefined && !(e.background >= 0)) problems.push('the background is the seconds between its clicks, or 0 for none.');
+  if (e.field !== undefined && picture !== 'fields') problems.push('only a fields picture has a field.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(RADIATION_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if ((ph.paper !== undefined || ph.aluminium !== undefined || ph.lead !== undefined) && picture !== 'through') problems.push(`clip "${name}" moves a shield, which only a through picture has.`);
+      if (ph.field !== undefined && picture !== 'fields') problems.push(`clip "${name}" changes a field, which only a fields picture has.`);
+    }
+  }
+  return problems;
+}
+
+/** Problems with a picture of a nucleus: a nucleus with no protons, a decay that it cannot make or that does not name its daughter, or an option that belongs to another picture. */
+export function checkNucleus(e: NucleusEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'build';
+  if (!['build', 'pair', 'mix'].includes(picture)) problems.push(`"${picture}" is not a picture of a nucleus.`);
+  const whole = (n: number | undefined, least: number) => n === undefined || (Number.isInteger(n) && n >= least);
+  if (!whole(e.z, 1) || !whole(e.n, 0) || (e.z ?? 6) + (e.n ?? 6) > 300) problems.push('a nucleus has a whole number of protons (at least 1) and of neutrons, and at most 300 nucleons.');
+  if ((e.z !== undefined || e.n !== undefined || e.electrons !== undefined || e.shaky !== undefined) && picture !== 'build') problems.push('only a build picture has `z`, `n`, `electrons` and `shaky`.');
+  if (e.electrons !== undefined && !(Number.isInteger(e.electrons) && e.electrons >= 0)) problems.push('the electrons are a whole number.');
+  if (e.scale !== undefined && (picture === 'mix' || !(e.scale > 0))) problems.push('the scale is the pixels to a femtometre in a build or a pair picture, above zero.');
+  if ((e.kinds !== undefined || e.apart !== undefined) && picture !== 'pair') problems.push('only a pair picture has `kinds` and `apart`.');
+  if (e.apart !== undefined && !(e.apart >= 1 && e.apart <= 8)) problems.push('the two nucleons are from 1 to 8 femtometres apart.');
+  if ((e.masses !== undefined || e.share !== undefined) && picture !== 'mix') problems.push('only a mix picture has `masses` and a `share`.');
+  if (e.masses !== undefined && !(e.masses.length === 2 && e.masses[0] > 0 && e.masses[1] > e.masses[0])) problems.push('the masses are those of two isotopes, lighter first.');
+  if (e.share !== undefined && !(e.share >= 0 && e.share <= 1)) problems.push('the share is from 0 to 1.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(NUCLEUS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  let [z, n] = [e.z ?? 6, e.n ?? 6];
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.electrons !== undefined && (e.electrons === undefined || !(Number.isInteger(ph.electrons) && ph.electrons >= 0))) problems.push(`clip "${name}" changes the electrons, which are a whole number in a picture that starts with \`electrons\`.`);
+      if ((ph.z !== undefined || ph.n !== undefined || ph.decay !== undefined || ph.shaky !== undefined || ph.note !== undefined || ph.symbol !== undefined) && picture !== 'build') problems.push(`clip "${name}" changes a nucleus, which only a build picture shows.`);
+      if ((ph.apart !== undefined || ph.kinds !== undefined) && picture !== 'pair') problems.push(`clip "${name}" moves or changes two nucleons, which only a pair picture shows.`);
+      if (ph.apart !== undefined && !(ph.apart >= 1 && ph.apart <= 8)) problems.push(`clip "${name}" moves the nucleons to a distance that is not from 1 to 8 femtometres.`);
+      if (ph.share !== undefined && (picture !== 'mix' || !(ph.share >= 0 && ph.share <= 1))) problems.push(`clip "${name}" slides a share, which is from 0 to 1 in a mix picture.`);
+      if (ph.decay !== undefined && (ph.z !== undefined || ph.n !== undefined)) problems.push(`clip "${name}" has a phase with both a decay and a new nucleus; the decay alone decides the new nucleus.`);
+      if (ph.decay !== undefined) {
+        const [dz, dn] = { alpha: [-2, -2], 'beta-': [1, -1], 'beta+': [-1, 1], gamma: [0, 0] }[ph.decay] ?? [0, 0];
+        if (z + dz < 1 || n + dn < 0) problems.push(`clip "${name}" asks for a ${ph.decay} decay of a nucleus with ${z} protons and ${n} neutrons, which cannot make it.`);
+        if (dz !== 0 && (ph.symbol === undefined || ph.name === undefined)) problems.push(`clip "${name}" has a ${ph.decay} decay that does not give the symbol and the name of the daughter.`);
+        [z, n] = [z + dz, n + dn];
+      } else {
+        if (!whole(ph.z, 1) || !whole(ph.n, 0) || ((ph.z !== undefined || ph.n !== undefined) && (ph.z ?? z) + (ph.n ?? n) > 300)) problems.push(`clip "${name}" asks for a nucleus that is not a whole number of protons (at least 1) and neutrons, up to 300 nucleons.`);
+        if (ph.z !== undefined && ph.z !== z && (ph.symbol === undefined || ph.name === undefined)) problems.push(`clip "${name}" changes the protons, and does not give the symbol and the name of the new element.`);
+        [z, n] = [ph.z ?? z, ph.n ?? n];
+      }
+    }
+  }
+  return problems;
+}
+
+/** Problems with a picture of energy levels: levels out of order, a jump to a level that is not there, a photon with no time to arrive, or an option that belongs to another picture. */
+export function checkLevels(e: LevelsEl): string[] {
+  const problems: string[] = [];
+  const picture = e.picture ?? 'atom';
+  if (!['atom', 'spectrum', 'wave'].includes(picture)) problems.push(`"${picture}" is not a picture of energy levels.`);
+  if (e.levels !== undefined) {
+    if (e.levels.length < 2 || e.levels.length > 8) problems.push('an atom is given from 2 to 8 levels.');
+    if (e.levels.some((volts, i) => !(volts < 0) || (i > 0 && !(volts > e.levels![i - 1])))) problems.push('the levels are energies below zero, in electronvolts, lowest first.');
+    if (e.top !== undefined) problems.push('`top` counts the levels of hydrogen; an atom given its own `levels` takes none.');
+  }
+  if (e.top !== undefined && !(Number.isInteger(e.top) && e.top >= 2 && e.top <= 8)) problems.push('`top` is a whole number of levels from 2 to 8.');
+  const count = e.levels?.length ?? e.top ?? (picture === 'spectrum' ? 6 : 4);
+  const inLevels = (n: number) => Number.isInteger(n) && n >= 1 && n <= count;
+  if ((e.start !== undefined || e.from !== undefined) && picture !== 'atom') problems.push('only an atom picture has a `start` and a `from`.');
+  if (e.start !== undefined && !inLevels(e.start)) problems.push(`the electron starts in a level from 1 to ${count}.`);
+  if (e.from !== undefined && !(inLevels(e.from) && e.from < count)) problems.push(`the ladder starts from a level below the top one, from 1 to ${count - 1}.`);
+  if (e.from !== undefined && (e.start ?? 1) < e.from) problems.push('the electron starts in a level that the ladder does not show.');
+  if ((e.source !== undefined || e.lamp !== undefined || e.cloud !== undefined) && picture !== 'spectrum') problems.push('only a spectrum picture has a `source`, a `lamp` and a `cloud`.');
+  if (e.waves !== undefined && picture !== 'wave') problems.push('only a wave picture has `waves`.');
+  if (e.waves !== undefined && !(e.waves >= 1 && e.waves <= 8)) problems.push('the wavelengths round the orbit are from 1 to 8.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(LEVELS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  let level = e.start ?? 1;
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if ((ph.to !== undefined || ph.photon !== undefined) && picture !== 'atom') problems.push(`clip "${name}" moves an electron or sends a photon, which only an atom picture shows.`);
+      if (ph.source !== undefined && picture !== 'spectrum') problems.push(`clip "${name}" changes the source, which only a spectrum picture has.`);
+      if (ph.waves !== undefined && picture !== 'wave') problems.push(`clip "${name}" changes the wavelengths round the orbit, which only a wave picture has.`);
+      if (ph.waves !== undefined && !(ph.waves >= 1 && ph.waves <= 8)) problems.push(`clip "${name}" asks for wavelengths round the orbit that are not from 1 to 8.`);
+      if (ph.to !== undefined && ph.photon !== undefined) problems.push(`clip "${name}" has a phase with both a jump and a photon; give each its own phase.`);
+      if (ph.photon !== undefined && !(ph.photon > 0)) problems.push(`clip "${name}" sends a photon with no energy.`);
+      if (ph.to !== undefined && !inLevels(ph.to)) problems.push(`clip "${name}" jumps to level ${ph.to}, and the atom has levels 1 to ${count}.`);
+      if (ph.to !== undefined && e.from !== undefined && ph.to < e.from) problems.push(`clip "${name}" jumps to level ${ph.to}, below the ladder's lowest level.`);
+      // A photon takes 1.6 seconds to arrive (ARRIVE in src/video/levels.ts), and the phase must outlast it.
+      if (ph.bump && !(ph.to !== undefined && ph.to > level)) problems.push(`clip "${name}" has a bump that lifts nothing; a bump goes with a jump to a higher level.`);
+      if (((ph.to !== undefined && ph.to > level && !ph.bump) || ph.photon !== undefined) && ph.dur < 1.6) problems.push(`clip "${name}" gives a photon less than the 1.6 seconds it takes to arrive.`);
+      if (ph.to !== undefined && inLevels(ph.to)) level = ph.to;
+    }
+  }
+  return problems;
+}
+
+/** Problems with a picture of alpha particles: an energy or a nucleus that is not there, a rate where particles are fired one by one, or a clip that sends nothing that the picture can show. */
+export function checkAlphas(e: AlphasEl): string[] {
+  const problems: string[] = [];
+  const stream = e.picture === 'pudding' || e.picture === 'ring';
+  if (!['pudding', 'ring', 'past', 'head', 'orbit'].includes(e.picture)) problems.push(`"${e.picture}" is not a picture of alpha particles.`);
+  if (e.electrons !== undefined && (e.picture !== 'orbit' || !(Number.isInteger(e.electrons) && e.electrons >= 1 && e.electrons <= 4))) problems.push('`electrons` is the number that circle the nucleus of an orbit picture, from 1 to 4.');
+  if (e.mev !== undefined && !(e.mev > 0)) problems.push('the energy of the alpha particles must be more than zero.');
+  if (e.z !== undefined && !(Number.isInteger(e.z) && e.z > 0)) problems.push('the protons in the nucleus are a whole number above zero.');
+  if (e.rate !== undefined && !stream) problems.push(`a ${e.picture} picture fires its alpha particles one by one (\`fire\`), and takes no rate.`);
+  if (e.rate !== undefined && !(e.rate >= 0 && e.rate <= 40)) problems.push('the rate is from 0 to 40 alpha particles each second.');
+  if (e.back !== undefined && (e.picture !== 'ring' || !(e.back >= 0 && e.back <= 0.2))) problems.push('`back` is the share turned back in a ring picture, from 0 to 0.2.');
+  if ((e.span !== undefined || e.cross !== undefined) && e.picture !== 'past') problems.push('only a past picture has a `span` and a `cross`.');
+  if (e.span !== undefined && !(e.span >= 100 && e.span <= 20000)) problems.push('the span is from 100 to 20000 femtometres.');
+  if (e.cross !== undefined && !(e.cross > 0)) problems.push('`cross` is the seconds an alpha particle takes to cross the picture, above zero.');
+  if ((e.scale !== undefined || e.pace !== undefined || e.forceScale !== undefined) && e.picture !== 'head') problems.push('only a head picture has a `scale`, a `pace` and a `forceScale`.');
+  if (e.scale !== undefined && !(e.scale > 0)) problems.push('the scale must be more than zero.');
+  if (e.pace !== undefined && !(e.pace > 0)) problems.push('the pace must be more than zero.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(ALPHAS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.rate !== undefined && (!stream || e.rate === undefined)) problems.push(`clip "${name}" changes a rate, and the picture was not given one (give a pudding or a ring a rate of 0 to start with).`);
+      if (ph.rate !== undefined && !(ph.rate >= 0 && ph.rate <= 40)) problems.push(`clip "${name}" asks for a rate that is not from 0 to 40.`);
+      if (ph.mev !== undefined && !(ph.mev > 0)) problems.push(`clip "${name}" slides the energy to nothing.`);
+      if (ph.z !== undefined && !(Number.isInteger(ph.z) && ph.z > 0)) problems.push(`clip "${name}" asks for a nucleus whose protons are not a whole number above zero.`);
+      if (ph.fall !== undefined && e.picture !== 'orbit') problems.push(`clip "${name}" makes electrons fall, and only an orbit picture has electrons that circle.`);
+      if (ph.fire !== undefined && e.picture === 'orbit') problems.push(`clip "${name}" fires alpha particles, and an orbit picture has none.`);
+      if (ph.fire !== undefined && e.picture === 'pudding' && e.rate === undefined) problems.push(`clip "${name}" fires alpha particles at a pudding that has no source (give it a rate of 0 to start with).`);
+      if (ph.fire !== undefined && e.picture === 'head' && ph.fire.some((miss) => miss !== 0)) problems.push(`clip "${name}" aims to one side in a head picture, where every alpha particle heads straight for the nucleus (fire 0).`);
+    }
+  }
+  return problems;
+}
+
+/** Problems with a cathode ray tube: no speed, a field it has no plates for, or a clip that changes what the tube does not have. */
+export function checkCathode(e: CathodeEl): string[] {
+  const problems: string[] = [];
+  const ray = (e.picture ?? 'ray') === 'ray';
+  const share = (x: number) => x >= 0 && x <= 1;
+  if (ray && e.speed === undefined && e.volts === undefined) problems.push('a tube needs the speed of its electrons, or a voltage to accelerate them through.');
+  if (e.speed !== undefined && e.volts !== undefined) problems.push('give a tube a speed or a voltage, not both.');
+  if (e.speed !== undefined && !(e.speed > 0)) problems.push('the speed must be more than zero.');
+  if (e.volts !== undefined && !(e.volts > 0)) problems.push('the voltage must be more than zero.');
+  if (!ray && (e.field !== undefined || e.tesla !== undefined)) problems.push(`a ${e.picture} picture has no plates and no magnetic field.`);
+  if (e.air !== undefined && !share(e.air)) problems.push('the air left in the tube is from 0 to 1.');
+  if (e.flat && e.picture !== 'shadow') problems.push('only a shadow picture has a cross to fold flat.');
+  if (e.scale !== undefined && !(e.scale >= 20 && e.scale <= 60)) problems.push('the scale is from 20 to 60 pixels to a centimetre.');
+  if (e.axis !== undefined && !(e.axis >= 0.2 && e.axis <= 0.8)) problems.push('the beam is drawn between 0.2 and 0.8 of the way down the picture.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(CATHODE_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.speed !== undefined && (e.speed === undefined || !(ph.speed > 0))) problems.push(`clip "${name}" changes a speed that the tube was not given, or slides it to nothing.`);
+      if (ph.volts !== undefined && (e.volts === undefined || !(ph.volts > 0))) problems.push(`clip "${name}" changes a voltage that the tube was not given, or slides it to nothing.`);
+      if (ph.field !== undefined && e.field === undefined) problems.push(`clip "${name}" changes the electric field, and the tube has no plates (give it a field of 0 to start with).`);
+      if (ph.tesla !== undefined && e.tesla === undefined) problems.push(`clip "${name}" changes the magnetic field, and the tube has none (give it 0 teslas to start with).`);
+      if (ph.air !== undefined && !share(ph.air)) problems.push(`clip "${name}" asks for air that is not from 0 to 1.`);
+      if (ph.stand !== undefined && e.picture !== 'shadow') problems.push(`clip "${name}" moves a cross, and only a shadow picture has one.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a matter element: a picture with nothing to send, a speed or a voltage that is not above zero, or a clip that changes what the picture does not have. */
 export function checkMatter(e: MatterEl): string[] {
   const problems: string[] = [];
@@ -4107,7 +4838,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | MatterEl | CathodeEl | AlphasEl | LevelsEl | NucleusEl | RadiationEl | HalflifeEl | ReactionEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -4199,6 +4930,41 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(MATTER_PARTS));
         motions.set(e.id, e);
         problems.push(...checkMatter(e).map((p) => `Scene ${si + 1}: matter "${e.id}": ${p}`));
+      }
+      if (e.kind === 'cathode') {
+        diagrams.set(e.id, new Set<string>(CATHODE_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkCathode(e).map((p) => `Scene ${si + 1}: cathode ray tube "${e.id}": ${p}`));
+      }
+      if (e.kind === 'alphas') {
+        diagrams.set(e.id, new Set<string>(ALPHAS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkAlphas(e).map((p) => `Scene ${si + 1}: alpha particles "${e.id}": ${p}`));
+      }
+      if (e.kind === 'levels') {
+        diagrams.set(e.id, new Set<string>(LEVELS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkLevels(e).map((p) => `Scene ${si + 1}: energy levels "${e.id}": ${p}`));
+      }
+      if (e.kind === 'nucleus') {
+        diagrams.set(e.id, new Set<string>(NUCLEUS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkNucleus(e).map((p) => `Scene ${si + 1}: nucleus "${e.id}": ${p}`));
+      }
+      if (e.kind === 'radiation') {
+        diagrams.set(e.id, new Set<string>(RADIATION_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkRadiation(e).map((p) => `Scene ${si + 1}: radiation "${e.id}": ${p}`));
+      }
+      if (e.kind === 'halflife') {
+        diagrams.set(e.id, new Set<string>(HALFLIFE_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkHalflife(e).map((p) => `Scene ${si + 1}: half-life "${e.id}": ${p}`));
+      }
+      if (e.kind === 'reaction') {
+        diagrams.set(e.id, new Set<string>(REACTION_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkReaction(e).map((p) => `Scene ${si + 1}: reaction "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
