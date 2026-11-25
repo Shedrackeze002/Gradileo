@@ -1997,6 +1997,20 @@ items ship or decisions change.
      have no question that fits a Grade 8 lesson: Leah's growing plant (6.1), the three views of an
      object made of cubes (8.1), a die's net (8.2), matching parts of congruent triangles (9.1), a
      reflected triangle's congruence statement (9.2) and a misleading lunch graph (10.1).
+     Math 9 (`xq-m9-*`, 34 lessons) is complete: 34 exam videos. Twenty come word for word from
+     OpenStax Elementary Algebra 2e 1.2, 1.5, 1.6, 1.8, 2.3, 2.4, 2.7, 3.1, 3.6, 4.2, 6.1, 6.2, 6.6,
+     8.7 and 9.1 (√9 + √16 against √(9 + 16), √38 between two whole numbers, (−3)⁴ and −3⁴, the
+     exponent laws, 9 + 5³ − [4(9 + 3)], ordering pairs of rational numbers, 5/9 + (−4/9) − 7/9,
+     −7/27 ÷ (−35/36), a fraction bar of integers, graphing y = 2x − 3, classifying polynomials, two
+     polynomial sums and a difference, 9b² − 11b, y = 4, j = 5/3, Joaquin's money, three
+     inequalities on number lines, Taleisha's texts and the telephone pole), and three from
+     Introductory Statistics 2e 1.1 and 1.2 (the radio station's concert sample, the principal's
+     stratified poll and the key terms of the Knoll Academy uniform study). Eleven we wrote, where
+     the free books have no question that fits a Grade 9 lesson: a cake's surface area (1.3),
+     doubling bacteria (2.4), a toothpick pattern (4.1), enlarging a photo (7.1), map distances
+     (7.2), a chord's distance from the centre (8.1), inscribed and central angles (8.2), a
+     tangent's length (8.3), lines of symmetry (9.1), the order of rotation of a hexagon and an S
+     (9.2) and Maya's free throws (10.4).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
