@@ -1985,6 +1985,18 @@ items ship or decisions change.
      lesson: parallel and perpendicular segments on a grid (8.1), perpendicular and angle bisectors
      (8.2), sliding a triangle (9.2), reflecting and rotating a triangle (9.3), an outlier among
      puzzle times (10.2) and theoretical against experimental probability on a spinner (11.3).
+     Math 8 (`xq-m8-*`, 31 lessons) is complete: 31 exam videos. Lesson 3.1 is the pilot from the
+     NAEP 2009 Grade 8 sample questions (public domain). Twenty-four come word for word from
+     OpenStax: Prealgebra 2e 3.4, 4.2, 4.3, 5.6, 5.7, 6.2, 6.3, 6.5, 8.2, 8.3, 9.1, 9.3, 9.6 and
+     11.2 (Sergio's mosaic, Katie's lawn, the hypotenuse of a 15 by 8 triangle, John's ladder,
+     Alan's bicycle mark-up, Denise's commission, Sheila's salary cut, the storage bags, Marissa's
+     calories, the fudge, Don's bags of candy, Kristen's ribbon, Javier's loss, −63 ÷ 7 and
+     −115 ÷ (−5), 17 − 4(8 − 11), graphing y = x/3 − 1, b/(−6) = −24, 3x + 4 = −8, 6(y − 4) = −18,
+     two numbers that add to 24, the box, the cylinder and the barber shop pole) and Contemporary
+     Mathematics 7.9 (two orange faces on two coloured dice). Six we wrote, where the free books
+     have no question that fits a Grade 8 lesson: Leah's growing plant (6.1), the three views of an
+     object made of cubes (8.1), a die's net (8.2), matching parts of congruent triangles (9.1), a
+     reflected triangle's congruence statement (9.2) and a misleading lunch graph (10.1).
      Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
      then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
      Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
