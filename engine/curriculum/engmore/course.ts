@@ -47,6 +47,14 @@ export const OUTCOMES: Outcome[] = [
   { code: 'US15', strand: 'Comparing texts, versions and retellings', text: 'Explain how pictures add to a story, and compare a text with its performed, filmed or delivered version.' },
   { code: 'US16', strand: 'Comparing texts, versions and retellings', text: 'Compare a fictional portrayal of a time or place with a historical account, and explain how authors use or alter history.' },
   { code: 'US17', strand: 'Comparing texts, versions and retellings', text: 'Explain allusions to myths, the Bible and literature, and how a modern story draws on and transforms an older one.' },
+  { code: 'US18', strand: 'Seminars, sources and world literature', text: 'Prepare for, lead and take part in seminar discussions, probing reasoning, synthesizing claims and qualifying views.' },
+  { code: 'US19', strand: 'Seminars, sources and world literature', text: 'Publish, link and update writing online, and use digital media strategically in presentations.' },
+  { code: 'US20', strand: 'Seminars, sources and world literature', text: 'Analyse how a writer draws on and transforms source material.' },
+  { code: 'US21', strand: 'Seminars, sources and world literature', text: 'Analyse a point of view or cultural experience in literature from beyond the United States, read in its context.' },
+  { code: 'US22', strand: 'American literature and founding documents', text: 'Analyse a subject in two artistic mediums, and compare and evaluate productions of a play.' },
+  { code: 'US23', strand: 'American literature and founding documents', text: 'Place foundational American works in their periods and compare how they treat similar themes.' },
+  { code: 'US24', strand: 'American literature and founding documents', text: 'Analyse the purposes, themes and rhetoric of the Declaration of Independence, the Preamble to the Constitution and the Bill of Rights.' },
+  { code: 'US25', strand: 'American literature and founding documents', text: 'Trace and evaluate the reasoning of The Federalist and of Supreme Court opinions and dissents.' },
 ];
 
 const L = (
@@ -269,6 +277,42 @@ export const LESSONS: LessonMeta[] = [
     ['ex-allusions', 'ex-myth-retellings'],
     ['Explain literary, biblical and mythological allusions and the meaning they lend', 'Find the myth or older story a modern work draws on, and explain how it makes it new'],
     ['allusion', 'myth', 'archetype', 'hero’s journey', 'retelling']),
+
+  // ---------------- Unit 15: Seminars, Sources and World Literature ----------------
+  L('ex-15-1', 'ex-u15', '15.1', 'Seminar Discussions', 10, ['US18'],
+    ['ex-seminar-prepare', 'ex-seminar-lead'],
+    ['Prepare for a seminar with evidence and open questions, and set norms, goals and roles', 'Propel a seminar, probe reasoning, draw in every voice, synthesize the discussion and qualify your views'],
+    ['seminar', 'open question', 'norm', 'synthesize', 'qualify']),
+  L('ex-15-2', 'ex-u15', '15.2', 'Digital Writing and Digital Media', 10, ['US19'],
+    ['ex-digital-writing', 'ex-digital-media'],
+    ['Publish, link and update writing online, and write with others in a shared document', 'Use digital media strategically in a presentation, accessibly and honestly'],
+    ['digital publishing', 'link', 'update', 'digital media', 'accessible']),
+  L('ex-15-3', 'ex-u15', '15.3', 'How Writers Transform Their Sources', 10, ['US20'],
+    ['ex-source-material', 'ex-transformation'],
+    ['Recognize how a writer draws on a source, such as Shakespeare on Ovid and Brooke', 'Analyse what a writer keeps and changes from a source, and the effect of the changes'],
+    ['source', 'adaptation', 'allusion', 'transformation', 'point of view']),
+  L('ex-15-4', 'ex-u15', '15.4', 'World Literature: Tagore and Chekhov', 10, ['US21'],
+    ['ex-world-perspective', 'ex-world-context'],
+    ['Analyse a point of view and a cultural experience in stories by Tagore and Chekhov', 'Read world literature in its context and translation, without stereotype'],
+    ['world literature', 'translation', 'cultural experience', 'colonialism', 'context']),
+
+  // ---------------- Unit 16: American Literature and Founding Documents ----------------
+  L('ex-16-1', 'ex-u16', '16.1', 'One Story in Many Mediums and Productions', 11, ['US22'],
+    ['ex-two-mediums', 'ex-play-productions'],
+    ['Analyse what a subject emphasizes or leaves out in two mediums, such as a myth, a painting and a poem', 'Compare and evaluate productions of a play by Shakespeare and by an American dramatist'],
+    ['medium', 'production', 'interpretation', 'staging', 'adaptation']),
+  L('ex-16-2', 'ex-u16', '16.2', 'American Literature: Its Periods and Themes', 11, ['US23'],
+    ['ex-american-periods', 'ex-american-themes'],
+    ['Place foundational American works in their periods, from the Puritans to Realism and Naturalism', 'Compare how American texts of one or several periods treat themes such as independence and freedom'],
+    ['Puritan', 'Revolutionary', 'Transcendentalism', 'Realism', 'Naturalism']),
+  L('ex-16-3', 'ex-u16', '16.3', 'The Declaration, the Constitution and the Bill of Rights', 11, ['US24'],
+    ['ex-founding-purposes', 'ex-founding-rhetoric'],
+    ['Explain the purposes and themes of the Declaration, the Preamble and the Bill of Rights', 'Analyse the rhetoric of the founding documents'],
+    ['Declaration of Independence', 'Preamble', 'Bill of Rights', 'federalism', 'anaphora']),
+  L('ex-16-4', 'ex-u16', '16.4', 'Reasoning in The Federalist and the Supreme Court', 12, ['US25'],
+    ['ex-federalist', 'ex-court-opinions'],
+    ['Trace and evaluate the reasoning of The Federalist Nos. 10, 51 and 78', 'Explain and evaluate Supreme Court opinions and dissents, as in Plessy and Brown'],
+    ['faction', 'checks and balances', 'majority opinion', 'dissent', 'concurrence']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -286,6 +330,8 @@ export const UNITS: UnitMeta[] = [
   { id: 'ex-u12', number: 12, title: 'Words, References and Varieties of English', description: 'Register, dialect and standard English, dictionaries, glossaries and thesauruses, and word relationships and analogies.', outcomes: ['US6', 'US7', 'US8'], lessons: [], color: 'emerald' },
   { id: 'ex-u13', number: 13, title: 'Speaking, Listening and Publishing', description: 'Taking part in a discussion, reading aloud and speaking clearly, presenting with visuals and media, and writing and publishing with technology.', outcomes: ['US9', 'US10', 'US11', 'US12'], lessons: [], color: 'amber' },
   { id: 'ex-u14', number: 14, title: 'Comparing Texts, Versions and Retellings', description: 'Comparing characters and stories, accounts of one event and texts that disagree, stories in pictures, on stage and on screen, historical fiction and history, and myths and allusions in modern stories.', outcomes: ['US13', 'US14', 'US15', 'US16', 'US17'], lessons: [], color: 'violet' },
+  { id: 'ex-u15', number: 15, title: 'Seminars, Sources and World Literature', description: 'Seminar discussions, digital writing and media, how writers transform their sources, and world literature by Tagore and Chekhov.', outcomes: ['US18', 'US19', 'US20', 'US21'], lessons: [], color: 'teal' },
+  { id: 'ex-u16', number: 16, title: 'American Literature and Founding Documents', description: 'One story in many mediums and productions, the periods and themes of American literature, the Declaration, the Constitution and the Bill of Rights, and the reasoning of The Federalist and the Supreme Court.', outcomes: ['US22', 'US23', 'US24', 'US25'], lessons: [], color: 'rose' },
 ];
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
 

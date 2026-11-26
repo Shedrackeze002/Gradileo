@@ -916,13 +916,14 @@ items ship or decisions change.
      clearly, presenting with visuals and media, writing and publishing with technology, comparing
      characters, settings and stories, comparing accounts of one event and texts that disagree,
      stories in pictures, on stage and on screen, historical fiction and history, and myths,
-     allusions and modern stories. Gaps still listed, by topic: world literature beyond Britain and
-     the United States, a subject in two artistic mediums, and how a writer transforms sources
-     (Grades 9 and 10); seminar discussions, digital media in presentations and publishing with
-     technology (Grades 9 to 12); productions of a play by Shakespeare and by an American dramatist,
-     the periods of American literature, the reasoning of The Federalist and the Supreme Court, and
-     the Declaration of Independence, the Constitution and the Bill of Rights (Grades 11 and 12).
-     Next: the high school lessons, then videos and tutor recordings for Units 11 and after.
+     allusions and modern stories. Units 15 and 16 (8 lessons, 26 November 2026) fill the high school
+     gaps: seminar discussions, digital writing and media, how writers transform their sources,
+     world literature by Tagore and Chekhov, one story in many mediums and productions (with
+     Glaspell's Trifles and two films of Hamlet), the periods and themes of American literature,
+     the Declaration, the Constitution and the Bill of Rights, and the reasoning of The Federalist
+     and the Supreme Court (Plessy and Brown). Every course of the map now lists no gaps. Quoted
+     texts are public domain and each lesson that quotes one ends with its references. Next: videos
+     and tutor recordings for More English Topics Units 11 to 16.
    - Built (26 November 2026), step 3: **AP Chemistry** (`engine/curriculum/maps/us-chemistry.ts`,
      joined to the US map), the College Board's AP Chemistry Course and Exam Description as one
      course of nine units in the CED's order, each built from the Chemistry 20 and 30 lessons and
