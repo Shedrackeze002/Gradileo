@@ -941,6 +941,23 @@ items ship or decisions change.
      Chemistry gap lessons and join the map once those merge, which leaves no gaps. The half-life
      video element now takes `noun` and `gone`, so it can show molecules reacting as well as
      nuclei decaying.
+     More English Topics Units 11 and 12 (8 lessons, 26 November 2026) fill the language gaps:
+     conjunctions, prepositions and interjections, more commas and the titles of works, intensive
+     and vague pronouns and pronoun shifts, verb moods and shifts in voice and mood, contested usage
+     and hyphens, register, dialect and standard English, dictionaries, glossaries and thesauruses,
+     and word relationships and analogies. Gaps still listed, by topic: comparing characters and
+     stories, and pictures in stories (Grade 5); several accounts of one event (Grades 5 to 8);
+     comparing a text with its performance or film (Grades 6 and 7); historical fiction and history
+     (Grade 7); modern stories that draw on myths, and allusions (Grades 7 and 8); reading aloud
+     (Grade 5); discussions, presenting with multimedia and formal speech (Grades 5 to 8), seminar
+     discussions and digital media in presentations (Grades 9 to 12); publishing writing with
+     technology (every grade); world literature beyond Britain and the United States, a subject in
+     two artistic mediums, and how a writer transforms sources (Grades 9 and 10); productions of a
+     play by Shakespeare and by an American dramatist, the periods of American literature, the
+     reasoning of The Federalist and the Supreme Court, and the Declaration of Independence, the
+     Constitution and the Bill of Rights (Grades 11 and 12). Next: Units 13 and 14 (speaking,
+     listening and publishing, and comparing texts and versions, Grades 5 to 8), then the high
+     school lessons, then their videos and tutor recordings.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

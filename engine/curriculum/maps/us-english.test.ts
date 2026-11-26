@@ -17,6 +17,16 @@ describe('the US map’s English courses (Common Core English Language Arts)', (
     }
   });
 
+  it('teach every More English Topics lesson written for the US map (Units 11 and after) in a course of its grade or near it', () => {
+    const more = getCourse('eng-more')!.lessons.filter((l) => Number(l.unitId.slice('ex-u'.length)) >= 11);
+    expect(more.length).toBeGreaterThan(0);
+    for (const l of more) {
+      const homes = english().filter((c) => c.lessons.some((x) => x.id === l.id));
+      expect(homes.length, `${l.id} is filed in a US course`).toBeGreaterThan(0);
+      expect(homes.some((c) => Math.abs(c.grade - (l.grade ?? 10)) <= 1), `${l.id} (Grade ${l.grade}) is taught near its grade`).toBe(true);
+    }
+  });
+
   it('teach each course mostly from Gradileo’s course of the same grade', () => {
     const own: Record<string, string> = { 'us-ela-grade-5': 'e5-', 'us-ela-grade-6': 'e6-', 'us-ela-grade-7': 'e7-', 'us-ela-grade-8': 'e8-', 'us-english-9': 'e9-', 'us-english-10': 'e10-', 'us-english-11': 'e11-', 'us-english-12': 'e12-' };
     for (const [id, prefix] of Object.entries(own)) {
