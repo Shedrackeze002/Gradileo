@@ -43,7 +43,8 @@ describe('the UK map’s chemistry and English courses', () => {
     const language = getCourse('uk-gcse-english-language')!;
     const literatureMap = getCourse('uk-gcse-english-literature')!;
     // Units 1 to 4 fill GCSE English Language; Units 5 to 10 are the Literature texts and poems.
-    for (const l of moreEnglish.lessons) {
+    // (Units 11 and after fill the US map.)
+    for (const l of moreEnglish.lessons.filter((x) => Number(x.unitId.slice('ex-u'.length)) <= 10)) {
       const course = Number(l.unitId.slice('ex-u'.length)) < 5 ? language : literatureMap;
       expect(course.lessons.some((x) => x.id === l.id), `${course.id} teaches ${l.id}`).toBe(true);
     }
@@ -72,6 +73,6 @@ describe('the UK map’s chemistry and English courses', () => {
     expect(uk('English', 11).courseId).toBe('eng-20');
     expect(uk('English', 8).courseId).toBe('eng-8');
     expect(recommendCourse({ subject: 'Chemistry', grade: 10, curriculum: 'ng' }).courseId).toBe('chem-10');
-    expect(recommendCourse({ subject: 'English', grade: 10, curriculum: 'us' }).courseId).toBe('eng-10');
+    expect(recommendCourse({ subject: 'English', grade: 10, curriculum: 'ng' }).courseId).toBe('eng-10');
   });
 });

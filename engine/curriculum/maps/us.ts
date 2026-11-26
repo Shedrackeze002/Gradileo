@@ -2,8 +2,10 @@
  * The US Common Core State Standards for Mathematics, as the courses most US schools teach: Grades
  * 6 to 8, then Algebra I, Geometry, Algebra II and Precalculus (the traditional pathway). Each
  * unit points to the Gradileo lessons that teach its standards, in the order a US class meets them.
+ * The map's English courses (Common Core English Language Arts) are in `us-english.ts`.
  */
 import type { CurriculumMap } from './build.ts';
+import { US_ENGLISH_COURSES } from './us-english.ts';
 
 export const US_MAP: CurriculumMap = {
   curriculum: 'us',
@@ -140,5 +142,7 @@ export const US_MAP: CurriculumMap = {
       ],
       gaps: [],
     },
+    // English, in its own file.
+    ...US_ENGLISH_COURSES,
   ],
 };
