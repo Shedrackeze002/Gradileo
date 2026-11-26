@@ -5,6 +5,10 @@
 // The explainer videos on each lesson page are the ones on YouTube, read from the video_links
 // table with the site's public key. Without the backend (a build with no Supabase settings, or
 // no network) the pages are written without videos.
+//
+// Each lesson page carries the date its lesson file last changed, read from git, so the date moves
+// only when the lesson does. A shallow clone has no history, so its pages are written without dates.
+import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,6 +50,30 @@ async function videoLinks() {
   return rows;
 }
 
+/** When each lesson's Markdown last changed (ISO 8601), keyed by lesson id, from the git history. */
+function lessonDates() {
+  const dates = new Map();
+  try {
+    const git = (...args) => execFileSync('git', args, { encoding: 'utf8', maxBuffer: 256 * 1024 * 1024 });
+    if (git('rev-parse', '--is-shallow-repository').trim() === 'true') {
+      console.warn('Public pages: the git history is shallow, so the lesson pages are written without dates.');
+      return dates;
+    }
+    // Newest commits come first, so the first date seen for a file is when it last changed.
+    let date = '';
+    for (const line of git('log', '--format=@%cI', '--name-only', '--', 'src/content').split('\n')) {
+      if (line.startsWith('@')) date = line.slice(1);
+      else {
+        const m = line.match(/^src\/content\/[^/]+\/lessons\/([^/]+)\.md$/);
+        if (m && !dates.has(m[1])) dates.set(m[1], date);
+      }
+    }
+  } catch (e) {
+    console.warn(`Public pages: the lesson dates could not be read from git (${e.message}), so the pages are written without dates.`);
+  }
+  return dates;
+}
+
 function lessonSources() {
   const sources = new Map();
   for (const course of readdirSync('src/content', { withFileTypes: true })) {
@@ -82,7 +110,7 @@ let pages;
 try {
   const { buildPublicPages, SITE } = await vite.ssrLoadModule('/src/seo/pages.tsx');
   const links = await videoLinks();
-  pages = await buildPublicPages(lessonSources(), links);
+  pages = await buildPublicPages(lessonSources(), links, lessonDates());
 
   for (const p of pages) {
     const url = SITE + p.path;
@@ -117,14 +145,18 @@ try {
     writeFileSync(out, base === '/' ? html : html.replace(/href="\/(?!\/)/g, `href="${base}`));
   }
 
-  const listed = ['/', '/signup', '/privacy', '/terms', ...pages.filter((p) => p.listed).map((p) => p.path)];
+  // A page's <lastmod> is when its content last changed, and it is left out when that is unknown.
+  const listed = [...['/', '/signup', '/privacy', '/terms'].map((path) => ({ path })), ...pages.filter((p) => p.listed)];
+  const entry = (p) => `  <url><loc>${SITE}${p.path}</loc>${p.modified ? `<lastmod>${p.modified.slice(0, 10)}</lastmod>` : ''}</url>`;
   writeFileSync(
     join(DIST, 'sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${listed.map((p) => `  <url><loc>${SITE}${p}</loc></url>`).join('\n')}\n</urlset>\n`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${listed.map(entry).join('\n')}\n</urlset>\n`,
   );
   const lessons = pages.filter((p) => p.path.startsWith('/lessons/')).length;
   const withVideo = pages.filter((p) => p.path.startsWith('/lessons/') && /"VideoObject"/.test(JSON.stringify(p.data))).length;
-  console.log(`Public pages written: ${lessons} lessons (${withVideo} with videos), ${pages.length - lessons - 1} courses and the course list; sitemap has ${listed.length} addresses.`);
+  const dated = pages.filter((p) => p.path.startsWith('/lessons/') && p.modified).length;
+  const courses = pages.filter((p) => p.path.startsWith('/courses/') && p.path !== '/courses/').length;
+  console.log(`Public pages written: ${lessons} lessons (${withVideo} with videos, ${dated} with dates), ${courses} courses, the course list and the About page; sitemap has ${listed.length} addresses.`);
 } finally {
   await vite.close();
 }

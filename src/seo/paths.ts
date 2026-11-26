@@ -21,3 +21,4 @@ export function slugify(text: string): string {
 export const lessonPath = (l: LessonMeta) => `/lessons/${slugify(`${l.id} ${l.title}`)}`;
 export const coursePath = (c: CourseMeta) => `/courses/${slugify(c.title)}`;
 export const COURSES_PATH = '/courses/';
+export const ABOUT_PATH = '/about';
