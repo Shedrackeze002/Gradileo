@@ -19,10 +19,10 @@ describe('the UK map’s chemistry and English courses', () => {
     // Gaps are filled from More Chemistry Topics, an extra course that no picker lists.
     expect(more.extra).toBe(true);
     expect(LISTED_COURSES).not.toContain(more);
-    // Each More Chemistry lesson is filed in GCSE Chemistry (GCSE level, up to Grade 10) or in an A level course.
+    // Each More Chemistry lesson of units 1 to 12 (the UK topics) is filed in GCSE Chemistry (GCSE level, up to
+    // Grade 10) or in an A level course. Later units fill gaps in other systems' maps.
     const alevel = ['uk-a-level-chemistry-1', 'uk-a-level-chemistry-2'].map((id) => getCourse(id)!);
-    // Units 1 to 12 fill the UK courses. (Units 13 and after fill other maps.)
-    for (const l of more.lessons.filter((x) => Number(x.unitId.slice('cx-u'.length)) <= 12)) {
+    for (const l of more.lessons.filter((l) => Number(l.unitId.slice('cx-u'.length)) <= 12)) {
       const home = (l.grade ?? 10) <= 10 ? [gcse] : alevel;
       expect(home.some((c) => c.lessons.some((x) => x.id === l.id)), `${l.id} is filed in a course of its level`).toBe(true);
     }
@@ -73,7 +73,8 @@ describe('the UK map’s chemistry and English courses', () => {
     // English has no A level map, and Key Stage 3 keeps the grade courses.
     expect(uk('English', 11).courseId).toBe('eng-20');
     expect(uk('English', 8).courseId).toBe('eng-8');
-    expect(recommendCourse({ subject: 'Chemistry', grade: 10, curriculum: 'ng' }).courseId).toBe('chem-10');
+    expect(recommendCourse({ subject: 'Chemistry', grade: 10, curriculum: 'ng' }).courseId).toBe('waec-chem-ss-1');
+    expect(recommendCourse({ subject: 'Chemistry', grade: 10, curriculum: 'us' }).courseId).toBe('chem-10');
     expect(recommendCourse({ subject: 'English', grade: 10, curriculum: 'ng' }).courseId).toBe('eng-10');
   });
 });

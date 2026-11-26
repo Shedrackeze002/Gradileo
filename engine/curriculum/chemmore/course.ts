@@ -7,6 +7,7 @@
  * carries its own level (`grade`).
  */
 import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
+import { WAEC_LESSONS, WAEC_OUTCOMES, WAEC_UNITS } from './waec.ts';
 import { AP_LESSONS, AP_OUTCOMES, AP_UNITS } from './ap.ts';
 
 export const OUTCOMES: Outcome[] = [
@@ -55,6 +56,9 @@ export const OUTCOMES: Outcome[] = [
   { code: 'OR6', strand: 'A level organic chemistry', text: 'Describe amino acids, proteins and DNA, and the action of cisplatin.' },
   { code: 'OR7', strand: 'A level organic chemistry', text: 'Plan a synthesis of several steps, choosing reagents and conditions for each.' },
   { code: 'OR8', strand: 'A level organic chemistry', text: 'Interpret NMR spectra, and use chromatography to separate and identify substances.' },
+  // Units 13 to 19: the WAEC (WASSCE) Chemistry topics.
+  ...WAEC_OUTCOMES,
+  // Units 20 to 24: the AP Chemistry topics.
   ...AP_OUTCOMES,
 ];
 
@@ -272,6 +276,11 @@ export const LESSONS: LessonMeta[] = [
     ['cx-nmr', 'cx-chromatography'],
     ['Interpret ¹H and ¹³C NMR spectra', 'Use chromatography and Rf values to separate and identify substances'],
     ['chemical shift', 'TMS', 'n + 1 rule', 'chromatography', 'Rf value']),
+
+  // ---------------- Units 13 to 19: WAEC (WASSCE) Chemistry, in waec.ts ----------------
+  ...WAEC_LESSONS,
+
+  // ---------------- Units 20 to 24: AP Chemistry, in ap.ts ----------------
   ...AP_LESSONS,
 ];
 
@@ -288,6 +297,7 @@ export const UNITS: UnitMeta[] = [
   { id: 'cx-u10', number: 10, title: 'A Level Physical Chemistry', description: 'Born–Haber cycles and lattice enthalpies, entropy and Gibbs free energy, rate equations and the Arrhenius equation, and the equilibrium constant Kp.', outcomes: ['PC1', 'PC2', 'PC3', 'PC4'], lessons: [], color: 'cyan' },
   { id: 'cx-u11', number: 11, title: 'A Level Period 3 and Transition Metals', description: 'The reactions of the Period 3 elements and their oxides, complex ions, colour, oxidation states and catalysts, and the reactions of metal ions in solution.', outcomes: ['TM1', 'TM2', 'TM3'], lessons: [], color: 'fuchsia' },
   { id: 'cx-u12', number: 12, title: 'A Level Organic Chemistry', description: 'Optical isomerism, aldehydes and ketones, acylation, benzene, amines, amino acids and DNA, organic synthesis, and NMR and chromatography.', outcomes: ['OR1', 'OR2', 'OR3', 'OR4', 'OR5', 'OR6', 'OR7', 'OR8'], lessons: [], color: 'emerald' },
+  ...WAEC_UNITS,
   ...AP_UNITS,
 ];
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
@@ -298,7 +308,7 @@ export const CHEMMORE: CourseMeta = {
   shortTitle: 'More Chemistry',
   grade: 10,
   subject: 'Chemistry',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: the reactivity series and extracting metals, making soluble salts, the electrolysis of solutions, the tests for gases and ions, empirical formulae and atom economy, the Earth’s atmosphere, potable water, life cycle assessments, the transition metals, forms of carbon, materials and the Haber process; and for A level, mass spectrometry, electron configurations and ionisation energies, dative bonds, the Maxwell–Boltzmann distribution, Period 3, Groups 2 and 7, reaction mechanisms, halogenoalkanes and ozone, E–Z isomerism, alcohols and organic analysis, Born–Haber cycles, entropy, rate equations, Kp, Period 3 oxides, transition metals and their ions, optical isomerism, carbonyls, acylation, benzene, amines, amino acids and DNA, synthesis, NMR and chromatography; and for AP Chemistry, elemental analysis, photoelectron spectroscopy, resonance and formal charge, photons and the Beer–Lambert law, integrated rate laws and mechanisms, the energy of phase changes, the reaction quotient, acid strength and buffers, free energy and equilibrium, and cell potentials away from standard conditions.',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: the reactivity series and extracting metals, making soluble salts, the electrolysis of solutions, the tests for gases and ions, empirical formulae and atom economy, the Earth’s atmosphere, potable water, life cycle assessments, the transition metals, forms of carbon, materials and the Haber process; and for A level, mass spectrometry, electron configurations and ionisation energies, dative bonds, the Maxwell–Boltzmann distribution, Period 3, Groups 2 and 7, reaction mechanisms, halogenoalkanes and ozone, E–Z isomerism, alcohols and organic analysis, Born–Haber cycles, entropy, rate equations, Kp, Period 3 oxides, transition metals and their ions, optical isomerism, carbonyls, acylation, benzene, amines, amino acids and DNA, synthesis, NMR and chromatography; and for the WASSCE, significant figures and the laws of chemical combination, orbitals and hybridisation, Graham’s and Dalton’s laws, preparing gases, standard solutions, salt hydrolysis, solubility and the solubility product, qualitative analysis, back and double indicator titrations, the non-metals and their compounds, extracting aluminium, iron and tin, the chemical industry, mining and cement, silicon, Lewis acids and complexes, alkynes, petrol, fats and soaps, carbohydrates, organic analysis and electron effects; and for AP Chemistry, elemental analysis, photoelectron spectroscopy, resonance and formal charge, photons and the Beer–Lambert law, integrated rate laws and mechanisms, the energy of phase changes, the reaction quotient, acid strength and buffers, free energy and equilibrium, and cell potentials away from standard conditions.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,

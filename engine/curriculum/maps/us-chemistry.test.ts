@@ -17,6 +17,9 @@ describe('the US map’s AP Chemistry course', () => {
     for (const l of more.lessons.filter((x) => Number(x.unitId.slice('cx-u'.length)) >= 20)) {
       expect(ap.lessons.some((x) => x.id === l.id), `AP Chemistry teaches ${l.id}`).toBe(true);
     }
+    // Two WAEC lessons teach hybridisation and the solubility product, so no AP topic is left out.
+    expect(ap.lessons.some((l) => l.id === 'cx-13-4') && ap.lessons.some((l) => l.id === 'cx-15-4')).toBe(true);
+    expect(ap.gaps).toEqual([]);
     // Outcome codes name the course a lesson comes from.
     expect(ap.lessons.find((l) => l.id === 'c30-4-8')!.outcomes.every((o) => o.startsWith('Chemistry 12 '))).toBe(true);
   });
@@ -31,6 +34,6 @@ describe('the US map’s AP Chemistry course', () => {
     expect(PREREQUISITE['us-ap-chemistry']).toBe('chem-20');
     // Younger learners, and learners elsewhere, keep Gradileo’s own courses.
     expect(us(10).courseId).toBe('chem-10');
-    expect(recommendCourse({ subject: 'Chemistry', grade: 12, curriculum: 'ng' }).courseId).toBe('chem-30');
+    expect(recommendCourse({ subject: 'Chemistry', grade: 12, curriculum: 'ke' }).courseId).toBe('chem-30');
   });
 });

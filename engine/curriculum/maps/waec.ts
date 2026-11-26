@@ -4,8 +4,11 @@
  * Leone, The Gambia and Liberia. The syllabus is one list of topics; the three courses follow the
  * order in which a senior secondary scheme of work meets them, year by year. Each unit points to
  * the Gradileo lessons that teach it. Further Mathematics (Elective Mathematics) is not mapped yet.
+ *
+ * WASSCE Chemistry has its own three courses, in waec-chemistry.ts.
  */
 import type { CurriculumMap } from './build.ts';
+import { WAEC_CHEMISTRY_COURSES } from './waec-chemistry.ts';
 
 export const WAEC_MAP: CurriculumMap = {
   curriculum: 'ng',
@@ -76,5 +79,6 @@ export const WAEC_MAP: CurriculumMap = {
       ],
       gaps: [],
     },
+    ...WAEC_CHEMISTRY_COURSES,
   ],
 };
