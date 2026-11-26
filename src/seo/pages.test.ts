@@ -97,3 +97,48 @@ describe('a course of public pages', () => {
     for (const p of pages) expect(JSON.stringify(p.data).replace(/</g, '\\u003c')).not.toContain('</script');
   });
 });
+
+describe('the dates on public pages and the About page', () => {
+  const course = TOPIC_COURSES.find((c) => c.id === 'math-10c')!;
+  const sources = new Map([...allSources].filter(([id]) => course.lessons.some((l) => l.id === id)));
+  const [firstId, secondId] = [...sources.keys()];
+  const video = VIDEOS.find((v) => v.lessonId === secondId);
+  const links = video ? [{ video_id: video.id, youtube_id: 'abcdefghijk', updated_at: '2026-11-20T09:00:00Z' }] : [];
+  const written = new Map([
+    [firstId, '2026-11-02T12:00:00+00:00'],
+    [secondId, '2026-11-05T12:00:00+00:00'],
+  ]);
+  const pages = publicPages(sources, links, written);
+  const page = (id: string) => pages.find((p) => p.path === lessonPath(course.lessons.find((l) => l.id === id)!))!;
+
+  it('dates a lesson by when its file last changed, and shows that date', () => {
+    const p = page(firstId);
+    expect(p.modified).toBe('2026-11-02T12:00:00.000Z');
+    expect(graph(p).find((n) => n['@type'] === 'LearningResource')!.dateModified).toBe('2026-11-02T12:00:00.000Z');
+    expect(p.body).toContain('Updated <time dateTime="2026-11-02T12:00:00.000Z">2 November 2026</time>');
+  });
+
+  it('moves a lesson’s date when a video is added to it', () => {
+    expect(page(secondId).modified).toBe(video ? '2026-11-20T09:00:00.000Z' : '2026-11-05T12:00:00.000Z');
+  });
+
+  it('gives a course the date of its newest lesson, and leaves out unknown dates', () => {
+    const coursePage = pages.find((p) => p.path === '/courses/grade-10-mathematics')!;
+    expect(coursePage.modified).toBe(page(secondId).modified);
+    const undated = publicPages(sources, []);
+    expect(undated.every((p) => p.modified === undefined)).toBe(true);
+    expect(undated.some((p) => p.body.includes('Updated <time'))).toBe(false);
+  });
+
+  it('writes an About page that says how the lessons are made, with no personal details', () => {
+    const about = pages.find((p) => p.path === '/about')!;
+    expect(about.file).toBe('about.html');
+    expect(about.listed).toBe(true);
+    expect(about.description.length).toBeLessThanOrEqual(158);
+    expect(about.body).toContain('About Gradileo');
+    expect(about.body).toContain('mailto:admin@gradileo.com');
+    expect((about.data as Record<string, unknown>)['@type']).toBe('AboutPage');
+    // Every public page links to it from the footer.
+    for (const p of pages) expect(p.body).toContain('href="/about"');
+  });
+});
