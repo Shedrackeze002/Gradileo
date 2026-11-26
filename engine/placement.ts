@@ -99,6 +99,10 @@ export const PREREQUISITE: Record<string, string | null> = {
   'waec-ss-1': 'math-9',
   'waec-ss-2': 'waec-ss-1',
   'waec-ss-3': 'waec-ss-2',
+  // WASSCE Chemistry starts in SS 1, after junior secondary Basic Science, and goes a year at a time.
+  'waec-chem-ss-1': 'chem-9',
+  'waec-chem-ss-2': 'waec-chem-ss-1',
+  'waec-chem-ss-3': 'waec-chem-ss-2',
   // Kenya's KCSE Mathematics follows primary school, a form at a time.
   'kcse-form-1': 'math-8',
   'kcse-form-2': 'kcse-form-1',
@@ -185,6 +189,18 @@ function waec(g: number, a: PlacementAnswers): Recommendation {
   if (n > 1) alternatives.push({ courseId: `waec-ss-${n - 1}`, why: 'If last year’s topics still feel new.' });
   else alternatives.push({ courseId: 'math-9', why: 'If you want to review junior secondary mathematics first.' });
   return rec(`waec-ss-${n}`, [where], alternatives);
+}
+
+/** For a learner in Nigeria or Ghana in senior secondary school: the year of WASSCE Chemistry. */
+function waecChemistry(g: number, a: PlacementAnswers): Recommendation {
+  const n = g - 9;
+  const year = a.year ?? `SS ${n}`;
+  const where = `WASSCE Chemistry is the senior secondary chemistry course of the West African Examinations Council. This is its ${year} year, with its units in the order of a WASSCE scheme of work and the Ghana and Section C topics named in each unit.`;
+  const alternatives: CourseChoice[] = [];
+  if (n < 3) alternatives.push({ courseId: `waec-chem-ss-${n + 1}`, why: `If you have already finished the ${year} topics.` });
+  if (n > 1) alternatives.push({ courseId: `waec-chem-ss-${n - 1}`, why: 'If last year’s topics still feel new.' });
+  else alternatives.push({ courseId: 'chem-9', why: 'If you want to review junior secondary chemistry first.' });
+  return rec(`waec-chem-ss-${n}`, [where], alternatives);
 }
 
 /** For a learner in Kenya in Form 1 to Form 4: the form's KCSE Mathematics. */
@@ -280,6 +296,8 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
   // A UK learner in Year 10 or 11 gets the GCSE courses of English and chemistry, and A level Chemistry after them.
   if (a.curriculum === 'uk' && a.subject === 'English' && (g === 9 || g === 10)) return ukEnglish();
   if (a.curriculum === 'uk' && a.subject === 'Chemistry' && g >= 9) return ukChemistry(Math.min(12, g));
+  // A senior secondary learner of chemistry in Nigeria or Ghana gets the year of WASSCE Chemistry.
+  if ((a.curriculum === 'ng' || a.curriculum === 'gh') && a.subject === 'Chemistry' && g >= 10) return waecChemistry(Math.min(12, g), a);
   if (a.subject === 'English') {
     if (g <= 5) {
       const reasons = ['Grade 5 English covers stories and fables, poetry, reading for information, word study, grammar and punctuation, and writing paragraphs, stories and opinions.'];

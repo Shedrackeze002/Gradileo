@@ -159,7 +159,7 @@ country or curriculum and the year in that system's words (`engine/curricula.ts`
 to Gradileo's level; the curriculum is saved on `profiles.curriculum`). `engine/topics.ts` files
 every lesson under a plain topic for **Browse by topic** (`/s/topics`). A **curriculum map**
 (`engine/curriculum/maps/`) describes a school system's own courses (`us.ts`: US Grade 6 to
-Precalculus; `uk-chemistry.ts` and `uk-english.ts`: a course names its `subject` when it is not
+Precalculus; `uk-chemistry.ts`, `uk-english.ts` and `waec-chemistry.ts`: a course names its `subject` when it is not
 mathematics) as units of existing lesson ids; `buildMappedCourse` turns each into a `CourseMeta`
 with `map` set (its lessons are copies filed under the map's units, with outcome codes that name
 their own course, "Math 10 N1") and `gaps`, the syllabus topics not taught yet. Mapped courses come
@@ -183,7 +183,7 @@ matrices, conic sections, and the GCSE topics such as bounds, iteration, bearing
 is not in `LISTED_COURSES`, but its lessons are filed under topics (`TOPIC_COURSES`) and each lesson
 carries its own level (`LessonMeta.grade`), since the course spans Grades 6 to 12. Add the lesson to
 the map's unit and take the topic off the map's `gaps`. Chemistry has the same kind of course, **More Chemistry
-Topics** (`engine/curriculum/chemmore/`, `chem-more`, lesson ids `cx-…`), for the gaps in the chemistry maps, and English has **More English Topics** (`engine/curriculum/engmore/`, `eng-more`, lesson ids `ex-…`).
+Topics** (`engine/curriculum/chemmore/`, `chem-more`, lesson ids `cx-…`), for the gaps in the chemistry maps (units 1 to 12 for the UK, units 13 to 19 for the WASSCE), and English has **More English Topics** (`engine/curriculum/engmore/`, `eng-more`, lesson ids `ex-…`).
 
 **Joining a teacher's class.** A class can ask for approval (`settings.joinApproval`, on by default
 for new classes). Then a class code, used on the Join page or at sign-up, creates a pending
