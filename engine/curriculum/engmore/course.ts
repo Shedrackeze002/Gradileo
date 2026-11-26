@@ -38,6 +38,15 @@ export const OUTCOMES: Outcome[] = [
   { code: 'US6', strand: 'Words, references and varieties of English', text: 'Match register to audience and purpose, explain a writer’s use of dialect, and use standard English when the situation is formal.' },
   { code: 'US7', strand: 'Words, references and varieties of English', text: 'Use dictionaries, glossaries and thesauruses to find and verify a word’s meaning, part of speech and etymology.' },
   { code: 'US8', strand: 'Words, references and varieties of English', text: 'Recognize relationships between words and complete analogies.' },
+  { code: 'US9', strand: 'Speaking, listening and publishing', text: 'Prepare for and take part in a discussion, building on others’ ideas, summarizing a speaker and judging the reasons given.' },
+  { code: 'US10', strand: 'Speaking, listening and publishing', text: 'Read aloud with accuracy, pace and expression, and speak clearly, adapting speech to the audience and task.' },
+  { code: 'US11', strand: 'Speaking, listening and publishing', text: 'Plan a presentation logically and use visuals and multimedia that clarify its points.' },
+  { code: 'US12', strand: 'Speaking, listening and publishing', text: 'Use technology to produce, revise, share and publish writing, citing sources and writing responsibly.' },
+  { code: 'US13', strand: 'Comparing texts, versions and retellings', text: 'Compare characters, settings and events in a story, and stories that treat a similar theme.' },
+  { code: 'US14', strand: 'Comparing texts, versions and retellings', text: 'Compare accounts of one event and texts that stress different evidence or conflict, and combine information from several texts.' },
+  { code: 'US15', strand: 'Comparing texts, versions and retellings', text: 'Explain how pictures add to a story, and compare a text with its performed, filmed or delivered version.' },
+  { code: 'US16', strand: 'Comparing texts, versions and retellings', text: 'Compare a fictional portrayal of a time or place with a historical account, and explain how authors use or alter history.' },
+  { code: 'US17', strand: 'Comparing texts, versions and retellings', text: 'Explain allusions to myths, the Bible and literature, and how a modern story draws on and transforms an older one.' },
 ];
 
 const L = (
@@ -220,6 +229,46 @@ export const LESSONS: LessonMeta[] = [
     ['ex-word-relationships', 'ex-analogies'],
     ['Name the relationship between two words: part and whole, cause and effect, item and category, synonyms or antonyms', 'Complete an analogy and choose the pair with the same relationship'],
     ['relationship', 'part and whole', 'cause and effect', 'category', 'analogy']),
+
+  // ---------------- Unit 13: Speaking, Listening and Publishing ----------------
+  L('ex-13-1', 'ex-u13', '13.1', 'Taking Part in a Discussion', 6, ['US9'],
+    ['ex-discussion-prepare', 'ex-discussion-moves'],
+    ['Come to a discussion prepared, agree on rules and roles, and set goals and deadlines', 'Build on and paraphrase others’ ideas, summarize a speaker, judge the reasons given, and change a view when the evidence warrants it'],
+    ['collaborative discussion', 'role', 'paraphrase', 'summary', 'evidence']),
+  L('ex-13-2', 'ex-u13', '13.2', 'Reading Aloud and Speaking Clearly', 5, ['US10'],
+    ['ex-reading-aloud', 'ex-speaking-clearly'],
+    ['Read a text aloud with accuracy, a suitable pace and expression, using punctuation and context', 'Speak clearly with eye contact and relevant details, and adapt speech to the audience and task'],
+    ['fluency', 'expression', 'pace', 'eye contact', 'formal English']),
+  L('ex-13-3', 'ex-u13', '13.3', 'Presenting with Visuals and Media', 7, ['US11'],
+    ['ex-presentation-plan', 'ex-presentation-media'],
+    ['Order a presentation logically, keep the relevant details and support claims with evidence', 'Choose visuals and multimedia that clarify a point, and credit their sources'],
+    ['presentation', 'relevant detail', 'visual display', 'multimedia', 'source']),
+  L('ex-13-4', 'ex-u13', '13.4', 'Writing and Publishing with Technology', 7, ['US12'],
+    ['ex-writing-tools', 'ex-publishing-online'],
+    ['Use spell checkers wisely, work in a shared document with suggestions and comments, and save versions', 'Publish writing online with its sources linked, private details kept safe, and updates after feedback'],
+    ['spell checker', 'shared document', 'comment', 'version', 'publish', 'link']),
+
+  // ---------------- Unit 14: Comparing Texts, Versions and Retellings ----------------
+  L('ex-14-1', 'ex-u14', '14.1', 'Comparing Characters, Settings and Stories', 5, ['US13'],
+    ['ex-compare-characters', 'ex-compare-events'],
+    ['Compare two characters, with details from the text, and explain how one changes', 'Compare two settings or events, and how stories in different settings treat a similar theme'],
+    ['compare', 'contrast', 'character', 'setting', 'theme']),
+  L('ex-14-2', 'ex-u14', '14.2', 'Comparing Accounts of the Same Event', 6, ['US14'],
+    ['ex-accounts', 'ex-conflicting-texts'],
+    ['Tell firsthand from secondhand accounts, compare what each focuses on, and combine them', 'Explain how authors stress different evidence or interpret facts differently, and weigh texts that conflict'],
+    ['firsthand account', 'secondhand account', 'point of view', 'evidence', 'interpretation']),
+  L('ex-14-3', 'ex-u14', '14.3', 'Stories in Pictures, on Stage and on Screen', 7, ['US15'],
+    ['ex-pictures-and-words', 'ex-text-and-performance'],
+    ['Explain how pictures, panels and angles add to the meaning, tone and pace of a story', 'Compare reading a text with hearing or watching it performed, filmed or delivered'],
+    ['graphic novel', 'panel', 'angle', 'performance', 'adaptation']),
+  L('ex-14-4', 'ex-u14', '14.4', 'Historical Fiction and History', 7, ['US16'],
+    ['ex-historical-fiction', 'ex-fiction-and-history'],
+    ['Tell the history in a historical novel from what the author invented', 'Compare a fictional portrayal with a historical account, and judge how an author uses or alters history'],
+    ['historical fiction', 'historical account', 'invention', 'author’s note', 'anachronism']),
+  L('ex-14-5', 'ex-u14', '14.5', 'Myths, Allusions and Modern Stories', 8, ['US17'],
+    ['ex-allusions', 'ex-myth-retellings'],
+    ['Explain literary, biblical and mythological allusions and the meaning they lend', 'Find the myth or older story a modern work draws on, and explain how it makes it new'],
+    ['allusion', 'myth', 'archetype', 'hero’s journey', 'retelling']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -235,6 +284,8 @@ export const UNITS: UnitMeta[] = [
   { id: 'ex-u10', number: 10, title: 'Modern Prose and Drama', description: 'An Inspector Calls, Blood Brothers, Lord of the Flies and Animal Farm: their characters and plots, key moments and themes, and their context, discussed in our own words.', outcomes: ['LM1', 'LM2'], lessons: [], color: 'indigo' },
   { id: 'ex-u11', number: 11, title: 'Grammar, Punctuation and Usage', description: 'Conjunctions, prepositions and interjections, commas with names, tags and adjectives, the titles of works, intensive and vague pronouns, verb moods, and contested usage and hyphens.', outcomes: ['US1', 'US2', 'US3', 'US4', 'US5'], lessons: [], color: 'sky' },
   { id: 'ex-u12', number: 12, title: 'Words, References and Varieties of English', description: 'Register, dialect and standard English, dictionaries, glossaries and thesauruses, and word relationships and analogies.', outcomes: ['US6', 'US7', 'US8'], lessons: [], color: 'emerald' },
+  { id: 'ex-u13', number: 13, title: 'Speaking, Listening and Publishing', description: 'Taking part in a discussion, reading aloud and speaking clearly, presenting with visuals and media, and writing and publishing with technology.', outcomes: ['US9', 'US10', 'US11', 'US12'], lessons: [], color: 'amber' },
+  { id: 'ex-u14', number: 14, title: 'Comparing Texts, Versions and Retellings', description: 'Comparing characters and stories, accounts of one event and texts that disagree, stories in pictures, on stage and on screen, historical fiction and history, and myths and allusions in modern stories.', outcomes: ['US13', 'US14', 'US15', 'US16', 'US17'], lessons: [], color: 'violet' },
 ];
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
 
