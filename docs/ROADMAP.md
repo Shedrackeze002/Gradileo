@@ -840,6 +840,24 @@ items ship or decisions change.
      `moments` (key moments in our own words) in `engmore/gen/lit/modern.ts`. The Literature map
      now has **no gaps**. Not covered: AQA's third cluster, Worlds and Lives. Ten explainer videos
      come with the new lessons.
+   - Built (26 November 2026), step 3, **WASSCE Chemistry**: the WAEC map gains three chemistry
+     courses, `waec-chem-ss-1` to `waec-chem-ss-3` (`maps/waec-chemistry.ts`, spread into
+     `WAEC_MAP`, so Ghana gets them too), with the syllabus's own topic names in the order of a
+     senior secondary scheme of work. Section A topics are for every candidate; the Ghana (Section
+     B) and Nigeria, Sierra Leone, Liberia and The Gambia (Section C) parts are named in each unit,
+     and the Ghana extension topics have units of their own in SS 3. More Chemistry Topics gains
+     units 13 to 19, thirty lessons and 60 question generators (`chemmore/waec.ts`,
+     `chemmore/gen/waec13.ts` to `waec19.ts`): measurement, the laws of chemical combination,
+     orbitals and hybridisation (Unit 13); Graham's and Dalton's laws, vapour pressure and
+     preparing gases (Unit 14); standard solutions, salt types and hydrolysis, solubility and Ksp
+     (Unit 15); qualitative analysis, back and double indicator titrations (Unit 16); hydrogen,
+     oxygen, water, nitrogen, sulfur and carbon compounds (Unit 17); extracting Al, Fe and Sn,
+     sodium, calcium and copper compounds, industry and fermentation, mining and cement, silicon
+     and thermal stability, Lewis acids and complexes (Unit 18); alkynes, petrol, fats and soaps,
+     carbohydrates and food tests, organic analysis, and bond fission and electron effects (Unit
+     19). Nuclear chemistry uses the Physics 30 lessons on the nucleus. **All three courses have no
+     gaps.** A Nigerian or Ghanaian chemistry learner in SS 1 to SS 3 is placed in the year's
+     WASSCE Chemistry course. Next: animated explainer videos for the thirty new lessons.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1

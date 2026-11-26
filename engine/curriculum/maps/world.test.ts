@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CURRICULUM_MAPS, getCourse, mappedCourses } from '../index.ts';
+import { COURSES, CURRICULUM_MAPS, getCourse, mappedCourses } from '../index.ts';
 import { recommendCourse, type PlacementAnswers } from '../../placement.ts';
 
 const maths = (curriculum: string, grade: number, more: Partial<PlacementAnswers> = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum, plan: 'university-stem', feeling: 'ok', ...more });
@@ -7,7 +7,7 @@ const maths = (curriculum: string, grade: number, more: Partial<PlacementAnswers
 describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
   it('give each system its own courses, and Ghana the same WASSCE courses as Nigeria', () => {
     expect(CURRICULUM_MAPS.map((m) => m.name)).toEqual(expect.arrayContaining(['WAEC (WASSCE)', 'Kenya KCSE', 'South Africa CAPS', 'Cambridge IGCSE', 'IB Diploma']));
-    expect(mappedCourses('ng').map((c) => c.shortTitle)).toEqual(['WASSCE SS 1', 'WASSCE SS 2', 'WASSCE SS 3']);
+    expect(mappedCourses('ng').filter((c) => c.subject === 'Mathematics').map((c) => c.shortTitle)).toEqual(['WASSCE SS 1', 'WASSCE SS 2', 'WASSCE SS 3']);
     expect(mappedCourses('gh')).toEqual(mappedCourses('ng'));
     expect(mappedCourses('ke').map((c) => c.shortTitle)).toEqual(['KCSE Form 1', 'KCSE Form 2', 'KCSE Form 3', 'KCSE Form 4']);
     expect(mappedCourses('za').map((c) => c.shortTitle)).toEqual(['CAPS Grade 10', 'CAPS Grade 11', 'CAPS Grade 12']);
@@ -55,7 +55,30 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
     expect(lessons('kcse-form-4')).toContain('mx-29-1');
   });
 
+  it('build WASSCE Chemistry from chemistry lessons, with every topic taught', () => {
+    const chem = mappedCourses('ng').filter((c) => c.subject === 'Chemistry');
+    expect(chem.map((c) => c.shortTitle)).toEqual(['WASSCE Chemistry SS 1', 'WASSCE Chemistry SS 2', 'WASSCE Chemistry SS 3']);
+    expect(chem.map((c) => c.grade)).toEqual([10, 11, 12]);
+    for (const c of chem) expect([c.id, c.gaps]).toEqual([c.id, []]);
+    // Every lesson comes from a chemistry course, or (for Ghana's nuclear chemistry) from Physics 30.
+    const own = new Set(COURSES.filter((c) => !c.map && (c.subject === 'Chemistry' || c.id === 'phys-30')).flatMap((c) => c.lessons.map((l) => l.id)));
+    for (const c of chem) for (const l of c.lessons) expect(own.has(l.id), `${c.id} ${l.id}`).toBe(true);
+    // The More Chemistry lessons written for the WASSCE (units 13 to 19) are each filed in one of the three years.
+    const filed = new Set(chem.flatMap((c) => c.lessons.map((l) => l.id)));
+    const waecLessons = getCourse('chem-more')!.lessons.filter((l) => { const u = Number(l.unitId.slice('cx-u'.length)); return u >= 13 && u <= 19; });
+    expect(waecLessons.length).toBe(30);
+    for (const l of waecLessons) expect(filed.has(l.id), l.id).toBe(true);
+    expect(getCourse('waec-chem-ss-3')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Chemistry of Carbon Compounds', 'Nuclear Chemistry', 'Solubility Product']));
+  });
+
   it('recommend the course of the learner’s year in their own system', () => {
+    // Nigeria and Ghana: chemistry learners get the year of WASSCE Chemistry.
+    const chemistry = (curriculum: string, grade: number, more: Partial<PlacementAnswers> = {}) => recommendCourse({ subject: 'Chemistry', grade, curriculum, ...more });
+    expect([10, 11, 12].map((g) => chemistry('ng', g).courseId)).toEqual(['waec-chem-ss-1', 'waec-chem-ss-2', 'waec-chem-ss-3']);
+    expect(chemistry('gh', 12, { year: 'SHS 3' }).reasons[0]).toContain('SHS 3');
+    expect(chemistry('ng', 10).prerequisite).toBe('chem-9');
+    expect(chemistry('ng', 11).alternatives.map((c) => c.courseId)).toEqual(['waec-chem-ss-3', 'waec-chem-ss-1']);
+    expect(chemistry('ng', 9).courseId).not.toMatch(/^waec/);
     // Nigeria and Ghana: every senior secondary student takes General Mathematics.
     expect([10, 11, 12].map((g) => maths('ng', g).courseId)).toEqual(['waec-ss-1', 'waec-ss-2', 'waec-ss-3']);
     expect(maths('gh', 11, { year: 'SHS 2', plan: 'work' }).courseId).toBe('waec-ss-2');
