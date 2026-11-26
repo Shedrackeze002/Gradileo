@@ -911,19 +911,18 @@ items ship or decisions change.
      conjunctions, prepositions and interjections, more commas and the titles of works, intensive
      and vague pronouns and pronoun shifts, verb moods and shifts in voice and mood, contested usage
      and hyphens, register, dialect and standard English, dictionaries, glossaries and thesauruses,
-     and word relationships and analogies. Gaps still listed, by topic: comparing characters and
-     stories, and pictures in stories (Grade 5); several accounts of one event (Grades 5 to 8);
-     comparing a text with its performance or film (Grades 6 and 7); historical fiction and history
-     (Grade 7); modern stories that draw on myths, and allusions (Grades 7 and 8); reading aloud
-     (Grade 5); discussions, presenting with multimedia and formal speech (Grades 5 to 8), seminar
-     discussions and digital media in presentations (Grades 9 to 12); publishing writing with
-     technology (every grade); world literature beyond Britain and the United States, a subject in
-     two artistic mediums, and how a writer transforms sources (Grades 9 and 10); productions of a
-     play by Shakespeare and by an American dramatist, the periods of American literature, the
-     reasoning of The Federalist and the Supreme Court, and the Declaration of Independence, the
-     Constitution and the Bill of Rights (Grades 11 and 12). Next: Units 13 and 14 (speaking,
-     listening and publishing, and comparing texts and versions, Grades 5 to 8), then the high
-     school lessons, then their videos and tutor recordings.
+     and word relationships and analogies. Units 13 and 14 (9 lessons, 26 November 2026) fill every
+     remaining gap of Grades 5 to 8: taking part in a discussion, reading aloud and speaking
+     clearly, presenting with visuals and media, writing and publishing with technology, comparing
+     characters, settings and stories, comparing accounts of one event and texts that disagree,
+     stories in pictures, on stage and on screen, historical fiction and history, and myths,
+     allusions and modern stories. Gaps still listed, by topic: world literature beyond Britain and
+     the United States, a subject in two artistic mediums, and how a writer transforms sources
+     (Grades 9 and 10); seminar discussions, digital media in presentations and publishing with
+     technology (Grades 9 to 12); productions of a play by Shakespeare and by an American dramatist,
+     the periods of American literature, the reasoning of The Federalist and the Supreme Court, and
+     the Declaration of Independence, the Constitution and the Bill of Rights (Grades 11 and 12).
+     Next: the high school lessons, then videos and tutor recordings for Units 11 and after.
    - Built (26 November 2026), step 3: **AP Chemistry** (`engine/curriculum/maps/us-chemistry.ts`,
      joined to the US map), the College Board's AP Chemistry Course and Exam Description as one
      course of nine units in the CED's order, each built from the Chemistry 20 and 30 lessons and

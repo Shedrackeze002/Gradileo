@@ -30,7 +30,8 @@ describe('the US map’s English courses (Common Core English Language Arts)', (
   it('teach each course mostly from Gradileo’s course of the same grade', () => {
     const own: Record<string, string> = { 'us-ela-grade-5': 'e5-', 'us-ela-grade-6': 'e6-', 'us-ela-grade-7': 'e7-', 'us-ela-grade-8': 'e8-', 'us-english-9': 'e9-', 'us-english-10': 'e10-', 'us-english-11': 'e11-', 'us-english-12': 'e12-' };
     for (const [id, prefix] of Object.entries(own)) {
-      const lessons = getCourse(id)!.lessons;
+      // Counted among the lessons of Gradileo's graded courses; the gap lessons of More English Topics come on top.
+      const lessons = getCourse(id)!.lessons.filter((l) => !l.id.startsWith('ex-'));
       expect(lessons.filter((l) => l.id.startsWith(prefix)).length / lessons.length, id).toBeGreaterThan(0.6);
     }
     expect(getCourse('us-english-11')!.units.find((u) => u.title === 'Drama: Macbeth')!.lessons).toEqual(['e11-3-1', 'e11-3-2', 'e11-3-3', 'e11-3-4']);
