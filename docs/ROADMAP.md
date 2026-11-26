@@ -2216,6 +2216,16 @@ items ship or decisions change.
   property and also feeds ChatGPT search). Not adopted from the posts: Google Business Profile and local citation work, paid
   backlinks, competitor comparison pages and paid rank trackers, since Gradileo is a free online
   platform with no local customers.
+- About page and lesson dates (26 November 2026, after Google's guide "Attribution and factuality
+  in Search generative AI features", which asks sites to say who is behind them, for example on an
+  About page, and to keep pages up to date without changing a date unless the content changed).
+  The build now writes `/about` (who makes Gradileo, why it is free, how lessons are written and
+  answers are checked, independence from exam boards, how to report a mistake), with no personal
+  details by the owner's choice, linked from every footer and from the Organization data as its
+  `publishingPrinciples`. Each lesson page shows "Updated <date>" and carries `dateModified`, the
+  newest of when its lesson file last changed in git and when a video was added to it; a course
+  takes its newest lesson's date, and the sitemap gives each page a `<lastmod>`. The deploy checks
+  out the whole history for this, and a shallow clone writes the pages without file dates.
 
 ## Technical follow-ups
 

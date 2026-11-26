@@ -64,6 +64,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event_name == 'pull_request_target' && 'main' || github.ref }}
+          # The whole history, so each lesson page can show when its lesson last changed.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -121,6 +123,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event_name == 'pull_request_target' && 'main' || github.ref }}
+          # The whole history, so each lesson page can show when its lesson last changed.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22

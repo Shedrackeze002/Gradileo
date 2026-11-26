@@ -47,10 +47,14 @@ export function LegalLayout({ title, updated, intro, children }: { title: string
   );
 }
 
-/** Links to the privacy policy and the terms of service, for page footers. */
+/** Links to the About page, the privacy policy and the terms of service, for page footers. */
 export function LegalLinks({ className = '' }: { className?: string }) {
   return (
     <nav aria-label="Legal" className={`flex gap-4 text-sm ${className}`}>
+      {/* The About page is written when the site is built (src/seo/pages.tsx), so it is a plain link. */}
+      <a href={`${import.meta.env.BASE_URL}about`} className="text-ink-3 hover:text-ink hover:underline">
+        About
+      </a>
       <Link to="/privacy" className="text-ink-3 hover:text-ink hover:underline">
         Privacy Policy
       </Link>
