@@ -900,6 +900,30 @@ items ship or decisions change.
      and stored on Drive under `Gradileo videos/More Topics/`, ready for the YouTube uploads. The
      voice now says "modulo" correctly (`src/video/words.ts`). The tutor recordings follow from the
      *Tutor voice* workflow once the lessons and videos are merged.
+   - Built (26 November 2026), step 3: **US English Language Arts** (`engine/curriculum/maps/us-english.ts`,
+     joined to the US map), the Common Core State Standards for English Language Arts as eight
+     courses, Grade 5 to Grade 8 English Language Arts and English 9 to 12, each built from the
+     English lessons of its grade (borrowing a lesson of another grade where it teaches a standard)
+     under units named for the Common Core strands and standards (RL, RI, RF, W, SL, L). A US learner
+     from Grade 5 is offered the course of their grade on "Find your course", with Gradileo's own
+     course of that grade beside it; teachers start a class on one from the "US Common Core" tab.
+     Gaps the courses list, by topic: comparing characters and stories, and pictures in stories
+     (Grade 5); several accounts of one event (Grades 5 to 8); comparing a text with its
+     performance or film (Grades 6 and 7); historical fiction and history (Grade 7); modern stories
+     that draw on myths, and allusions (Grades 7 and 8); reading aloud (Grade 5); discussions,
+     presenting with multimedia and formal speech (Grades 5 to 8), seminar discussions and digital
+     media in presentations (Grades 9 to 12); publishing writing with technology (every grade);
+     conjunctions, prepositions and interjections, commas with direct address and tag questions,
+     and the titles of works (Grade 5); dialect and register (Grades 5 and 6); intensive and vague
+     pronouns and pronoun shifts (Grade 6); coordinate adjectives (Grade 7); the conditional mood
+     and shifts in voice and mood (Grade 8); dictionaries and thesauruses (every grade); word
+     relationships and analogies (Grades 6 to 8); world literature beyond Britain and the United
+     States, a subject in two artistic mediums, and how a writer transforms sources (Grades 9 and
+     10); productions of a play by Shakespeare and by an American dramatist, the periods of American
+     literature, the reasoning of The Federalist and the Supreme Court, the Declaration of
+     Independence, the Constitution and the Bill of Rights, contested usage and hyphenation
+     (Grades 11 and 12). Next: fill these gaps in More English Topics, starting with the language
+     lessons of Grades 5 and 6, then their videos and tutor recordings.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
