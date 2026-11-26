@@ -924,6 +924,23 @@ items ship or decisions change.
      Independence, the Constitution and the Bill of Rights, contested usage and hyphenation
      (Grades 11 and 12). Next: fill these gaps in More English Topics, starting with the language
      lessons of Grades 5 and 6, then their videos and tutor recordings.
+   - Built (26 November 2026), step 3: **AP Chemistry** (`engine/curriculum/maps/us-chemistry.ts`,
+     joined to the US map), the College Board's AP Chemistry Course and Exam Description as one
+     course of nine units in the CED's order, each built from the Chemistry 20 and 30 lessons and
+     More Chemistry Topics, with the CED topic numbers in each unit's description. A US learner in
+     Grade 11 or 12 is offered it on "Find your course" (Chemistry 20 first for Grade 11), and
+     teachers start a class on it from the "US Common Core" tab. The gaps it found are filled by
+     fourteen new lessons in More Chemistry Topics, Units 20 to 24, with 28 question generators
+     and an animated explainer video each: moles and mass spectra, Coulomb's law and
+     photoelectron spectra, bond energy and ionic and metallic solids, formal charge and
+     resonance (Unit 20); photon energy and spectra, and Beer–Lambert analysis (Unit 21); the
+     integrated rate laws, reaction mechanisms and catalysts, and heating curves (Unit 22); Q and
+     K, acid strength and pKa, and Henderson–Hasselbalch and buffer capacity (Unit 23); free
+     energy and K, and cell potential and nonstandard conditions (Unit 24). Three CED topics
+     (hybridisation, Ksp and the common-ion effect, and pH and solubility) are taught by the WAEC
+     Chemistry gap lessons and join the map once those merge, which leaves no gaps. The half-life
+     video element now takes `noun` and `gone`, so it can show molecules reacting as well as
+     nuclei decaying.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

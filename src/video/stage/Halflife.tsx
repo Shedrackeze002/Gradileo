@@ -67,8 +67,8 @@ export function HalflifeView({ el, st, w, h, plays, fit }: { el: HalflifeEl; st:
     }
   }
   if (names > 0) {
-    out.push(<Text key="sample" x={sx + wide / 2} y={top + 30} color={INK2} size={18} opacity={names}>{`${count} nuclei${el.name ? ` of ${el.name}` : ''}`}</Text>);
-    out.push(<Text key="count" x={sx + wide / 2} y={HIGH - 26} color={LIVE} size={19} opacity={names}>{`Not yet decayed: ${nucleiLeft(el, clock)}`}</Text>);
+    out.push(<Text key="sample" x={sx + wide / 2} y={top + 30} color={INK2} size={18} opacity={names}>{`${count} ${el.noun ?? 'nuclei'}${el.name ? ` of ${el.name}` : ''}`}</Text>);
+    out.push(<Text key="count" x={sx + wide / 2} y={HIGH - 26} color={LIVE} size={19} opacity={names}>{`Not yet ${el.gone ?? 'decayed'}: ${nucleiLeft(el, clock)}`}</Text>);
   }
 
   // The graph of the amount that is left against the time.
@@ -120,8 +120,8 @@ export function HalflifeView({ el, st, w, h, plays, fit }: { el: HalflifeEl; st:
   }
   // The clock, and how much is left.
   if (readout > 0) {
-    // A sample that is counted in nuclei has a whole number of them left.
-    const now = amountUnit === 'nuclei' && amount === count ? nucleiLeft(el, clock) : amountLeft({ ...el, amount }, clock);
+    // A sample that is counted in nuclei (or molecules) has a whole number of them left.
+    const now = amountUnit === (el.noun ?? 'nuclei') && amount === count ? nucleiLeft(el, clock) : amountLeft({ ...el, amount }, clock);
     const shown = tidy(clock, el.places ?? 0);
     out.push(<Text key="clock" x={gx1 + 14} y={top + 30} color={INK} size={20} anchor="end" opacity={readout}>{`Time: ${shown} ${shown === '1' ? unit.replace(/s$/, '') : unit}`}</Text>);
     out.push(<Text key="left" x={gx1 + 14} y={top + 58} color={LIVE} size={20} anchor="end" opacity={readout}>{`Left: ${tidy(now, 2)}${gap}${amountUnit}${amountUnit === '%' ? '' : ` (${tidy(100 * shareLeft(clock, T), 1)}%)`}`}</Text>);

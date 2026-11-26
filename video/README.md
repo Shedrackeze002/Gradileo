@@ -890,7 +890,9 @@ See `src/video/script.ts` for every element and option. In short:
   (the sample's name, and the count of the nuclei that have not decayed), `left` (the clock
   and the amount left), `graph`, `ahead` (the rest of the curve, dotted) and `halves` (a mark
   at each half-life that has passed, with the share left). The sample is in the middle of the
-  picture until the graph is shown. Drawn for the full width of a `center` scene.
+  picture until the graph is shown. Drawn for the full width of a `center` scene. For a
+  first-order reaction in chemistry, `noun: 'molecules'` and `gone: 'reacted'` relabel the sample
+  ("400 molecules of N₂O₅", "Not yet reacted"); see the extra chemistry course's `cx-22-1.ts`.
 - `reaction` (`src/video/reaction.ts`) is for the energy of the nucleus, in five pictures.
   `weigh` (the default) shows `z` protons and `n` neutrons apart (2 and 2 unless you say), a
   phase's `join: true` brings them together into the nucleus `name` of that `mass` in u while

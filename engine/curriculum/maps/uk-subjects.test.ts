@@ -21,7 +21,8 @@ describe('the UK map’s chemistry and English courses', () => {
     expect(LISTED_COURSES).not.toContain(more);
     // Each More Chemistry lesson is filed in GCSE Chemistry (GCSE level, up to Grade 10) or in an A level course.
     const alevel = ['uk-a-level-chemistry-1', 'uk-a-level-chemistry-2'].map((id) => getCourse(id)!);
-    for (const l of more.lessons) {
+    // Units 1 to 12 fill the UK courses. (Units 13 and after fill other maps.)
+    for (const l of more.lessons.filter((x) => Number(x.unitId.slice('cx-u'.length)) <= 12)) {
       const home = (l.grade ?? 10) <= 10 ? [gcse] : alevel;
       expect(home.some((c) => c.lessons.some((x) => x.id === l.id)), `${l.id} is filed in a course of its level`).toBe(true);
     }
