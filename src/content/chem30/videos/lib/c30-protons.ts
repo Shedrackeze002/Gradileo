@@ -126,6 +126,17 @@ export const hclAndAmmonia = (id: string, o: Options = {}): MoleculesEl =>
     o,
   );
 
+/** An ammonium ion gives a proton to water (the hydrolysis of an ammonium salt): ammonia and hydronium ions. */
+export const ammoniumAndWater = (id: string, o: Options = {}): MoleculesEl =>
+  transfer(
+    id,
+    { ...ammonia, proton: 1 },
+    waterTakes('O', 'H1', 'H2'),
+    { acid: 'NH₄⁺: the acid', base: 'H₂O: the base', conjBase: 'NH₃: conjugate base', conjAcid: 'H₃O⁺: conjugate acid', plainBase: 'NH₃: ammonia', plainAcid: 'H₃O⁺: hydronium ion' },
+    { O: 1 },
+    o,
+  );
+
 /** One water molecule gives a proton to another: hydronium and hydroxide ions. */
 export const waterAndWater = (id: string, o: Options = {}): MoleculesEl =>
   transfer(

@@ -21998,6 +21998,1628 @@
       }
     ]
   },
+  "cx-13-1": {
+    "lessonId": "cx-13-1",
+    "title": "Measurement and the Scientific Method",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An experiment tests an idea",
+        "t": 22.966
+      },
+      {
+        "title": "SI units",
+        "t": 70.889
+      },
+      {
+        "title": "Significant figures",
+        "t": 98.576
+      },
+      {
+        "title": "Accuracy and precision",
+        "t": 156.33
+      },
+      {
+        "title": "Your turn",
+        "t": 198.128
+      },
+      {
+        "title": "Summary",
+        "t": 229.696
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-1:q",
+        "t": 207.902,
+        "prompt": "How many significant figures are there in $0.02050$?",
+        "choices": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer": 2,
+        "working": "Start at the first non-zero digit, the 2: the digits $2, 0, 5, 0$ all count, so there are 4."
+      }
+    ]
+  },
+  "cx-13-2": {
+    "lessonId": "cx-13-2",
+    "title": "The Laws of Chemical Combination",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Every atom is kept",
+        "t": 22.517
+      },
+      {
+        "title": "Mass and composition",
+        "t": 55.753
+      },
+      {
+        "title": "Multiple proportions",
+        "t": 103.293
+      },
+      {
+        "title": "Combining volumes",
+        "t": 138.34
+      },
+      {
+        "title": "A common mistake",
+        "t": 170.29
+      },
+      {
+        "title": "Your turn",
+        "t": 186.63
+      },
+      {
+        "title": "Summary",
+        "t": 222.311
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-2:q",
+        "t": 202.787,
+        "prompt": "Methane burns: $\\ce{CH4(g) + 2O2(g) -> CO2(g) + 2H2O(l)}$. What volume of oxygen reacts with $30\\ \\text{cm}^3$ of methane?",
+        "choices": [
+          "$15\\ \\text{cm}^3$",
+          "$30\\ \\text{cm}^3$",
+          "$90\\ \\text{cm}^3$",
+          "$60\\ \\text{cm}^3$"
+        ],
+        "answer": 3,
+        "working": "The ratio of methane to oxygen is $1 : 2$, so $30 \\times 2 = 60\\ \\text{cm}^3$."
+      }
+    ]
+  },
+  "cx-13-3": {
+    "lessonId": "cx-13-3",
+    "title": "Orbitals and the Rules for Filling Them",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Filling from the inside",
+        "t": 20.354
+      },
+      {
+        "title": "Sub-levels and orbitals",
+        "t": 52.243
+      },
+      {
+        "title": "Three rules",
+        "t": 86.557
+      },
+      {
+        "title": "The configuration of iron",
+        "t": 122.16
+      },
+      {
+        "title": "Your turn",
+        "t": 166.062
+      },
+      {
+        "title": "Summary",
+        "t": 194.419
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-3:q",
+        "t": 176.64,
+        "prompt": "A phosphorus atom ends in $3p^3$. How many unpaired electrons does it have?",
+        "choices": [
+          "3",
+          "1",
+          "0",
+          "5"
+        ],
+        "answer": 0,
+        "working": "By Hund’s rule the three 3p electrons go one to each 3p orbital: $[\\uparrow][\\uparrow][\\uparrow]$, all unpaired."
+      }
+    ]
+  },
+  "cx-13-4": {
+    "lessonId": "cx-13-4",
+    "title": "Hybridisation, Sigma and Pi Bonds",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regions spread out",
+        "t": 22.319
+      },
+      {
+        "title": "Counting regions",
+        "t": 54.67
+      },
+      {
+        "title": "Sigma and pi bonds",
+        "t": 99.048
+      },
+      {
+        "title": "A pi bond stops rotation",
+        "t": 131.858
+      },
+      {
+        "title": "A common mistake",
+        "t": 153.631
+      },
+      {
+        "title": "Your turn",
+        "t": 169.192
+      },
+      {
+        "title": "Summary",
+        "t": 200.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-4:q",
+        "t": 178.739,
+        "prompt": "What is the hybridisation of carbon in methanal, $\\ce{H2C=O}$?",
+        "choices": [
+          "sp",
+          "sp²",
+          "sp³",
+          "sp³d²"
+        ],
+        "answer": 1,
+        "working": "Carbon bonds to two H atoms and one O atom and has no lone pair: 3 regions, so sp², trigonal planar."
+      }
+    ]
+  },
+  "cx-14-1": {
+    "lessonId": "cx-14-1",
+    "title": "Graham’s Law and Dalton’s Law of Partial Pressures",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Light gases move faster",
+        "t": 23.325
+      },
+      {
+        "title": "Graham’s law",
+        "t": 51.765
+      },
+      {
+        "title": "The white ring",
+        "t": 91.671
+      },
+      {
+        "title": "Dalton’s law",
+        "t": 132.702
+      },
+      {
+        "title": "A common mistake",
+        "t": 161.564
+      },
+      {
+        "title": "Your turn",
+        "t": 182.692
+      },
+      {
+        "title": "Summary",
+        "t": 214.597
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-14-1:q",
+        "t": 194.473,
+        "prompt": "How many times faster does helium ($M = 4$) diffuse than methane ($M = 16$)?",
+        "choices": [
+          "4 times",
+          "$\\tfrac{1}{2}$ as fast",
+          "2 times",
+          "16 times"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{r_{\\ce{He}}}{r_{\\ce{CH4}}} = \\sqrt{\\dfrac{16}{4}} = \\sqrt{4} = 2$"
+      }
+    ]
+  },
+  "cx-14-2": {
+    "lessonId": "cx-14-2",
+    "title": "Vapour Pressure, Boiling and Brownian Motion",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Vapour above a liquid",
+        "t": 20.606
+      },
+      {
+        "title": "When a liquid boils",
+        "t": 57.386
+      },
+      {
+        "title": "Brownian motion",
+        "t": 101.336
+      },
+      {
+        "title": "Kinds of solid",
+        "t": 139.054
+      },
+      {
+        "title": "Your turn",
+        "t": 176.784
+      },
+      {
+        "title": "Summary",
+        "t": 211.295
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-14-2:q",
+        "t": 190.293,
+        "prompt": "The pressure above some water is $47.4\\ \\text{kPa}$. Water’s vapour pressure is $31.2\\ \\text{kPa}$ at 70 °C, $47.4\\ \\text{kPa}$ at 80 °C and $70.1\\ \\text{kPa}$ at 90 °C. At what temperature does the water boil?",
+        "choices": [
+          "70 °C",
+          "90 °C",
+          "100 °C",
+          "80 °C"
+        ],
+        "answer": 3,
+        "working": "Water boils when its vapour pressure equals the pressure above it: $47.4\\ \\text{kPa}$ at 80 °C."
+      }
+    ]
+  },
+  "cx-14-3": {
+    "lessonId": "cx-14-3",
+    "title": "Preparing and Collecting Gases",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hydrogen from zinc",
+        "t": 21.135
+      },
+      {
+        "title": "Oxygen from hydrogen peroxide",
+        "t": 45.696
+      },
+      {
+        "title": "The common preparations",
+        "t": 67.422
+      },
+      {
+        "title": "Collecting and drying",
+        "t": 102.899
+      },
+      {
+        "title": "Your turn",
+        "t": 154.821
+      },
+      {
+        "title": "Summary",
+        "t": 187.827
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-14-3:q",
+        "t": 168.413,
+        "prompt": "Hydrogen chloride ($M_r = 36.5$) is very soluble in water. How is it collected?",
+        "choices": [
+          "By downward delivery",
+          "Over water",
+          "By upward delivery",
+          "Over concentrated sulfuric acid"
+        ],
+        "answer": 0,
+        "working": "It is soluble, so not over water, and denser than air ($36.5 > 29$), so it sinks into an upright jar: downward delivery."
+      }
+    ]
+  },
+  "cx-15-1": {
+    "lessonId": "cx-15-1",
+    "title": "Standard Solutions",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Making a solution",
+        "t": 24.739
+      },
+      {
+        "title": "A standard solution",
+        "t": 46.484
+      },
+      {
+        "title": "A worked example",
+        "t": 82.681
+      },
+      {
+        "title": "Diluting a stock solution",
+        "t": 130.156
+      },
+      {
+        "title": "Concentrated reagents",
+        "t": 165.99
+      },
+      {
+        "title": "Your turn",
+        "t": 203.891
+      },
+      {
+        "title": "Summary",
+        "t": 238.772
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-15-1:q",
+        "t": 218.22,
+        "prompt": "What volume of $2.0\\ \\text{mol dm}^{-3}$ acid is made up to $250\\ \\text{cm}^3$ to give $0.20\\ \\text{mol dm}^{-3}$ acid?",
+        "choices": [
+          "$2.5\\ \\text{cm}^3$",
+          "$25\\ \\text{cm}^3$",
+          "$50\\ \\text{cm}^3$",
+          "$225\\ \\text{cm}^3$"
+        ],
+        "answer": 1,
+        "working": "$V_1 = \\dfrac{0.20 \\times 250}{2.0} = 25\\ \\text{cm}^3$"
+      }
+    ]
+  },
+  "cx-15-2": {
+    "lessonId": "cx-15-2",
+    "title": "Types of Salts and Salt Hydrolysis",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An ammonium salt forms",
+        "t": 24.18
+      },
+      {
+        "title": "The salt meets water",
+        "t": 44.416
+      },
+      {
+        "title": "Predicting the pH",
+        "t": 73.246
+      },
+      {
+        "title": "Types of salts",
+        "t": 107.413
+      },
+      {
+        "title": "Water of crystallisation",
+        "t": 143.076
+      },
+      {
+        "title": "Salts and water from the air",
+        "t": 180.474
+      },
+      {
+        "title": "Your turn",
+        "t": 205.995
+      },
+      {
+        "title": "Summary",
+        "t": 238.417
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-15-2:q",
+        "t": 217.431,
+        "prompt": "What is the pH of a solution of potassium ethanoate, the salt of a weak acid and a strong base?",
+        "choices": [
+          "Exactly 7",
+          "Below 7",
+          "It depends on the indicator",
+          "Above 7"
+        ],
+        "answer": 3,
+        "working": "The ethanoate ion takes $\\ce{H+}$ from water, leaving $\\ce{OH-}$ ions, so the solution is alkaline."
+      }
+    ]
+  },
+  "cx-15-3": {
+    "lessonId": "cx-15-3",
+    "title": "Solubility Curves and Solubility Calculations",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A saturated solution",
+        "t": 19.33
+      },
+      {
+        "title": "Warming dissolves more",
+        "t": 51.788
+      },
+      {
+        "title": "Solubility in numbers",
+        "t": 85.89
+      },
+      {
+        "title": "Crystals on cooling",
+        "t": 128.357
+      },
+      {
+        "title": "Your turn",
+        "t": 175.797
+      },
+      {
+        "title": "Summary",
+        "t": 217.365
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-15-3:q",
+        "t": 194.874,
+        "prompt": "Potassium nitrate in $100\\ \\text{g}$ of water, saturated at 40 °C (64 g per 100 g), is cooled to 0 °C (13 g per 100 g). What mass of crystals forms?",
+        "choices": [
+          "$51\\ \\text{g}$",
+          "$77\\ \\text{g}$",
+          "$13\\ \\text{g}$",
+          "$25.5\\ \\text{g}$"
+        ],
+        "answer": 0,
+        "working": "$(64 - 13) \\times \\dfrac{100}{100} = 51\\ \\text{g}$"
+      }
+    ]
+  },
+  "cx-15-4": {
+    "lessonId": "cx-15-4",
+    "title": "The Solubility Product",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A precipitate forms",
+        "t": 20.926
+      },
+      {
+        "title": "The expression",
+        "t": 51.594
+      },
+      {
+        "title": "Molar solubility",
+        "t": 91.881
+      },
+      {
+        "title": "Will it precipitate?",
+        "t": 130.515
+      },
+      {
+        "title": "Common ions and pH",
+        "t": 162.135
+      },
+      {
+        "title": "Your turn",
+        "t": 204.813
+      },
+      {
+        "title": "Summary",
+        "t": 240.275
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-15-4:q",
+        "t": 217.367,
+        "prompt": "$K_{sp}$ for silver bromide is $5.0 \\times 10^{-13}$. What is its molar solubility?",
+        "choices": [
+          "$2.5 \\times 10^{-13}\\ \\text{mol dm}^{-3}$",
+          "$7.1 \\times 10^{-7}\\ \\text{mol dm}^{-3}$",
+          "$5.0 \\times 10^{-13}\\ \\text{mol dm}^{-3}$",
+          "$1.0 \\times 10^{-6}\\ \\text{mol dm}^{-3}$"
+        ],
+        "answer": 1,
+        "working": "AgBr is a 1 : 1 salt, so $s = \\sqrt{5.0 \\times 10^{-13}} = 7.1 \\times 10^{-7}$."
+      }
+    ]
+  },
+  "cx-16-1": {
+    "lessonId": "cx-16-1",
+    "title": "Qualitative Analysis: Cations, Anions and Gases",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Precipitates up close",
+        "t": 22.78
+      },
+      {
+        "title": "Cations",
+        "t": 52.698
+      },
+      {
+        "title": "Anions",
+        "t": 104.564
+      },
+      {
+        "title": "Gases",
+        "t": 139.3
+      },
+      {
+        "title": "Your turn",
+        "t": 164.693
+      },
+      {
+        "title": "Summary",
+        "t": 203.737
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-16-1:q",
+        "t": 182.036,
+        "prompt": "A solution gives a white precipitate with NaOH(aq) that dissolves in excess, and a white precipitate with NH₃(aq) that also dissolves in excess. Which cation is present?",
+        "choices": [
+          "$\\ce{Al^3+}$",
+          "$\\ce{Ca^2+}$",
+          "$\\ce{Zn^2+}$",
+          "$\\ce{Pb^2+}$"
+        ],
+        "answer": 2,
+        "working": "Only zinc gives a white precipitate that dissolves in excess of both reagents."
+      }
+    ]
+  },
+  "cx-16-2": {
+    "lessonId": "cx-16-2",
+    "title": "Back Titrations and Double Indicator Titrations",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Step one: excess acid",
+        "t": 21.868
+      },
+      {
+        "title": "Step two: titrate what is left",
+        "t": 43.736
+      },
+      {
+        "title": "The purity of limestone",
+        "t": 80.396
+      },
+      {
+        "title": "Double indicator titrations",
+        "t": 136.657
+      },
+      {
+        "title": "Your turn",
+        "t": 185.06
+      },
+      {
+        "title": "Summary",
+        "t": 230.518
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-16-2:q",
+        "t": 206.368,
+        "prompt": "$40.0\\ \\text{cm}^3$ of $0.500\\ \\text{mol dm}^{-3}$ HCl is added to a base. The excess acid needs $15.0\\ \\text{cm}^3$ of $0.500\\ \\text{mol dm}^{-3}$ NaOH. How many moles of HCl reacted with the base?",
+        "choices": [
+          "$0.0200$",
+          "$0.00750$",
+          "$0.0275$",
+          "$0.0125$"
+        ],
+        "answer": 3,
+        "working": "Added: $0.500 \\times 0.0400 = 0.0200$. Excess: $0.500 \\times 0.0150 = 0.00750$. Reacted: $0.0200 - 0.00750 = 0.0125$ mol."
+      }
+    ]
+  },
+  "cx-17-1": {
+    "lessonId": "cx-17-1",
+    "title": "Hydrogen, Oxygen and the Classes of Oxides",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hydrogen burns",
+        "t": 20.994
+      },
+      {
+        "title": "Hydrogen",
+        "t": 41.431
+      },
+      {
+        "title": "Oxygen",
+        "t": 81.886
+      },
+      {
+        "title": "A basic oxide in water",
+        "t": 105.001
+      },
+      {
+        "title": "Four classes of oxide",
+        "t": 128.805
+      },
+      {
+        "title": "Your turn",
+        "t": 165.366
+      },
+      {
+        "title": "Summary",
+        "t": 197.185
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-17-1:q",
+        "t": 175.752,
+        "prompt": "Which oxide reacts with both hydrochloric acid and sodium hydroxide solution?",
+        "choices": [
+          "$\\ce{CaO}$",
+          "$\\ce{Al2O3}$",
+          "$\\ce{CO}$",
+          "$\\ce{SO2}$"
+        ],
+        "answer": 1,
+        "working": "Aluminium oxide is amphoteric: it reacts with both acids and alkalis."
+      }
+    ]
+  },
+  "cx-17-2": {
+    "lessonId": "cx-17-2",
+    "title": "Water: Hardness and Treatment",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What makes water hard",
+        "t": 19.195
+      },
+      {
+        "title": "Washing soda",
+        "t": 61.63
+      },
+      {
+        "title": "Removing hardness",
+        "t": 91.866
+      },
+      {
+        "title": "The soap test",
+        "t": 110.814
+      },
+      {
+        "title": "Water for a town",
+        "t": 141.993
+      },
+      {
+        "title": "Your turn",
+        "t": 165.964
+      },
+      {
+        "title": "Summary",
+        "t": 200.521
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-17-2:q",
+        "t": 180.642,
+        "prompt": "Water Y needs 9 cm³ of soap solution, both before and after boiling. Distilled water needs 1 cm³. What hardness does Y have?",
+        "choices": [
+          "Temporary only",
+          "None",
+          "Both kinds",
+          "Permanent only"
+        ],
+        "answer": 3,
+        "working": "Boiling made no difference, so there is no temporary hardness; 9 cm³ is more than 1 cm³, so the hardness is permanent."
+      }
+    ]
+  },
+  "cx-17-3": {
+    "lessonId": "cx-17-3",
+    "title": "Nitrogen, Ammonia and Nitric Acid",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The Haber process",
+        "t": 20.94
+      },
+      {
+        "title": "Ammonia is alkaline",
+        "t": 51.413
+      },
+      {
+        "title": "Ammonia and fertilisers",
+        "t": 78.636
+      },
+      {
+        "title": "Nitric acid",
+        "t": 107.165
+      },
+      {
+        "title": "Heating nitrates",
+        "t": 137.837
+      },
+      {
+        "title": "Your turn",
+        "t": 165.31
+      },
+      {
+        "title": "Summary",
+        "t": 195.622
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-17-3:q",
+        "t": 176.776,
+        "prompt": "What is the percentage by mass of nitrogen in urea, $\\ce{CO(NH2)2}$ ($M = 60$, N = 14)?",
+        "choices": [
+          "46.7%",
+          "23.3%",
+          "28.0%",
+          "35.0%"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{2 \\times 14}{60} \\times 100 = 46.7\\%$"
+      }
+    ]
+  },
+  "cx-17-4": {
+    "lessonId": "cx-17-4",
+    "title": "Sulfur, Sulfur Dioxide and Sulfuric Acid",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Allotropes of sulfur",
+        "t": 23.237
+      },
+      {
+        "title": "Burning sulfur",
+        "t": 49.361
+      },
+      {
+        "title": "Sulfur dioxide",
+        "t": 76.931
+      },
+      {
+        "title": "The Contact process",
+        "t": 113.098
+      },
+      {
+        "title": "How sulfuric acid acts",
+        "t": 159.649
+      },
+      {
+        "title": "Your turn",
+        "t": 189.294
+      },
+      {
+        "title": "Summary",
+        "t": 223.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-17-4:q",
+        "t": 203.519,
+        "prompt": "Each sulfur atom ends up in one molecule of $\\ce{H2SO4}$. What mass of sulfuric acid can be made from 16 kg of sulfur? (S = 32, $\\ce{H2SO4}$ = 98)",
+        "choices": [
+          "32.0 kg",
+          "98.0 kg",
+          "49.0 kg",
+          "16.0 kg"
+        ],
+        "answer": 2,
+        "working": "32 kg of sulfur gives 98 kg of acid, so $16 \\times 98 \\div 32 = 49.0$ kg."
+      }
+    ]
+  },
+  "cx-17-5": {
+    "lessonId": "cx-17-5",
+    "title": "Carbon: Coal, Fuel Gases and the Oxides of Carbon",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Coal and coke",
+        "t": 20.207
+      },
+      {
+        "title": "Water gas",
+        "t": 48.385
+      },
+      {
+        "title": "The oxides of carbon",
+        "t": 83.875
+      },
+      {
+        "title": "Carbon monoxide reduces iron oxide",
+        "t": 121.766
+      },
+      {
+        "title": "Heating carbonates",
+        "t": 142.092
+      },
+      {
+        "title": "Your turn",
+        "t": 169.256
+      },
+      {
+        "title": "Summary",
+        "t": 207.984
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-17-5:q",
+        "t": 183.115,
+        "prompt": "What volume of $\\ce{CO2}$, at room temperature and pressure, forms when 5.0 g of $\\ce{CaCO3}$ ($M = 100$) decomposes completely? (1 mol of gas = 24 dm³)",
+        "choices": [
+          "2.4 dm³",
+          "0.050 dm³",
+          "12 dm³",
+          "1.2 dm³"
+        ],
+        "answer": 3,
+        "working": "$5.0 \\div 100 = 0.050$ mol of $\\ce{CaCO3}$ gives 0.050 mol of $\\ce{CO2}$, and $0.050 \\times 24 = 1.2$ dm³."
+      }
+    ]
+  },
+  "cx-18-1": {
+    "lessonId": "cx-18-1",
+    "title": "Extracting Aluminium, Iron and Tin",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing a method",
+        "t": 21.539
+      },
+      {
+        "title": "Electrolysis of alumina",
+        "t": 47.604
+      },
+      {
+        "title": "Aluminium from a charge",
+        "t": 87.225
+      },
+      {
+        "title": "The blast furnace",
+        "t": 129.524
+      },
+      {
+        "title": "Tin, and masses in extraction",
+        "t": 171.375
+      },
+      {
+        "title": "Your turn",
+        "t": 201.176
+      },
+      {
+        "title": "Summary",
+        "t": 233.571
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-18-1:q",
+        "t": 210.66,
+        "prompt": "What mass of iron can be extracted from 80 kg of $\\ce{Fe2O3}$? (Fe = 56, O = 16)",
+        "choices": [
+          "112 kg",
+          "56 kg",
+          "40 kg",
+          "28 kg"
+        ],
+        "answer": 1,
+        "working": "$\\ce{Fe2O3}$ has $M = 160$, of which iron is 112. So $80 \\times 112 \\div 160 = 56$ kg."
+      }
+    ]
+  },
+  "cx-18-2": {
+    "lessonId": "cx-18-2",
+    "title": "Sodium, Calcium, Copper, Iron and Aluminium Compounds",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sodium in water",
+        "t": 23.537
+      },
+      {
+        "title": "Sodium compounds",
+        "t": 53.439
+      },
+      {
+        "title": "Lime from limestone",
+        "t": 83.407
+      },
+      {
+        "title": "Water of crystallisation",
+        "t": 114.078
+      },
+      {
+        "title": "Iron and aluminium",
+        "t": 166.18
+      },
+      {
+        "title": "Your turn",
+        "t": 202.819
+      },
+      {
+        "title": "Summary",
+        "t": 245.834
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-18-2:q",
+        "t": 219.471,
+        "prompt": "2.46 g of hydrated magnesium sulfate, $\\ce{MgSO4} \\cdot x\\,\\ce{H2O}$, leaves 1.20 g of the anhydrous salt ($M = 120$) on heating. What is $x$? ($\\ce{H2O}$ = 18)",
+        "choices": [
+          "5",
+          "6",
+          "7",
+          "10"
+        ],
+        "answer": 2,
+        "working": "Water $= 1.26$ g $= 0.0700$ mol; salt $= 1.20 \\div 120 = 0.0100$ mol; $x = 0.0700 \\div 0.0100 = 7$."
+      }
+    ]
+  },
+  "cx-18-3": {
+    "lessonId": "cx-18-3",
+    "title": "The Chemical Industry and Fermentation",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Heavy and fine chemicals",
+        "t": 26.472
+      },
+      {
+        "title": "Siting a chemical plant",
+        "t": 49.653
+      },
+      {
+        "title": "Fermentation up close",
+        "t": 87.872
+      },
+      {
+        "title": "Fermentation in food",
+        "t": 118.652
+      },
+      {
+        "title": "Your turn",
+        "t": 159.083
+      },
+      {
+        "title": "Summary",
+        "t": 192.205
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-18-3:q",
+        "t": 167.687,
+        "prompt": "What mass of ethanol ($M = 46$) can be made from 45 g of glucose ($M = 180$)?",
+        "choices": [
+          "46.0 g",
+          "23.0 g",
+          "11.5 g",
+          "92.0 g"
+        ],
+        "answer": 1,
+        "working": "Glucose $= 45 \\div 180 = 0.25$ mol, giving $2 \\times 0.25 = 0.50$ mol of ethanol $= 0.50 \\times 46 = 23.0$ g."
+      }
+    ]
+  },
+  "cx-18-4": {
+    "lessonId": "cx-18-4",
+    "title": "Mining, Ores and Cement",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ores and mining",
+        "t": 21.421
+      },
+      {
+        "title": "Concentrating the ore",
+        "t": 52.304
+      },
+      {
+        "title": "Processing the ores",
+        "t": 79.101
+      },
+      {
+        "title": "Mining and the environment",
+        "t": 103.592
+      },
+      {
+        "title": "Making cement",
+        "t": 131.945
+      },
+      {
+        "title": "Your turn",
+        "t": 175.404
+      },
+      {
+        "title": "Summary",
+        "t": 207.866
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-18-4:q",
+        "t": 186.537,
+        "prompt": "What mass of carbon dioxide is released when 25 tonnes of limestone is fully decomposed? ($\\ce{CaCO3}$ = 100, $\\ce{CO2}$ = 44)",
+        "choices": [
+          "11.0 tonnes",
+          "44.0 tonnes",
+          "14.0 tonnes",
+          "5.68 tonnes"
+        ],
+        "answer": 0,
+        "working": "100 tonnes gives 44 tonnes, so $25 \\times 44 \\div 100 = 11.0$ tonnes."
+      }
+    ]
+  },
+  "cx-18-5": {
+    "lessonId": "cx-18-5",
+    "title": "Silicon, Silica and Thermal Stability",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two very different oxides",
+        "t": 25.073
+      },
+      {
+        "title": "Silicon and its uses",
+        "t": 61.505
+      },
+      {
+        "title": "Polarising power",
+        "t": 92.001
+      },
+      {
+        "title": "Heating two carbonates",
+        "t": 115.539
+      },
+      {
+        "title": "The trends",
+        "t": 141.487
+      },
+      {
+        "title": "Your turn",
+        "t": 179.763
+      },
+      {
+        "title": "Summary",
+        "t": 217.643
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-18-5:q",
+        "t": 192.199,
+        "prompt": "Which carbonate decomposes at the lowest temperature?",
+        "choices": [
+          "$\\ce{BaCO3}$",
+          "$\\ce{CaCO3}$",
+          "$\\ce{MgCO3}$",
+          "$\\ce{K2CO3}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{Mg^2+}$ is the smallest, most highly charged ion here, so it polarises the carbonate ion most."
+      }
+    ]
+  },
+  "cx-18-6": {
+    "lessonId": "cx-18-6",
+    "title": "Lewis Acids and Coordination Compounds",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A dative bond",
+        "t": 26.472
+      },
+      {
+        "title": "Lewis acids and bases",
+        "t": 58.774
+      },
+      {
+        "title": "A complex ion forms",
+        "t": 89.136
+      },
+      {
+        "title": "Coordination number and shape",
+        "t": 116.165
+      },
+      {
+        "title": "Naming complex ions",
+        "t": 140.834
+      },
+      {
+        "title": "Your turn",
+        "t": 185.445
+      },
+      {
+        "title": "Summary",
+        "t": 221.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-18-6:q",
+        "t": 199.06,
+        "prompt": "What is the oxidation state of cobalt in $\\ce{[CoCl4]^2-}$, and the coordination number?",
+        "choices": [
+          "+2, 4",
+          "+4, 4",
+          "+2, 6",
+          "−2, 4"
+        ],
+        "answer": 0,
+        "working": "Four chloro ligands give −4: $x - 4 = -2$, so $x = +2$. Four dative bonds give a coordination number of 4."
+      }
+    ]
+  },
+  "cx-19-1": {
+    "lessonId": "cx-19-1",
+    "title": "Alkynes and Ethyne",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming alkynes",
+        "t": 22.425
+      },
+      {
+        "title": "Making ethyne",
+        "t": 52.292
+      },
+      {
+        "title": "Adding hydrogen twice",
+        "t": 85.771
+      },
+      {
+        "title": "Other additions",
+        "t": 118.826
+      },
+      {
+        "title": "Telling them apart",
+        "t": 137.01
+      },
+      {
+        "title": "Your turn",
+        "t": 163.095
+      },
+      {
+        "title": "Summary",
+        "t": 198.957
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-19-1:q",
+        "t": 176.889,
+        "prompt": "Which compound gives a white precipitate with ammoniacal silver nitrate?",
+        "choices": [
+          "But-2-yne",
+          "Propyne",
+          "Propene",
+          "Ethane"
+        ],
+        "answer": 1,
+        "working": "Propyne, $\\ce{HC#C-CH3}$, is a terminal alkyne: it has a hydrogen on a triple-bond carbon."
+      }
+    ]
+  },
+  "cx-19-2": {
+    "lessonId": "cx-19-2",
+    "title": "Petrol, Octane Number and Petrochemicals",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Knocking and the octane number",
+        "t": 19.334
+      },
+      {
+        "title": "Branching the chain",
+        "t": 54.385
+      },
+      {
+        "title": "Cracking",
+        "t": 88.338
+      },
+      {
+        "title": "Reforming and additives",
+        "t": 113.051
+      },
+      {
+        "title": "Petrochemicals",
+        "t": 146.152
+      },
+      {
+        "title": "Your turn",
+        "t": 168.528
+      },
+      {
+        "title": "Summary",
+        "t": 195.59
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-19-2:q",
+        "t": 176.018,
+        "prompt": "Which of these $\\ce{C8H18}$ isomers has the highest octane number?",
+        "choices": [
+          "Octane",
+          "2-Methylheptane",
+          "2,2,4-Trimethylpentane",
+          "3-Methylheptane"
+        ],
+        "answer": 2,
+        "working": "It is the most highly branched, so it burns most smoothly; it defines an octane number of 100."
+      }
+    ]
+  },
+  "cx-19-3": {
+    "lessonId": "cx-19-3",
+    "title": "Fats, Oils, Soaps and Detergents",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fats and oils",
+        "t": 23.167
+      },
+      {
+        "title": "Hardening and going rancid",
+        "t": 48.86
+      },
+      {
+        "title": "Saponification",
+        "t": 74.98
+      },
+      {
+        "title": "How soap cleans",
+        "t": 115.909
+      },
+      {
+        "title": "Soaps and soapless detergents",
+        "t": 147.933
+      },
+      {
+        "title": "Your turn",
+        "t": 175.394
+      },
+      {
+        "title": "Summary",
+        "t": 210.032
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-19-3:q",
+        "t": 186.558,
+        "prompt": "What mass of sodium hydroxide ($M = 40$) is needed to saponify 89 g of glyceryl tristearate ($M = 890$)?",
+        "choices": [
+          "4.00 g",
+          "12.0 g",
+          "24.0 g",
+          "36.0 g"
+        ],
+        "answer": 1,
+        "working": "Fat $= 89 \\div 890 = 0.100$ mol, so $\\ce{NaOH} = 0.300$ mol $= 0.300 \\times 40 = 12.0$ g."
+      }
+    ]
+  },
+  "cx-19-4": {
+    "lessonId": "cx-19-4",
+    "title": "Carbohydrates and Food Tests",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Classifying carbohydrates",
+        "t": 25.62
+      },
+      {
+        "title": "Breaking starch down",
+        "t": 54.446
+      },
+      {
+        "title": "Hydrolysis",
+        "t": 79.338
+      },
+      {
+        "title": "Food tests",
+        "t": 112.388
+      },
+      {
+        "title": "Sucrose is not reducing",
+        "t": 141.399
+      },
+      {
+        "title": "Your turn",
+        "t": 170.947
+      },
+      {
+        "title": "Summary",
+        "t": 207.701
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-19-4:q",
+        "t": 186.538,
+        "prompt": "A food gives no change with Benedict’s solution, but brick red after boiling with dilute HCl and neutralising. It also stays brown with iodine. What does it contain?",
+        "choices": [
+          "Glucose",
+          "Starch",
+          "Protein",
+          "Sucrose"
+        ],
+        "answer": 3,
+        "working": "A non-reducing sugar that becomes reducing on hydrolysis, and no starch: sucrose."
+      }
+    ]
+  },
+  "cx-19-5": {
+    "lessonId": "cx-19-5",
+    "title": "Purifying and Analysing Organic Compounds",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Distillation up close",
+        "t": 20.979
+      },
+      {
+        "title": "Choosing a method",
+        "t": 44.156
+      },
+      {
+        "title": "Chromatography and purity",
+        "t": 80.675
+      },
+      {
+        "title": "Detecting the elements",
+        "t": 108.825
+      },
+      {
+        "title": "Combustion analysis",
+        "t": 153.655
+      },
+      {
+        "title": "Your turn",
+        "t": 205.888
+      },
+      {
+        "title": "Summary",
+        "t": 243.856
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-19-5:q",
+        "t": 222.217,
+        "prompt": "A hydrocarbon burns to give 0.880 g of $\\ce{CO2}$ and 0.540 g of water. What is its empirical formula?",
+        "choices": [
+          "$\\ce{CH2}$",
+          "$\\ce{CH4}$",
+          "$\\ce{C2H5}$",
+          "$\\ce{CH3}$"
+        ],
+        "answer": 3,
+        "working": "C $= 0.880 \\times 12 \\div 44 = 0.240$ g $= 0.020$ mol; H $= 0.540 \\times 2 \\div 18 = 0.060$ g $= 0.060$ mol; ratio $1 : 3$."
+      }
+    ]
+  },
+  "cx-19-6": {
+    "lessonId": "cx-19-6",
+    "title": "Bond Fission and Electronic Effects",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two ways to break a bond",
+        "t": 23.556
+      },
+      {
+        "title": "Kinds of reagent",
+        "t": 60.61
+      },
+      {
+        "title": "A nucleophile attacks",
+        "t": 87.919
+      },
+      {
+        "title": "The inductive effect",
+        "t": 119.078
+      },
+      {
+        "title": "The mesomeric effect",
+        "t": 163.936
+      },
+      {
+        "title": "Your turn",
+        "t": 201.936
+      },
+      {
+        "title": "Summary",
+        "t": 236.154
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-19-6:q",
+        "t": 213.031,
+        "prompt": "Which is the strongest acid?",
+        "choices": [
+          "$\\ce{CH3COOH}$",
+          "$\\ce{ClCH2COOH}$",
+          "$\\ce{FCH2COOH}$",
+          "$\\ce{CH3CH2COOH}$"
+        ],
+        "answer": 2,
+        "working": "Fluorine is the most electronegative, so it withdraws electrons most strongly (−I) and best stabilises the anion."
+      }
+    ]
+  },
   "cx-20-1": {
     "lessonId": "cx-20-1",
     "title": "Elemental Analysis and Purity",
