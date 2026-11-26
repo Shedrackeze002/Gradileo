@@ -857,7 +857,13 @@ items ship or decisions change.
      carbohydrates and food tests, organic analysis, and bond fission and electron effects (Unit
      19). Nuclear chemistry uses the Physics 30 lessons on the nucleus. **All three courses have no
      gaps.** A Nigerian or Ghanaian chemistry learner in SS 1 to SS 3 is placed in the year's
-     WASSCE Chemistry course. Next: animated explainer videos for the thirty new lessons.
+     WASSCE Chemistry course.
+   - Built (26 November 2026), the thirty **WASSCE gap-lesson videos** (`chemmore/videos/cx-13-1`
+     to `cx-19-6`), each with the concept moving on screen: new particle and molecule builders in
+     `chemmore/videos/lib/cx-waec.ts` (gas effusion, Brownian motion, vapour pressure, bond fission,
+     the aluminium cell, fermentation, heating two carbonates, soap lifting grease, starch
+     hydrolysis) and `lewisAdduct` in `cx-molecules.ts`, with reused builders for the rest. Each
+     unit goes to Drive under *More Chemistry* as it finishes rendering.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1

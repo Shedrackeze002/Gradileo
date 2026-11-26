@@ -21998,6 +21998,324 @@
       }
     ]
   },
+  "cx-13-1": {
+    "lessonId": "cx-13-1",
+    "title": "Measurement and the Scientific Method",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An experiment tests an idea",
+        "t": 22.966
+      },
+      {
+        "title": "SI units",
+        "t": 70.889
+      },
+      {
+        "title": "Significant figures",
+        "t": 98.576
+      },
+      {
+        "title": "Accuracy and precision",
+        "t": 156.33
+      },
+      {
+        "title": "Your turn",
+        "t": 198.141
+      },
+      {
+        "title": "Summary",
+        "t": 229.709
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-1:q",
+        "t": 207.915,
+        "prompt": "How many significant figures are there in $0.02050$?",
+        "choices": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer": 2,
+        "working": "Start at the first non-zero digit, the 2: the digits $2, 0, 5, 0$ all count, so there are 4."
+      }
+    ]
+  },
+  "cx-13-2": {
+    "lessonId": "cx-13-2",
+    "title": "The Laws of Chemical Combination",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Every atom is kept",
+        "t": 22.517
+      },
+      {
+        "title": "Mass and composition",
+        "t": 55.753
+      },
+      {
+        "title": "Multiple proportions",
+        "t": 103.293
+      },
+      {
+        "title": "Combining volumes",
+        "t": 138.34
+      },
+      {
+        "title": "A common mistake",
+        "t": 170.29
+      },
+      {
+        "title": "Your turn",
+        "t": 186.63
+      },
+      {
+        "title": "Summary",
+        "t": 222.311
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-2:q",
+        "t": 202.787,
+        "prompt": "Methane burns: $\\ce{CH4(g) + 2O2(g) -> CO2(g) + 2H2O(l)}$. What volume of oxygen reacts with $30\\ \\text{cm}^3$ of methane?",
+        "choices": [
+          "$15\\ \\text{cm}^3$",
+          "$30\\ \\text{cm}^3$",
+          "$90\\ \\text{cm}^3$",
+          "$60\\ \\text{cm}^3$"
+        ],
+        "answer": 3,
+        "working": "The ratio of methane to oxygen is $1 : 2$, so $30 \\times 2 = 60\\ \\text{cm}^3$."
+      }
+    ]
+  },
+  "cx-13-3": {
+    "lessonId": "cx-13-3",
+    "title": "Orbitals and the Rules for Filling Them",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Filling from the inside",
+        "t": 20.354
+      },
+      {
+        "title": "Sub-levels and orbitals",
+        "t": 52.243
+      },
+      {
+        "title": "Three rules",
+        "t": 86.557
+      },
+      {
+        "title": "The configuration of iron",
+        "t": 122.16
+      },
+      {
+        "title": "Your turn",
+        "t": 166.062
+      },
+      {
+        "title": "Summary",
+        "t": 194.419
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-3:q",
+        "t": 176.64,
+        "prompt": "A phosphorus atom ends in $3p^3$. How many unpaired electrons does it have?",
+        "choices": [
+          "3",
+          "1",
+          "0",
+          "5"
+        ],
+        "answer": 0,
+        "working": "By Hund’s rule the three 3p electrons go one to each 3p orbital: $[\\uparrow][\\uparrow][\\uparrow]$, all unpaired."
+      }
+    ]
+  },
+  "cx-13-4": {
+    "lessonId": "cx-13-4",
+    "title": "Hybridisation, Sigma and Pi Bonds",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regions spread out",
+        "t": 22.319
+      },
+      {
+        "title": "Counting regions",
+        "t": 54.67
+      },
+      {
+        "title": "Sigma and pi bonds",
+        "t": 99.048
+      },
+      {
+        "title": "A pi bond stops rotation",
+        "t": 131.858
+      },
+      {
+        "title": "A common mistake",
+        "t": 153.631
+      },
+      {
+        "title": "Your turn",
+        "t": 169.192
+      },
+      {
+        "title": "Summary",
+        "t": 200.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-13-4:q",
+        "t": 178.739,
+        "prompt": "What is the hybridisation of carbon in methanal, $\\ce{H2C=O}$?",
+        "choices": [
+          "sp",
+          "sp²",
+          "sp³",
+          "sp³d²"
+        ],
+        "answer": 1,
+        "working": "Carbon bonds to two H atoms and one O atom and has no lone pair: 3 regions, so sp², trigonal planar."
+      }
+    ]
+  },
+  "cx-14-1": {
+    "lessonId": "cx-14-1",
+    "title": "Graham’s Law and Dalton’s Law of Partial Pressures",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Light gases move faster",
+        "t": 23.325
+      },
+      {
+        "title": "Graham’s law",
+        "t": 51.765
+      },
+      {
+        "title": "The white ring",
+        "t": 91.671
+      },
+      {
+        "title": "Dalton’s law",
+        "t": 132.702
+      },
+      {
+        "title": "A common mistake",
+        "t": 161.564
+      },
+      {
+        "title": "Your turn",
+        "t": 182.692
+      },
+      {
+        "title": "Summary",
+        "t": 214.597
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-14-1:q",
+        "t": 194.473,
+        "prompt": "How many times faster does helium ($M = 4$) diffuse than methane ($M = 16$)?",
+        "choices": [
+          "4 times",
+          "$\\tfrac{1}{2}$ as fast",
+          "2 times",
+          "16 times"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{r_{\\ce{He}}}{r_{\\ce{CH4}}} = \\sqrt{\\dfrac{16}{4}} = \\sqrt{4} = 2$"
+      }
+    ]
+  },
+  "cx-14-2": {
+    "lessonId": "cx-14-2",
+    "title": "Vapour Pressure, Boiling and Brownian Motion",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Vapour above a liquid",
+        "t": 20.606
+      },
+      {
+        "title": "When a liquid boils",
+        "t": 57.386
+      },
+      {
+        "title": "Brownian motion",
+        "t": 101.336
+      },
+      {
+        "title": "Kinds of solid",
+        "t": 139.054
+      },
+      {
+        "title": "Your turn",
+        "t": 176.784
+      },
+      {
+        "title": "Summary",
+        "t": 211.295
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-14-2:q",
+        "t": 190.293,
+        "prompt": "The pressure above some water is $47.4\\ \\text{kPa}$. Water’s vapour pressure is $31.2\\ \\text{kPa}$ at 70 °C, $47.4\\ \\text{kPa}$ at 80 °C and $70.1\\ \\text{kPa}$ at 90 °C. At what temperature does the water boil?",
+        "choices": [
+          "70 °C",
+          "90 °C",
+          "100 °C",
+          "80 °C"
+        ],
+        "answer": 3,
+        "working": "Water boils when its vapour pressure equals the pressure above it: $47.4\\ \\text{kPa}$ at 80 °C."
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",

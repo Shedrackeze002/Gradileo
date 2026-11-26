@@ -60,6 +60,20 @@ const T: Record<string, Template> = {
   CaCl2: { atoms: [['Cl', -1.5, 0, -1], ['Ca', 0, 0, 2], ['Cl', 1.5, 0, -1]], bonds: '', formula: 'CaCl₂' },
   Ca2: { atoms: [['Ca', 0, 0, 2]], bonds: '', formula: 'Ca²⁺' },
   OH: { atoms: [['O', -0.35, 0, -1], ['H', 0.45, 0]], bonds: '0-1', formula: 'OH⁻' },
+  S: { atoms: [['S', 0, 0]], bonds: '', formula: 'S' },
+  SO2: { atoms: [['S', 0, -0.25], ['O', -1.1, 0.4], ['O', 1.1, 0.4]], bonds: '0=1 0=2', formula: 'SO₂' },
+  SO3: { atoms: [['S', 0, 0.1], ['O', 0, -1.1], ['O', -1.05, 0.7], ['O', 1.05, 0.7]], bonds: '0=1 0=2 0=3', formula: 'SO₃' },
+  Fe: { atoms: [['Fe', 0, 0]], bonds: '', formula: 'Fe' },
+  Fe2O3: {
+    atoms: [['Fe', -0.8, -0.6, 3], ['Fe', 0.8, -0.6, 3], ['O', -1.55, 0.65, -2], ['O', 0, 0.65, -2], ['O', 1.55, 0.65, -2]],
+    bonds: '',
+    formula: 'Fe₂O₃',
+  },
+  MgCO3: {
+    atoms: [['Mg', -1.55, 0.1, 2], ['C', 0.45, 0.1], ['O', 0.45, -0.95], ['O', -0.45, 0.65, -1], ['O', 1.35, 0.65, -1]],
+    bonds: '1=2 1-3 1-4',
+    formula: 'MgCO₃',
+  },
   CaOH2: {
     atoms: [['Ca', 0, 0, 2], ['O', -1.45, 0, -1], ['H', -2.2, -0.45], ['O', 1.45, 0, -1], ['H', 2.2, -0.45]],
     bonds: '1-2 3-4',
@@ -68,7 +82,7 @@ const T: Record<string, Template> = {
 };
 
 /** Colours for elements the molecules element has no colour of its own for. */
-const TONE: Record<string, Tone> = { Mg: 'opp', Ca: 'hyp', S: 'opp' };
+const TONE: Record<string, Tone> = { Mg: 'opp', Ca: 'hyp', S: 'opp', Fe: 'hyp' };
 
 const size = (t: Template) => {
   const xs = t.atoms.map((a) => a[1]);

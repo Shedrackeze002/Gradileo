@@ -568,3 +568,36 @@ export const peptideLink = (id: string, height = 400): MoleculesEl => {
     height,
   );
 };
+
+/**
+ * Boron trifluoride meets ammonia (clip `bind`): boron has only six outer electrons, and the lone
+ * pair on nitrogen (the curly arrow) moves in to form a dative bond, F₃B–NH₃. The base donates the
+ * pair (a Lewis base) and boron accepts it (a Lewis acid), with no proton involved.
+ */
+export const lewisAdduct = (id: string, height = 360): MoleculesEl =>
+  sized(
+    el(
+      id,
+      { B: { el: 'B', tone: 'hyp' }, F1: 'F', F2: 'F', F3: 'F', N: 'N', H1: 'H', H2: 'H', H3: 'H' },
+      {
+        far: {
+          at: { B: [3.0, 2.9], F1: [3.0, 1.6], F2: [1.87, 3.55], F3: [4.13, 3.55], N: [7.6, 2.9], H1: [8.25, 2.25], H2: [8.25, 3.55], H3: [8.6, 2.9] },
+          bonds: 'B-F1 B-F2 B-F3 N-H1 N-H2 N-H3',
+          names: [
+            { text: 'BF₃: B has only six outer electrons', at: [3.0, 5.0] },
+            { text: 'NH₃: a lone pair on N', at: [8.0, 5.0] },
+          ],
+          arrows: [{ from: 'N', to: 'B', bend: 0.3 }],
+        },
+        near: {
+          at: { B: [4.4, 2.9], F1: [3.75, 1.77], F2: [3.1, 2.9], F3: [3.75, 4.03], N: [5.9, 2.9], H1: [6.55, 1.77], H2: [6.55, 4.03], H3: [7.2, 2.9] },
+          bonds: 'B-F1 B-F2 B-F3 N-H1 N-H2 N-H3 B-N',
+          names: [{ text: 'F₃B–NH₃: a dative bond, both electrons from N', at: [5.2, 5.0], tone: 'good' }],
+        },
+      },
+      'far',
+      { bind: { phases: [{ dur: 1.2 }, ...go('near', 2.6, 1.2)] } },
+      [10.4, 5.8],
+    ),
+    height,
+  );
