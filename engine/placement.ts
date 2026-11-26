@@ -91,6 +91,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'us-english-10': 'us-english-9',
   'us-english-11': 'us-english-10',
   'us-english-12': 'us-english-11',
+  'us-ap-chemistry': 'chem-20',
   // The UK GCSE map: both tiers follow Key Stage 3 (Years 7 to 9).
   'uk-gcse-foundation': 'math-8',
   'uk-gcse-higher': 'math-9',
@@ -196,6 +197,20 @@ function usEnglish(g: number): Recommendation {
   const alternatives: CourseChoice[] = [{ courseId: own, why: 'The same kind of lessons in Gradileo’s own order for this grade.' }];
   if (g > 5) alternatives.push({ courseId: g === 9 ? 'us-ela-grade-8' : g <= 8 ? `us-ela-grade-${g - 1}` : `us-english-${g - 1}`, why: 'If you want to build up the year before first.' });
   return rec(id, [`${title} is the English course of Grade ${g} in most US schools, with its units in the order of the Common Core standards.`], alternatives);
+}
+
+/** For a US learner of chemistry in Grade 11 or 12: AP Chemistry after a first-year course. */
+function usChemistry(g: number): Recommendation {
+  const ap = 'AP Chemistry is the college-level course US students usually take in Grade 11 or 12 after a first chemistry course, with its nine units in the order of the AP course.';
+  if (g <= 11) {
+    return rec('chem-20', ['Grade 11 Chemistry covers bonding and the shapes of molecules, gases, solutions, acids and bases, and stoichiometry: the first-year chemistry that AP Chemistry builds on.'], [
+      { courseId: 'us-ap-chemistry', why: 'If you are taking AP Chemistry this year.' },
+    ]);
+  }
+  return rec('us-ap-chemistry', [ap], [
+    { courseId: 'chem-20', why: 'If you want to review first-year chemistry first.' },
+    { courseId: 'chem-30', why: 'Grade 12 Chemistry covers thermochemistry, electrochemistry, organic chemistry and equilibrium, in Gradileo’s own order.' },
+  ]);
 }
 
 /** For a learner in Nigeria or Ghana in senior secondary school: the year of WASSCE General Mathematics. */
@@ -318,6 +333,7 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
   // A senior secondary learner of chemistry in Nigeria or Ghana gets the year of WASSCE Chemistry.
   if ((a.curriculum === 'ng' || a.curriculum === 'gh') && a.subject === 'Chemistry' && g >= 10) return waecChemistry(Math.min(12, g), a);
   if (a.curriculum === 'us' && a.subject === 'English' && g >= 5) return usEnglish(Math.min(12, g));
+  if (a.curriculum === 'us' && a.subject === 'Chemistry' && g >= 11) return usChemistry(Math.min(12, g));
   if (a.subject === 'English') {
     if (g <= 5) {
       const reasons = ['Grade 5 English covers stories and fables, poetry, reading for information, word study, grammar and punctuation, and writing paragraphs, stories and opinions.'];

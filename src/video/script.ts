@@ -3338,6 +3338,13 @@ export interface HalflifeEl {
   /** The number of nuclei drawn (400 otherwise), and a number that deals them other moments to decay. */
   count?: number;
   salt?: number;
+  /**
+   * What the sample is made of and what happens to it, for a first-order reaction in chemistry:
+   * `noun` names the particles ("molecules"; "nuclei" otherwise) and `gone` what they do
+   * ("reacted"; "decayed" otherwise).
+   */
+  noun?: string;
+  gone?: string;
   /** The amount at the start, its unit and what it is called on the graph (100, `%` and "Amount left" otherwise). */
   amount?: number;
   amountUnit?: string;

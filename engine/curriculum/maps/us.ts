@@ -6,6 +6,7 @@
  */
 import type { CurriculumMap } from './build.ts';
 import { US_ENGLISH_COURSES } from './us-english.ts';
+import { US_CHEMISTRY_COURSES } from './us-chemistry.ts';
 
 export const US_MAP: CurriculumMap = {
   curriculum: 'us',
@@ -144,5 +145,6 @@ export const US_MAP: CurriculumMap = {
     },
     // English, in its own file.
     ...US_ENGLISH_COURSES,
+    ...US_CHEMISTRY_COURSES,
   ],
 };
