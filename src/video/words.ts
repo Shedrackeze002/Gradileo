@@ -30,7 +30,7 @@ export function speechText(say: string): string {
   // together, said as separate words. The metal lead is always read as the verb ("leed"), so where it is
   // the metal (lead two nitrate, a sample of lead) it is spelled as it sounds; "lead to" and "a big lead" keep theirs.
   // Chemistry prefixes: "deca" alone and in "decahydrate" is stressed "dih-KA", "heptaoxide" runs its
-  // vowels together ("hep-TOWK-side"), "pipetted" comes out "PIPE-uh-did", "electronegativity" loses its
+  // vowels together ("hep-TOWK-side"), "pipetted" comes out "PIPE-uh-did", a "titre" is said "titter" (it rhymes with "fighter"), "electronegativity" loses its
   // "neg" ("electrong-gativity"), the chemist Svante Arrhenius is "Svant", and Le Chatelier is
   // "luh CHATE-lee-er". Organic names: "ethene" comes out "EE-theen" (heard as ethyne), "propene"
   // "pruh-PEEN", "propyne" "PRAH-pin", "ketone" "KET-own", "cycloalkane" without its "al", and
@@ -49,6 +49,7 @@ export function speechText(say: string): string {
   return words
     .replace(/\bWs\b/g, 'double-yous')
     .replace(/\b([Mm])odulo\b/g, '$1od-yoo-low')
+    .replace(/\b([Tt])itre(s?)\b/g, '$1ighter$2')
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
     .replace(/\b(GST|HST|EI)\b/g, (m) => m.split('').join(' '))
@@ -95,6 +96,8 @@ export function speechText(say: string): string {
     .replace(/\b([Ee])thene\b/g, '$1th-een')
     .replace(/\b([Pp])ropene\b/g, '$1ro-peen')
     .replace(/\b([Pp])ropyne\b/g, '$1ro-pine')
+    // "but-one-yne" comes out "butt un", so the butane stem is said "byoot" and the ending as it sounds.
+    .replace(/\b([Bb])ut-(one|two|1|2)-(ene|yne)\b/g, (_m, b: string, n: string, e: string) => `${b === 'B' ? 'Byoot' : 'byoot'} ${n} ${e === 'ene' ? 'een' : 'ine'}`)
     .replace(/\b([Kk])etone/g, '$1ee-tone')
     .replace(/\b([Cc])ycloalk/g, '$1yclo-alk')
     .replace(/\b([Mm]eth|[Ee]th)oxy(meth|eth|prop)ane\b/g, '$1oxy-$2ane')
