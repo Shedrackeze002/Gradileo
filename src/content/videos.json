@@ -23620,6 +23620,744 @@
       }
     ]
   },
+  "cx-20-1": {
+    "lessonId": "cx-20-1",
+    "title": "Elemental Analysis and Purity",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Following the atoms",
+        "t": 21.594
+      },
+      {
+        "title": "Mass percent",
+        "t": 51.451
+      },
+      {
+        "title": "Definite proportions",
+        "t": 78.601
+      },
+      {
+        "title": "Finding the purity",
+        "t": 106.704
+      },
+      {
+        "title": "A common mistake",
+        "t": 140.18
+      },
+      {
+        "title": "Your turn",
+        "t": 157.502
+      },
+      {
+        "title": "Summary",
+        "t": 187.839
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-20-1:q",
+        "t": 168.432,
+        "prompt": "What is the mass percent of oxygen in water, $\\ce{H2O}$? (H = 1, O = 16)",
+        "choices": [
+          "16.0%",
+          "88.9%",
+          "11.1%",
+          "33.3%"
+        ],
+        "answer": 1,
+        "working": "$M = 2 + 16 = 18$ g/mol, so oxygen is $\\dfrac{16}{18} \\times 100 = 88.9\\%$."
+      }
+    ]
+  },
+  "cx-20-2": {
+    "lessonId": "cx-20-2",
+    "title": "Coulomb’s Law and Photoelectron Spectroscopy",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Coulomb’s law",
+        "t": 24.82
+      },
+      {
+        "title": "Down a group, up close",
+        "t": 50.348
+      },
+      {
+        "title": "Knocking electrons out",
+        "t": 86.371
+      },
+      {
+        "title": "Reading a spectrum",
+        "t": 126.009
+      },
+      {
+        "title": "Your turn",
+        "t": 164.572
+      },
+      {
+        "title": "Summary",
+        "t": 194.571
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-20-2:q",
+        "t": 177.421,
+        "prompt": "How many peaks does the photoelectron spectrum of magnesium ($1s^2\\,2s^2\\,2p^6\\,3s^2$) have?",
+        "choices": [
+          "2",
+          "3",
+          "4",
+          "12"
+        ],
+        "answer": 2,
+        "working": "Each occupied subshell gives one peak: 1s, 2s, 2p and 3s, so 4 peaks."
+      }
+    ]
+  },
+  "cx-20-3": {
+    "lessonId": "cx-20-3",
+    "title": "Bond Energy Curves, Ionic Solids and Alloys",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two atoms meet",
+        "t": 23.744
+      },
+      {
+        "title": "The potential energy curve",
+        "t": 53.078
+      },
+      {
+        "title": "Ionic solids",
+        "t": 86.903
+      },
+      {
+        "title": "Metals and alloys, up close",
+        "t": 129.835
+      },
+      {
+        "title": "Your turn",
+        "t": 174.425
+      },
+      {
+        "title": "Summary",
+        "t": 206.659
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-20-3:q",
+        "t": 185.279,
+        "prompt": "Which ionic solid should have the highest melting point? (The ions are of similar sizes.)",
+        "choices": [
+          "$\\ce{CaO}$",
+          "$\\ce{KCl}$",
+          "$\\ce{NaCl}$",
+          "$\\ce{KBr}$"
+        ],
+        "answer": 0,
+        "working": "$\\ce{Ca^2+}$ and $\\ce{O^2-}$ carry charges of 2, so the attraction is about four times that between ions of charge 1."
+      }
+    ]
+  },
+  "cx-20-4": {
+    "lessonId": "cx-20-4",
+    "title": "Resonance and Formal Charge",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Formal charge",
+        "t": 23.688
+      },
+      {
+        "title": "The best structure",
+        "t": 61.302
+      },
+      {
+        "title": "Ozone, up close",
+        "t": 80.296
+      },
+      {
+        "title": "Resonance",
+        "t": 114.3
+      },
+      {
+        "title": "Your turn",
+        "t": 148.301
+      },
+      {
+        "title": "Summary",
+        "t": 182.743
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-20-4:q",
+        "t": 162.299,
+        "prompt": "What is the formal charge on a nitrogen atom with four bonds and no lone pairs, as in the ammonium ion? (N has 5 valence electrons.)",
+        "choices": [
+          "−1",
+          "0",
+          "+4",
+          "+1"
+        ],
+        "answer": 3,
+        "working": "Formal charge $= 5 - 0 - 4 = +1$."
+      }
+    ]
+  },
+  "cx-21-1": {
+    "lessonId": "cx-21-1",
+    "title": "Photons and Spectroscopy",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Photons",
+        "t": 25.62
+      },
+      {
+        "title": "The energy of a photon",
+        "t": 62.12
+      },
+      {
+        "title": "Taking in a photon",
+        "t": 97.294
+      },
+      {
+        "title": "Regions of the spectrum",
+        "t": 141.719
+      },
+      {
+        "title": "Your turn",
+        "t": 177.545
+      },
+      {
+        "title": "Summary",
+        "t": 203.735
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-21-1:q",
+        "t": 186.094,
+        "prompt": "A molecule absorbs infrared radiation. What happens to it?",
+        "choices": [
+          "An electron moves to a higher level",
+          "Its bonds vibrate more strongly",
+          "It rotates faster",
+          "A bond breaks at once"
+        ],
+        "answer": 1,
+        "working": "Infrared photons match the gaps between vibrational levels, so the bonds vibrate more strongly."
+      }
+    ]
+  },
+  "cx-21-2": {
+    "lessonId": "cx-21-2",
+    "title": "The Beer–Lambert Law",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The Beer–Lambert law",
+        "t": 24.307
+      },
+      {
+        "title": "Diluting a standard, up close",
+        "t": 55.142
+      },
+      {
+        "title": "Finding a concentration",
+        "t": 89.807
+      },
+      {
+        "title": "Calibration graphs",
+        "t": 118.664
+      },
+      {
+        "title": "A common mistake",
+        "t": 155.013
+      },
+      {
+        "title": "Your turn",
+        "t": 172.164
+      },
+      {
+        "title": "Summary",
+        "t": 204.808
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-21-2:q",
+        "t": 185.69,
+        "prompt": "A solution has an absorbance of 0.40 in a 1.0 cm cuvette. What is its absorbance in a 2.0 cm cuvette?",
+        "choices": [
+          "0.80",
+          "0.20",
+          "0.40",
+          "1.60"
+        ],
+        "answer": 0,
+        "working": "Absorbance is proportional to the path length, so doubling $b$ doubles $A$: $0.80$."
+      }
+    ]
+  },
+  "cx-22-1": {
+    "lessonId": "cx-22-1",
+    "title": "Integrated Rate Laws and Half-Life",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A first-order reaction, up close",
+        "t": 25.198
+      },
+      {
+        "title": "The integrated rate laws",
+        "t": 73.515
+      },
+      {
+        "title": "How much is left?",
+        "t": 97.373
+      },
+      {
+        "title": "Finding the order",
+        "t": 134.889
+      },
+      {
+        "title": "Your turn",
+        "t": 165.643
+      },
+      {
+        "title": "Summary",
+        "t": 194.646
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-22-1:q",
+        "t": 177.718,
+        "prompt": "A first-order reaction has a half-life of 30 s. What fraction of the reactant is left after 90 s?",
+        "choices": [
+          "One third",
+          "One half",
+          "One eighth",
+          "One sixth"
+        ],
+        "answer": 2,
+        "working": "90 s is three half-lives, so $\\left(\\tfrac{1}{2}\\right)^3 = \\tfrac{1}{8}$ is left."
+      }
+    ]
+  },
+  "cx-22-2": {
+    "lessonId": "cx-22-2",
+    "title": "Reaction Mechanisms and Rate Laws",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A mechanism, up close",
+        "t": 22.928
+      },
+      {
+        "title": "Intermediates and catalysts",
+        "t": 65.068
+      },
+      {
+        "title": "The slow step decides",
+        "t": 94.933
+      },
+      {
+        "title": "A fast equilibrium first",
+        "t": 124.335
+      },
+      {
+        "title": "Catalysts, up close",
+        "t": 155.404
+      },
+      {
+        "title": "Your turn",
+        "t": 193.204
+      },
+      {
+        "title": "Summary",
+        "t": 229.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-22-2:q",
+        "t": 208.132,
+        "prompt": "Step 1: $\\ce{H2O2 + I- -> H2O + IO-}$ (slow). Step 2: $\\ce{H2O2 + IO- -> H2O + O2 + I-}$ (fast). What rate law does this predict?",
+        "choices": [
+          "$k[\\ce{H2O2}]^2$",
+          "$k[\\ce{IO-}][\\ce{H2O2}]$",
+          "$k[\\ce{H2O2}]$",
+          "$k[\\ce{H2O2}][\\ce{I-}]$"
+        ],
+        "answer": 3,
+        "working": "The slow first step is one $\\ce{H2O2}$ meeting one $\\ce{I-}$, so rate $= k[\\ce{H2O2}][\\ce{I-}]$."
+      }
+    ]
+  },
+  "cx-22-3": {
+    "lessonId": "cx-22-3",
+    "title": "Energy of Phase Changes",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A change of state, up close",
+        "t": 22.893
+      },
+      {
+        "title": "Enthalpies of fusion and vaporisation",
+        "t": 70.012
+      },
+      {
+        "title": "Reading a heating curve",
+        "t": 101.166
+      },
+      {
+        "title": "From water to steam",
+        "t": 131.405
+      },
+      {
+        "title": "Your turn",
+        "t": 169.147
+      },
+      {
+        "title": "Summary",
+        "t": 202.854
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-22-3:q",
+        "t": 183.437,
+        "prompt": "How much energy is needed to melt 36.0 g of ice at 0 °C? ($\\Delta H_\\text{fus} = 6.01$ kJ/mol, molar mass 18.0 g/mol)",
+        "choices": [
+          "6.01 kJ",
+          "12.0 kJ",
+          "81.4 kJ",
+          "216 kJ"
+        ],
+        "answer": 1,
+        "working": "$n = \\dfrac{36.0}{18.0} = 2.00$ mol, so $q = 2.00 \\times 6.01 = 12.0$ kJ."
+      }
+    ]
+  },
+  "cx-23-1": {
+    "lessonId": "cx-23-1",
+    "title": "The Reaction Quotient and the Properties of K",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From either side, up close",
+        "t": 25.072
+      },
+      {
+        "title": "The reaction quotient",
+        "t": 57.758
+      },
+      {
+        "title": "Which way will it go?",
+        "t": 87.912
+      },
+      {
+        "title": "Disturbing an equilibrium, up close",
+        "t": 118.647
+      },
+      {
+        "title": "The properties of K",
+        "t": 157.048
+      },
+      {
+        "title": "Your turn",
+        "t": 183.019
+      },
+      {
+        "title": "Summary",
+        "t": 211.432
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-23-1:q",
+        "t": 191.631,
+        "prompt": "For $\\ce{A <=> B}$, $K = 4.0$. What is $K$ for $\\ce{2B <=> 2A}$?",
+        "choices": [
+          "$0.0625$",
+          "$0.25$",
+          "$16$",
+          "$0.50$"
+        ],
+        "answer": 0,
+        "working": "Reverse it ($1/4.0 = 0.25$), then double it ($0.25^2 = 0.0625$)."
+      }
+    ]
+  },
+  "cx-23-2": {
+    "lessonId": "cx-23-2",
+    "title": "Acid Strength, Structure and pKa",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Strong and weak, up close",
+        "t": 26.312
+      },
+      {
+        "title": "A proton moves",
+        "t": 64.756
+      },
+      {
+        "title": "What makes a strong acid",
+        "t": 87.803
+      },
+      {
+        "title": "pH and pKa",
+        "t": 131.632
+      },
+      {
+        "title": "Choosing an indicator",
+        "t": 169.394
+      },
+      {
+        "title": "Your turn",
+        "t": 187.414
+      },
+      {
+        "title": "Summary",
+        "t": 218.686
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-23-2:q",
+        "t": 200.751,
+        "prompt": "Benzoic acid has $\\text{p}K_a = 4.20$. In a solution of pH 6.0, which form is present in the larger amount?",
+        "choices": [
+          "The protonated form",
+          "Both, equally",
+          "The conjugate base",
+          "Neither form"
+        ],
+        "answer": 2,
+        "working": "pH 6.0 is above the pKa of 4.20, so the deprotonated form, the conjugate base, dominates."
+      }
+    ]
+  },
+  "cx-23-3": {
+    "lessonId": "cx-23-3",
+    "title": "The Henderson–Hasselbalch Equation and Buffer Capacity",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A buffer at work, up close",
+        "t": 20.97
+      },
+      {
+        "title": "The Henderson–Hasselbalch equation",
+        "t": 58.658
+      },
+      {
+        "title": "Adding base",
+        "t": 93.388
+      },
+      {
+        "title": "Using up a buffer, up close",
+        "t": 132.523
+      },
+      {
+        "title": "Buffer capacity",
+        "t": 175.404
+      },
+      {
+        "title": "Your turn",
+        "t": 206.036
+      },
+      {
+        "title": "Summary",
+        "t": 237.91
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-23-3:q",
+        "t": 219.673,
+        "prompt": "A buffer has $[\\text{A}^-] = [\\text{HA}]$ and $\\text{p}K_a = 9.25$. What is its pH?",
+        "choices": [
+          "4.75",
+          "7.00",
+          "0",
+          "9.25"
+        ],
+        "answer": 3,
+        "working": "The ratio is 1 and $\\log 1 = 0$, so pH = pKa = 9.25."
+      }
+    ]
+  },
+  "cx-24-1": {
+    "lessonId": "cx-24-1",
+    "title": "Free Energy and Equilibrium",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Free energy and K",
+        "t": 24.389
+      },
+      {
+        "title": "Favoured but slow, up close",
+        "t": 65.696
+      },
+      {
+        "title": "Coupled reactions",
+        "t": 109.258
+      },
+      {
+        "title": "Dissolving, up close",
+        "t": 140.175
+      },
+      {
+        "title": "Your turn",
+        "t": 171.037
+      },
+      {
+        "title": "Summary",
+        "t": 200.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-24-1:q",
+        "t": 182.829,
+        "prompt": "A reaction has $\\Delta G^\\circ = +20$ kJ/mol at 298 K. What can you say about $K$?",
+        "choices": [
+          "$K > 1$",
+          "$K < 1$",
+          "$K = 1$",
+          "$K$ is negative"
+        ],
+        "answer": 1,
+        "working": "$\\ln K = -\\dfrac{\\Delta G^\\circ}{RT}$ is negative, so $K$ is between 0 and 1: reactants are favoured."
+      }
+    ]
+  },
+  "cx-24-2": {
+    "lessonId": "cx-24-2",
+    "title": "Cell Potential, Free Energy and Nonstandard Conditions",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A cell at work, up close",
+        "t": 23.466
+      },
+      {
+        "title": "Cell potential and free energy",
+        "t": 60.004
+      },
+      {
+        "title": "Away from standard conditions",
+        "t": 98.087
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.569
+      },
+      {
+        "title": "Your turn",
+        "t": 160.681
+      },
+      {
+        "title": "Summary",
+        "t": 197.025
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-24-2:q",
+        "t": 176.421,
+        "prompt": "In a zinc–copper cell, $[\\ce{Cu^2+}]$ is raised to 2.0 mol/L with $[\\ce{Zn^2+}]$ at 1.0 mol/L. How does $E$ compare with $E^\\circ$?",
+        "choices": [
+          "Greater than $E^\\circ$",
+          "Less than $E^\\circ$",
+          "Equal to $E^\\circ$",
+          "It becomes zero"
+        ],
+        "answer": 0,
+        "working": "$Q = \\dfrac{[\\ce{Zn^2+}]}{[\\ce{Cu^2+}]} = 0.5$, less than 1, so the cell is farther from equilibrium and $E > E^\\circ$."
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",
