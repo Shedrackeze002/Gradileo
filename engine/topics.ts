@@ -137,16 +137,16 @@ export const TOPICS: Topic[] = [
   t(P, 'Fields, atoms and nuclei', 'nuclear-physics', 'The nucleus, radioactivity and nuclear energy', ['p30-4-4', 'p30-4-5', 'p30-4-6', 'p30-4-7']),
 
   // English.
-  t(E, 'Reading', 'fiction', 'Fiction and short stories', ['e5-u1', 'e6-u1', 'e7-u1', 'e8-u1', 'e9-u1', 'e10-u1', 'e11-u1', 'e12-u1', 'ex-1-1', 'ex-u5', 'ex-u6', 'ex-10-3', 'ex-10-4']),
+  t(E, 'Reading', 'fiction', 'Fiction and short stories', ['e5-u1', 'e6-u1', 'e7-u1', 'e8-u1', 'e9-u1', 'e10-u1', 'e11-u1', 'e12-u1', 'ex-1-1', 'ex-u5', 'ex-u6', 'ex-10-3', 'ex-10-4', 'ex-14-1', 'ex-14-4', 'ex-14-5']),
   t(E, 'Reading', 'poetry', 'Poetry', ['e5-u2', 'e6-u2', 'e7-u2', 'e8-u2', 'e9-u2', 'e10-u2', 'e11-u2', 'e12-u2', 'ex-u8', 'ex-u9']),
   t(E, 'Reading', 'drama', 'Drama and scripts', ['e7-u3', 'ex-10-1', 'ex-10-2']),
   t(E, 'Reading', 'shakespeare', 'Shakespeare', ['e8-u3', 'e9-u3', 'e10-u3', 'e11-u3', 'e12-u3', 'ex-u7']),
-  t(E, 'Reading', 'informational', 'Reading for information', ['e5-u3', 'e6-u3', 'e7-u4']),
+  t(E, 'Reading', 'informational', 'Reading for information', ['e5-u3', 'e6-u3', 'e7-u4', 'ex-14-2']),
   t(E, 'Reading', 'nonfiction-rhetoric', 'Non-fiction, essays and rhetoric', ['e8-u4', 'e9-u4', 'e10-u4', 'e11-u4', 'e12-u4', 'ex-1-2', 'ex-1-3', 'ex-3-1']),
-  t(E, 'Reading', 'media', 'Media and visual texts', ['e6-u4', 'e7-u5', 'e8-u5', 'e9-u5', 'e10-u5', 'e11-u5', 'e12-u5']),
-  t(E, 'Writing and language', 'vocabulary', 'Words and vocabulary', ['e5-u4', 'e6-u5', 'ex-4-1']),
-  t(E, 'Writing and language', 'writing', 'Writing', ['e5-u6', 'e6-u7', 'e7-u7', 'e8-u7', 'e9-u7', 'e10-u6', 'e11-u6', 'e12-u6', 'ex-u2', 'ex-3-2', 'ex-4-2']),
-  t(E, 'Writing and language', 'grammar', 'Grammar and language', ['e5-u5', 'e6-u6', 'e7-u6', 'e8-u6', 'e9-u6', 'e10-u7', 'e11-u7', 'e12-u7']),
+  t(E, 'Reading', 'media', 'Media and visual texts', ['e6-u4', 'e7-u5', 'e8-u5', 'e9-u5', 'e10-u5', 'e11-u5', 'e12-u5', 'ex-14-3']),
+  t(E, 'Writing and language', 'vocabulary', 'Words and vocabulary', ['e5-u4', 'e6-u5', 'ex-4-1', 'ex-u12']),
+  t(E, 'Writing and language', 'writing', 'Writing', ['e5-u6', 'e6-u7', 'e7-u7', 'e8-u7', 'e9-u7', 'e10-u6', 'e11-u6', 'e12-u6', 'ex-u2', 'ex-3-2', 'ex-4-2', 'ex-u13']),
+  t(E, 'Writing and language', 'grammar', 'Grammar and language', ['e5-u5', 'e6-u6', 'e7-u6', 'e8-u6', 'e9-u6', 'e10-u7', 'e11-u7', 'e12-u7', 'ex-u11']),
 ];
 
 export interface TopicLesson {

@@ -918,6 +918,29 @@ items ship or decisions change.
      and stored on Drive under `Gradileo videos/More Topics/`, ready for the YouTube uploads. The
      voice now says "modulo" correctly (`src/video/words.ts`). The tutor recordings follow from the
      *Tutor voice* workflow once the lessons and videos are merged.
+   - Built (26 November 2026), step 3: **US English Language Arts** (`engine/curriculum/maps/us-english.ts`,
+     joined to the US map), the Common Core State Standards for English Language Arts as eight
+     courses, Grade 5 to Grade 8 English Language Arts and English 9 to 12, each built from the
+     English lessons of its grade (borrowing a lesson of another grade where it teaches a standard)
+     under units named for the Common Core strands and standards (RL, RI, RF, W, SL, L). A US learner
+     from Grade 5 is offered the course of their grade on "Find your course", with Gradileo's own
+     course of that grade beside it; teachers start a class on one from the "US Common Core" tab.
+     More English Topics Units 11 and 12 (8 lessons, 26 November 2026) fill the language gaps:
+     conjunctions, prepositions and interjections, more commas and the titles of works, intensive
+     and vague pronouns and pronoun shifts, verb moods and shifts in voice and mood, contested usage
+     and hyphens, register, dialect and standard English, dictionaries, glossaries and thesauruses,
+     and word relationships and analogies. Units 13 and 14 (9 lessons, 26 November 2026) fill every
+     remaining gap of Grades 5 to 8: taking part in a discussion, reading aloud and speaking
+     clearly, presenting with visuals and media, writing and publishing with technology, comparing
+     characters, settings and stories, comparing accounts of one event and texts that disagree,
+     stories in pictures, on stage and on screen, historical fiction and history, and myths,
+     allusions and modern stories. Gaps still listed, by topic: world literature beyond Britain and
+     the United States, a subject in two artistic mediums, and how a writer transforms sources
+     (Grades 9 and 10); seminar discussions, digital media in presentations and publishing with
+     technology (Grades 9 to 12); productions of a play by Shakespeare and by an American dramatist,
+     the periods of American literature, the reasoning of The Federalist and the Supreme Court, and
+     the Declaration of Independence, the Constitution and the Bill of Rights (Grades 11 and 12).
+     Next: the high school lessons, then videos and tutor recordings for Units 11 and after.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

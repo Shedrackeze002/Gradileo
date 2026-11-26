@@ -82,6 +82,15 @@ export const PREREQUISITE: Record<string, string | null> = {
   'us-geometry': 'us-algebra-1',
   'us-algebra-2': 'us-algebra-1',
   'us-precalculus': 'us-algebra-2',
+  // US English: Grade 5 is Gradileo's first English course, then a grade at a time.
+  'us-ela-grade-5': null,
+  'us-ela-grade-6': 'us-ela-grade-5',
+  'us-ela-grade-7': 'us-ela-grade-6',
+  'us-ela-grade-8': 'us-ela-grade-7',
+  'us-english-9': 'us-ela-grade-8',
+  'us-english-10': 'us-english-9',
+  'us-english-11': 'us-english-10',
+  'us-english-12': 'us-english-11',
   // The UK GCSE map: both tiers follow Key Stage 3 (Years 7 to 9).
   'uk-gcse-foundation': 'math-8',
   'uk-gcse-higher': 'math-9',
@@ -177,6 +186,16 @@ function ukEnglish(): Recommendation {
     { courseId: 'uk-gcse-english-literature', why: 'For your other English GCSE: a Shakespeare play, poetry and writing about literature.' },
     { courseId: 'eng-9', why: 'If you want to build up close reading, rhetoric and the analytical essay first.' },
   ]);
+}
+
+/** For a US learner from Grade 5: the English course of their grade on the Common Core map, with Gradileo's own course of the grade beside it. */
+function usEnglish(g: number): Recommendation {
+  const id = g <= 8 ? `us-ela-grade-${g}` : `us-english-${g}`;
+  const title = g <= 8 ? `Grade ${g} English Language Arts` : `English ${g}`;
+  const own = g <= 9 ? `eng-${g}` : ({ 10: 'eng-10', 11: 'eng-20', 12: 'eng-30' } as Record<number, string>)[g]!;
+  const alternatives: CourseChoice[] = [{ courseId: own, why: 'The same kind of lessons in Gradileo’s own order for this grade.' }];
+  if (g > 5) alternatives.push({ courseId: g === 9 ? 'us-ela-grade-8' : g <= 8 ? `us-ela-grade-${g - 1}` : `us-english-${g - 1}`, why: 'If you want to build up the year before first.' });
+  return rec(id, [`${title} is the English course of Grade ${g} in most US schools, with its units in the order of the Common Core standards.`], alternatives);
 }
 
 /** For a learner in Nigeria or Ghana in senior secondary school: the year of WASSCE General Mathematics. */
@@ -298,6 +317,7 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
   if (a.curriculum === 'uk' && a.subject === 'Chemistry' && g >= 9) return ukChemistry(Math.min(12, g));
   // A senior secondary learner of chemistry in Nigeria or Ghana gets the year of WASSCE Chemistry.
   if ((a.curriculum === 'ng' || a.curriculum === 'gh') && a.subject === 'Chemistry' && g >= 10) return waecChemistry(Math.min(12, g), a);
+  if (a.curriculum === 'us' && a.subject === 'English' && g >= 5) return usEnglish(Math.min(12, g));
   if (a.subject === 'English') {
     if (g <= 5) {
       const reasons = ['Grade 5 English covers stories and fables, poetry, reading for information, word study, grammar and punctuation, and writing paragraphs, stories and opinions.'];

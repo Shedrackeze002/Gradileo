@@ -1,0 +1,220 @@
+/**
+ * US English as most US schools teach it under the Common Core State Standards for English
+ * Language Arts: English Language Arts in Grades 5 to 8, then English 9, 10, 11 and 12 (the high
+ * school standards come in two bands, Grades 9–10 and 11–12, so each band is taught over two
+ * courses). Each unit names the strand and the standards it serves: Reading Literature (RL),
+ * Reading Informational Text (RI), Reading Foundational Skills (RF, to Grade 5), Writing (W),
+ * Speaking and Listening (SL) and Language (L).
+ *
+ * The standards numbered 10 (reading texts of rising complexity, and writing routinely over short
+ * and long time frames) describe how much and how often students read and write rather than a
+ * topic, so every unit serves them and none is listed for them.
+ *
+ * Gradileo's own English courses are taught in Canada's order, so a standard met by a lesson of
+ * another grade borrows that lesson, as the maths courses of this map do. A standard that no lesson
+ * teaches yet is listed in the course's gaps, to be filled by More English Topics.
+ *
+ * Source: Common Core State Standards for English Language Arts & Literacy in History/Social
+ * Studies, Science, and Technical Subjects, © 2010 National Governors Association Center for Best
+ * Practices and Council of Chief State School Officers (corestandards.org). The units and gaps cite
+ * the standards by code and describe them in our own words.
+ */
+import type { MapCourse } from './build.ts';
+
+export const US_ENGLISH_COURSES: MapCourse[] = [
+  {
+    id: 'us-ela-grade-5',
+    title: 'Grade 5 English Language Arts (US Common Core)',
+    shortTitle: 'US ELA Grade 5',
+    grade: 5,
+    subject: 'English',
+    description: 'Stories, poems and their themes, reading for information, word analysis, opinion, informative and narrative writing, research, grammar, punctuation and vocabulary, in the order of the Common Core.',
+    units: [
+      { title: 'Reading Literature: Key Ideas and Details', description: 'Quoting a text to explain what it says and what it suggests, the theme of a story or poem and summarizing it, and characters, setting and events, and comparing two characters, settings or events (RL.5.1–3).', members: ['e5-1-1', 'e5-1-2', 'e5-1-3', 'e5-1-4', 'e6-1-4', 'ex-14-1'] },
+      { title: 'Reading Literature: Craft and Structure', description: 'Figurative language, how stanzas and scenes build a whole, and how a narrator’s point of view shapes what is told (RL.5.4–6).', members: ['e5-2-1', 'e5-2-2', 'e5-2-3', 'e5-2-4', 'e6-1-3'] },
+      { title: 'Reading Literature: Comparing Stories', description: 'Comparing how stories treat similar themes and topics (RL.5.9).', members: ['e8-1-4'] },
+      { title: 'Reading Literature: Pictures and Media', description: 'How pictures and multimedia add to the meaning and mood of a story, such as a graphic novel (RL.5.7).', members: ['ex-14-3'] },
+      { title: 'Reading Informational Text: Key Ideas and Details', description: 'Quoting a text, two or more main ideas and their details, and summarizing (RI.5.1–2).', members: ['e5-3-1', 'e6-3-1'] },
+      { title: 'Reading Informational Text: Craft, Structure and Evidence', description: 'Text features for finding information quickly, the structures that show how events and ideas relate, an author’s purpose, and how reasons and evidence support an author’s points (RI.5.3–8).', members: ['e5-3-2', 'e5-3-3', 'e5-3-4', 'e6-3-3'] },
+      { title: 'Reading Informational Text: Comparing Accounts', description: 'Several accounts of the same event and the points of view they show, and putting together information from several texts (RI.5.6, RI.5.9).', members: ['ex-14-2'] },
+      { title: 'Reading Foundational Skills', description: 'Prefixes, suffixes and Greek and Latin roots for reading long unfamiliar words, and using context to check and correct a reading (RF.5.3–4, L.5.4a–b).', members: ['e5-4-1', 'e6-5-1', 'e5-4-3'] },
+      { title: 'Writing: Opinion, Informative and Narrative Texts', description: 'Opinion pieces with ordered reasons, informative texts with an introduction, linked ideas and a conclusion, and narratives with dialogue, description and clear sequence (W.5.1–3).', members: ['e5-6-3', 'e6-7-2', 'e5-6-2'] },
+      { title: 'Writing: Producing, Revising and Researching', description: 'Organized paragraphs, planning, revising and editing, using technology to produce and publish writing, and short research projects that summarize sources and list them (W.5.4–9).', members: ['e5-6-1', 'e5-6-4', 'ex-13-4', 'e7-7-4'] },
+      { title: 'Speaking and Listening', description: 'Taking part in a discussion and summarizing a speaker, reading aloud with accuracy and expression, reporting clearly with visuals and multimedia, and formal speech (RF.5.4b, SL.5.1–6).', members: ['ex-13-1', 'ex-13-2', 'ex-13-3'] },
+      { title: 'Language: Grammar and Usage', description: 'Parts of speech, conjunctions, prepositions and interjections, complete sentences, agreement, the perfect tenses and keeping tenses consistent (L.5.1).', members: ['e5-5-1', 'ex-11-1', 'e5-5-2', 'e5-5-3', 'e6-6-2'] },
+      { title: 'Language: Capitalization, Punctuation and Spelling', description: 'Capital letters and end marks, commas in a series, after an introductory element, with yes and no, tag questions and direct address, quotation marks, the titles of works, and spelling homophones (L.5.2).', members: ['e5-5-4', 'e5-5-5', 'ex-11-2', 'e5-4-4'] },
+      { title: 'Language: Varieties of English, References and Vocabulary', description: 'Dialect and register, dictionaries, glossaries and thesauruses, synonyms, antonyms and shades of meaning, idioms, adages and proverbs, and words that signal how ideas relate (L.5.3b, L.5.4c, L.5.5–6).', members: ['ex-12-1', 'ex-12-2', 'e5-4-2', 'e6-5-3'] },
+    ],
+    gaps: [],
+  },
+  {
+    id: 'us-ela-grade-6',
+    title: 'Grade 6 English Language Arts (US Common Core)',
+    shortTitle: 'US ELA Grade 6',
+    grade: 6,
+    subject: 'English',
+    description: 'Plot, character, point of view and theme, poetry, non-fiction and media, argument, informative and narrative writing, research, grammar, punctuation and vocabulary, in the order of the Common Core.',
+    units: [
+      { title: 'Reading Literature: Key Ideas and Details', description: 'Citing evidence, a theme and how details convey it, and how a plot unfolds and its characters change (RL.6.1–3).', members: ['e6-1-1', 'e6-1-2', 'e6-1-4'] },
+      { title: 'Reading Literature: Craft and Structure', description: 'Figurative and connotative language, sound, how a stanza or chapter fits the whole, mood, and the narrator’s point of view (RL.6.4–6).', members: ['e6-2-1', 'e6-2-2', 'e6-2-3', 'e6-2-4', 'e6-1-3'] },
+      { title: 'Reading Literature: Comparing Texts and Performances', description: 'Comparing texts in different forms or genres on similar themes, and comparing reading a story, play or poem with hearing or watching it performed (RL.6.7, RL.6.9).', members: ['e8-1-4', 'ex-14-3'] },
+      { title: 'Reading Informational Text: Key Ideas and Structure', description: 'A central idea and an objective summary, and how a text introduces and develops its ideas (RI.6.1–3, RI.6.5).', members: ['e6-3-1', 'e6-3-2'] },
+      { title: 'Reading Informational Text: Purpose, Argument and Media', description: 'An author’s point of view, tracing an argument and telling supported claims from unsupported ones, and the messages of images, headlines and advertising, and comparing one author’s account of events with another’s (RI.6.6–9, SL.6.2).', members: ['e6-3-4', 'e6-3-3', 'e6-4-2', 'e6-4-1', 'ex-14-2'] },
+      { title: 'Writing: Argument, Informative and Narrative Texts', description: 'Arguments with a clear claim and a counterclaim answered, informative texts with transitions, and narratives with a strong opening and dialogue (W.6.1–3).', members: ['e6-7-3', 'e6-7-2', 'e6-7-1'] },
+      { title: 'Writing: Revising and Researching', description: 'Revising for precise words and varied sentences, using technology to produce and publish writing, and research that quotes, paraphrases and cites its sources (W.6.4–9, L.6.3).', members: ['e6-7-4', 'ex-13-4', 'e7-7-4'] },
+      { title: 'Speaking and Listening', description: 'Taking part in a discussion, presenting claims and findings with multimedia, and adapting speech to the task (SL.6.1, SL.6.4–6).', members: ['ex-13-1', 'ex-13-3', 'ex-13-2'] },
+      { title: 'Language: Conventions of Standard English', description: 'Pronoun case and agreement, intensive pronouns, pronoun shifts and vague pronouns, variations from standard English, verb tenses, simple, compound and complex sentences, and commas, apostrophes, dashes and parentheses around extra information (L.6.1–2).', members: ['e6-6-1', 'ex-11-3', 'ex-12-1', 'e6-6-2', 'e6-6-3', 'e6-6-4', 'e9-6-4'] },
+      { title: 'Language: Vocabulary', description: 'Greek and Latin roots, context clues, dictionaries and thesauruses, word relationships, connotation and idioms (L.6.4–6).', members: ['e6-5-1', 'e5-4-3', 'ex-12-2', 'ex-12-3', 'e6-5-2', 'e6-5-3'] },
+    ],
+    gaps: [],
+  },
+  {
+    id: 'us-ela-grade-7',
+    title: 'Grade 7 English Language Arts (US Common Core)',
+    shortTitle: 'US ELA Grade 7',
+    grade: 7,
+    subject: 'English',
+    description: 'Short stories, poetry and drama, argument and bias, news and online sources, essays, narratives and research, clauses, sentences and agreement, and vocabulary, in the order of the Common Core.',
+    units: [
+      { title: 'Reading Literature: Key Ideas and Details', description: 'Conflict and suspense, characterization, how setting shapes character and plot, foreshadowing and flashback, and how a theme develops (RL.7.1–3).', members: ['e7-1-1', 'e7-1-2', 'e7-1-3', 'e7-1-4', 'e7-1-5'] },
+      { title: 'Reading Literature: Craft and Structure', description: 'Imagery, sound and rhythm, the ballad, the sonnet and free verse, speaker and tone, scripts, dialogue and soliloquy, and contrasting points of view (RL.7.4–6).', members: ['e7-2-1', 'e7-2-2', 'e7-2-3', 'e7-2-4', 'e7-2-5', 'e7-3-1', 'e7-3-2', 'e8-1-3'] },
+      { title: 'Reading Literature: Text, Performance and Film', description: 'The techniques of film, such as camera angles, lighting and sound, and comparing a story, play or poem, or a speech, with its audio, filmed or staged version (RL.7.7, RI.7.7).', members: ['e8-5-1', 'ex-14-3'] },
+      { title: 'Reading Literature: Historical Fiction and Allusion', description: 'Comparing a fictional portrayal of a time, place or character with a historical account, and literary, biblical and mythological allusions (RL.7.9, L.7.5a).', members: ['ex-14-4', 'ex-14-5'] },
+      { title: 'Reading Informational Text', description: 'Tracing an argument and judging its evidence, persuasive techniques, fact, opinion and bias, news reports and reliable sources online, and how two authors on one topic stress different evidence (RI.7.1–9, SL.7.2–3).', members: ['e7-4-1', 'e7-4-2', 'e7-4-3', 'e7-5-1', 'e7-5-2', 'ex-14-2'] },
+      { title: 'Writing: Argument, Informative and Narrative Texts', description: 'A claim with its counterclaim answered, the thesis and parts of an essay, and narrative craft: showing rather than telling and controlling pace (W.7.1–3).', members: ['e6-7-3', 'e7-7-2', 'e7-7-3'] },
+      { title: 'Writing: Producing, Revising and Researching', description: 'Unified, well-supported paragraphs, revising for style, writing and publishing with technology, and focused research that paraphrases, quotes and cites sources without plagiarism (W.7.4–9).', members: ['e7-7-1', 'e6-7-4', 'ex-13-4', 'e7-7-4'] },
+      { title: 'Speaking and Listening', description: 'Taking part in a discussion, presenting claims and findings with multimedia, and adapting speech to the task (SL.7.1, SL.7.4–6).', members: ['ex-13-1', 'ex-13-3', 'ex-13-2'] },
+      { title: 'Language: Conventions of Standard English', description: 'Phrases and clauses, simple, compound, complex and compound-complex sentences, fragments and run-ons, agreement, misplaced and dangling modifiers, commas with clauses and dialogue, and commas between coordinate adjectives (L.7.1–2).', members: ['e7-6-1', 'e7-6-2', 'e7-6-3', 'e7-6-4', 'e8-6-2', 'e7-6-5', 'ex-11-2'] },
+      { title: 'Language: Concise Writing and Vocabulary', description: 'Cutting wordiness and redundancy, Greek and Latin roots, dictionaries and thesauruses, synonyms, antonyms and analogies, and connotation (L.7.3–6).', members: ['e9-7-4', 'e6-5-1', 'ex-12-2', 'ex-12-3', 'e6-5-2'] },
+    ],
+    gaps: [],
+  },
+  {
+    id: 'us-ela-grade-8',
+    title: 'Grade 8 English Language Arts (US Common Core)',
+    shortTitle: 'US ELA Grade 8',
+    grade: 8,
+    subject: 'English',
+    description: 'Plot, irony and narrators, poetry, Shakespeare’s A Midsummer Night’s Dream, building and judging arguments, film and news, argument, informative, literary and research writing, verbals, voice and mood, and vocabulary, in the order of the Common Core.',
+    units: [
+      { title: 'Reading Literature: Key Ideas and Details', description: 'Plot and subplot, a theme and its development, and how dialogue and incidents move a story or play forward (RL.8.1–3).', members: ['e8-1-1', 'e8-1-4', 'e7-3-2'] },
+      { title: 'Reading Literature: Craft and Structure', description: 'Figurative language, form and metre, tone, irony and how dramatic irony creates suspense or humour, and narrators (RL.8.4–6).', members: ['e8-2-1', 'e8-2-2', 'e8-2-3', 'e8-1-2', 'e8-1-3'] },
+      { title: 'Drama: A Midsummer Night’s Dream', description: 'Plot and characters, Shakespeare’s language, comedy and the play within the play (RL.8.3–6).', members: ['e8-u3'] },
+      { title: 'Reading Literature: Text and Film', description: 'The techniques of film, for judging how far a filmed production keeps to its text (RL.8.7).', members: ['e8-5-1'] },
+      { title: 'Reading Literature: Myths and Modern Stories', description: 'How a modern story draws on myths, traditional stories or religious works and makes them new (RL.8.9).', members: ['ex-14-5'] },
+      { title: 'Reading Informational Text', description: 'An argument’s claim, reasons, evidence and counterargument, ethos, pathos and logos, judging sources and reasoning, how news is framed in different media, and texts that give conflicting information (RI.8.1–9, SL.8.2–3).', members: ['e8-4-1', 'e8-4-2', 'e8-4-3', 'e8-5-2', 'ex-14-2'] },
+      { title: 'Writing: Argument, Informative and Narrative Texts', description: 'The argument essay, the thesis and parts of an essay, and narrative voice and dialogue (W.8.1–3).', members: ['e8-7-1', 'e7-7-2', 'e8-7-3'] },
+      { title: 'Writing: Evidence, Revision and Research', description: 'Embedding and explaining quotations, revising for concise and precise style, writing and publishing with technology, and using and citing research (W.8.4–9).', members: ['e8-7-2', 'e9-7-4', 'ex-13-4', 'e8-7-4'] },
+      { title: 'Speaking and Listening', description: 'Taking part in a discussion, presenting claims and findings with multimedia, and adapting speech to the task (SL.8.1, SL.8.4–6).', members: ['ex-13-1', 'ex-13-3', 'ex-13-2'] },
+      { title: 'Language: Conventions of Standard English', description: 'Verbals, active and passive voice, the five verb moods and shifts in voice and mood, modifiers, parallel structure, and commas, dashes, ellipses, semicolons and colons (L.8.1–3).', members: ['e9-6-1', 'e8-6-1', 'ex-11-4', 'e11-7-3', 'e8-6-2', 'e8-6-3', 'e8-6-4', 'e9-6-4'] },
+      { title: 'Language: Vocabulary', description: 'Greek and Latin roots, dictionaries and thesauruses, word relationships and analogies, commonly confused words, connotation and vocabulary in context (L.8.4–6).', members: ['e6-5-1', 'ex-12-2', 'ex-12-3', 'e10-7-5'] },
+    ],
+    gaps: [],
+  },
+  {
+    id: 'us-english-9',
+    title: 'English 9 (US Common Core)',
+    shortTitle: 'US English 9',
+    grade: 9,
+    subject: 'English',
+    description: 'The novel, poetry and the sonnet, Shakespeare’s The Tempest, rhetoric and seminal US speeches, reasoning and fallacies, media, analytical, argument and timed writing, and grammar, in the order of the Common Core’s Grades 9–10 standards.',
+    units: [
+      { title: 'Reading Literature: Fiction', description: 'Structure and pace, character arcs and foils, symbol and allegory, and style (RL.9-10.1–5).', members: ['e9-u1'] },
+      { title: 'Reading Literature: Poetry', description: 'Close reading, the sonnet and its sounds, metre and rhythm (RL.9-10.4–5).', members: ['e9-u2'] },
+      { title: 'Drama: The Tempest', description: 'Plot and characters, power, freedom and forgiveness, and soliloquies, songs and staging (RL.9-10.2–5).', members: ['e9-u3'] },
+      { title: 'Reading Informational Text: Rhetoric and Reasoning', description: 'Rhetorical devices, analysing a speech, including the Gettysburg Address and Frederick Douglass’s Fourth of July speech, and sound and faulty reasoning (RI.9-10.1–9, SL.9-10.3).', members: ['e9-u4'] },
+      { title: 'Media', description: 'Advertising and its audience, misinformation and checking sources (RI.9-10.7, SL.9-10.2).', members: ['e9-u5'] },
+      { title: 'Writing', description: 'The analytical essay, the persuasive essay, the personal essay, research with citations, timed writing and revising for style (W.9-10.1–5, W.9-10.7–9, L.9-10.3).', members: ['e9-7-1', 'e10-6-3', 'e9-7-2', 'e8-7-4', 'e9-7-3', 'e9-7-4'] },
+      { title: 'Speaking and Listening', description: 'Presenting clearly and logically, in standard English, and answering questions (SL.9-10.4, SL.9-10.6).', members: ['ex-4-2'] },
+      { title: 'Language', description: 'Verbals, sentence variety, agreement, parallel structure, semicolons and colons, punctuation for effect, dictionaries and etymology, and vocabulary in context (L.9-10.1–6).', members: ['e9-u6', 'e8-6-3', 'e8-6-4', 'ex-12-2', 'e10-7-5'] },
+    ],
+    gaps: [
+      'A point of view or cultural experience in world literature from beyond Britain and the United States (RL.9-10.6)',
+      'A subject or key scene in two artistic mediums, such as a poem and a painting (RL.9-10.7)',
+      'How a writer draws on and transforms source material, such as Shakespeare’s use of Ovid (RL.9-10.9)',
+      'Using technology to produce, publish and update writing (W.9-10.6)',
+      'Leading and taking part in seminar discussions (SL.9-10.1)',
+      'Using digital media in presentations (SL.9-10.5)',
+    ],
+  },
+  {
+    id: 'us-english-10',
+    title: 'English 10 (US Common Core)',
+    shortTitle: 'US English 10',
+    grade: 10,
+    subject: 'English',
+    description: 'Short stories, poetry, Shakespeare’s Romeo and Juliet, argument, rhetoric and seminal US speeches, visual and media texts, essay and narrative writing, and grammar, in the order of the Common Core’s Grades 9–10 standards.',
+    units: [
+      { title: 'Reading Literature: Short Stories', description: 'Plot and conflict, character, setting and mood, point of view, and theme, symbol and irony (RL.9-10.1–6).', members: ['e10-u1'] },
+      { title: 'Reading Literature: Poetry', description: 'Imagery and figurative language, sound and rhythm, form, and reading a poem closely (RL.9-10.4–5).', members: ['e10-u2'] },
+      { title: 'Drama: Romeo and Juliet', description: 'Shakespeare’s language, character and motive, soliloquy and dramatic irony, and themes (RL.9-10.2–5).', members: ['e10-u3'] },
+      { title: 'Reading Informational Text: Argument and Rhetoric', description: 'Purpose and audience, argument and evidence, ethos, pathos and logos, bias and reliable sources, and analysing seminal US speeches (RI.9-10.1–9, SL.9-10.3).', members: ['e10-u4', 'e9-4-2'] },
+      { title: 'Visual and Media Texts', description: 'Reading an image, film techniques and advertising (RI.9-10.7, SL.9-10.2).', members: ['e10-u5'] },
+      { title: 'Writing', description: 'The personal response, the analytical essay, the persuasive essay, narrative writing, using sources, citing them, revising and timed writing (W.9-10.1–5, W.9-10.7–9, L.9-10.3).', members: ['e10-u6', 'e11-6-3', 'e8-7-4'] },
+      { title: 'Speaking and Listening', description: 'Presenting clearly and logically, in standard English, and answering questions (SL.9-10.4, SL.9-10.6).', members: ['ex-4-2'] },
+      { title: 'Language', description: 'Sentence errors, punctuation, agreement, modifiers and parallel structure, word choice and vocabulary in context, and dictionaries and etymology (L.9-10.1–6).', members: ['e10-u7', 'ex-12-2'] },
+    ],
+    gaps: [
+      'A point of view or cultural experience in world literature from beyond Britain and the United States (RL.9-10.6)',
+      'A subject or key scene in two artistic mediums, such as a poem and a painting (RL.9-10.7)',
+      'How a writer draws on and transforms source material, such as Shakespeare’s use of Ovid (RL.9-10.9)',
+      'Using technology to produce, publish and update writing (W.9-10.6)',
+      'Leading and taking part in seminar discussions (SL.9-10.1)',
+      'Using digital media in presentations (SL.9-10.5)',
+    ],
+  },
+  {
+    id: 'us-english-11',
+    title: 'English 11 (US Common Core)',
+    shortTitle: 'US English 11',
+    grade: 11,
+    subject: 'English',
+    description: 'Fiction by Hawthorne, Twain, Chopin and Crane, poetry, Shakespeare’s Macbeth, the essay, rhetoric and satire, news and media, literary, comparative and argument writing, and language, in the order of the Common Core’s Grades 11–12 standards.',
+    units: [
+      { title: 'Reading Literature: Fiction', description: 'Structure and pacing, complex characters, narrative voice, symbolism and allegory, and style (RL.11-12.1–6).', members: ['e11-u1'] },
+      { title: 'Reading Literature: Poetry', description: 'Extended metaphor, conceit and allusion, the sonnet, voice and irony, and comparing poems (RL.11-12.4–6).', members: ['e11-u2'] },
+      { title: 'Drama: Macbeth', description: 'The language and imagery of the play, ambition and character, the supernatural and dramatic devices, and tragedy (RL.11-12.3–5).', members: ['e11-u3'] },
+      { title: 'Reading Informational Text: The Essay and Rhetoric', description: 'Kinds of essay, rhetorical analysis, satire, evaluating arguments, and the rhetorical strategy of a seminal speech such as Lincoln’s Second Inaugural Address (RI.11-12.1–9, SL.11-12.3).', members: ['e11-u4', 'e12-4-1'] },
+      { title: 'News and Media', description: 'Framing in the news, documentary, and representation in digital media (RI.11-12.7, SL.11-12.2).', members: ['e11-u5'] },
+      { title: 'Writing', description: 'The literary analysis essay, the comparative essay, using sources, the argument essay, revising for style and the timed essay (W.11-12.1–5, W.11-12.7–9).', members: ['e11-u6'] },
+      { title: 'Speaking and Listening', description: 'Presenting a clear perspective, in standard English, and answering questions (SL.11-12.4, SL.11-12.6).', members: ['ex-4-2'] },
+      { title: 'Language', description: 'Clauses and sentence combining, dashes, colons and ellipses, voice and mood, usage and pronoun reference, contested usage and hyphens, word roots and precise diction, and dictionaries and usage guides (L.11-12.1–6).', members: ['e11-u7', 'ex-11-5', 'ex-12-2'] },
+    ],
+    gaps: [
+      'Comparing productions or recordings of a play, including one by Shakespeare and one by an American dramatist (RL.11-12.7)',
+      'The periods of American literature from the eighteenth to the early twentieth century, and how texts of one period treat similar themes (RL.11-12.9)',
+      'The reasoning of seminal US texts: The Federalist, Supreme Court opinions and dissents, and presidential addresses (RI.11-12.8)',
+      'The Declaration of Independence, the Preamble to the Constitution and the Bill of Rights: their themes, purposes and rhetoric (RI.11-12.9)',
+      'Using technology to produce, publish and update writing (W.11-12.6)',
+      'Leading and taking part in seminar discussions (SL.11-12.1)',
+      'Using digital media in presentations (SL.11-12.5)',
+    ],
+  },
+  {
+    id: 'us-english-12',
+    title: 'English 12 (US Common Core)',
+    shortTitle: 'US English 12',
+    grade: 12,
+    subject: 'English',
+    description: 'Fiction through critical lenses, poetry, Shakespeare’s Hamlet, rhetoric, argument and satire, media and culture, critical, research and reflective writing, and language for effect, in the order of the Common Core’s Grades 11–12 standards.',
+    units: [
+      { title: 'Reading Literature: Fiction', description: 'Narrative technique and time, fiction in its context, critical lenses, ambiguity and open endings, and style (RL.11-12.1–6).', members: ['e12-u1'] },
+      { title: 'Reading Literature: Poetry', description: 'The ode and the Romantic lyric, poetry of war and witness, modern forms and the unseen poem (RL.11-12.4–5).', members: ['e12-u2'] },
+      { title: 'Drama: Hamlet', description: 'The soliloquies, characters and relationships, delay, madness and dramatic devices, and weighing interpretations of the play (RL.11-12.3–7).', members: ['e12-u3'] },
+      { title: 'Reading Informational Text: Rhetoric and Argument', description: 'Rhetorical strategy in seminal speeches, modelling arguments, satire, and statistics, evidence and reasoning (RI.11-12.1–9, SL.11-12.3).', members: ['e12-u4'] },
+      { title: 'Media and Culture', description: 'Media industries and audiences, representation and power, and propaganda and misinformation (RI.11-12.7, SL.11-12.2).', members: ['e12-u5'] },
+      { title: 'Writing', description: 'The critical essay, the comparative essay, research writing, reflective writing, style and the examination essay (W.11-12.1–5, W.11-12.7–9).', members: ['e12-u6'] },
+      { title: 'Speaking and Listening', description: 'Presenting a clear perspective, in standard English, and answering questions (SL.11-12.4, SL.11-12.6).', members: ['ex-4-2'] },
+      { title: 'Language', description: 'Syntax for effect, grammar in context, register and tone, rhetorical figures, contested usage and hyphens, etymology and academic vocabulary, and dictionaries and usage guides (L.11-12.1–6).', members: ['e12-u7', 'ex-11-5', 'ex-12-2'] },
+    ],
+    gaps: [
+      'Comparing productions or recordings of a play, including one by Shakespeare and one by an American dramatist (RL.11-12.7)',
+      'The periods of American literature from the eighteenth to the early twentieth century, and how texts of one period treat similar themes (RL.11-12.9)',
+      'The reasoning of seminal US texts: The Federalist, Supreme Court opinions and dissents, and presidential addresses (RI.11-12.8)',
+      'The Declaration of Independence, the Preamble to the Constitution and the Bill of Rights: their themes, purposes and rhetoric (RI.11-12.9)',
+      'Using technology to produce, publish and update writing (W.11-12.6)',
+      'Leading and taking part in seminar discussions (SL.11-12.1)',
+      'Using digital media in presentations (SL.11-12.5)',
+    ],
+  },
+];

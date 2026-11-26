@@ -169,7 +169,7 @@ curriculum (`recommendCourse` gives a US learner the course of their grade) and 
 them from the map's tab. Lesson content, practice, videos and tutor recordings are found by lesson
 or skill id, so they need nothing new; `loadCourseSkills` loads a mapped course's generators from
 the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives a lesson as the
-class's course numbers it. The maps are `us.ts` (US Common Core, Grade 6 to Precalculus) and `uk.ts` (UK GCSE,
+class's course numbers it. The maps are `us.ts` (US Common Core, Grade 6 to Precalculus, with English Language Arts, Grade 5 to English 12, in `us-english.ts`) and `uk.ts` (UK GCSE,
 Foundation and Higher, and A level Mathematics, Years 12 and 13), `waec.ts` (WASSCE General Mathematics, SS 1 to
 SS 3, for Nigeria and, through `alsoFor`, Ghana), `kenya.ts` (KCSE, Form 1 to Form 4), `caps.ts` (South Africa,
 Grades 10 to 12), `cambridge.ts` (IGCSE Core and Extended) `ib.ts` (IB Diploma, Analysis and Approaches SL and

@@ -7,7 +7,8 @@
  * carries its own level (`grade`). Units 1 to 4 use texts written for these lessons; Units 5 to 7
  * teach the GCSE English Literature set texts in the public domain, quoting each word for word from
  * its Project Gutenberg edition. Units 8 and 9 teach two clusters of the AQA poetry anthology,
- * quoting only the poems in the public domain, and Unit 10 teaches four modern texts. Works still in
+ * quoting only the poems in the public domain, and Unit 10 teaches four modern texts. Units 11 and
+ * after fill the gaps of the US Common Core English map, with sentences written for the lessons. Works still in
  * copyright are described in our own words and never quoted, and every lesson credits its sources.
  */
 import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
@@ -29,6 +30,23 @@ export const OUTCOMES: Outcome[] = [
   { code: 'LP2', strand: 'Literature: poetry anthology', text: 'Explain the themes, form and methods of the poems of an anthology cluster, compare poems that share a theme, and relate each poem to its context.' },
   { code: 'LM1', strand: 'Literature: modern prose and drama', text: 'Know the characters and the plot of a modern play or novel.' },
   { code: 'LM2', strand: 'Literature: modern prose and drama', text: 'Explain how key moments of a modern play or novel show its themes, and relate the text to its context and the writer’s methods.' },
+  { code: 'US1', strand: 'Grammar, punctuation and usage', text: 'Use conjunctions, including the correlative pairs, prepositions and interjections, and tell them apart.' },
+  { code: 'US2', strand: 'Grammar, punctuation and usage', text: 'Use commas with yes and no, direct address, tag questions and coordinate adjectives, and punctuate the titles of works.' },
+  { code: 'US3', strand: 'Grammar, punctuation and usage', text: 'Use intensive pronouns, and correct shifts in pronoun number and person and vague pronouns.' },
+  { code: 'US4', strand: 'Grammar, punctuation and usage', text: 'Form and use the indicative, imperative, interrogative, conditional and subjunctive moods, and correct shifts in voice and mood.' },
+  { code: 'US5', strand: 'Grammar, punctuation and usage', text: 'Treat usage as convention that changes, settle contested usage with references, and follow the conventions for hyphens.' },
+  { code: 'US6', strand: 'Words, references and varieties of English', text: 'Match register to audience and purpose, explain a writer’s use of dialect, and use standard English when the situation is formal.' },
+  { code: 'US7', strand: 'Words, references and varieties of English', text: 'Use dictionaries, glossaries and thesauruses to find and verify a word’s meaning, part of speech and etymology.' },
+  { code: 'US8', strand: 'Words, references and varieties of English', text: 'Recognize relationships between words and complete analogies.' },
+  { code: 'US9', strand: 'Speaking, listening and publishing', text: 'Prepare for and take part in a discussion, building on others’ ideas, summarizing a speaker and judging the reasons given.' },
+  { code: 'US10', strand: 'Speaking, listening and publishing', text: 'Read aloud with accuracy, pace and expression, and speak clearly, adapting speech to the audience and task.' },
+  { code: 'US11', strand: 'Speaking, listening and publishing', text: 'Plan a presentation logically and use visuals and multimedia that clarify its points.' },
+  { code: 'US12', strand: 'Speaking, listening and publishing', text: 'Use technology to produce, revise, share and publish writing, citing sources and writing responsibly.' },
+  { code: 'US13', strand: 'Comparing texts, versions and retellings', text: 'Compare characters, settings and events in a story, and stories that treat a similar theme.' },
+  { code: 'US14', strand: 'Comparing texts, versions and retellings', text: 'Compare accounts of one event and texts that stress different evidence or conflict, and combine information from several texts.' },
+  { code: 'US15', strand: 'Comparing texts, versions and retellings', text: 'Explain how pictures add to a story, and compare a text with its performed, filmed or delivered version.' },
+  { code: 'US16', strand: 'Comparing texts, versions and retellings', text: 'Compare a fictional portrayal of a time or place with a historical account, and explain how authors use or alter history.' },
+  { code: 'US17', strand: 'Comparing texts, versions and retellings', text: 'Explain allusions to myths, the Bible and literature, and how a modern story draws on and transforms an older one.' },
 ];
 
 const L = (
@@ -175,6 +193,82 @@ export const LESSONS: LessonMeta[] = [
     ['ex-animal-farm-plot', 'ex-animal-farm-themes'],
     ['Know who the characters of Animal Farm are, the order of the main events and the chapter each happens in', 'Explain what key moments show about the novella’s themes, and relate the novella to its context and the writer’s methods'],
     ['allegory', 'fable', 'propaganda', 'revolution', 'totalitarianism']),
+
+  // ---------------- Unit 11: Grammar, Punctuation and Usage ----------------
+  L('ex-11-1', 'ex-u11', '11.1', 'Conjunctions, Prepositions and Interjections', 5, ['US1'],
+    ['ex-conjunctions', 'ex-prepositions-interjections'],
+    ['Find conjunctions, choose the one that shows how two ideas relate, and use correlative pairs such as either … or', 'Find prepositions and interjections, and tell a preposition from a conjunction'],
+    ['conjunction', 'correlative conjunction', 'preposition', 'prepositional phrase', 'interjection']),
+  L('ex-11-2', 'ex-u11', '11.2', 'More Commas, and the Titles of Works', 5, ['US2'],
+    ['ex-commas-speech', 'ex-titles-of-works'],
+    ['Use commas with yes and no, direct address and tag questions, and between coordinate adjectives', 'Put the titles of long works in italics and of short works in quotation marks'],
+    ['direct address', 'tag question', 'coordinate adjectives', 'italics', 'title']),
+  L('ex-11-3', 'ex-u11', '11.3', 'Pronouns: Intensive, Consistent and Clear', 6, ['US3'],
+    ['ex-intensive-pronouns', 'ex-pronoun-shifts'],
+    ['Use intensive pronouns and tell them from reflexive pronouns', 'Keep pronouns consistent in number and person, and fix vague pronouns'],
+    ['intensive pronoun', 'reflexive pronoun', 'antecedent', 'person', 'vague pronoun']),
+  L('ex-11-4', 'ex-u11', '11.4', 'Verb Moods, and Shifts in Voice and Mood', 8, ['US4'],
+    ['ex-verb-moods', 'ex-voice-mood-shifts'],
+    ['Name the five moods of English verbs, and form the conditional and the subjunctive', 'Correct sentences that shift voice or mood for no reason, and choose the passive voice for a reason'],
+    ['mood', 'indicative', 'imperative', 'interrogative', 'conditional', 'subjunctive']),
+  L('ex-11-5', 'ex-u11', '11.5', 'Contested Usage and Hyphens', 12, ['US5'],
+    ['ex-contested-usage', 'ex-hyphens'],
+    ['Treat usage as convention that changes, and settle a disputed point with a usage guide', 'Follow the conventions for hyphens in compound adjectives, numbers and prefixes'],
+    ['usage', 'convention', 'usage guide', 'style guide', 'hyphen', 'compound adjective']),
+
+  // ---------------- Unit 12: Words, References and Varieties of English ----------------
+  L('ex-12-1', 'ex-u12', '12.1', 'Formal and Informal English: Register and Dialect', 6, ['US6'],
+    ['ex-register', 'ex-standard-english'],
+    ['Match register to an audience and purpose, and explain why a writer gives a character a dialect', 'Recognize variations from standard English and revise them for formal writing and speech'],
+    ['register', 'formal', 'informal', 'dialect', 'standard English']),
+  L('ex-12-2', 'ex-u12', '12.2', 'Dictionaries, Glossaries and Thesauruses', 6, ['US7'],
+    ['ex-dictionary', 'ex-thesaurus'],
+    ['Read a dictionary entry for pronunciation, part of speech, meaning and etymology, and use guide words', 'Choose a synonym from a thesaurus, use a glossary, and verify the meaning of a word'],
+    ['dictionary', 'guide words', 'etymology', 'glossary', 'thesaurus', 'synonym']),
+  L('ex-12-3', 'ex-u12', '12.3', 'Word Relationships and Analogies', 7, ['US8'],
+    ['ex-word-relationships', 'ex-analogies'],
+    ['Name the relationship between two words: part and whole, cause and effect, item and category, synonyms or antonyms', 'Complete an analogy and choose the pair with the same relationship'],
+    ['relationship', 'part and whole', 'cause and effect', 'category', 'analogy']),
+
+  // ---------------- Unit 13: Speaking, Listening and Publishing ----------------
+  L('ex-13-1', 'ex-u13', '13.1', 'Taking Part in a Discussion', 6, ['US9'],
+    ['ex-discussion-prepare', 'ex-discussion-moves'],
+    ['Come to a discussion prepared, agree on rules and roles, and set goals and deadlines', 'Build on and paraphrase others’ ideas, summarize a speaker, judge the reasons given, and change a view when the evidence warrants it'],
+    ['collaborative discussion', 'role', 'paraphrase', 'summary', 'evidence']),
+  L('ex-13-2', 'ex-u13', '13.2', 'Reading Aloud and Speaking Clearly', 5, ['US10'],
+    ['ex-reading-aloud', 'ex-speaking-clearly'],
+    ['Read a text aloud with accuracy, a suitable pace and expression, using punctuation and context', 'Speak clearly with eye contact and relevant details, and adapt speech to the audience and task'],
+    ['fluency', 'expression', 'pace', 'eye contact', 'formal English']),
+  L('ex-13-3', 'ex-u13', '13.3', 'Presenting with Visuals and Media', 7, ['US11'],
+    ['ex-presentation-plan', 'ex-presentation-media'],
+    ['Order a presentation logically, keep the relevant details and support claims with evidence', 'Choose visuals and multimedia that clarify a point, and credit their sources'],
+    ['presentation', 'relevant detail', 'visual display', 'multimedia', 'source']),
+  L('ex-13-4', 'ex-u13', '13.4', 'Writing and Publishing with Technology', 7, ['US12'],
+    ['ex-writing-tools', 'ex-publishing-online'],
+    ['Use spell checkers wisely, work in a shared document with suggestions and comments, and save versions', 'Publish writing online with its sources linked, private details kept safe, and updates after feedback'],
+    ['spell checker', 'shared document', 'comment', 'version', 'publish', 'link']),
+
+  // ---------------- Unit 14: Comparing Texts, Versions and Retellings ----------------
+  L('ex-14-1', 'ex-u14', '14.1', 'Comparing Characters, Settings and Stories', 5, ['US13'],
+    ['ex-compare-characters', 'ex-compare-events'],
+    ['Compare two characters, with details from the text, and explain how one changes', 'Compare two settings or events, and how stories in different settings treat a similar theme'],
+    ['compare', 'contrast', 'character', 'setting', 'theme']),
+  L('ex-14-2', 'ex-u14', '14.2', 'Comparing Accounts of the Same Event', 6, ['US14'],
+    ['ex-accounts', 'ex-conflicting-texts'],
+    ['Tell firsthand from secondhand accounts, compare what each focuses on, and combine them', 'Explain how authors stress different evidence or interpret facts differently, and weigh texts that conflict'],
+    ['firsthand account', 'secondhand account', 'point of view', 'evidence', 'interpretation']),
+  L('ex-14-3', 'ex-u14', '14.3', 'Stories in Pictures, on Stage and on Screen', 7, ['US15'],
+    ['ex-pictures-and-words', 'ex-text-and-performance'],
+    ['Explain how pictures, panels and angles add to the meaning, tone and pace of a story', 'Compare reading a text with hearing or watching it performed, filmed or delivered'],
+    ['graphic novel', 'panel', 'angle', 'performance', 'adaptation']),
+  L('ex-14-4', 'ex-u14', '14.4', 'Historical Fiction and History', 7, ['US16'],
+    ['ex-historical-fiction', 'ex-fiction-and-history'],
+    ['Tell the history in a historical novel from what the author invented', 'Compare a fictional portrayal with a historical account, and judge how an author uses or alters history'],
+    ['historical fiction', 'historical account', 'invention', 'author’s note', 'anachronism']),
+  L('ex-14-5', 'ex-u14', '14.5', 'Myths, Allusions and Modern Stories', 8, ['US17'],
+    ['ex-allusions', 'ex-myth-retellings'],
+    ['Explain literary, biblical and mythological allusions and the meaning they lend', 'Find the myth or older story a modern work draws on, and explain how it makes it new'],
+    ['allusion', 'myth', 'archetype', 'hero’s journey', 'retelling']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -188,6 +282,10 @@ export const UNITS: UnitMeta[] = [
   { id: 'ex-u8', number: 8, title: 'Poetry Anthology: Power and Conflict', description: 'The fifteen poems of the AQA Power and Conflict cluster: what each is about, its form, its themes and its context, with the poems in the public domain quoted from cited editions.', outcomes: ['LP1', 'LP2'], lessons: [], color: 'rose' },
   { id: 'ex-u9', number: 9, title: 'Poetry Anthology: Love and Relationships', description: 'The fifteen poems of the AQA Love and Relationships cluster: what each is about, its form, its themes and its context, with the poems in the public domain quoted from cited editions.', outcomes: ['LP1', 'LP2'], lessons: [], color: 'fuchsia' },
   { id: 'ex-u10', number: 10, title: 'Modern Prose and Drama', description: 'An Inspector Calls, Blood Brothers, Lord of the Flies and Animal Farm: their characters and plots, key moments and themes, and their context, discussed in our own words.', outcomes: ['LM1', 'LM2'], lessons: [], color: 'indigo' },
+  { id: 'ex-u11', number: 11, title: 'Grammar, Punctuation and Usage', description: 'Conjunctions, prepositions and interjections, commas with names, tags and adjectives, the titles of works, intensive and vague pronouns, verb moods, and contested usage and hyphens.', outcomes: ['US1', 'US2', 'US3', 'US4', 'US5'], lessons: [], color: 'sky' },
+  { id: 'ex-u12', number: 12, title: 'Words, References and Varieties of English', description: 'Register, dialect and standard English, dictionaries, glossaries and thesauruses, and word relationships and analogies.', outcomes: ['US6', 'US7', 'US8'], lessons: [], color: 'emerald' },
+  { id: 'ex-u13', number: 13, title: 'Speaking, Listening and Publishing', description: 'Taking part in a discussion, reading aloud and speaking clearly, presenting with visuals and media, and writing and publishing with technology.', outcomes: ['US9', 'US10', 'US11', 'US12'], lessons: [], color: 'amber' },
+  { id: 'ex-u14', number: 14, title: 'Comparing Texts, Versions and Retellings', description: 'Comparing characters and stories, accounts of one event and texts that disagree, stories in pictures, on stage and on screen, historical fiction and history, and myths and allusions in modern stories.', outcomes: ['US13', 'US14', 'US15', 'US16', 'US17'], lessons: [], color: 'violet' },
 ];
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
 

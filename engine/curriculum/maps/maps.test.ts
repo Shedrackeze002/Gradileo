@@ -4,7 +4,7 @@ import { PREREQUISITE, placementSkills, recommendCourse } from '../../placement.
 
 describe('curriculum maps', () => {
   it('build each US course from existing lessons, each once, in units that are not empty', () => {
-    expect(mappedCourses('us').map((c) => c.shortTitle)).toEqual(['US Grade 6', 'US Grade 7', 'US Grade 8', 'Algebra I', 'Geometry', 'Algebra II', 'Precalculus']);
+    expect(mappedCourses('us').filter((c) => c.subject === 'Mathematics').map((c) => c.shortTitle)).toEqual(['US Grade 6', 'US Grade 7', 'US Grade 8', 'Algebra I', 'Geometry', 'Algebra II', 'Precalculus']);
     for (const c of MAPPED_COURSES) {
       const ids = c.lessons.map((l) => l.id);
       expect(new Set(ids).size, c.id).toBe(ids.length);
@@ -100,8 +100,8 @@ describe('curriculum maps', () => {
     expect(recommendCourse({ subject: 'Mathematics', grade: 9, curriculum: 'ng' }).courseId).toBe('math-9');
     for (const c of MAPPED_COURSES) {
       const before = PREREQUISITE[c.id];
-      // GCSE Chemistry is a first course in its subject, so it has no course before it.
-      if (c.id === 'uk-gcse-chemistry') {
+      // GCSE Chemistry and US Grade 5 English are first courses in their subjects, so no course comes before them.
+      if (c.id === 'uk-gcse-chemistry' || c.id === 'us-ela-grade-5') {
         expect(before, c.id).toBeNull();
         continue;
       }
